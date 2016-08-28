@@ -14,7 +14,7 @@
 <table class="list">
 	<tr>
 		<td colspan="4" style="border:white; text-align:center; font-size:20px;">
-			<a href="BoardServlet.do">상품 정보 페이지로 이동</a>
+			<a href="productList.do">상품 정보 페이지로 이동</a>
 		</td>
 	</tr>
 	<tr><th class="index_th">번 호</th><th class="index_th">이 름</th><th class="index_th">가 격</th><th class="index_th">간략 내용</th>

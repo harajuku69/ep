@@ -84,8 +84,8 @@ public class ProductDao {
 					productDto.setCode(rs.getInt("code"));
 					productDto.setName(rs.getString("name"));
 					productDto.setPrice(rs.getInt("price"));
-					productDto.setProduct_img(rs.getString("Product_img"));
-					productDto.setProduct_img_ori(rs.getString("Product_img_ori"));
+					productDto.setProduct_img(rs.getString("product_img"));
+					productDto.setProduct_img_ori(rs.getString("product_img_ori"));
 					productDto.setDsc(rs.getString("dsc"));
 				}
 			} catch(Exception e){
