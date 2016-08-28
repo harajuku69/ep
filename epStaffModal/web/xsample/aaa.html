@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="" method="post" enctype="multipart/form-data" name="">
+		<table>
+			<tr>
+				<td align="center">ID</td>
+				<td>
+					<input type="text" name="member_name" size="20" maxlength="16">
+				</td>
+			</tr>	
+			<tr>
+				<td align="center">PW</td>
+				<td>
+					<input type="password" name="member_pwd" size="20" maxlength="16">
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					<input type="button" name="btn_login" value="LOGIN">
+					<input type="button" name="btn_join" value="JOIN">
+				</td>
+			</tr>
+			<tr>
+				<td align="center">Job</td>
+				<td>
+					<select name="job">
+						<option value="">Job Selection</option>
+						<option value="00" selected="selected">Student</option>
+						<option value="01">Univ. Professor</option>
+						<option value="02">Doctor</option>
+						<option value="03">ETC</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Hobby</td>
+				<td>
+					<select name="hobby">
+						<option value="">Hobby Selection</option>
+						<option value="00">Reading Books</option>
+						<optgroup label="Sports"> 
+							<option value="01">Baseball</option>
+							<option value="02">Football</option>
+						</optgroup>
+						<option value="03">Listening Music</option>
+					</select>		
+				</td>
+		</table>
+		<table border="1">
+			<tr>
+				<td >
+					Type your detail below ↓
+				</td>
+			</tr>
+		</table>
+		<textarea rows="1" cols="24" name="title">Title</textarea>
+		<br/>
+		<textarea rows="5" cols="30" name="contents">Contents</textarea>
+		<br/>
+		<!-- checkbox는 중복됨 -->		
+		<fieldset>
+			<legend><b>Computer Language Skill</b></legend>
+			<label for="java">JAVA</label>
+			<input name="checkinfo" type="checkbox" id="java" checked="checked">
+			<label for="c++">C++</label>
+			<input name="checkinfo" type="checkbox" id="c++">
+			<label for="c">C</label>
+			<input name="checkinfo" type="checkbox" id="c">
+		</fieldset>
+		<fieldset>
+			<legend><b>Web Skill</b></legend>
+			<label for="html">HTML</label>
+			<input name="checkinfo" type="checkbox" id="html" checked="checked">
+			<label for="css">CSS</label>
+			<input name="checkinfo" type="checkbox" id="css">
+			<label for="publisher">Publisher</label>
+			<input name="checkinfo" type="checkbox" id="p
+			ublisher">
+		</fieldset>
+		<!-- radio는 중복 선택 안됨 -->
+		<input type="radio" name="chk_gen" value="00" checked="checked">Male
+		<input type="radio" name="chk_gen" value="01">Female
+		<br/>
+		<!-- 사진 업로드에 필요한 부분 -->		
+		<input type="file" name="FileName">
+		<br/>
+		<br/>
+		<input type="reset" value="Reset">
+		<em> </em>
+		<input type="submit" value="Save">
+				
+	</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
