@@ -107,26 +107,20 @@ public class StaffDao {
 	}
 	
 	public StaffDto selectOneByEmpid(String empid){
-		
 		StaffDto sDto = new StaffDto();
-		
+
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		StringBuilder sql = new StringBuilder();
-		sql.append("select * from staff ");
-		sql.append("where empid=?");
-		
-		
+		String sql = "select * from staff where empid=?";
 		try{
 			conn = DBManager.getConnection();
-			pstmt = conn.prepareStatement(sql.toString());
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, empid);
 			
 			rs = pstmt.executeQuery();
 			if(rs.next()){
-				sDto = new StaffDto();
 				
 				sDto.setEmpid(rs.getString("empid"));
 				sDto.setPwd(rs.getString("pwd"));
@@ -157,14 +151,15 @@ public class StaffDao {
 		}
 		return sDto;
 	}
-	public List<StaffDto> selectAllStaff(){
+	
+	public List<StaffDto> selectAllStaffByDpt(){
 		List<StaffDto> list = new ArrayList<StaffDto>();
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select * from Staff"; /*order by no desc*/
+		String sql = "select empnm, empid, dpt, tit, phone from Staff where dpt=?"; 
 		try{
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -189,10 +184,8 @@ public class StaffDao {
 	}
 	
 	public int insertStaff(StaffDto sDto){
-//		StringBuilder sql = new StringBuilder();
-//		sql.append("insert into staff values(?,?,?)");
-		
-		String sql = "insert into staff(empnm, empid, pwd) values(?,?,?)";
+		String empno = createEmpno();
+		String sql = "insert into staff(empnm, jumin, empid, pwd, empno) values(?,?,?,?,?)";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -204,8 +197,10 @@ public class StaffDao {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, sDto.getEmpnm());
-			pstmt.setString(2, sDto.getEmpid());
-			pstmt.setString(3, sDto.getPwd());
+			pstmt.setString(2, sDto.getJumin());
+			pstmt.setString(3, sDto.getEmpid());
+			pstmt.setString(4, sDto.getPwd());
+			pstmt.setString(5, empno);
 			
 			result = pstmt.executeUpdate();
 		} catch(SQLException e){
@@ -216,13 +211,67 @@ public class StaffDao {
 		return result;
 	}
 	
+	public String createEmpno() {
+		StringBuilder empno = new StringBuilder();
+		
+		SimpleDateFormat date = new SimpleDateFormat("yyyyMM");
+		String curMM = date.format(new Date());
+		
+		String sql = "select lastno from epno";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int lastno = 0;
+		try{
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			rs.next();
+			System.out.println(rs.getInt("lastno"));
+			if(rs.getInt("lastno") != 9999){
+				lastno=rs.getInt("lastno") + 1;
+			}
+		} catch(SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBManager.close(conn, pstmt);
+		}
+		
+		sql = "update epno set lastno=?";
+		
+		try{
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, lastno);
+			pstmt.executeUpdate();
+		} catch(SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBManager.close(conn, pstmt);
+		}
+		
+		if(lastno > 999){
+			empno.append(curMM + Integer.toString(lastno));
+		} else if( 99 < lastno && lastno <= 999){
+			empno.append(curMM + "0" + Integer.toString(lastno));
+		} else if( 9 < lastno && lastno <= 99){
+			empno.append(curMM + "00" + Integer.toString(lastno));
+		} else if( lastno <= 9){
+			empno.append(curMM + "000" + Integer.toString(lastno));
+		}
+		System.out.println(empno.toString());
+		return empno.toString();
+	}
+
 	public int updateStaff(StaffDto sDto){
 		StringBuilder sql = new StringBuilder();
 		sql.append("update staff");
-		sql.append(" set Empnm=" + sDto.getEmpnm());
-		sql.append(" , Empemail=" + sDto.getEmail()); 
-		sql.append(" , Emppwd=" + sDto.getPwd());
-		sql.append(" where no=?");
+		sql.append(" set empnm=" + sDto.getEmpnm());
+		sql.append(" , email=" + sDto.getEmail()); 
+		sql.append(" , pwd=" + sDto.getPwd());
+		sql.append(" where empid=?");
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;

@@ -35,7 +35,8 @@ ul {list-style:none;}
 .contents {/* width:958px; */ height:540px; margin:0 auto; margin-top:6px; margin-bottom:0px; /* position:absolute; */ border:2px solid red;}
 /* .contents .core{width:954px; height:538px; margin:0 auto; border: 1px solid purple;} */
 .contents #guest, #default {width:958px; height:540px; /* display:block;/* position:relative;  */}
-.contents #logleft {width:280px; height:520px; padding:10px; float:left;/*  border:3px solid green;  */}
+.contents #logleft {width:280px; height:520px; padding:10px; float:left; text-align:center/*  border:3px solid green;  */}
+.contents #logleft .stpic {width:200px ; height:250px; margin:0 auto;}
 .contents #logleft p img {width:240px; height:130px;/* border:3px solid yellow*/} 
 .contents #logleft ul {padding:15px;}
 .contents #logleft ul li {margin:0 auto; text-indent:10px;}
@@ -118,7 +119,7 @@ ul {list-style:none;}
 .mini .mstaff {width:285px; height:135px; /* border:2px solid red; */}
 .mini .mstaff .pd {width:85px; height:133px;/* border:1px solid green; */float:left;}
 .mini .mstaff .pd .pic {width:85px; height:110px;/* border:1px solid yellow; */}
-.mini .mstaff .pd .pic img {width:83px; /* height:100px;border:1px solid blue;*/ margin:0 auto; }
+.mini .mstaff .pd .pic img {width:83px; height:110px;/*border:1px solid blue;*/ margin:0 auto; }
 .mini .mstaff .pd .wel {font-size:12px; text-align:center;margin-top:5px;}
 
 .mini .mstaff .simple {width:195px; /* border:1px solid green; */float:left;}

@@ -41,7 +41,7 @@
 				<table>
 					<tr>
 						<td style="width:200px; line-height:10px">
-							<p><a href="staff.do?cmd=staff_detail">개인 정보 상세</a></p>
+							<p><a href="staff.do?cmd=staff_detail&empid=${loginStaff.empid}">개인 정보 상세</a></p>
 							<p><a href="staff.do?cmd=staff_update">개인 정보 수정</a></p>
 						</td>
 						<td style="width:200px; line-height:10px">

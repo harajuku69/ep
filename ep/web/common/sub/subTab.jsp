@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="js/subtab.js"></script>
+<script type="text/javascript" src="js/subtab.js"></script>
 </head>
 <body>
 <div class="sub">

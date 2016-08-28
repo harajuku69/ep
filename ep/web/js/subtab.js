@@ -1,13 +1,14 @@
 /**
- * subTab setting : tab
+ * Tab setting : tab
  */
 $(function() {
 	//Tab 설정 
-	var tabs = $("#tabs").tabs();
-	    tabs.find(".ui-tabs-nav").sortable({
-	   	axis: "x",
-	   	stop: function(){
-	   		tabs.tabs("refresh");
-	   	}
-	});
+//	var tabs = $("#tabs").tabs();
+//	    tabs.find(".ui-tabs-nav").sortable({
+//	   	axis: "x",
+//	   	stop: function(){
+//	   		tabs.tabs("refresh");
+//	   	}
+//	});
+	$( "#tabs" ).tabs();
 });

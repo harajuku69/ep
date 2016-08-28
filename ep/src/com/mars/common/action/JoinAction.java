@@ -18,6 +18,7 @@ public class JoinAction implements Action {
 		StaffDto sDto = new StaffDto();
 		
 		sDto.setEmpnm(request.getParameter("empnm"));
+		sDto.setJumin(request.getParameter("juminf")+request.getParameter("juminb"));
 		sDto.setEmpid(request.getParameter("empid"));
 		sDto.setPwd(request.getParameter("pwd"));
 		

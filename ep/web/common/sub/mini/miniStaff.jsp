@@ -18,7 +18,15 @@
 	<div class="mstaff">
 		<div class="pd">
 			<div class="pic">
-				<img src="images/me.jpg" class="me" alt="사원사진">
+				<c:choose>
+				<c:when test="${empty staffDetail.pic}">
+					<img class="stpic" src="images/noimage.gif">
+				</c:when>
+				<c:otherwise>
+					<img class="stpic" src="upload/${staffDetail.pic}">
+				</c:otherwise>
+				</c:choose>
+				<!-- <img src="images/me.jpg" class="me" alt="사원사진"> -->
 			</div>
 			<p class="wel">
 				${loginStaff.empnm}님.

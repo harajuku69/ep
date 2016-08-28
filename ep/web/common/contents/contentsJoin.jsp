@@ -47,6 +47,14 @@
 					<td></td>
 				</tr>
 				<tr>
+					<td>주민번호</td>
+					<td>
+						<input type="text" name="juminf" placeholder="생년월일  6자리.ex) 901225" required>
+						<input type="password" name="juminb" placeholder="뒷자리  7자리" required>
+					</td>
+					<td><input type="button" name="chkjumin" value="중복 체크" onclick="chkJumin()"></td>
+				</tr>
+				<tr>
 					<td id="maincenter">아이디</td>
 					<td>
 						<input type="text" name="empid" required>
