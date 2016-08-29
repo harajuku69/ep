@@ -26,7 +26,7 @@ public class ProductWriteServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		pot로 넘어오는 request 한글 처리
+//		post로 넘어오는 request 한글 처리
 		request.setCharacterEncoding("UTF-8");
 //		파일 업로드 시 실제 디렉토리 확인:1.컨텍스트 정보 확인-ch10 컨텍스트
 		ServletContext context = getServletContext();

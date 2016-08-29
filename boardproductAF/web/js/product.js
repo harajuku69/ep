@@ -1,4 +1,4 @@
-function productChec(){
+function productCheck(){
 	if(document.frm.name.value == ""){
 		alert("상품명을 써주세요~");
 		frm.name.focus();

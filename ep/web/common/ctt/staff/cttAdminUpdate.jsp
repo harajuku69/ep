@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class="contents">
-	<form action="staff.do?cmd=staff_update_page" name="frm" style="clear:left;">
+	<form action="staff.do?cmd=staff_update" name="frm" style="clear:left;">
 	<div id="logleft">
 		<c:choose>
 			<c:when test="${empty ssStaff.pic}">
@@ -22,8 +22,8 @@
 				<img class="stpic" src="upload/${ssStaff.pic}">
 			</c:otherwise>
 		</c:choose>
-		<input type="button" value="변경">
-		<input type="button" value="삭제">
+		<!-- <input type="button" value="변경">
+		<input type="button" value="삭제"> -->
 	</div>
 	<div id="logright">
 		<table style="font-size:20px;float:left">
@@ -50,7 +50,9 @@
 			</tr>
 			<tr>
 				<td>우편번호</td>
-				<td>${ssStaff.zipcd}</td>
+				<td>
+					<input type="text" name="zipcd" id="zipcd" value="${ssStaff.zipcd}" readonly>
+				</td>
 			</tr>
 			<tr>
 				<td>기본주소</td>
@@ -73,7 +75,8 @@
 			</tr>
 			<tr>
 				<td>부 서</td>
-				<td><select name="dptbx" id="dptbx">
+				<td>
+					<select name="dptbx" id="dptbx">
 						<option value="">부서 선택</option>
 						<option value="00">관리부</option>
 						<option value="10">개발부</option>
@@ -88,7 +91,8 @@
 			</tr>
 			<tr>
 				<td>직 급</td>
-				<td><select name="titbx" id="titbx">
+				<td>
+					<select name="titbx" id="titbx">
 						<option value="">직급 선택</option>
 						<option value="00">대표</option>
 						<option value="10">사원</option>
@@ -120,6 +124,8 @@
 			</tr>
 		</table>
 		<input type="submit" value="수정 완료" >
+		<input type="reset" value="다시 작성" >
+		<input type="button" value="수정 취소" onclick="location.href='admin.do?cmd=admin_detail_page'">
 		</form>
 	</div>
 </div>

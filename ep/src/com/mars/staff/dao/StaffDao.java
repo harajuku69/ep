@@ -268,32 +268,35 @@ public class StaffDao {
 		return empno.toString();
 	}
 
-	public int updateStaff(StaffDto sDto){
+	public void updateStaff(StaffDto sDto){
 		StringBuilder sql = new StringBuilder();
 		sql.append("update staff");
-		sql.append(" set empnm=" + sDto.getEmpnm());
-		sql.append(" , email=" + sDto.getEmail()); 
-		sql.append(" , pwd=" + sDto.getPwd());
+		sql.append(" set phone=" + sDto.getPhone());
+//		sql.append(" , pwd=" + sDto.getPwd());
+		sql.append(" , pic=" + sDto.getPic());
+//		sql.append(" , zipcd=" + sDto.getZipcd());
+		sql.append(" , addr=" + sDto.getAddr()); 
+		sql.append(" , addrdtl=" + sDto.getAddrdtl());
 		sql.append(" where empid=?");
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		
-		int result = -1;
+//		int result = -1;
 		
 		try{
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql.toString());
 				
 			pstmt.setString(1, sDto.getEmpid());	
-			
-			result = pstmt.executeUpdate();
+			pstmt.executeUpdate();
+//			result = pstmt.executeUpdate();
 		} catch(SQLException e){
 			e.printStackTrace();
 		} finally{
 			DBManager.close(conn, pstmt);
 		}
-		return result;
+//		return result;
 	}
 		
 	public int deleteStaff(int no){

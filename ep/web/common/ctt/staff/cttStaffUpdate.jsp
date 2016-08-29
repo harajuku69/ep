@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class="contents">
-	<form action="staff.do?cmd=staff_update" name="frm">
+	<form action="staff.do?cmd=staff_update" method="post" enctype="multipart/form-data" name="frm">
 	<div id="logleft">
 		<c:choose>
 			<c:when test="${empty ssStaff.pic}">
@@ -22,8 +22,8 @@
 				<img class="stpic" src="upload/${ssStaff.pic}">
 			</c:otherwise>
 		</c:choose>
-		<input type="button" value="변경">
-		<input type="button" value="삭제">
+		<input type="file" name="selpic" value="변경">
+		<input type="button" name="delbtn" value="삭제">
 	</div>
 	<div id="logright">
 		<table style="font-size:20px;float:left">
@@ -52,7 +52,10 @@
 			</tr>
 			<tr>
 				<td>우편번호</td>
-				<td>${ssStaff.zipcd}</td>
+				<td>
+					<input type="text" name="zipcd" id="zipcd" placeholder="${ssStaff.zipcd}" readonly>
+					<input type="button" name="zipbtn" value="검색" onclick="zipsch()">
+				</td>
 			</tr>
 			<tr>
 				<td>기본주소</td>
@@ -98,6 +101,8 @@
 			</tr>
 		</table>
 		<input type="submit" value="수정 완료" >
+		<input type="reset" value="다시 작성" >
+		<input type="button" value="수정 취소" onclick="location.href='admin.do?cmd=staff_detail_page'">
 		</form>
 	</div>
 </div>
