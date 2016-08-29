@@ -29,10 +29,10 @@ public class ActionFactory {
 			action = new JoinPageAction();
 		} else if(cmd.equals("chk_id")){
 			action = new ChkIdAction();
-		} else if(cmd.equals("staff_detail")){
-			action = new StaffDetailAction();
-		} else if(cmd.equals("admin_detail")){
-			action = new AdminDetailAction();
+		} else if(cmd.equals("staff_detail_page")){
+			action = new StaffDetailPageAction();
+		} else if(cmd.equals("admin_detail_page")){
+			action = new AdminDetailPageAction();
 		}  else if(cmd.equals("staff_update_page")){
 			action = new StaffUpdatePageAction();
 		} else if(cmd.equals("admin_update_page")){

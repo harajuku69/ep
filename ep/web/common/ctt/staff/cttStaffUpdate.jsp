@@ -46,7 +46,9 @@
 			</tr>
 			<tr>
 				<td>연락처</td>
-				<td><input type="text" name="phone" id="phone" placeholder="숫자만 입력하세요. '-' 입력 X" ></td>
+				<td>
+					<input type="text" name="phone" id="phone" placeholder="${ssStaff.phone}" >
+				</td>
 			</tr>
 			<tr>
 				<td>우편번호</td>
@@ -54,22 +56,22 @@
 			</tr>
 			<tr>
 				<td>기본주소</td>
-				<td></td>
+				<td><input type="text" name="addr" id="addr" placeholder="${ssStaff.addr}" ></td>
 			</tr>
 			<tr>
 				<td>상세주소</td>
-				<td><input type="text" name="addrdtl" id="addtdtl" placeholder="상세 주소를 입력하세요" ></td>
+				<td><input type="text" name="addrdtl" id="addrdtl" placeholder="${ssStaff.addrdtl}" ></td>
 			</tr>
 		</table>
 		<table style="font-size:20px;">
 			<tr><th colspan="2">사원 정보</th></tr>
 			<tr>
-				<td>사 원 아이디</td>
-				<td>${ssStaff.empid}</td>
-			</tr>
-			<tr>
 				<td>사 번</td>
 				<td><input type="text" name="empno" id="empno" value="${ssStaff.empno}" readonly></td>
+			</tr>
+			<tr>
+				<td>사 원 아이디</td>
+				<td>${ssStaff.empid}</td>
 			</tr>
 			<tr>
 				<td>부 서</td>

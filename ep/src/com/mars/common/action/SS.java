@@ -1,27 +1,17 @@
 package com.mars.common.action;
 
-import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.mars.staff.dao.StaffDao;
 import com.mars.staff.dto.StaffDto;
 
-public class StaffDetailAction implements Action {
-
-	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "staff/staffDetail.jsp";
-		
-		String empid = request.getParameter("empid");
-		
-		StaffDao sDao = StaffDao.getInstance();
-		
-		StaffDto sDto = sDao.selectOneByEmpid(empid);
-		
+public class SS {
+	public static HttpSession getSs(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		return session;
+	}
+	public static void toFmt(HttpServletRequest request) {
+		StaffDto sDto = (StaffDto)getSs(request).getAttribute("ssStaff") ;
 		String jmf = sDto.getJumin().substring(0, 6);
 		String jmb = sDto.getJumin().substring(6, 7)+"******";
 		String yyyy = "19";
@@ -47,8 +37,6 @@ public class StaffDetailAction implements Action {
 				gen="여";
 			}
 		}
-		
-		request.setAttribute("ssStaff", sDto);
 		request.setAttribute("jmf", jmf);
 		request.setAttribute("jmb", jmb);
 		request.setAttribute("yyyy", yyyy);
@@ -56,8 +44,15 @@ public class StaffDetailAction implements Action {
 		request.setAttribute("dd", dd);
 		request.setAttribute("gen", gen);
 		
-		RequestDispatcher disp = request.getRequestDispatcher(url);
-		disp.forward(request, response);
 	}
-
+	
+	public static String getEmpid(HttpServletRequest request) {
+		String ssEmpid = (String)getSs(request).getAttribute("ssEmpid");
+		return ssEmpid;
+	}
+	
+	public static int getAdmchk(HttpServletRequest request) {
+		int admchk = (int)getSs(request).getAttribute("ssAdmchk");
+		return admchk;
+	}
 }

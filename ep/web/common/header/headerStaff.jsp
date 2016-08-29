@@ -41,8 +41,8 @@
 				<table>
 					<tr>
 						<td style="width:200px; line-height:10px">
-							<p><a href="staff.do?cmd=staff_detail&empid=${ssStaff.empid}">개인 정보 상세</a></p>
-							<p><a href="staff.do?cmd=staff_update">개인 정보 수정</a></p>
+							<p><a href="staff.do?cmd=staff_detail_page&empid=${ssStaff.empid}">개인 정보 상세</a></p>
+							<p><a href="staff.do?cmd=staff_update_page">개인 정보 수정</a></p>
 						</td>
 						<td style="width:200px; line-height:10px">
 							<p><a href="noti.do?cmd=noti_list">공지사항 목록</a></p>

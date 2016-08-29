@@ -40,7 +40,7 @@
 				<li>직급 : ${ssStaff.tit}</li>
 				<li>사번 : ${ssStaff.empno}</li>
 				<!-- <li>프로젝트 : <a href="URL=?프로젝트 상세보기">수치예보 41기</a></li> -->
-				<p><a href="staff.do?cmd=admin_detail&empid=${ssStaff.empid}">사원 상세 정보</a></p>
+				<p><a href="staff.do?cmd=admin_detail_page&empid=${ssStaff.empid}">사원 상세 정보</a></p>
 			</ul>
 		</div>
 	</div>

@@ -7,11 +7,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class AdminUpdatePageAction implements Action {
+import com.mars.staff.dao.StaffDao;
+import com.mars.staff.dto.StaffDto;
+
+public class StaffDetailPageAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "staff/adminUpdate.jsp";
+		String url = "staff/staffDetail.jsp";
 		
 		SS.toFmt(request);
 		

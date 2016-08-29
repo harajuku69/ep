@@ -41,7 +41,7 @@
 				<li>사번 : ${ssStaff.empno}</li>
 				<!-- <li>프로젝트 : <a href="URL=?프로젝트 상세보기">수치예보 41기</a></li> -->
 				<!-- <p><a href="staffdetail.do">개인 상세 정보</a></p> -->
-				<p><a href="staff.do?cmd=staff_detail&empid=${ssStaff.empid}">개인 상세 정보</a></p>
+				<p><a href="staff.do?cmd=staff_detail_page&empid=${ssStaff.empid}">개인 상세 정보</a></p>
 			</ul>
 		</div>
 	</div>
