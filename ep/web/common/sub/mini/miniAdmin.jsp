@@ -13,24 +13,24 @@
 </head>
 <body>
 <div class="mini">
-	<p style="display:inline;">Staff </p>|
-	<p style="display:inline;"><a href="staff.do?cmd=admin_page"> Admin</a></p>
+	<p style="display:inline;">Admin </p>|
+	<p style="display:inline;"><a href="staff.do?cmd=login"> Staff</a></p>
 	<hr/>
 	<div class="mstaff">
 		<div class="pd">
 			<div class="pic">
-				<c:choose>
+				<%-- <c:choose>
 				<c:when test="${empty ssStaff.pic}">
 					<img class="stpic" src="images/noimage.gif">
 				</c:when>
 				<c:otherwise>
 					<img class="stpic" src="upload/${ssStaff.pic}">
 				</c:otherwise>
-				</c:choose>
-				<!-- <img src="images/me.jpg" class="me" alt="사원사진"> -->
+				</c:choose> --%>
+				<img src="images/admin_01.png" class="me" alt="admin 사진">
 			</div>
 			<p class="wel">
-				${ssStaff.empnm}님.
+				${ssStaff.admnm}님.
 			</p>
 		</div>
 		<div class="simple">
@@ -40,8 +40,7 @@
 				<li>직급 : ${ssStaff.tit}</li>
 				<li>사번 : ${ssStaff.empno}</li>
 				<!-- <li>프로젝트 : <a href="URL=?프로젝트 상세보기">수치예보 41기</a></li> -->
-				<!-- <p><a href="staffdetail.do">개인 상세 정보</a></p> -->
-				<p><a href="staff.do?cmd=staff_detail&empid=${ssStaff.empid}">개인 상세 정보</a></p>
+				<p><a href="staff.do?cmd=admin_detail&empid=${ssStaff.empid}">사원 상세 정보</a></p>
 			</ul>
 		</div>
 	</div>

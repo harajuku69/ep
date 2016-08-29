@@ -10,13 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import com.mars.staff.dao.StaffDao;
 import com.mars.staff.dto.StaffDto;
 
-public class StaffDetailAction implements Action {
+public class StaffUpdatePageAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "staff/staffDetail.jsp";
+		String url = "staff/staffUpdate.jsp";
 		
-		String empid = request.getParameter("empid");
+		/*String empid = request.getParameter("empid");
 		
 		StaffDao sDao = StaffDao.getInstance();
 		
@@ -54,7 +54,7 @@ public class StaffDetailAction implements Action {
 		request.setAttribute("yyyy", yyyy);
 		request.setAttribute("MM", MM);
 		request.setAttribute("dd", dd);
-		request.setAttribute("gen", gen);
+		request.setAttribute("gen", gen);*/
 		
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);

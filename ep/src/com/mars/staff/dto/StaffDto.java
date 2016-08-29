@@ -10,6 +10,8 @@ public class StaffDto {
 	private String  	email;
 	private String  	phone;
 	private String  	jumin;
+//	private Timestamp	bdt;
+//	private int			gd;
 	private String  	pic;
 	private String  	zipcd;
 	private String  	addr;
@@ -23,7 +25,14 @@ public class StaffDto {
 	private String		lastdt;
 	private String		logdt;
 	private String		admchk;
+	private String		admnm;
 	
+	public String getAdmnm() {
+		return admnm;
+	}
+	public void setAdmnm(String admnm) {
+		this.admnm = admnm;
+	}
 	public String getEmpid() {
 		return empid;
 	}
@@ -66,6 +75,18 @@ public class StaffDto {
 	public void setJumin(String jumin) {
 		this.jumin = jumin;
 	}
+//	public Timestamp getBdt() {
+//		return bdt;
+//	}
+//	public void setBdt(Timestamp bdt) {
+//		this.bdt = bdt;
+//	}
+//	public int getGd() {
+//		return gd;
+//	}
+//	public void setGd(int gd) {
+//		this.gd = gd;
+//	}
 	public String getPic() {
 		return pic;
 	}

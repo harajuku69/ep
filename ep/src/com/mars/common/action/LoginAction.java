@@ -20,7 +20,7 @@ public class LoginAction implements Action {
 		String pwd = request.getParameter("pwd");
 		
 		StaffDao sDao = StaffDao.getInstance();
-		int result = sDao.loginCheck(empid, pwd);
+		int result = sDao.loginChk(empid, pwd);
 		
 		if(result == 1){
 			StaffDto sDto = sDao.selectOneByEmpid(empid);
@@ -32,7 +32,11 @@ public class LoginAction implements Action {
 			sDao.updateLogdt(empid, lastdt);
 			sDto = sDao.selectOneByEmpid(empid);
 			HttpSession session = request.getSession();
-			session.setAttribute("loginStaff", sDto);
+			session.setAttribute("ssStaff", sDto);
+			session.setAttribute("ssEmpid", sDto.getEmpid());
+			session.setAttribute("ssPwd", sDto.getPwd());
+			session.setAttribute("ssAdmchk", sDto.getAdmchk());
+			session.setAttribute("ssAdmnm", sDto.getAdmnm());
 		} else if(result == 0){
 			request.setAttribute("msg", "입력한 비밀번호가 틀립니다~");
 			request.setAttribute("empid", empid);

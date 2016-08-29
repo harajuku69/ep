@@ -5,18 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Login Page</title>
+<title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/main.css">
-<script src="js/jquery-1.10.2.min.js"></script>
-<script src="js/jquery-ui.min.js"></script>
 </head>
 <body>
-<div class="wrap">
-	<jsp:include page="header/headerGuest.jsp"></jsp:include>
-	<jsp:include page="ctt/cttLogin.jsp"></jsp:include>
-	<jsp:include page="footer/footer.jsp"></jsp:include>
+<div class="contents">
+	<img src="images/conference_01.jpg" id="guest" alt="회사 밖 사진">
 </div>
 </body>
 </html>

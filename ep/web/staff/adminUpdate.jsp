@@ -4,17 +4,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset=UTF-8">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>Staff Update</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="../css/main.css">
-<script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/main.js"></script>
 </head>
 <body>
 <div class="wrap">
 	<jsp:include page="../common/header/headerStaff.jsp"></jsp:include>
-	<jsp:include page="../common/ctt/notice/cttNotiDetail.jsp"></jsp:include>
-	<jsp:include page="../common/sub/subNotice.jsp"></jsp:include>
+	<jsp:include page="../common/ctt/staff/cttAdminUpdate.jsp"></jsp:include>
+	<jsp:include page="../common/sub/subTab.jsp"></jsp:include>
 	<jsp:include page="../common/footer/footer.jsp"></jsp:include>
 </div>
 </body>

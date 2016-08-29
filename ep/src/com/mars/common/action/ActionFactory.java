@@ -23,12 +23,20 @@ public class ActionFactory {
 			action = new LoginAction();
 		}  else if(cmd.equals("join")){
 			action = new JoinAction();
+		} else if(cmd.equals("admin_page")){
+			action = new AdminPageAction();
 		} else if(cmd.equals("join_page")){
 			action = new JoinPageAction();
 		} else if(cmd.equals("chk_id")){
 			action = new ChkIdAction();
 		} else if(cmd.equals("staff_detail")){
 			action = new StaffDetailAction();
+		} else if(cmd.equals("admin_detail")){
+			action = new AdminDetailAction();
+		}  else if(cmd.equals("staff_update_page")){
+			action = new StaffUpdatePageAction();
+		} else if(cmd.equals("admin_update_page")){
+			action = new AdminUpdatePageAction();
 		} else if(cmd.equals("logout")){
 			action = new LogoutAction();
 		}

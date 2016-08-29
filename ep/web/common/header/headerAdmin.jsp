@@ -12,20 +12,20 @@
 <body>
 <div class="header">
 	<div class="hair">
-		<div><a href="stafflogin.do">&nbsp;Mars EP</a></div>
+		<div><a href="staff.do?cmd=admin_page">&nbsp;Mars EP</a></div>
 		<div class="util">
 			<table>
 				<tr>
-					<td><a href="stafflogin.do">Home</a></td>
-					<td><a href="stafflogout.do">Logout</a></td>
-					<td><a href="URL">${loginStaff.empnm}님</a></td>
+					<td><a href="staff.do?cmd=admin_page">Home</a></td>
+					<td><a href="staff.do?cmd=logout">Logout</a></td>
+					<td><a href="staff.do?cmd=login&empid=${ssStaff.empid}&pwd=${ssStaff.pwd}">Staff</a></td>
 				</tr>
 			</table>
 		</div>
 	</div>
 	<div class="face">
 		<div class="logo">
-			<a href="stafflogin.do"><img src="../images/logo.png" alt="로고 이미지"></a>
+			<a href="staff.do?cmd=admin_page"><img src="../images/logo.png" alt="로고 이미지"></a>
 		</div>
 		<div id="accordion">
 			<div>
@@ -41,16 +41,16 @@
 				<table>
 					<tr>
 						<td style="width:200px; line-height:10px">
-							<p><a href="">개인 정보 목록</a></p>
-							<p><a href="">개인 정보 삭제</a></p>
+							<p><a href="staff.do?cmd=staff_detail&empid=${ssStaff.empid}">사원 정보 상세</a></p>
+							<p><a href="staff.do?cmd=admin_update&empid=${ssStaff.empid}">사원 정보 수정</a></p>
 						</td>
 						<td style="width:200px; line-height:10px">
-							<p><a href="">공지사항 목록</a></p>
-							<p><a href="">공지사항 관리</a></p>
+							<p><a href="noti.do?cmd=noti_list">공지사항 목록</a></p>
+							<p><a href="noti.do?cmd=noti_update">공지사항 관리</a></p>
 						</td>
 						<td style="width:200px; line-height:10px">
-							<p><a href="">프로젝트 목록</a></p>
-							<p><a href="">프로젝트 관리</a></p>
+							<p><a href="pjt.do?cmd=pjt_list">프로젝트 목록</a></p>
+							<p><a href="pjt.do?cmd=pjt_update">프로젝트 관리</a></p>
 						</td>
 					</tr>
 				</table>

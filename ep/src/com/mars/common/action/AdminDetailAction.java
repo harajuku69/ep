@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.mars.staff.dao.StaffDao;
 import com.mars.staff.dto.StaffDto;
 
-public class StaffDetailAction implements Action {
+public class AdminDetailAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "staff/staffDetail.jsp";
+		String url = "staff/adminDetail.jsp";
 		
 		String empid = request.getParameter("empid");
 		

@@ -16,7 +16,7 @@
 <body>
 <div class="wrap">
 	<jsp:include page="../common/header/headerStaff.jsp"></jsp:include>
-	<jsp:include page="../common/contents/staff/contentsStaffDetail.jsp"></jsp:include>
+	<jsp:include page="../common/ctt/staff/cttStaffDetail.jsp"></jsp:include>
 	<jsp:include page="../common/sub/subTab.jsp"></jsp:include>
 	<jsp:include page="../common/footer/footer.jsp"></jsp:include>
 </div>

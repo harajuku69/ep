@@ -15,7 +15,7 @@
 <body>
 <div class="wrap">
 	<jsp:include page="header/headerGuest.jsp"></jsp:include>
-	<jsp:include page="contents/contentsJoin.jsp"></jsp:include>
+	<jsp:include page="ctt/cttJoin.jsp"></jsp:include>
 	<jsp:include page="footer/footer.jsp"></jsp:include>
 </div>
 </body>

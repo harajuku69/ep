@@ -26,7 +26,7 @@ public class StaffDao {
 		return instance;
 	}
 	
-	public int loginCheck(String empid, String pwd){
+	public int loginChk(String empid, String pwd){
 		int result = -1;
 		String sql = "select pwd from staff where empid=?";
 		Connection conn = null;
@@ -129,6 +129,8 @@ public class StaffDao {
 				sDto.setEmail(rs.getString("email"));
 				sDto.setPhone(rs.getString("phone"));
 				sDto.setJumin(rs.getString("jumin"));
+//				sDto.setBdt(rs.getTimestamp("bdt"));
+//				sDto.setGd(Integer.parseInt(rs.getString("gd")));
 				sDto.setPic(rs.getString("pic"));
 				sDto.setZipcd(rs.getString("zipcd"));
 				sDto.setAddr(rs.getString("addr"));
@@ -142,6 +144,7 @@ public class StaffDao {
 				sDto.setLastdt(rs.getString("lastdt"));
 				sDto.setLogdt(rs.getString("logdt"));
 				sDto.setAdmchk(rs.getString("admchk"));
+				sDto.setAdmnm(rs.getString("admnm"));
 			}
 				
 		} catch(SQLException e){
@@ -217,7 +220,7 @@ public class StaffDao {
 		SimpleDateFormat date = new SimpleDateFormat("yyyyMM");
 		String curMM = date.format(new Date());
 		
-		String sql = "select lastno from epno";
+		String sql = "select lastno from empno_mg";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -239,7 +242,7 @@ public class StaffDao {
 			DBManager.close(conn, pstmt);
 		}
 		
-		sql = "update epno set lastno=?";
+		sql = "update empno_mg set lastno=?";
 		
 		try{
 			conn = DBManager.getConnection();
