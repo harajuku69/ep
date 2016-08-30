@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,8 +12,9 @@
 </head>
 <body>
 <div class="contents">
-	<form action="staff.do?cmd=staff_update" method="post" enctype="multipart/form-data" name="frm">
 	<div id="logleft">
+	<form action="staff.do?cmd=staff_update" method="post" enctype="multipart/form-data" name="frm">
+		<input type="hidden" name="empid" value="${ssStaff.empid}">
 		<c:choose>
 			<c:when test="${empty ssStaff.pic}">
 				<img class="stpic" src="images/noimage.gif">
@@ -30,19 +31,31 @@
 			<tr><th colspan="2">개인 정보</th></tr>
 			<tr>
 				<td>이 름</td>
-				<td><input type="text" name="empnm" id="empnm" value="${ssStaff.empnm}" readonly></td>
+				<td>
+					<%-- <input type="text" name="empnm" id="empnm" value="${ssStaff.empnm}" readonly> --%>
+					${ssStaff.empnm}
+				</td>
 			</tr>
 			<tr>
 				<td>주민번호</td>
-				<td><input type="text" name="jumin" id="jumin" value="${jmf}-${jmb}" readonly></td>
+				<td>
+					<%-- <input type="text" name="jumin" id="jumin" value="${jmf}-${jmb}" readonly> --%>
+					${jmf}-${jmb}
+				</td>
 			</tr>
 			<tr>
 				<td>생년월일</td>
-				<td><input type="text" name="bdt" id="bdt" value="${yyyy}년 ${MM}월 ${dd}일" readonly></td>
+				<td>
+					<%-- <input type="text" name="bdt" id="bdt" value="${yyyy}년 ${MM}월 ${dd}일" readonly> --%>
+					${yyyy}년 ${MM}월 ${dd}일
+				</td>
 			</tr>
 			<tr>
 				<td>성 별</td>
-				<td><input type="text" name="gen" id="gen" value="${gen}" readonly></td>
+				<td>
+					<%-- <input type="text" name="gen" id="gen" value="${gen}" readonly> --%>
+					${gen}
+				</td>
 			</tr>
 			<tr>
 				<td>연락처</td>
@@ -59,18 +72,25 @@
 			</tr>
 			<tr>
 				<td>기본주소</td>
-				<td><input type="text" name="addr" id="addr" placeholder="${ssStaff.addr}" ></td>
+				<td>
+					<input type="text" name="addr" id="addr" placeholder="${ssStaff.addr}" readonly>
+				</td>
 			</tr>
 			<tr>
 				<td>상세주소</td>
-				<td><input type="text" name="addrdtl" id="addrdtl" placeholder="${ssStaff.addrdtl}" ></td>
+				<td>
+					<input type="text" name="addrdtl" id="addrdtl" placeholder="${ssStaff.addrdtl}" >
+				</td>
 			</tr>
 		</table>
 		<table style="font-size:20px;">
 			<tr><th colspan="2">사원 정보</th></tr>
 			<tr>
 				<td>사 번</td>
-				<td><input type="text" name="empno" id="empno" value="${ssStaff.empno}" readonly></td>
+				<td>
+					<%-- <input type="text" name="empno" id="empno" value="${ssStaff.empno}" readonly> --%>
+					${ssStaff.empno}
+				</td>
 			</tr>
 			<tr>
 				<td>사 원 아이디</td>
@@ -78,31 +98,49 @@
 			</tr>
 			<tr>
 				<td>부 서</td>
-				<td><input type="text" name="dpt" id="dpt" value="${ssStaff.dpt}" readonly></td>
+				<td>
+					<%-- <input type="text" name="dpt" id="dpt" value="${ssStaff.dptcd}" readonly> --%>
+					${ssStaff.dptcd}
+				</td>
 			</tr>
 			<tr>
 				<td>직 급</td>
-				<td><input type="text" name="tit" id="tit" value="${ssStaff.tit}" readonly></td>
+				<td>
+					<%-- <input type="text" name="tit" id="tit" value="${ssStaff.titcd}" readonly> --%>
+					${ssStaff.titcd}
+				</td>
 			</tr>
 			<tr>
 				<td>입사일</td>
-				<td><input type="text" name="startdt" value="${ssStaff.startdt}" readonly></td>
+				<td>
+					<%-- <input type="text" name="startdt" value="${ssStaff.startdt}" readonly> --%>
+					${ssStaff.startdt}
+				</td>
 			</tr>
 			<tr>
 				<td>퇴사일</td>
-				<td><input type="text" name="enddt" value="${ssStaff.enddt}" readonly></td>
+				<td>
+					<%-- <input type="text" name="enddt" value="${ssStaff.enddt}" readonly> --%>
+					${ssStaff.enddt}
+				</td>
 			</tr>
-				<td>급여</td>
-				<td><fmt:formatNumber value="${ssStaff.sal}" type="currency" readonly /></td>
+			<tr>
+				<td>급 여</td>
+				<td>
+					<fmt:formatNumber value="${ssStaff.sal}" type="currency"/>
+				</td>
 			</tr>
 			<tr>
 				<td>등록일</td>
-				<td><input type="text" name="regdt" value="${ssStaff.regdt}" readonly></td>
+				<td>
+					<%-- <input type="text" name="regdt" value="${ssStaff.regdt}" readonly> --%>
+					${ssStaff.regdt}
+				</td>
 			</tr>
 		</table>
 		<input type="submit" value="수정 완료" >
 		<input type="reset" value="다시 작성" >
-		<input type="button" value="수정 취소" onclick="location.href='admin.do?cmd=staff_detail_page'">
+		<input type="button" value="수정 취소" onclick="location.href='staff.do?cmd=staff_detail_page'">
 		</form>
 	</div>
 </div>

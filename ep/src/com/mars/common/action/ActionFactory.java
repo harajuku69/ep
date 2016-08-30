@@ -35,10 +35,12 @@ public class ActionFactory {
 			action = new AdminDetailPageAction();
 		} else if(cmd.equals("staff_update_page")){
 			action = new StaffUpdatePageAction();
-		} else if(cmd.equals("staff_update")){
-			action = new StaffUpdateAction();
 		} else if(cmd.equals("admin_update_page")){
 			action = new AdminUpdatePageAction();
+		} else if(cmd.equals("staff_update")){
+			action = new StaffUpdateAction();
+		} else if(cmd.equals("admin_update")){
+			action = new AdminUpdateAction();
 		} else if(cmd.equals("logout")){
 			action = new LogoutAction();
 		}

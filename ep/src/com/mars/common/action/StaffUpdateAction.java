@@ -14,45 +14,42 @@ import com.mars.staff.dto.StaffDto;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class StaffUpdateAction extends HttpServlet implements Action{
-
-	private static final long serialVersionUID = 1L;
+public class StaffUpdateAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		
 		String url = "staff/staffDetail.jsp";
 		
-		request.setCharacterEncoding("UTF-8");
 		 
-		ServletContext context = getServletContext();
+		ServletContext context = request.getServletContext();
 		String path = context.getRealPath("upload");
 		String encType = "UTF-8";
 		int sizeLimit = 20 * 1024 * 1024;
 		
-		MultipartRequest multi = new MultipartRequest(request, path, sizeLimit, encType, new DefaultFileRenamePolicy());
-//		String pwd = multi.getParameter("pwd");
-		String phone = multi.getParameter("phone");
-//		String zipcd = multi.getParameter("zipcd");
-		String addr = multi.getParameter("addr");
-		String addrdtl = multi.getParameter("addrdtl");
-		String pic = multi.getParameter("pic");
-		String empid = SS.getEmpid(request);
+		MultipartRequest multi = 
+				new MultipartRequest(request, path, sizeLimit, encType, new DefaultFileRenamePolicy());
+		
 		StaffDto sDto = new StaffDto();
 		
-		sDto.setEmpid(empid);
-//		sDto.setPwd(pwd);
-		sDto.setPhone(phone);
-//		sDto.setZipcd(zipcd);
-		sDto.setAddr(addr);
-		sDto.setAddrdtl(addrdtl);
-		sDto.setPic(pic);
+		sDto.setEmpid(multi.getParameter("empid"));
+		sDto.setPhone(multi.getParameter("phone"));
+//		sDto.setAddr(multi.getParameter("addr"));
+//		sDto.setAddrdtl(multi.getParameter("addrdtl"));
+		sDto.setPic(multi.getFilesystemName("pic"));
+//		sDto.setPwd(multi.getParameter("pwd"));
+//		sDto.setZipcd(multi.getParameter("zipcd"));
 		
 		StaffDao sDao = StaffDao.getInstance();
-		sDao.updateStaff(sDto);
+		sDao.updateStaffIndInfo(sDto);
 		
-		response.sendRedirect(url);
-//		RequestDispatcher disp = request.getRequestDispatcher(url);
-//		disp.forward(request, response);
+		sDto = sDao.selectOneByEmpid(multi.getParameter("empid"));
+		request.setAttribute("ssStaff", sDto);
+		SS.toFmt(request);
+		
+		RequestDispatcher disp = request.getRequestDispatcher(url);
+		disp.forward(request, response);
 	}
 
 }

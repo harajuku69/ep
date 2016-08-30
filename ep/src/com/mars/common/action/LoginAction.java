@@ -31,6 +31,7 @@ public class LoginAction implements Action {
 			}
 			sDao.updateLogdt(empid, lastdt);
 			sDto = sDao.selectOneByEmpid(empid);
+//			System.out.println(sDto);
 			HttpSession session = request.getSession();
 			session.setAttribute("ssStaff", sDto);
 			session.setAttribute("ssEmpid", sDto.getEmpid());

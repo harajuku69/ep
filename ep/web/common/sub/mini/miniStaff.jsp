@@ -36,8 +36,8 @@
 		<div class="simple">
 			<ul>
 				<li>최종 로그인 : ${ssStaff.lastdt}</li>
-				<li>소속 : <a href="#=?부서원 검색결과">${ssStaff.dpt}</a></li>
-				<li>직급 : ${ssStaff.tit}</li>
+				<li>소속 : <a href="#=?부서원 검색결과">${ssStaff.dptcd}</a></li>
+				<li>직급 : ${ssStaff.titcd}</li>
 				<li>사번 : ${ssStaff.empno}</li>
 				<!-- <li>프로젝트 : <a href="URL=?프로젝트 상세보기">수치예보 41기</a></li> -->
 				<!-- <p><a href="staffdetail.do">개인 상세 정보</a></p> -->

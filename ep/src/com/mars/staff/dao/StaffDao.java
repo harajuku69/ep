@@ -129,14 +129,12 @@ public class StaffDao {
 				sDto.setEmail(rs.getString("email"));
 				sDto.setPhone(rs.getString("phone"));
 				sDto.setJumin(rs.getString("jumin"));
-//				sDto.setBdt(rs.getTimestamp("bdt"));
-//				sDto.setGd(Integer.parseInt(rs.getString("gd")));
 				sDto.setPic(rs.getString("pic"));
 				sDto.setZipcd(rs.getString("zipcd"));
 				sDto.setAddr(rs.getString("addr"));
 				sDto.setAddrdtl(rs.getString("addrdtl"));
-				sDto.setDpt(rs.getString("dpt"));
-				sDto.setTit(rs.getString("tit"));
+				sDto.setDptcd(rs.getString("dptcd"));
+				sDto.setTitcd(rs.getString("titcd"));
 				sDto.setSal(Integer.parseInt(rs.getString("sal")));
 				sDto.setStartdt(rs.getTimestamp("startdt"));
 				sDto.setEnddt(rs.getTimestamp("enddt"));
@@ -162,7 +160,7 @@ public class StaffDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select empnm, empid, dpt, tit, phone from Staff where dpt=?"; 
+		String sql = "select empnm, empid, dptcd, titcd, email, phone from Staff where dptcd=?"; 
 		try{
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -268,17 +266,18 @@ public class StaffDao {
 		return empno.toString();
 	}
 
-	public void updateStaff(StaffDto sDto){
+	public void updateStaffIndInfo(StaffDto sDto){
 		StringBuilder sql = new StringBuilder();
 		sql.append("update staff");
 		sql.append(" set phone=" + sDto.getPhone());
-//		sql.append(" , pwd=" + sDto.getPwd());
 		sql.append(" , pic=" + sDto.getPic());
+//		sql.append(" , addr=" + sDto.getAddr()); 
+//		sql.append(" , addrdtl=" + sDto.getAddrdtl());
+		sql.append(" where empid=" + sDto.getEmpid());
+//		sql.append(" , pwd=" + sDto.getPwd());
 //		sql.append(" , zipcd=" + sDto.getZipcd());
-		sql.append(" , addr=" + sDto.getAddr()); 
-		sql.append(" , addrdtl=" + sDto.getAddrdtl());
-		sql.append(" where empid=?");
 		
+//		String sql = "update staff set phone=?, pic=?, addr=?, addrdtl=? where empid=?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		
@@ -287,8 +286,48 @@ public class StaffDao {
 		try{
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql.toString());
-				
-			pstmt.setString(1, sDto.getEmpid());	
+			
+//			pstmt.setString(1, sDto.getPhone());
+//			pstmt.setString(2, sDto.getPic());
+//			pstmt.setString(3, sDto.getEmpid());
+//			pstmt.setString(1, sDto.getEmpid());	
+			pstmt.executeUpdate();
+//			result = pstmt.executeUpdate();
+		} catch(SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBManager.close(conn, pstmt);
+		}
+//		return result;
+	}
+	
+	public void updateStaffEmpInfo(StaffDto sDto){
+//		StringBuilder sql = new StringBuilder();
+//		sql.append("update staff");
+//		sql.append(" set dptcd=" + sDto.getDptcd());
+//		sql.append(" , titcd=" + sDto.getTitcd());
+//		sql.append(" , sal=" + sDto.getSal());
+//		sql.append(" , startdt=" + sDto.getStartdt()); 
+//		sql.append(" , enddt=" + sDto.getEnddt());
+//		sql.append(" where empid=" +sDto.getEmpid());
+		String sql = "update staff set dptcd=?,titcd=?,sal=?,startdt=?,enddt=? where empid=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+//		int result = -1;
+		
+		try{
+			conn = DBManager.getConnection();
+//			pstmt = conn.prepareStatement(sql.toString());
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, sDto.getDptcd());
+			pstmt.setString(2, sDto.getTitcd());
+			pstmt.setInt(3, sDto.getSal());
+			pstmt.setTimestamp(4, sDto.getStartdt());
+			pstmt.setTimestamp(5, sDto.getEnddt());
+			pstmt.setString(6, sDto.getEmpid());
+//			pstmt.setString(, sDto.getEmpid());	
 			pstmt.executeUpdate();
 //			result = pstmt.executeUpdate();
 		} catch(SQLException e){
@@ -301,8 +340,8 @@ public class StaffDao {
 		
 	public int deleteStaff(int no){
 		StringBuilder sql = new StringBuilder();
-		sql.append("delete Staffex");
-		sql.append(" where no=?");
+		sql.append("delete staff");
+		sql.append(" where empid=?");
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;

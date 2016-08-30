@@ -14,7 +14,7 @@
 <body>
 <div class="mini">
 	<p style="display:inline;">Admin </p>|
-	<p style="display:inline;"><a href="staff.do?cmd=login"> Staff</a></p>
+	<p style="display:inline;"><a href="staff.do?cmd=login&empid=${ssStaff.empid}&pwd=${ssStaff.pwd}"> Staff</a></p>
 	<hr/>
 	<div class="mstaff">
 		<div class="pd">
@@ -36,8 +36,8 @@
 		<div class="simple">
 			<ul>
 				<li>최종 로그인 : ${ssStaff.lastdt}</li>
-				<li>소속 : <a href="#=?부서원 검색결과">${ssStaff.dpt}</a></li>
-				<li>직급 : ${ssStaff.tit}</li>
+				<li>소속 : <a href="#=?부서원 검색결과">${ssStaff.dptcd}</a></li>
+				<li>직급 : ${ssStaff.titcd}</li>
 				<li>사번 : ${ssStaff.empno}</li>
 				<!-- <li>프로젝트 : <a href="URL=?프로젝트 상세보기">수치예보 41기</a></li> -->
 				<p><a href="staff.do?cmd=admin_detail_page&empid=${ssStaff.empid}">사원 상세 정보</a></p>

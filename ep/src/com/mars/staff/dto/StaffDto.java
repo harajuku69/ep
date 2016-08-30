@@ -10,14 +10,12 @@ public class StaffDto {
 	private String  	email;
 	private String  	phone;
 	private String  	jumin;
-//	private Timestamp	bdt;
-//	private int			gd;
 	private String  	pic;
 	private String  	zipcd;
 	private String  	addr;
 	private String  	addrdtl;
-	private String  	dpt;
-	private String  	tit;
+	private String  	dptcd;
+	private String  	titcd;
 	private int			sal;
 	private Timestamp	startdt;
 	private Timestamp	enddt;
@@ -75,18 +73,6 @@ public class StaffDto {
 	public void setJumin(String jumin) {
 		this.jumin = jumin;
 	}
-//	public Timestamp getBdt() {
-//		return bdt;
-//	}
-//	public void setBdt(Timestamp bdt) {
-//		this.bdt = bdt;
-//	}
-//	public int getGd() {
-//		return gd;
-//	}
-//	public void setGd(int gd) {
-//		this.gd = gd;
-//	}
 	public String getPic() {
 		return pic;
 	}
@@ -111,17 +97,17 @@ public class StaffDto {
 	public void setAddrdtl(String addrdtl) {
 		this.addrdtl = addrdtl;
 	}
-	public String getDpt() {
-		return dpt;
+	public String getDptcd() {
+		return dptcd;
 	}
-	public void setDpt(String dpt) {
-		this.dpt = dpt;
+	public void setDptcd(String dptcd) {
+		this.dptcd = dptcd;
 	}
-	public String getTit() {
-		return tit;
+	public String getTitcd() {
+		return titcd;
 	}
-	public void setTit(String tit) {
-		this.tit = tit;
+	public void setTitcd(String titcd) {
+		this.titcd = titcd;
 	}
 	public int getSal() {
 		return sal;
@@ -167,7 +153,10 @@ public class StaffDto {
 	}
 	@Override
 	public String toString() {
-		return "StaffDto [empid=" + empid + ", empno=" + empno + ", empnm=" + empnm + ", dpt=" + dpt + ", tit=" + tit
-				+ ", lastdt=" + lastdt + ", logdt=" + logdt + ", admchk=" + admchk + "]";
+		return "StaffDto [empid=" + empid + ", pwd=" + pwd + ", empno=" + empno + ", empnm=" + empnm + ", email="
+				+ email + ", phone=" + phone + ", jumin=" + jumin + ", pic=" + pic + ", zipcd=" + zipcd + ", addr="
+				+ addr + ", addrdtl=" + addrdtl + ", dptcd=" + dptcd + ", titcd=" + titcd + ", sal=" + sal
+				+ ", startdt=" + startdt + ", enddt=" + enddt + ", regdt=" + regdt + ", lastdt=" + lastdt + ", logdt="
+				+ logdt + ", admchk=" + admchk + ", admnm=" + admnm + "]";
 	}
 }

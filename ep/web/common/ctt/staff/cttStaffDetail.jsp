@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
@@ -12,8 +11,8 @@
 </head>
 <body>
 <div class="contents">
-	<form name="frm" style="clear:left;">
-	<div id="logleft">
+	<!-- <form name="frm" style="clear:left;"> -->
+	<div id="logleft" style="clear:left;">
 		<c:choose>
 			<c:when test="${empty ssStaff.pic}">
 				<img class="stpic" src="images/noimage.gif">
@@ -73,11 +72,11 @@
 			</tr>
 			<tr>
 				<td>부 서</td>
-				<td>${ssStaff.dpt}</td>
+				<td>${ssStaff.dptcd}</td>
 			</tr>
 			<tr>
 				<td>직 급</td>
-				<td>${ssStaff.tit}</td>
+				<td>${ssStaff.titcd}</td>
 			</tr>
 			<tr>
 				<td>입사일</td>
@@ -87,7 +86,7 @@
 				<td>퇴사일</td>
 				<td>${ssStaff.enddt}</td>
 			</tr>
-				<td>급여</td>
+				<td>급 여</td>
 				<td>
 					<fmt:formatNumber value="${ssStaff.sal}" type="currency"/>
 				</td>
@@ -97,8 +96,8 @@
 				<td>${ssStaff.regdt}</td>
 			</tr>
 		</table>
-		<br/><a href="staff.do?cmd=staff_update_page"><input type="button" value="수정" ></a>
-		</form>
+		<br/><input type="button" value="수정" onclick="location.href='staff.do?cmd=staff_update_page&empid=${ssStaff.empid}'">
+		<!-- </form> -->
 	</div>
 </div>
 </body>

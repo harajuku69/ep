@@ -6,13 +6,13 @@ $(function() {
 	$.ajax({
 		url : "<c:url value='/getDpt.do'/>",
 		success :function(data) {
-			loadCombo($("#dptbx"), data.dpt);
-		$("dptbx").val("");
+			loadCombo($("#dptbox"), data.dpt);
+		$("dptbox").val("");
 		}
 	});
 	
-	$("#dptbx").change(function() {
-		alert("Selected : " + $("#dptbx option:selected").val());
+	$("#dptbox").change(function() {
+		alert("Selected : " + $("#dptbox option:selected").val());
 	});
 });
 	

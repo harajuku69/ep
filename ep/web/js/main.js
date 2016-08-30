@@ -3,10 +3,10 @@
  */
 $(function() {
 	//datepicker 설정
-	var dateFormat = "yy/mm/dd",
+	var dateFormat = "yy-mm-dd",
       from = $("#from, #startdt, #regdt").datepicker({
-        	dateFormat:"yy/mm/dd",
-        	defaultDate: "+1w",
+        	dateFormat:"yy-mm-dd",
+        	defaultDate: "+1d",
         	changeMonth: true,
         	changeYear: true,
         	numberOfMonths: 1,
@@ -14,9 +14,9 @@ $(function() {
         }).on("change", function() {
           to.datepicker("option", "minDate", getDate(this));
         }),
-      to = $("#to, #enddt, #expdt" ).datepicker({
-    	  dateFormat:"yy/mm/dd",
-    	  defaultDate: "+1w",
+      to = $("#to, #enddt" ).datepicker({
+    	  dateFormat:"yy-mm-dd",
+    	  defaultDate: "+1d",
     	  changeMonth: true,
     	  changeYear: true,
     	  numberOfMonths: 1,

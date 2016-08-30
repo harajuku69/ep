@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="contents">
-	<img src="../../images/building_01.jpg" id="guest" alt="회사 안 사진">
+	<img src="../../images/conference_01.jpg" id="guest" alt="회사 안 사진">
 </div>
 </body>
 </html>
