@@ -141,7 +141,7 @@ public class StaffDao {
 				sDto.setRegdt(rs.getTimestamp("regdt"));
 				sDto.setLastdt(rs.getString("lastdt"));
 				sDto.setLogdt(rs.getString("logdt"));
-				sDto.setAdmchk(rs.getString("admchk"));
+				sDto.setAdmchk(rs.getInt("admchk"));
 				sDto.setAdmnm(rs.getString("admnm"));
 			}
 				
@@ -267,17 +267,17 @@ public class StaffDao {
 	}
 
 	public void updateStaffIndInfo(StaffDto sDto){
-		StringBuilder sql = new StringBuilder();
-		sql.append("update staff");
-		sql.append(" set phone=" + sDto.getPhone());
-		sql.append(" , pic=" + sDto.getPic());
-//		sql.append(" , addr=" + sDto.getAddr()); 
-//		sql.append(" , addrdtl=" + sDto.getAddrdtl());
-		sql.append(" where empid=" + sDto.getEmpid());
-//		sql.append(" , pwd=" + sDto.getPwd());
-//		sql.append(" , zipcd=" + sDto.getZipcd());
+//		StringBuilder sql = new StringBuilder();
+//		sql.append("update staff");
+//		sql.append(" set phone=" + sDto.getPhone());
+//		sql.append(" , pic=" + sDto.getPic());
+////		sql.append(" , addr=" + sDto.getAddr()); 
+////		sql.append(" , addrdtl=" + sDto.getAddrdtl());
+//		sql.append(" where empid=" + sDto.getEmpid());
+////		sql.append(" , pwd=" + sDto.getPwd());
+////		sql.append(" , zipcd=" + sDto.getZipcd());
 		
-//		String sql = "update staff set phone=?, pic=?, addr=?, addrdtl=? where empid=?";
+		String sql = "update staff set phone=?,pic=? where empid=?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		
@@ -287,10 +287,10 @@ public class StaffDao {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql.toString());
 			
-//			pstmt.setString(1, sDto.getPhone());
-//			pstmt.setString(2, sDto.getPic());
+			pstmt.setString(1, sDto.getPhone());
+			pstmt.setString(2, sDto.getPic());
 //			pstmt.setString(3, sDto.getEmpid());
-//			pstmt.setString(1, sDto.getEmpid());	
+			pstmt.setString(3, sDto.getEmpid());	
 			pstmt.executeUpdate();
 //			result = pstmt.executeUpdate();
 		} catch(SQLException e){
@@ -310,7 +310,7 @@ public class StaffDao {
 //		sql.append(" , startdt=" + sDto.getStartdt()); 
 //		sql.append(" , enddt=" + sDto.getEnddt());
 //		sql.append(" where empid=" +sDto.getEmpid());
-		String sql = "update staff set dptcd=?,titcd=?,sal=?,startdt=?,enddt=? where empid=?";
+		String sql = "update staff set dptcd=?,titcd=?,sal=?,startdt=?,enddt=?,admchk=? where empid=?";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -326,8 +326,8 @@ public class StaffDao {
 			pstmt.setInt(3, sDto.getSal());
 			pstmt.setTimestamp(4, sDto.getStartdt());
 			pstmt.setTimestamp(5, sDto.getEnddt());
-			pstmt.setString(6, sDto.getEmpid());
-//			pstmt.setString(, sDto.getEmpid());	
+			pstmt.setInt(6, sDto.getAdmchk());
+			pstmt.setString(7, sDto.getEmpid());
 			pstmt.executeUpdate();
 //			result = pstmt.executeUpdate();
 		} catch(SQLException e){

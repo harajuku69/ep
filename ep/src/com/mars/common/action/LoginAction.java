@@ -15,7 +15,7 @@ public class LoginAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, 
 			HttpServletResponse response) throws ServletException, IOException {
-		String url = "staff/staffLogin.jsp";
+		String url = "staff/staffHome.jsp";
 		String empid = request.getParameter("empid");
 		String pwd = request.getParameter("pwd");
 		
@@ -30,14 +30,18 @@ public class LoginAction implements Action {
 				sDao.updateLogdt(empid, lastdt);
 			}
 			sDao.updateLogdt(empid, lastdt);
+			
+			//로그인 정보를 업데이트한 정보를 다시 가져와서 sDto에 저장
 			sDto = sDao.selectOneByEmpid(empid);
-//			System.out.println(sDto);
+			
 			HttpSession session = request.getSession();
 			session.setAttribute("ssStaff", sDto);
 			session.setAttribute("ssEmpid", sDto.getEmpid());
 			session.setAttribute("ssPwd", sDto.getPwd());
-			session.setAttribute("ssAdmchk", sDto.getAdmchk());
+			session.setAttribute("ssEmpnm", sDto.getEmpnm());
 			session.setAttribute("ssAdmnm", sDto.getAdmnm());
+//			session.setAttribute("ssAdmchk", sDto.getAdmchk());
+			
 		} else if(result == 0){
 			request.setAttribute("msg", "입력한 비밀번호가 틀립니다~");
 			request.setAttribute("empid", empid);

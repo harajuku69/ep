@@ -14,11 +14,11 @@
 	<!-- <form name="frm" style="clear:left;"> -->
 	<div id="logleft" style="clear:left;">
 		<c:choose>
-			<c:when test="${empty ssStaff.pic}">
+			<c:when test="${empty reqStaff.pic}">
 				<img class="stpic" src="images/noimage.gif">
 			</c:when>
 			<c:otherwise>
-				<img class="stpic" src="upload/${ssStaff.pic}">
+				<img class="stpic" src="upload/${reqStaff.pic}">
 			</c:otherwise>
 		</c:choose>
 		<!-- <input type="button" value="변경">
@@ -29,7 +29,7 @@
 			<tr><th colspan="2">개인 정보</th></tr>
 			<tr>
 				<td>이 름</td>
-				<td>${ssStaff.empnm}</td>
+				<td>${reqStaff.empnm}</td>
 			</tr>
 			<tr>
 				<td>주민번호</td>
@@ -45,58 +45,58 @@
 			</tr>
 			<tr>
 				<td>연락처</td>
-				<td>${ssStaff.phone}</td>
+				<td>${reqStaff.phone}</td>
 			</tr>
 			<tr>
 				<td>우편번호</td>
-				<td>${ssStaff.zipcd}</td>
+				<td>${reqStaff.zipcd}</td>
 			</tr>
 			<tr>
 				<td>기본주소</td>
-				<td>${ssStaff.addr}</td>
+				<td>${reqStaff.addr}</td>
 			</tr>
 			<tr>
 				<td>상세주소</td>
-				<td>${ssStaff.addrdtl}</td>
+				<td>${reqStaff.addrdtl}</td>
 			</tr>
 		</table>
 		<table style="font-size:20px;">
 			<tr><th colspan="2">사원 정보</th></tr>
 			<tr>
 				<td>사 번</td>
-				<td>${ssStaff.empno}</td>
+				<td>${reqStaff.empno}</td>
 			</tr>
 			<tr>
 				<td>사 원 아이디</td>
-				<td>${ssStaff.empid}</td>
+				<td>${reqStaff.empid}</td>
 			</tr>
 			<tr>
 				<td>부 서</td>
-				<td>${ssStaff.dptcd}</td>
+				<td>${reqStaff.dptcd}</td>
 			</tr>
 			<tr>
 				<td>직 급</td>
-				<td>${ssStaff.titcd}</td>
+				<td>${reqStaff.titcd}</td>
 			</tr>
 			<tr>
 				<td>입사일</td>
-				<td>${ssStaff.startdt}</td>
+				<td>${reqStaff.startdt}</td>
 			</tr>
 			<tr>
 				<td>퇴사일</td>
-				<td>${ssStaff.enddt}</td>
+				<td>${reqStaff.enddt}</td>
 			</tr>
 				<td>급 여</td>
 				<td>
-					<fmt:formatNumber value="${ssStaff.sal}" type="currency"/>
+					<fmt:formatNumber value="${reqStaff.sal}" type="currency"/>
 				</td>
 			</tr>
 			<tr>
 				<td>등록일</td>
-				<td>${ssStaff.regdt}</td>
+				<td>${reqStaff.regdt}</td>
 			</tr>
 		</table>
-		<br/><input type="button" value="수정" onclick="location.href='staff.do?cmd=staff_update_page&empid=${ssStaff.empid}'">
+		<br/><input type="button" value="수정하기" onclick="location.href='staff.do?cmd=staff_update_page&empid=${reqStaff.empid}'">
 		<!-- </form> -->
 	</div>
 </div>

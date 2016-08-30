@@ -22,7 +22,7 @@ public class StaffDto {
 	private Timestamp	regdt;
 	private String		lastdt;
 	private String		logdt;
-	private String		admchk;
+	private int			admchk;
 	private String		admnm;
 	
 	public String getAdmnm() {
@@ -145,10 +145,11 @@ public class StaffDto {
 	public void setLogdt(String logdt) {
 		this.logdt = logdt;
 	}	
-	public String getAdmchk() {
+	
+	public int getAdmchk() {
 		return admchk;
 	}
-	public void setAdmchk(String admchk) {
+	public void setAdmchk(int admchk) {
 		this.admchk = admchk;
 	}
 	@Override

@@ -23,8 +23,10 @@ public class ActionFactory {
 			action = new LoginAction();
 		}  else if(cmd.equals("join")){
 			action = new JoinAction();
-		} else if(cmd.equals("admin_page")){
-			action = new AdminPageAction();
+		} else if(cmd.equals("staff_home_page")){
+			action = new StaffHomePageAction();
+		} else if(cmd.equals("admin_home_page")){
+			action = new AdminHomePageAction();
 		} else if(cmd.equals("join_page")){
 			action = new JoinPageAction();
 		} else if(cmd.equals("chk_id")){

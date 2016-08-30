@@ -16,7 +16,11 @@ public class StaffUpdatePageAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "staff/staffUpdate.jsp";
 		
-		SS.toFmt(request);
+		String empid = SS.getEmpid(request) ;
+		StaffDao sDao = StaffDao.getInstance();
+		StaffDto sDto = sDao.selectOneByEmpid(empid);
+		
+		Fmt.toFmtAndReqSet(request, sDto);
 		
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);

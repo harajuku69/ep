@@ -14,13 +14,12 @@
 <div class="contents">
 	<div id="logleft">
 	<form action="staff.do?cmd=staff_update" method="post" enctype="multipart/form-data" name="frm">
-		<input type="hidden" name="empid" value="${ssStaff.empid}">
 		<c:choose>
-			<c:when test="${empty ssStaff.pic}">
+			<c:when test="${empty reqStaff.pic}">
 				<img class="stpic" src="images/noimage.gif">
 			</c:when>
 			<c:otherwise>
-				<img class="stpic" src="upload/${ssStaff.pic}">
+				<img class="stpic" src="upload/${reqStaff.pic}">
 			</c:otherwise>
 		</c:choose>
 		<input type="file" name="selpic" value="변경">
@@ -32,8 +31,8 @@
 			<tr>
 				<td>이 름</td>
 				<td>
-					<%-- <input type="text" name="empnm" id="empnm" value="${ssStaff.empnm}" readonly> --%>
-					${ssStaff.empnm}
+					<%-- <input type="text" name="empnm" id="empnm" value="${reqStaff.empnm}" readonly> --%>
+					${reqStaff.empnm}
 				</td>
 			</tr>
 			<tr>
@@ -60,26 +59,26 @@
 			<tr>
 				<td>연락처</td>
 				<td>
-					<input type="text" name="phone" id="phone" placeholder="${ssStaff.phone}" >
+					<input type="text" name="phone" id="phone" value="${reqStaff.phone}" >
 				</td>
 			</tr>
 			<tr>
 				<td>우편번호</td>
 				<td>
-					<input type="text" name="zipcd" id="zipcd" placeholder="${ssStaff.zipcd}" readonly>
+					<input type="text" name="zipcd" id="zipcd" placeholder="${reqStaff.zipcd}" readonly>
 					<input type="button" name="zipbtn" value="검색" onclick="zipsch()">
 				</td>
 			</tr>
 			<tr>
 				<td>기본주소</td>
 				<td>
-					<input type="text" name="addr" id="addr" placeholder="${ssStaff.addr}" readonly>
+					<input type="text" name="addr" id="addr" placeholder="${reqStaff.addr}" readonly>
 				</td>
 			</tr>
 			<tr>
 				<td>상세주소</td>
 				<td>
-					<input type="text" name="addrdtl" id="addrdtl" placeholder="${ssStaff.addrdtl}" >
+					<input type="text" name="addrdtl" id="addrdtl" placeholder="${reqStaff.addrdtl}" >
 				</td>
 			</tr>
 		</table>
@@ -88,53 +87,53 @@
 			<tr>
 				<td>사 번</td>
 				<td>
-					<%-- <input type="text" name="empno" id="empno" value="${ssStaff.empno}" readonly> --%>
-					${ssStaff.empno}
+					<%-- <input type="text" name="empno" id="empno" value="${reqStaff.empno}" readonly> --%>
+					${reqStaff.empno}
 				</td>
 			</tr>
 			<tr>
 				<td>사 원 아이디</td>
-				<td>${ssStaff.empid}</td>
+				<td>${reqStaff.empid}</td>
 			</tr>
 			<tr>
 				<td>부 서</td>
 				<td>
-					<%-- <input type="text" name="dpt" id="dpt" value="${ssStaff.dptcd}" readonly> --%>
-					${ssStaff.dptcd}
+					<%-- <input type="text" name="dpt" id="dpt" value="${reqStaff.dptcd}" readonly> --%>
+					${reqStaff.dptcd}
 				</td>
 			</tr>
 			<tr>
 				<td>직 급</td>
 				<td>
-					<%-- <input type="text" name="tit" id="tit" value="${ssStaff.titcd}" readonly> --%>
-					${ssStaff.titcd}
+					<%-- <input type="text" name="tit" id="tit" value="${reqStaff.titcd}" readonly> --%>
+					${reqStaff.titcd}
 				</td>
 			</tr>
 			<tr>
 				<td>입사일</td>
 				<td>
-					<%-- <input type="text" name="startdt" value="${ssStaff.startdt}" readonly> --%>
-					${ssStaff.startdt}
+					<%-- <input type="text" name="startdt" value="${reqStaff.startdt}" readonly> --%>
+					${reqStaff.startdt}
 				</td>
 			</tr>
 			<tr>
 				<td>퇴사일</td>
 				<td>
-					<%-- <input type="text" name="enddt" value="${ssStaff.enddt}" readonly> --%>
-					${ssStaff.enddt}
+					<%-- <input type="text" name="enddt" value="${reqStaff.enddt}" readonly> --%>
+					${reqStaff.enddt}
 				</td>
 			</tr>
 			<tr>
 				<td>급 여</td>
 				<td>
-					<fmt:formatNumber value="${ssStaff.sal}" type="currency"/>
+					<fmt:formatNumber value="${reqStaff.sal}" type="currency"/>
 				</td>
 			</tr>
 			<tr>
 				<td>등록일</td>
 				<td>
-					<%-- <input type="text" name="regdt" value="${ssStaff.regdt}" readonly> --%>
-					${ssStaff.regdt}
+					<%-- <input type="text" name="regdt" value="${reqStaff.regdt}" readonly> --%>
+					${reqStaff.regdt}
 				</td>
 			</tr>
 		</table>

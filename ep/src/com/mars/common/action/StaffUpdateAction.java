@@ -19,10 +19,8 @@ public class StaffUpdateAction implements Action{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
 		String url = "staff/staffDetail.jsp";
 		
-		 
 		ServletContext context = request.getServletContext();
 		String path = context.getRealPath("upload");
 		String encType = "UTF-8";
@@ -33,20 +31,22 @@ public class StaffUpdateAction implements Action{
 		
 		StaffDto sDto = new StaffDto();
 		
-		sDto.setEmpid(multi.getParameter("empid"));
+		String empid = SS.getEmpid(request);
+		sDto.setEmpid(empid);
 		sDto.setPhone(multi.getParameter("phone"));
+		sDto.setPic(multi.getFilesystemName("pic"));
+//		sDto.setZipcd(multi.getParameter("zipcd"));
 //		sDto.setAddr(multi.getParameter("addr"));
 //		sDto.setAddrdtl(multi.getParameter("addrdtl"));
-		sDto.setPic(multi.getFilesystemName("pic"));
 //		sDto.setPwd(multi.getParameter("pwd"));
-//		sDto.setZipcd(multi.getParameter("zipcd"));
-		
+//		System.out.println("업데이트 전 : " +sDto);
 		StaffDao sDao = StaffDao.getInstance();
 		sDao.updateStaffIndInfo(sDto);
+		//DB에 덥데이트 완료. 이후는 detail 로 가기 위해 다시 정보 가져와서 마는 작업
 		
-		sDto = sDao.selectOneByEmpid(multi.getParameter("empid"));
-		request.setAttribute("ssStaff", sDto);
-		SS.toFmt(request);
+		sDto = sDao.selectOneByEmpid(empid);
+//		System.out.println("업데이트 후 : " +sDto);
+		Fmt.toFmtAndReqSet(request, sDto);
 		
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);

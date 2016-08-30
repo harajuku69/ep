@@ -11,9 +11,10 @@ public class IndexPageAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "index.jsp";
-		RequestDispatcher disp = request.getRequestDispatcher(url);
-		disp.forward(request, response);
+//		String url = "index.jsp";
+//		RequestDispatcher disp = request.getRequestDispatcher(url);
+//		disp.forward(request, response);
+		response.sendRedirect("index.jsp");
 	}
 
 }

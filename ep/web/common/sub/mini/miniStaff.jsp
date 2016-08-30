@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:if test="${empty ssStaff}">
+<c:if test="${empty ssEmpid}">
 	<jsp:forward page="common/login.jsp"/>
 </c:if>
 <!DOCTYPE html>
@@ -14,7 +14,7 @@
 <body>
 <div class="mini">
 	<p style="display:inline;">Staff </p>|
-	<p style="display:inline;"><a href="staff.do?cmd=admin_page"> Admin</a></p>
+	<p style="display:inline;"><a href="staff.do?cmd=admin_home_page"> Admin</a></p>
 	<hr/>
 	<div class="mstaff">
 		<div class="pd">
@@ -30,7 +30,7 @@
 				<!-- <img src="images/me.jpg" class="me" alt="사원사진"> -->
 			</div>
 			<p class="wel">
-				${ssStaff.empnm}님.
+				${ssEmpnm}님.
 			</p>
 		</div>
 		<div class="simple">
@@ -41,7 +41,7 @@
 				<li>사번 : ${ssStaff.empno}</li>
 				<!-- <li>프로젝트 : <a href="URL=?프로젝트 상세보기">수치예보 41기</a></li> -->
 				<!-- <p><a href="staffdetail.do">개인 상세 정보</a></p> -->
-				<p><a href="staff.do?cmd=staff_detail_page&empid=${ssStaff.empid}">개인 상세 정보</a></p>
+				<p><a href="staff.do?cmd=staff_detail_page&empid=${ssEmpid}">개인 상세 정보</a></p>
 			</ul>
 		</div>
 	</div>

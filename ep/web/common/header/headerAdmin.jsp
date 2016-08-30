@@ -12,26 +12,26 @@
 <body>
 <div class="header">
 	<div class="hair">
-		<div><a href="staff.do?cmd=admin_page">&nbsp;Mars EP</a></div>
+		<div><a href="staff.do?cmd=admin_home_page">&nbsp;Mars EP</a></div>
 		<div class="util">
 			<table>
 				<tr>
-					<td><a href="staff.do?cmd=admin_page">Home</a></td>
+					<td><a href="staff.do?cmd=admin_home_page">Home</a></td>
 					<td><a href="staff.do?cmd=logout">Logout</a></td>
-					<td><a href="staff.do?cmd=login&empid=${ssStaff.empid}&pwd=${ssStaff.pwd}">Staff</a></td>
+					<td><a href="staff.do?cmd=staff_home_page">Staff</a></td>
 				</tr>
 			</table>
 		</div>
 	</div>
 	<div class="face">
 		<div class="logo">
-			<a href="staff.do?cmd=admin_page"><img src="../images/logo.png" alt="로고 이미지"></a>
+			<a href="staff.do?cmd=admin_home_page"><img src="../images/logo.png" alt="로고 이미지"></a>
 		</div>
 		<div id="accordion">
 			<div>
 				<table>
 					<tr>
-						<td style="width:200px; line-height:10px">개인 정보</td>
+						<td style="width:200px; line-height:10px">사원 정보</td>
 						<td style="width:200px; line-height:10px">공지사항</td>
 						<td style="width:200px; line-height:10px">프로젝트</td>
 					</tr>
@@ -41,7 +41,7 @@
 				<table>
 					<tr>
 						<td style="width:200px; line-height:10px">
-							<p><a href="staff.do?cmd=admin_detail_page&empid=${ssStaff.empid}">사원 정보 상세</a></p>
+							<p><a href="staff.do?cmd=admin_detail_page&empid=${ssEmpid}">사원 정보 상세</a></p>
 							<p><a href="staff.do?cmd=admin_update_page">사원 정보 수정</a></p>
 						</td>
 						<td style="width:200px; line-height:10px">
