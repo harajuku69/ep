@@ -13,30 +13,32 @@
 <body>
 <div class="contents">
 	<div id="zip-dialog" title="Zipcode Search" >
-		<p class="validateTips">동(읍/면) 이름을 입력하세요</p>
-		<form id="frm">
-			<input type="text" name="kwd" class="text ui-widget-content ui-corner-all" required><br>
+		<h2>주소 검색</h2>
+		<p class="validateTips">한글과 숫자로 공백없이 입력하세요. ex)청천2동 or 압구정</p>
+		<form>
+			<input type="text" name="kwd" id="kwd" class="text ui-widget-content ui-corner-all" placeholder="동(읍/면) 이름을 입력하세요"><br>
 			<!-- <input type="button" value="검 색" onclick="schzipcd()"> -->
 			<input type="submit" tabindex="-1" style="position:absolute; left:-1000px">
 		</form>
-		<div id="zip-contain" class="ui-widget">
+		<div class="contain" class="ui-widget">
 		<p>검색 결과</p>
 		<table id="zipcdschRs" class="ui-widget ui-widget-content">
 			<thead>
 				<tr class="ui-widget-header">
 					<th>우편번호</th>
-					<th>시도</th>
-					<th>구군</th>
-					<th>동</th>
+					<th>시/도</th>
+					<th>구/군</th>
+					<th>동(읍/면)</th>
 					<th>리</th>
-					<th>빌딩</th>
-					<th>번지</th>
+					<th>빌 딩</th>
+					<th>번 지</th>
+					<th>선 택</th>
 				</tr>
 			</thead>
 			<tbody>
 			<c:forEach var="adrs" items="${addrList}">
 				<tr>
-					<td>"${adrs.no}"</td>
+					<%-- <td>"${adrs.no}"</td> --%>
 					<td>"${adrs.zipcd}"</td>
 					<td>"${adrs.sido}"</td>
 					<td>"${adrs.gugun}"</td>

@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <script src="js/jquery-1.10.2.min.js"></script>
 <script src="js/jquery-ui.min.js"></script>
-<script src="js/main.js"></script>
+<script src="js/dtpicker.js"></script>
 </head>
 <body>
 <div class="wrap">

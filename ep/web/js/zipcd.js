@@ -18,10 +18,10 @@ $(function() {
 		}, 500 );
 	}
 	
-	function checkLength(o, n, min, max) {
+	function checkLength(o, min, max) {
 		if (o.val().length > max || o.val().length < min) {
 			o.addClass("ui-state-error");
-			updateTips( n + "은 최소 " + min + "자에서 최대 " + max + "자까지 입력해주세요." );
+			updateTips("동(읍/면) 이름은 최소 " + min + " ~ " + max + "자 까지 입력해주세요." );
 			return false;
 		} else {
 			return true;
@@ -38,12 +38,12 @@ $(function() {
 		}
 	}
 	
-	function schzipcd() {
+	function zipcdsch() {
 		var valid = true;
 		kwdField.removeClass( "ui-state-error" );
-		valid = checkLength(kwd, "동(읍/면) 이름", 2, 10 );
 		
-		valid = valid && checkRegexp(kwd, /^[가-힣0-9*]$/, "동(읍/면) 이름은 한글과 숫자만 입력해주세요.");
+		valid = checkLength(kwd, 2, 10 );
+		valid = valid && checkRegexp(kwd, /^[가-힣]([가-힣0-9])*$/, "동(읍/면) 이름은 한글과 숫자로 공백없이 입력해주세요.");
 		if ( valid ) {
 			$("#zipcdschRs tbody" ).append( "<tr>" +
 			"<td>" + zipcd.val() + "</td>" +
@@ -53,7 +53,7 @@ $(function() {
 			"<td>" + ri.val() + "</td>" +
 			"<td>" + bldg.val() + "</td>" +
 			"<td>" + bunji.val() + "</td>" +
-			"<td><input type='button' onclick='use()'>선 택</td>" +
+			"<td><a href='staff.do?cmd=get_zipcd&no=${edu.no}'>선 택</a></td>" +
 			"</tr>" );
 			dialog.dialog("close");
 		}
@@ -62,11 +62,11 @@ $(function() {
 	
 	dialog = $("#zip-dialog").dialog({
 		autoOpen: false,
-		width: 450,
+		width: 950,
 		height: 500,
 		modal: true,
 		buttons: {
-			"검 색": schzipcd,
+			"검 색": zipcdsch,
 			"취 소": function() {
 				dialog.dialog("close");
 			}
@@ -79,7 +79,7 @@ $(function() {
 	
 	form = dialog.find("form").on("submit", function(event) {
 		event.preventDefault();
-		schzipcd();
+		zipcdsch();
 	});
 	
 	$("#zipcdschbtn").button().on("click", function() {

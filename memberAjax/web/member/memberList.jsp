@@ -17,7 +17,6 @@ pageEncoding="UTF-8"%>
 <div id="dialog-form" title="신규 등록">
 	<p class="validateTips">모든 필드가 입력되어야 합니다.</p>
 	<form id="frm">
-	<!-- <input type="hidden" name="command" value="MemberInsertAction"> --> 
 	<fieldset>
 		<label for="memnm">이름</label>
 		<input type="text" name="memnm" id="memnm" value="정일대" class="text ui-widget-content ui-corner-all">
