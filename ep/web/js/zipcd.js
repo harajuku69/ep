@@ -39,22 +39,36 @@ $(function() {
 	}
 	
 	function zipcdsch() {
+		var url = "staff.do?cmd=zipcd_search";
 		var valid = true;
 		kwdField.removeClass( "ui-state-error" );
 		
 		valid = checkLength(kwd, 2, 10 );
 		valid = valid && checkRegexp(kwd, /^[가-힣]([가-힣0-9])*$/, "동(읍/면) 이름은 한글과 숫자로 공백없이 입력해주세요.");
 		if ( valid ) {
-			$("#zipcdschRs tbody" ).append( "<tr>" +
-			"<td>" + zipcd.val() + "</td>" +
-			"<td>" + sido.val() + "</td>" +
-			"<td>" + gugun.val() + "</td>" +
-			"<td>" + dong.val() + "</td>" +
-			"<td>" + ri.val() + "</td>" +
-			"<td>" + bldg.val() + "</td>" +
-			"<td>" + bunji.val() + "</td>" +
-			"<td><a href='staff.do?cmd=get_zipcd&no=${edu.no}'>선 택</a></td>" +
-			"</tr>" );
+			$.ajax({
+				url:url,
+				data:'kwd' + kwd.val(),
+				type:'post',
+				contentsType: "application/x-www-form-urlencoded; charset=UTF-8",
+				success:function(jsonArray){
+					data = JSON.parse(jsonArry);
+					$("#zipcdschRs tbody").append(
+							"<c:forEach var='data' items='data'>"+
+							"<tr class='" + data.no + "'>" +
+							"<td>" + data.zipcd + "</td>" +
+							"<td>" + data.sido + "</td>" +
+							"<td>" + data.gugun + "</td>" +
+							"<td>" + data.dong + "</td>" +
+							"<td>" + data.ri + "</td>" +
+							"<td>" + data.bldg + "</td>" +
+							"<td>" + data.bunji + "</td>" +
+							"<td width='50px'><button id='getzipcd' onclick='setZipcd(" +
+							data.no
+							+ ");'>선 택</button></td>" +
+							"</tr>" );
+				}
+			});
 			dialog.dialog("close");
 		}
 		return valid;
@@ -88,6 +102,15 @@ $(function() {
 	
 });
 
-function use(){
-	frm.zipcd.value = zipcd.val();
-}
+function setZipcd(no){
+	url = "staff.do?cmd=get_zipcd&no="+no;
+	getno = "."+ no;
+	$("tr").remove(getno);
+	$.ajax({
+		type:"get",
+		url:url,
+		success:function(msg){
+			alert("정상삭제되었습니다.");
+		}
+	});
+};

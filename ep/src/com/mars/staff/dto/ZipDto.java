@@ -58,4 +58,9 @@ public class ZipDto {
 	public void setBunji(String bunji) {
 		this.bunji = bunji;
 	}
+	@Override
+	public String toString() {
+		return "ZipDto [no=" + no + ", zipcd=" + zipcd + ", sido=" + sido + ", gugun=" + gugun + ", dong=" + dong
+				+ ", ri=" + ri + ", bldg=" + bldg + ", bunji=" + bunji + "]";
+	}
 }

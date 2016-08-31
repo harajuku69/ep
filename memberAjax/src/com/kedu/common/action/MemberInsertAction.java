@@ -42,14 +42,6 @@ public class MemberInsertAction implements Action {
 //		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print(json);
-//		response.sendRedirect("MemberServlet?command=member_list");
-//		List<MemberDto> memberList = mDao.selectAllMembers();
-		
-//		request.setAttribute("memberList", memberList);
-//		RequestDispatcher disp = request.getRequestDispatcher("member/memberList.jsp");
-//		disp.forward(request, response);
-		
-		/*new MemberListAction().execute(request, response);*/
 	}
 
 }

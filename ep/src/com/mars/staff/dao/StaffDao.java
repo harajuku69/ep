@@ -11,6 +11,7 @@ import java.util.List;
 
 import com.mars.common.db.DBManager;
 import com.mars.staff.dto.StaffDto;
+import com.mars.staff.dto.ZipDto;
 
 public class StaffDao {
 	
@@ -154,13 +155,14 @@ public class StaffDao {
 	}
 	
 	public List<StaffDto> selectAllStaffByDpt(){
+		String sql = "select empnm, empid, dptcd, titcd, email, phone from Staff where dptcd=?"; 
+
 		List<StaffDto> list = new ArrayList<StaffDto>();
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select empnm, empid, dptcd, titcd, email, phone from Staff where dptcd=?"; 
 		try{
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -262,7 +264,7 @@ public class StaffDao {
 		} else if( lastno <= 9){
 			empno.append(curMM + "000" + Integer.toString(lastno));
 		}
-		System.out.println(empno.toString());
+//		System.out.println(empno.toString());
 		return empno.toString();
 	}
 
@@ -359,6 +361,43 @@ public class StaffDao {
 			e.printStackTrace();
 		} 
 		return result;
+	}
+
+	public List<ZipDto> selectZipcdListByKwd(String kwd) {
+		String sql = "select * from zip where dong like '%'|| ? ||'%'";
+		
+		List<ZipDto> zipcdList = new ArrayList<ZipDto>();
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, kwd);
+//			System.out.println("Dao 에서 kwd : " + kwd);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				ZipDto zDto = new ZipDto();
+				
+				zDto.setNo(rs.getString("no"));
+				zDto.setSido(rs.getString("sido"));
+				zDto.setGugun(rs.getString("gugun"));
+				zDto.setDong(rs.getString("dong"));
+				zDto.setRi(rs.getString("ri"));
+				zDto.setBldg(rs.getString("bldg"));
+				zDto.setBunji(rs.getString("bunji"));
+//				System.out.println(zDto);
+				zipcdList.add(zDto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return zipcdList;
 	}
 }//class end
 
