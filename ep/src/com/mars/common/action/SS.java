@@ -3,9 +3,6 @@ package com.mars.common.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import com.mars.staff.dao.StaffDao;
-import com.mars.staff.dto.StaffDto;
-
 public class SS {
 	public static HttpSession getSS(HttpServletRequest request) {
 		HttpSession session = request.getSession();

@@ -277,7 +277,7 @@ public class StaffDao {
 ////		sql.append(" , pwd=" + sDto.getPwd());
 ////		sql.append(" , zipcd=" + sDto.getZipcd());
 		
-		String sql = "update staff set phone=?,pic=? where empid=?";
+		String sql = "update staff set phone=?,pic=?,addrdtl=? where empid=?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		
@@ -289,8 +289,8 @@ public class StaffDao {
 			
 			pstmt.setString(1, sDto.getPhone());
 			pstmt.setString(2, sDto.getPic());
-//			pstmt.setString(3, sDto.getEmpid());
-			pstmt.setString(3, sDto.getEmpid());	
+			pstmt.setString(3, sDto.getAddrdtl());
+			pstmt.setString(4, sDto.getEmpid());	
 			pstmt.executeUpdate();
 //			result = pstmt.executeUpdate();
 		} catch(SQLException e){

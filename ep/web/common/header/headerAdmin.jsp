@@ -41,8 +41,8 @@
 				<table>
 					<tr>
 						<td style="width:200px; line-height:10px">
-							<p><a href="staff.do?cmd=admin_detail_page&empid=${ssEmpid}">사원 정보 상세</a></p>
-							<p><a href="staff.do?cmd=admin_update_page">사원 정보 수정</a></p>
+							<p><a href="staff.do?cmd=admin_list_page">사원 정보 목록</a></p>
+							<!-- <p><a href="staff.do?cmd=admin_update_page">사원 정보 수정</a></p> -->
 						</td>
 						<td style="width:200px; line-height:10px">
 							<p><a href="noti.do?cmd=noti_list">공지사항 목록</a></p>

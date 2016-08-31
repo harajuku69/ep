@@ -25,7 +25,7 @@ public class MemberDao {
 		Connection conn = null;
 		Context initContext = new InitialContext();
 		Context envContext = (Context) initContext.lookup("java:/comp/env");
-		DataSource ds = (DataSource) envContext.lookup("jdbc/ch09");
+		DataSource ds = (DataSource) envContext.lookup("jdbc/memberJoin");
 		conn = ds.getConnection();
 		return conn;
 	}

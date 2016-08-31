@@ -34,6 +34,7 @@ public class Fmt {
 		String gen ="남";
 		int gd = Integer.parseInt(sDto.getJumin().substring(6,7));
 		String adm ="일반";
+		String fmtphone = "번호 등록 필요";
 		int admchk = sDto.getAdmchk();
 //		System.out.println("SS 안에서 if문 전에는 " + admchk);
 		
@@ -48,6 +49,11 @@ public class Fmt {
 		if(admchk == 1){
 			adm = "관리자";
 		}
+		if(sDto.getPhone() != null){
+			fmtphone = sDto.getPhone().substring(0, 3) 
+					+ "-" + sDto.getPhone().substring(3, 7) 
+					+ "-" + sDto.getPhone().substring(7);
+		}
 		request.setAttribute("reqStaff", sDto);
 		request.setAttribute("jmf", jmf);
 		request.setAttribute("jmb", jmb);
@@ -55,6 +61,7 @@ public class Fmt {
 		request.setAttribute("MM", MM);
 		request.setAttribute("dd", dd);
 		request.setAttribute("gen", gen);
+		request.setAttribute("fmtphone", fmtphone);
 		request.setAttribute("adm", adm);
 	}
 }

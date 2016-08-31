@@ -43,6 +43,8 @@ public class ActionFactory {
 			action = new StaffUpdateAction();
 		} else if(cmd.equals("admin_update")){
 			action = new AdminUpdateAction();
+		} else if(cmd.equals("zipcdsch_page")){
+			action = new ZipcdschPageAction();
 		} else if(cmd.equals("logout")){
 			action = new LogoutAction();
 		}

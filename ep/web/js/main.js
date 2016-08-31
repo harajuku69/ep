@@ -35,3 +35,9 @@ $(function() {
       return date;
     }
 });
+/*
+function zipcdsch(){
+	var url="staff.do?cmd=zipcdsch_page";
+	window.open(url, "_black_1",
+	"toolbar=no, menubar=no, scrollbars=yes, resizable=yes, width=350, height=350");
+}*/

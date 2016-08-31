@@ -45,7 +45,7 @@
 			</tr>
 			<tr>
 				<td>연락처</td>
-				<td>${reqStaff.phone}</td>
+				<td>${fmtphone}</td>
 			</tr>
 			<tr>
 				<td>우편번호</td>
@@ -96,7 +96,7 @@
 				<td>${reqStaff.regdt}</td>
 			</tr>
 		</table>
-		<br/><input type="button" value="수정하기" onclick="location.href='staff.do?cmd=staff_update_page&empid=${reqStaff.empid}'">
+		<br/><input type="button" value="수정하기" onclick="location.href='staff.do?cmd=staff_update_page'">
 		<!-- </form> -->
 	</div>
 </div>

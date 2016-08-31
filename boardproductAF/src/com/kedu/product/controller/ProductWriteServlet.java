@@ -2,14 +2,6 @@ package com.kedu.product.controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import com.kedu.product.dao.ProductDao;
 import com.kedu.product.dto.ProductDto;
 import com.oreilly.servlet.MultipartRequest;
@@ -29,7 +21,7 @@ public class ProductWriteServlet extends HttpServlet {
 //		post로 넘어오는 request 한글 처리
 		request.setCharacterEncoding("UTF-8");
 //		파일 업로드 시 실제 디렉토리 확인:1.컨텍스트 정보 확인-ch10 컨텍스트
-		ServletContext context = getServletContext();
+		ServletContext context = request.getServletContext();
 //		실제 디렉토리 확인
 		String path = context.getRealPath("upload");
 //		한글처리

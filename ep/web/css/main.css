@@ -36,7 +36,7 @@ ul {list-style:none;}
 /* .contents .core{width:954px; height:538px; margin:0 auto; border: 1px solid purple;} */
 .contents #guest, #default {width:958px; height:540px; /* display:block;/* position:relative;  */}
 .contents #logleft {width:280px; height:520px; padding:10px; float:left; text-align:center/*  border:3px solid green;  */}
-.contents #logleft .stpic {width:200px ; height:250px; margin:0 auto;}
+.contents #logleft .stpic {width:200px ; height:250px; margin:0 auto;border:3px solid #dfdfdf}
 .contents #logleft p img {width:240px; height:130px;/* border:3px solid yellow*/} 
 .contents #logleft ul {padding:15px;}
 .contents #logleft ul li {margin:0 auto; text-indent:10px;}

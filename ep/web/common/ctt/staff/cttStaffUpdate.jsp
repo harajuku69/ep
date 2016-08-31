@@ -8,12 +8,52 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- <script type="text/javascript" src="js/ajaxSelbox.js"></script> -->
+<script src="js/zipcd.js"></script>
 </head>
 <body>
 <div class="contents">
+	<div id="zip-dialog" title="Zipcode Search" >
+		<p class="validateTips">동(읍/면) 이름을 입력하세요</p>
+		<form id="frm">
+			<input type="text" name="kwd" class="text ui-widget-content ui-corner-all" required><br>
+			<!-- <input type="button" value="검 색" onclick="schzipcd()"> -->
+			<input type="submit" tabindex="-1" style="position:absolute; left:-1000px">
+		</form>
+		<div id="zip-contain" class="ui-widget">
+		<p>검색 결과</p>
+		<table id="zipcdschRs" class="ui-widget ui-widget-content">
+			<thead>
+				<tr class="ui-widget-header">
+					<th>우편번호</th>
+					<th>시도</th>
+					<th>구군</th>
+					<th>동</th>
+					<th>리</th>
+					<th>빌딩</th>
+					<th>번지</th>
+				</tr>
+			</thead>
+			<tbody>
+			<c:forEach var="adrs" items="${addrList}">
+				<tr>
+					<td>"${adrs.no}"</td>
+					<td>"${adrs.zipcd}"</td>
+					<td>"${adrs.sido}"</td>
+					<td>"${adrs.gugun}"</td>
+					<td>"${adrs.dong}"</td>
+					<td>"${adrs.ri}"</td>
+					<td>"${adrs.bldg}"</td>
+					<td>"${adrs.bunji}"</td>
+					<td><button id="getaddr" onclick="getAddr(${adrs.no})">선 택</button></td>
+				</tr> 
+			</c:forEach>
+			</tbody>
+		</table>
+		</div>
+	</div>
 	<div id="logleft">
-	<form action="staff.do?cmd=staff_update" method="post" enctype="multipart/form-data" name="frm">
+	<form action="staff.do?cmd=staff_update" method="post" enctype="multipart/form-data" ><!-- name="frm"지움 -->
+	<input type="hidden" name="noChangePic" value="${reqStaff.pic}">
 		<c:choose>
 			<c:when test="${empty reqStaff.pic}">
 				<img class="stpic" src="images/noimage.gif">
@@ -22,7 +62,7 @@
 				<img class="stpic" src="upload/${reqStaff.pic}">
 			</c:otherwise>
 		</c:choose>
-		<input type="file" name="selpic" value="변경">
+		<input type="file" name="pic" value="변경">
 		<input type="button" name="delbtn" value="삭제">
 	</div>
 	<div id="logright">
@@ -65,20 +105,21 @@
 			<tr>
 				<td>우편번호</td>
 				<td>
-					<input type="text" name="zipcd" id="zipcd" placeholder="${reqStaff.zipcd}" readonly>
-					<input type="button" name="zipbtn" value="검색" onclick="zipsch()">
+					<input type="text" name="zipcd" id="zipcd" value="${reqStaff.zipcd}" readonly>
+					<!-- <input type="button" name="zipcdschbtn" value="검색" onclick="zipcdsch();"> -->
+					<input type="button" name="zipcdschbtn" id="zipcdschbtn" value="검색" >
 				</td>
 			</tr>
 			<tr>
 				<td>기본주소</td>
 				<td>
-					<input type="text" name="addr" id="addr" placeholder="${reqStaff.addr}" readonly>
+					<input type="text" name="addr" id="addr" value="${reqStaff.addr}" readonly>
 				</td>
 			</tr>
 			<tr>
 				<td>상세주소</td>
 				<td>
-					<input type="text" name="addrdtl" id="addrdtl" placeholder="${reqStaff.addrdtl}" >
+					<input type="text" name="addrdtl" id="addrdtl" value="${reqStaff.addrdtl}" >
 				</td>
 			</tr>
 		</table>
@@ -143,6 +184,7 @@
 		</form>
 	</div>
 </div>
+</script>
 </body>
 </html>
 
