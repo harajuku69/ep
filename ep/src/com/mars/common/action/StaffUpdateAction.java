@@ -31,21 +31,24 @@ public class StaffUpdateAction implements Action{
 		
 		StaffDto sDto = new StaffDto();
 		
+//		System.out.println("업데이트 전 : " +sDto);
+
 		String empid = SS.getEmpid(request);
 		sDto.setEmpid(empid);
 		sDto.setPhone(multi.getParameter("phone"));
 		sDto.setPic(multi.getFilesystemName("pic"));
-		//noChangeImg로 hidden으로 넘어간 데이터
+
+//		사진 변경(선택)없을 경우 noChangeImg로 hidden으로 넘겨서 받는다
 		if(sDto.getPic() == null){
 			sDto.setPic(multi.getParameter("noChangePic"));
 		}
-//		sDto.setZipcd(multi.getParameter("zipcd"));
-//		sDto.setAddr(multi.getParameter("addr"));
+		
+		sDto.setZipcd(multi.getParameter("zipcd"));
+		sDto.setAddr(multi.getParameter("addr"));
 		sDto.setAddrdtl(multi.getParameter("addrdtl"));
-//		sDto.setPwd(multi.getParameter("pwd"));
-//		System.out.println("업데이트 전 : " +sDto);
 		StaffDao sDao = StaffDao.getInstance();
 		sDao.updateStaffIndInfo(sDto);
+//		sDto.setPwd(multi.getParameter("pwd"));
 //		System.out.println(sDto.getPic());
 		//DB에 덥데이트 완료. 이후는 detail 로 가기 위해 다시 정보 가져와서 마는 작업
 		

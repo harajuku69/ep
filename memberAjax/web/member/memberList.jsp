@@ -48,7 +48,7 @@ pageEncoding="UTF-8"%>
 				<td>${mem.memnm}</td>
 				<td>${mem.mememail}</td>
 				<td>${mem.mempwd}</td>
-				<td width="50px"><button id="delete-user" onclick='deleteUser(${mem.no});'>삭제</button></td>
+				<td width="50px"><button id="delete-user" onclick='deleteUser(${mem.no})'>삭제</button></td>
 			</tr>
 		</c:forEach>
 		</tbody>

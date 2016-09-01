@@ -57,7 +57,10 @@
 			</tr>
 			<tr>
 				<td>상세주소</td>
-				<td>${reqStaff.addrdtl}</td>
+				<td>
+					<div style="width:200px;">${reqStaff.addrdtl}</div>
+					<%-- ${reqStaff.addrdtl} --%>
+				</td>
 			</tr>
 		</table>
 		<table style="font-size:20px;">

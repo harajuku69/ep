@@ -20,25 +20,23 @@
 		<div class="pd">
 			<div class="pic">
 				<c:choose>
-				<c:when test="${empty ssStaff.pic}">
+				<c:when test="${empty reqStaff.pic}">
 					<img class="stpic" src="images/noimage.gif">
 				</c:when>
 				<c:otherwise>
-					<img class="stpic" src="upload/${ssStaff.pic}">
+					<img class="stpic" src="upload/${reqStaff.pic}">
 				</c:otherwise>
 				</c:choose>
 				<!-- <img src="images/me.jpg" class="me" alt="사원사진"> -->
 			</div>
-			<p class="wel">
-				${ssEmpnm}님.
-			</p>
+			<p class="wel">${ssEmpnm}님.</p>
 		</div>
 		<div class="simple">
 			<ul>
 				<li>최종 로그인 : ${ssStaff.lastdt}</li>
-				<li>소속 : <a href="#=?부서원 검색결과">${ssStaff.dptcd}</a></li>
-				<li>직급 : ${ssStaff.titcd}</li>
-				<li>사번 : ${ssStaff.empno}</li>
+				<li>소속 : <a href="#=?부서원 검색결과">${reqStaff.dptcd}</a></li>
+				<li>직급 : ${reqStaff.titcd}</li>
+				<li>사번 : ${reqStaff.empno}</li>
 				<!-- <li>프로젝트 : <a href="URL=?프로젝트 상세보기">수치예보 41기</a></li> -->
 				<!-- <p><a href="staffdetail.do">개인 상세 정보</a></p> -->
 				<p><a href="staff.do?cmd=staff_detail_page&empid=${ssEmpid}">개인 상세 정보</a></p>

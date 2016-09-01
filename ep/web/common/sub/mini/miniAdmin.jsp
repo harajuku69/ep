@@ -32,7 +32,7 @@
 				<li>직급 : ${ssStaff.titcd}</li>
 				<li>사번 : ${ssStaff.empno}</li>
 				<!-- <li>프로젝트 : <a href="URL=?프로젝트 상세보기">수치예보 41기</a></li> -->
-				<p><a href="staff.do?cmd=admin_detail_page">사원 상세 정보</a></p>
+				<p><a href="staff.do?cmd=staff_list">사원 정보 관리</a></p>
 			</ul>
 		</div>
 	</div>

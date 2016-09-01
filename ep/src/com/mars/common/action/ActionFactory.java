@@ -45,8 +45,10 @@ public class ActionFactory {
 			action = new AdminUpdateAction();
 		} else if(cmd.equals("zipcd_search")){
 			action = new ZipcdSearchAction();
-		} else if(cmd.equals("zipcd_update")){
-			action = new ZipcdUpdateAction();
+//		} else if(cmd.equals("zipcd_update")){
+//			action = new ZipcdUpdateAction();
+		} else if(cmd.equals("staff_list")){
+			action = new StaffListAction();
 		} else if(cmd.equals("logout")){
 			action = new LogoutAction();
 		}

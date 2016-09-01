@@ -37,10 +37,12 @@ public class LoginAction implements Action {
 			HttpSession session = request.getSession();
 			session.setAttribute("ssStaff", sDto);
 			session.setAttribute("ssEmpid", sDto.getEmpid());
-			session.setAttribute("ssPwd", sDto.getPwd());
 			session.setAttribute("ssEmpnm", sDto.getEmpnm());
+			session.setAttribute("ssPwd", sDto.getPwd());
 			session.setAttribute("ssAdmnm", sDto.getAdmnm());
 //			session.setAttribute("ssAdmchk", sDto.getAdmchk());
+//			Fmt.toFmtAndReqSet(request, sDto);
+			request.setAttribute("reqStaff", sDto);
 			
 		} else if(result == 0){
 			request.setAttribute("msg", "입력한 비밀번호가 틀립니다~");

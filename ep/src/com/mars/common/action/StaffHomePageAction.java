@@ -20,7 +20,8 @@ public class StaffHomePageAction implements Action {
 		StaffDao sDao = StaffDao.getInstance();
 		StaffDto sDto = sDao.selectOneByEmpid(empid);
 		
-		Fmt.toFmtAndReqSet(request, sDto);
+//		Fmt.toFmtAndReqSet(request, sDto);
+		request.setAttribute("reqStaff", sDto);
 		
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);

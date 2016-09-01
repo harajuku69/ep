@@ -80,8 +80,8 @@
 			<tr>
 				<td>상세주소</td>
 				<td>
-					<%-- <input type="text" name="addrdtl" id="addrdtl" value="${reqStaff.addrdtl}" readonly> --%>
-					${reqStaff.addrdtl}
+					<div style="width:200px;">${reqStaff.addrdtl}</div>
+					<%-- ${reqStaff.addrdtl} --%>
 				</td>
 			</tr>
 		</table>

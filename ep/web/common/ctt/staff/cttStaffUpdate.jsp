@@ -107,7 +107,8 @@
 			<tr>
 				<td>상세주소</td>
 				<td>
-					<input type="text" name="addrdtl" id="addrdtl" value="${reqStaff.addrdtl}" >
+					<%-- <input type="text" name="addrdtl" id="addrdtl" value="${reqStaff.addrdtl}" > --%>
+					<textarea rows="3" cols="22" name="addrdtl" id="addrdtl" >${reqStaff.addrdtl}</textarea>
 				</td>
 			</tr>
 		</table>

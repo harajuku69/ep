@@ -7,7 +7,6 @@ public class StaffDto {
 	private String  	pwd;
 	private String  	empno;
 	private String  	empnm;
-	private String  	email;
 	private String  	phone;
 	private String  	jumin;
 	private String  	pic;
@@ -54,12 +53,6 @@ public class StaffDto {
 	}
 	public void setEmpnm(String empnm) {
 		this.empnm = empnm;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
 	}
 	public String getPhone() {
 		return phone;
@@ -154,8 +147,7 @@ public class StaffDto {
 	}
 	@Override
 	public String toString() {
-		return "StaffDto [empid=" + empid + ", pwd=" + pwd + ", empno=" + empno + ", empnm=" + empnm + ", email="
-				+ email + ", phone=" + phone + ", jumin=" + jumin + ", pic=" + pic + ", zipcd=" + zipcd + ", addr="
+		return "StaffDto [empid=" + empid + ", pwd=" + pwd + ", empno=" + empno + ", empnm=" + empnm + ", phone=" + phone + ", jumin=" + jumin + ", pic=" + pic + ", zipcd=" + zipcd + ", addr="
 				+ addr + ", addrdtl=" + addrdtl + ", dptcd=" + dptcd + ", titcd=" + titcd + ", sal=" + sal
 				+ ", startdt=" + startdt + ", enddt=" + enddt + ", regdt=" + regdt + ", lastdt=" + lastdt + ", logdt="
 				+ logdt + ", admchk=" + admchk + ", admnm=" + admnm + "]";

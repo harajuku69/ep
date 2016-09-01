@@ -127,7 +127,6 @@ public class StaffDao {
 				sDto.setPwd(rs.getString("pwd"));
 				sDto.setEmpno(rs.getString("empno"));
 				sDto.setEmpnm(rs.getString("empnm"));
-				sDto.setEmail(rs.getString("email"));
 				sDto.setPhone(rs.getString("phone"));
 				sDto.setJumin(rs.getString("jumin"));
 				sDto.setPic(rs.getString("pic"));
@@ -279,7 +278,7 @@ public class StaffDao {
 ////		sql.append(" , pwd=" + sDto.getPwd());
 ////		sql.append(" , zipcd=" + sDto.getZipcd());
 		
-		String sql = "update staff set phone=?,pic=?,addrdtl=? where empid=?";
+		String sql = "update staff set phone=?, pic=?, zipcd=?, addr=?, addrdtl=? where empid=?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		
@@ -291,8 +290,10 @@ public class StaffDao {
 			
 			pstmt.setString(1, sDto.getPhone());
 			pstmt.setString(2, sDto.getPic());
-			pstmt.setString(3, sDto.getAddrdtl());
-			pstmt.setString(4, sDto.getEmpid());	
+			pstmt.setString(3, sDto.getZipcd());
+			pstmt.setString(4, sDto.getAddr());
+			pstmt.setString(5, sDto.getAddrdtl());
+			pstmt.setString(6, sDto.getEmpid());	
 			pstmt.executeUpdate();
 //			result = pstmt.executeUpdate();
 		} catch(SQLException e){
@@ -365,7 +366,7 @@ public class StaffDao {
 
 	public List<ZipDto> selectZipcdListByKwd(String kwd) {
 //		String sql = "select * from zip where dong like '%'|| ? ||'%'";
-		String sql = "select no,zipcd, sido, gugun,dong,NVL(bunji,' ') as bunji from zip where dong like '%'|| ? ||'%'";
+		String sql = "select no, zipcd, sido, gugun, dong, NVL(bunji,' ') as bunji from zip where dong like '%'|| ? ||'%'";
 		List<ZipDto> zipcdList = new ArrayList<ZipDto>();
 		
 		Connection conn = null;
@@ -388,9 +389,7 @@ public class StaffDao {
 				zDto.setGugun(rs.getString("gugun"));
 				zDto.setDong(rs.getString("dong"));
 				zDto.setBunji(rs.getString("bunji"));
-//				zDto.setRi(rs.getString("ri"));
-//				zDto.setBldg(rs.getString("bldg"));
-				System.out.println("selectZipcdListByKwd()가 DB에서 가져온 값 : " + zDto);
+//				System.out.println("selectZipcdListByKwd()가 DB에서 가져온 값 : " + zDto);
 				zipcdList.add(zDto);
 			}
 		} catch (SQLException e) {
@@ -401,46 +400,78 @@ public class StaffDao {
 		return zipcdList;
 	}
 
-	public void updateZipcd(String no, String empid) {
-		String sql = "select zipcd, sido, gugun, dong from zip where no=?";
+	public List<StaffDto> selectAllStaff() {
+		String sql = "select * from staff order by empnm";
 		
+		List<StaffDto> staffList = new ArrayList<StaffDto>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String zipcd = null;
-		StringBuilder addr = new StringBuilder();
-		try {
+		try{
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, no);
 			rs = pstmt.executeQuery();
-			rs.next();
-			zipcd=rs.getString("zipcd");
-			addr.append(rs.getString("sido") + " ")
-			.append(rs.getString("gugun") + " ")
-			.append(rs.getString("dong"));
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} 
-		
-		sql = "update staff set zipcd=?,addr=? where empid=?";
-		
-		try {
-			conn = DBManager.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, zipcd);
-			pstmt.setString(2, addr.toString());
-			pstmt.setString(3, empid);
 			
-			pstmt.executeUpdate();
-			
-		} catch (SQLException e) {
+			while(rs.next()){
+				StaffDto sDto = new StaffDto();
+				
+				sDto.setEmpnm(rs.getString("empnm"));
+				sDto.setDptcd(rs.getString("dptcd"));
+				sDto.setTitcd(rs.getString("titcd"));
+				sDto.setPhone(rs.getString("Phone"));
+				sDto.setEmpid(rs.getString("empid"));
+				
+				staffList.add(sDto);
+			}
+		} catch(SQLException e){
 			e.printStackTrace();
-		} finally {
+		} finally{
 			DBManager.close(conn, pstmt, rs);
 		}
+		return staffList;
 	}
+
+//	public void updateZipcd(String no, String empid) {
+//		String sql = "select zipcd, sido, gugun, dong from zip where no=?";
+//		
+//		Connection conn = null;
+//		PreparedStatement pstmt = null;
+//		ResultSet rs = null;
+//		
+//		String zipcd = null;
+//		StringBuilder addr = new StringBuilder();
+//		try {
+//			conn = DBManager.getConnection();
+//			pstmt = conn.prepareStatement(sql);
+//			pstmt.setString(1, no);
+//			rs = pstmt.executeQuery();
+//			rs.next();
+//			zipcd=rs.getString("zipcd");
+//			addr.append(rs.getString("sido") + " ")
+//			.append(rs.getString("gugun") + " ")
+//			.append(rs.getString("dong"));
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} 
+//		
+//		sql = "update staff set zipcd=?,addr=? where empid=?";
+//		
+//		try {
+//			conn = DBManager.getConnection();
+//			pstmt = conn.prepareStatement(sql);
+//			pstmt.setString(1, zipcd);
+//			pstmt.setString(2, addr.toString());
+//			pstmt.setString(3, empid);
+//			
+//			pstmt.executeUpdate();
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			DBManager.close(conn, pstmt, rs);
+//		}
+//	}
 }//class end
 
 
