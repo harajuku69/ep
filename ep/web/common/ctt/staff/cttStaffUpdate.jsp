@@ -9,46 +9,32 @@
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="js/zipcd.js"></script>
+<script src="js/imgchange.js"></script>
 </head>
 <body>
 <div class="contents">
 	<div id="zip-dialog" title="Zipcode Search" >
 		<h2>주소 검색</h2>
 		<p class="validateTips">한글과 숫자로 공백없이 입력하세요. ex)청천2동 or 압구정</p>
-		<form>
+		<form id="frm">
 			<input type="text" name="kwd" id="kwd" class="text ui-widget-content ui-corner-all" placeholder="동(읍/면) 이름을 입력하세요"><br>
 			<!-- <input type="button" value="검 색" onclick="schzipcd()"> -->
 			<input type="submit" tabindex="-1" style="position:absolute; left:-1000px">
 		</form>
-		<div class="contain" class="ui-widget">
-		<p>검색 결과</p>
-		<table id="zipcdschRs" class="ui-widget ui-widget-content">
+		<p> &nbsp;&nbsp;검색 결과</p>
+		<div class="containzip" class="ui-widget">
+		<table id="ZipcdSearchResult" class="ui-widget ui-widget-content">
 			<thead>
 				<tr class="ui-widget-header">
 					<th>우편번호</th>
 					<th>시/도</th>
 					<th>구/군</th>
 					<th>동(읍/면)</th>
-					<th>리</th>
-					<th>빌 딩</th>
-					<th>번 지</th>
-					<th>선 택</th>
+					<th>번지</th>
+					<th>선택</th>
 				</tr>
 			</thead>
 			<tbody>
-			<c:forEach var="adrs" items="${addrList}">
-				<tr>
-					<%-- <td>"${adrs.no}"</td> --%>
-					<td>"${adrs.zipcd}"</td>
-					<td>"${adrs.sido}"</td>
-					<td>"${adrs.gugun}"</td>
-					<td>"${adrs.dong}"</td>
-					<td>"${adrs.ri}"</td>
-					<td>"${adrs.bldg}"</td>
-					<td>"${adrs.bunji}"</td>
-					<td><button id="getaddr" onclick="getAddr(${adrs.no})">선 택</button></td>
-				</tr> 
-			</c:forEach>
 			</tbody>
 		</table>
 		</div>
@@ -58,14 +44,14 @@
 	<input type="hidden" name="noChangePic" value="${reqStaff.pic}">
 		<c:choose>
 			<c:when test="${empty reqStaff.pic}">
-				<img class="stpic" src="images/noimage.gif">
+				<img class="stpic" id="stpic" src="images/noimage.gif">
 			</c:when>
 			<c:otherwise>
-				<img class="stpic" src="upload/${reqStaff.pic}">
+				<img class="stpic" id="stpic" src="upload/${reqStaff.pic}">
 			</c:otherwise>
 		</c:choose>
-		<input type="file" name="pic" value="변경">
-		<input type="button" name="delbtn" value="삭제">
+		<input type="file" name="pic" id="pic">
+		<!-- <input type="button" name="delbtn" value="삭제"> -->
 	</div>
 	<div id="logright">
 		<table style="font-size:20px;float:left">
@@ -180,9 +166,12 @@
 				</td>
 			</tr>
 		</table>
-		<input type="submit" value="수정 완료" >
-		<input type="reset" value="다시 작성" >
-		<input type="button" value="수정 취소" onclick="location.href='staff.do?cmd=staff_detail_page'">
+		<br>
+		<div style="clear:both">
+			<p><input type="submit" value="수정 완료" ></p>
+			<p><input type="reset" value="다시 작성" ></p>
+			<p><input type="button" value="수정 취소" onclick="location.href='staff.do?cmd=staff_detail_page'"></p>
+		</div>
 		</form>
 	</div>
 </div>

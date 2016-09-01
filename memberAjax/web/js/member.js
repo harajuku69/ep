@@ -111,7 +111,7 @@ $(function() {
 });
 function deleteUser(no){
 	url = "MemberServlet?command=member_delete&no=" + no;
-	delno = "."+ no;
+	delno = "."+ no;//클래스로 선언된 tr만 지울라고 .을 추가하는 것임
 	$("tr").remove(delno);
 	$.ajax({
 		type:"get",

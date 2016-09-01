@@ -364,8 +364,8 @@ public class StaffDao {
 	}
 
 	public List<ZipDto> selectZipcdListByKwd(String kwd) {
-		String sql = "select * from zip where dong like '%'|| ? ||'%'";
-		
+//		String sql = "select * from zip where dong like '%'|| ? ||'%'";
+		String sql = "select no,zipcd, sido, gugun,dong,NVL(bunji,' ') as bunji from zip where dong like '%'|| ? ||'%'";
 		List<ZipDto> zipcdList = new ArrayList<ZipDto>();
 		
 		Connection conn = null;
@@ -383,13 +383,14 @@ public class StaffDao {
 				ZipDto zDto = new ZipDto();
 				
 				zDto.setNo(rs.getString("no"));
+				zDto.setZipcd(rs.getString("zipcd"));
 				zDto.setSido(rs.getString("sido"));
 				zDto.setGugun(rs.getString("gugun"));
 				zDto.setDong(rs.getString("dong"));
-				zDto.setRi(rs.getString("ri"));
-				zDto.setBldg(rs.getString("bldg"));
 				zDto.setBunji(rs.getString("bunji"));
-//				System.out.println(zDto);
+//				zDto.setRi(rs.getString("ri"));
+//				zDto.setBldg(rs.getString("bldg"));
+				System.out.println("selectZipcdListByKwd()가 DB에서 가져온 값 : " + zDto);
 				zipcdList.add(zDto);
 			}
 		} catch (SQLException e) {
@@ -398,6 +399,47 @@ public class StaffDao {
 			DBManager.close(conn, pstmt, rs);
 		}
 		return zipcdList;
+	}
+
+	public void updateZipcd(String no, String empid) {
+		String sql = "select zipcd, sido, gugun, dong from zip where no=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String zipcd = null;
+		StringBuilder addr = new StringBuilder();
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, no);
+			rs = pstmt.executeQuery();
+			rs.next();
+			zipcd=rs.getString("zipcd");
+			addr.append(rs.getString("sido") + " ")
+			.append(rs.getString("gugun") + " ")
+			.append(rs.getString("dong"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		
+		sql = "update staff set zipcd=?,addr=? where empid=?";
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, zipcd);
+			pstmt.setString(2, addr.toString());
+			pstmt.setString(3, empid);
+			
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
 	}
 }//class end
 

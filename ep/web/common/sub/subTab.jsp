@@ -17,7 +17,7 @@
 		<div id="tabedu">
 			<div id="edu-dialog" title="학력 추가">
 				<p class="validateTips">모든 필드가 입력되어야 합니다.</p>
-				<form>
+				<form id="frm">
 					<fieldset>
 						<label for="loc">지 역</label><br>
 						<input type="text" name="loc" id="loc" placeholder="인천" class="text ui-widget-content ui-corner-all"><br>

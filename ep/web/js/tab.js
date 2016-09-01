@@ -37,8 +37,10 @@ $(function() {
 	
 	tips = $(".validateTips");
 	
-	function updateTips( t ) {
-		tips.text(t).addClass("ui-state-highlight");//하일라이트 주는 것
+	function updateTips(t) {
+		tips
+			.text(t)
+			.addClass("ui-state-highlight");//하일라이트 주는 것
 		//위 구문은 tip.text(t).addClass("ui-state-highlight");와 동일한 구문임
 		//ui-state-highlight는 내장되어 있는 클래스임. jquery-ui.min.css 요기에
 		setTimeout(function() {
@@ -49,17 +51,17 @@ $(function() {
 	function checkLength(o, min, max) {
 		if (o.val().length > max || o.val().length < min) {
 			o.addClass("ui-state-error");
-			updateTips( "최소 " + min + " ~ " + max + "자 까지 입력해주세요." );
+			updateTips("최소 " + min + " ~ " + max + "자 까지 입력해주세요.");
 			return false;
 		} else {
 			return true;
 		}
 	}
 	
-	function checkRegexp(o, regexp, n) {
+	function checkRegexp(o, regexp) {
 		if (!(regexp.test(o.val()))) {
 			o.addClass("ui-state-error");
-			updateTips(n);
+			updateTips("한글/영문(대소)/숫자로 공백없이 입력하세요.");
 			return false;
 		} else {
 			return true;
@@ -71,12 +73,12 @@ $(function() {
 		//학력 추가 처리
 		eduAllFields.removeClass("ui-state-error");
 		valid = checkLength(loc, 2, 30 );
-		valid = valid && checkLength(loc, 2, 30 );
+		valid = valid && checkRegexp( loc, /^[가-힣a-z0-9]([가-힣a-z0-9])*$/ );
+		valid = valid && checkLength( school, 2, 30 );
+		valid = valid && checkRegexp( school, /^[가-힣a-z0-9]([가-힣a-z0-9])*$/ );
 		valid = valid && checkLength( major, 2, 20 );
+		valid = valid && checkRegexp( major, /^[가-힣a-z0-9]([가-힣a-z0-9])*$/ );
 		
-		valid = valid && checkRegexp( loc, /^[가-힣a-z]([가-힣0-9a-z_\s])+$/i, "한글/영문(대소)/숫자로만 입력하세요." );
-		valid = valid && checkRegexp( school, /^[가-힣a-z]([가-힣0-9a-z_\s])+$/i, "한글/영문(대소)/숫자로만 입력하세요." );
-		valid = valid && checkRegexp( major, /^[가-힣a-z]([가-힣0-9a-z_\s])+$/i, "한글/영문(대소)/숫자로만 입력하세요." );
 		if ( valid ) {
 			$("#edu tbody").append( "<tr>" +
 			"<td>" + loc.val() + "</td>" +
@@ -91,14 +93,13 @@ $(function() {
 		}
 		//경력 추가 처리
 		crrAllFields.removeClass("ui-state-error");
-		valid = true;
-		valid = checkLength(comnm, 2, 30 );
+//		valid = true;
+		valid = valid && checkLength(comnm, 2, 30 );
+		valid = valid && checkRegexp(comnm, /^[가-힣a-z0-9]([가-힣a-z0-9])*$/ );
 		valid = valid && checkLength(dpt, 2, 30 );
+		valid = valid && checkRegexp(dpt, /^[가-힣a-z0-9]([가-힣a-z0-9])*$/ );
 		valid = valid && checkLength(tit, 2, 20 );
-		
-		valid = valid && checkRegexp(comnm, /^[가-힣a-z]([가-힣0-9a-z_\s])+$/i, "한글/영문(대소)/숫자로만 입력하세요." );
-		valid = valid && checkRegexp(dpt, /^[가-힣a-z]([가-힣0-9a-z_\s])+$/i, "한글/영문(대소)/숫자로만 입력하세요." );
-		valid = valid && checkRegexp(tit, /^[가-힣a-z]([가-힣0-9a-z_\s])+$/i, "한글/영문(대소)/숫자로만 입력하세요." );
+		valid = valid && checkRegexp(tit, /^[가-힣a-z0-9]([가-힣a-z0-9])*$/ );
 		if ( valid ) {
 			$("#crr tbody").append( "<tr>" +
 			"<td>" + comnm.val() + "</td>" +
@@ -113,14 +114,13 @@ $(function() {
 		}
 		//자격증 추가 처리
 		certiAllFields.removeClass("ui-state-error");
-		valid = true;
-		valid = checkLength(certinm, 2, 30 );
+//		valid = true;
+		valid = valid && checkLength(certinm, 2, 30 );
+		valid = valid && checkRegexp(certinm, /^[가-힣a-z0-9]([가-힣a-z0-9])*$/ );
 		valid = valid && checkLength(rank, 2, 30 );
+		valid = valid && checkRegexp(rank, /^[가-힣a-z0-9]([가-힣a-z0-9])*$/ );
 		valid = valid && checkLength(publ, 2, 20 );
-		
-		valid = valid && checkRegexp(certinm, /^[가-힣a-z]([가-힣0-9a-z_\s])+$/i, "한글/영문(대소)/숫자로만 입력하세요." );
-		valid = valid && checkRegexp(rank, /^[가-힣a-z]([가-힣0-9a-z_\s])+$/i, "한글/영문(대소)/숫자로만 입력하세요." );
-		valid = valid && checkRegexp(publ, /^[가-힣a-z]([가-힣0-9a-z_\s])+$/i, "한글/영문(대소)/숫자로만 입력하세요." );
+		valid = valid && checkRegexp(publ, /^[가-힣a-z0-9]([가-힣a-z0-9])*$/ );
 		if ( valid ) {
 			$("#certi tbody").append( "<tr>" +
 			"<td>" + certinm.val() + "</td>" +
@@ -137,8 +137,8 @@ $(function() {
 	}
 	dialog = $("#edu-dialog,#crr-dialog,#certi-dialog").dialog({
 		autoOpen: false,
-		height: 900,
 		width: 400,
+		height: 750,
 		modal: true,
 		buttons: {
 			"추가": addItem,
@@ -159,6 +159,7 @@ $(function() {
 	form = dialog.find("form").on("submit", function(event) {
 		event.preventDefault();
 		addItem();
+		return false;
 	});
 	
 	$("#add-edu").button().on("click", function() {

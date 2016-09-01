@@ -1,12 +1,14 @@
 /**
  * 
  */
+//var dialog;
 $(function() {
 	//modal
 	var dialog, form,
+//	var form,
 	kwd = $("#kwd"),
 	
-	kwdField = $([]).add(kwd),
+//	kwdField = $([]).add(kwd),
 	tips = $(".validateTips");
 	
 	function updateTips(t) {
@@ -39,55 +41,72 @@ $(function() {
 	}
 	
 	function zipcdsch() {
+		refresh();
 		var url = "staff.do?cmd=zipcd_search";
-		var valid = true;
-		kwdField.removeClass( "ui-state-error" );
+		var valid = true,
+			d = $("#frm").serialize()
+		;
+//		kwdField.removeClass( "ui-state-error" );
+		kwd.removeClass("ui-state-error");
 		
 		valid = checkLength(kwd, 2, 10 );
-		valid = valid && checkRegexp(kwd, /^[가-힣]([가-힣0-9])*$/, "동(읍/면) 이름은 한글과 숫자로 공백없이 입력해주세요.");
+		valid = valid && checkRegexp(kwd, /^[가-힣0-9]([가-힣0-9])*$/, "동(읍/면) 이름은 한글과 숫자로 공백없이 입력해주세요.");
+		
 		if ( valid ) {
 			$.ajax({
 				url:url,
-				data:'kwd' + kwd.val(),
+//				data:'kwd' + kwd.val(),
+				data: d,
+				dataType:"json",
+//				alert(data.kwd);
 				type:'post',
 				contentsType: "application/x-www-form-urlencoded; charset=UTF-8",
 				success:function(jsonArray){
-					data = JSON.parse(jsonArry);
-					$("#zipcdschRs tbody").append(
-							"<c:forEach var='data' items='data'>"+
-							"<tr class='" + data.no + "'>" +
-							"<td>" + data.zipcd + "</td>" +
-							"<td>" + data.sido + "</td>" +
-							"<td>" + data.gugun + "</td>" +
-							"<td>" + data.dong + "</td>" +
-							"<td>" + data.ri + "</td>" +
-							"<td>" + data.bldg + "</td>" +
-							"<td>" + data.bunji + "</td>" +
-							"<td width='50px'><button id='getzipcd' onclick='setZipcd(" +
-							data.no
-							+ ");'>선 택</button></td>" +
-							"</tr>" );
+					for(var index = 0; index < jsonArray.length; index++){
+						var jsonObject = JSON.stringify(jsonArray[index]);
+						var zipcdInfo = JSON.parse(jsonObject);
+//						console.log(zipcdInfo.sido);
+						$("#ZipcdSearchResult tbody").append(
+							"<tr class='" + zipcdInfo.no + "'>" +
+							"<td id='zipcdInfo'>" + zipcdInfo.zipcd + "</td>" +
+							"<td id='sidoInfo'>" + zipcdInfo.sido + "</td>" +
+							"<td id='gugunInfo'>" + zipcdInfo.gugun + "</td>" +
+							"<td id='dongInfo'>" + zipcdInfo.dong + "</td>" +
+							"<td id='bunjiInfo'>" + zipcdInfo.bunji + "</td>" +
+							"<td width='50px'><button id='getzipcd' onclick='setZipcd(" + "\"" + zipcdInfo.zipcd + "\"" 
+																						+ ", " + "\"" + zipcdInfo.sido + "\""
+																						+ ", " + "\"" + zipcdInfo.gugun + "\""
+																						+ ", " + "\"" + zipcdInfo.dong + "\""
+																						+ ");'>선 택</button></td></tr>" 
+						);
+					}
 				}
 			});
-			dialog.dialog("close");
 		}
 		return valid;
 	}
 	
 	dialog = $("#zip-dialog").dialog({
 		autoOpen: false,
-		width: 950,
+		width: 500,
 		height: 500,
 		modal: true,
 		buttons: {
 			"검 색": zipcdsch,
+//			zipcdsch()함수가 실행될 떄 기존에 있떤 내역들을 삭제하는, 
+//			즉 초기화하는 기능을 넣어야 함.그래야 검색할 때마다새로운 정보만 나열함.
 			"취 소": function() {
+//				refresh();
+//				kwd.removeClass("ui-state-error");
+//				form[0].reset();
+//				form[0].focus();
 				dialog.dialog("close");
 			}
 		},
 		close: function() {
+			refresh();
 			form[0].reset();
-			kwdField.removeClass("ui-state-error");
+//			kwd.removeClass("ui-state-error");
 		}
 	});
 	
@@ -100,17 +119,40 @@ $(function() {
 		dialog.dialog("open");
 	});
 	
+	
 });
 
-function setZipcd(no){
-	url = "staff.do?cmd=get_zipcd&no="+no;
-	getno = "."+ no;
-	$("tr").remove(getno);
-	$.ajax({
-		type:"get",
-		url:url,
-		success:function(msg){
-			alert("정상삭제되었습니다.");
-		}
-	});
+function setZipcd(zipcd, sido, gugun, dong){
+//	url = "staff.do?cmd=zipcd_update&no="+no;
+//	
+//	$.ajax({
+//		type:"get",
+//		url:url,
+//		success:function(msg){
+//			alert("우편번호가 변경되었습니다.");
+//		}
+//	});
+//	$("#getzipcd").on("click", function(){
+//	});
+    $("#zipcd").val(zipcd);
+    $("#addr").val(sido + " " + gugun + " " + dong);
+	$("#zip-dialog").dialog("close");
 };
+
+function refresh(){
+	$("#ZipcdSearchResult tbody tr").remove();
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
