@@ -12,14 +12,12 @@
 <body>
 <div class="contents">
 	<h1> 프로젝트 목록 </h1>
-	<div id="list-contain" class="ui-widget">
+	<div id="list_contain" class="ui-widget">
 			<table class="list">
-				<!-- <tr>
-					<td colspan="6" style="border:white; text-align:right">
-						<a href="pjt.do?cmd=pjt_insert_form">프로젝트 등록</a>
-					</td>
-				</tr> -->
 				<thead>
+				<tr>
+					<td class="addbtn" colspan="8" style="text-align:right; border:none;"><a href="pjt.do?cmd=pjt_insert_page"><button id="back">프로젝트 등록</button></a></td>
+				</tr>
 				<tr class="ui-widget-header">
 					<th>번호</th>
 					<th>프로젝트명</th>
@@ -30,7 +28,7 @@
 					<th>수정</th>
 					<th>삭제</th>
 				</tr>
-				<thead>
+				</thead>
 				<tbody>
 				</tbody>
 				<c:forEach var="it" items="${pjtList}">
@@ -50,7 +48,7 @@
 			</table>
 	</div>
 	<br/>
-	<button id="insert-list">프로젝트 등록</button>
+	<!-- <button id="insert-list">프로젝트 등록</button> -->
 </div>
 </body>
 </html>

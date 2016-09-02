@@ -341,21 +341,19 @@ public class StaffDao {
 //		return result;
 	}
 		
-	public int deleteStaff(int no){
-		StringBuilder sql = new StringBuilder();
-		sql.append("delete staff");
-		sql.append(" where empid=?");
+	public int deleteStaff(String empno){
+		String sql = "delete staff where empno=?";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		
-		int result = -1;
+		int result = 0;
 		
 		try{
 			conn = DBManager.getConnection();
-			pstmt = conn.prepareStatement(sql.toString());
+			pstmt = conn.prepareStatement(sql);
 				
-			pstmt.setInt(1, no);
+			pstmt.setString(1, empno);
 				
 			result = pstmt.executeUpdate();
 		} catch(SQLException e){

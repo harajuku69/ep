@@ -1,29 +1,33 @@
 package com.mars.common.action;
 
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.JsonObject;
 import com.mars.staff.dao.StaffDao;
-import com.mars.staff.dto.StaffDto;
 
-public class StaffListAction implements Action {
+public class StaffDeleteAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "staff/staffList.jsp";
+		String empid = request.getParameter("empid");
 		
 		StaffDao sDao = StaffDao.getInstance();
-		List<StaffDto> staffList = sDao.selectAllStaff();
+		int result = sDao.deleteStaff(empid);
+		JsonObject json = new JsonObject();
 		
-		request.setAttribute("staffList", staffList);
+		if(result ==1){
+			json.addProperty("msg", "success");
+		} else{
+			json.addProperty("msg", "fail");
+		}
 		
-		RequestDispatcher disp = request.getRequestDispatcher(url);
-		disp.forward(request, response);
+		PrintWriter out = response.getWriter();
+		out.print(json);
 	}
 
 }

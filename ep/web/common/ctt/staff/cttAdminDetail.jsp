@@ -104,7 +104,8 @@
 				<td>${adm}</td>
 			</tr>
 		</table>
-		<br/><input type="button" value="수정하기" onclick="location.href='staff.do?cmd=admin_update_page'">
+		<br/><input type="button" value="수정하기" onclick="location.href='staff.do?cmd=admin_update_page&empid=${reqStaff.empid}'">
+		<br/><input type="button" value="돌아가기" onclick="location.href='staff.do?cmd=staff_list'">
 		<!-- </form> -->
 	</div>
 </div>

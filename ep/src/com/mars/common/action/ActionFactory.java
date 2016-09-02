@@ -49,6 +49,8 @@ public class ActionFactory {
 //			action = new ZipcdUpdateAction();
 		} else if(cmd.equals("staff_list")){
 			action = new StaffListAction();
+		} else if(cmd.equals("staff_delete")){
+			action = new StaffDeleteAction();
 		} else if(cmd.equals("logout")){
 			action = new LogoutAction();
 		}

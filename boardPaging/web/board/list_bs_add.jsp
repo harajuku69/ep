@@ -35,7 +35,7 @@ try {
 } finally {
 	DBManager.close(con,pstmt,rs);
 }
-//2.페이지당 보일 레코드 수를 결정하고 총 페이지 수를 구한다.
+//2.페이지당 보일 레코드 수를 결정하고 총 페이지 수/총 블락수를 구한다.
 int numPerPage = 10; //한 페이지에서 보일 레코드 수
 int totalPage = 0; //총 페이지수
 int block = 1;//페이지 그룹 번호 초기화
@@ -46,6 +46,15 @@ if (totalRecord != 0) {
 		totalPage = totalRecord / numPerPage;
 	} else {
 		totalPage = totalRecord / numPerPage + 1;
+	}
+}
+
+int totalBlock = 0;
+if(totalPage>0){
+	if(totalPage%pagePerBlock ==0 ){
+		totalBlock=totalPage/pagePerBlock;
+	} else{
+		totalBlock=totalPage/pagePerBlock + 1;
 	}
 }
 
@@ -65,17 +74,6 @@ if(curPage % pagePerBlock == 0){
 
 int firstPage = (block-1)*pagePerBlock + 1;//블락이 속한 첫페이지
 int lastPage = block*pagePerBlock;
-
-int totalBlock = 0;
-if(totalPage>0){
-	if(totalPage%pagePerBlock ==0 ){
-		totalBlock=totalPage/pagePerBlock;
-	} else{
-		totalBlock=totalPage/pagePerBlock + 1;
-	}
-}
-
-
 
 try {
 	con = DBManager.getConnection();
@@ -143,7 +141,6 @@ if(block >= totalBlock){
 for (int i = firstPage; i <= lastPage; i++) {
 %>
     <li class="page-item">
-      <%-- <a class="page-link" href="list_bs_add.jsp?curPage=<%=i %>"><%=i %> --%> 
  		<a class="page-link" href="list_bs_add.jsp?curPage=<%=i %>"><%=i %></a>
       	<span class="sr-only">(current)</span></a>
     </li>

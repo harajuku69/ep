@@ -85,7 +85,7 @@
 				</td>
 			</tr>
 		</table>
-		<form action="staff.do?cmd=admin_update" method="post" name="frm">
+		<form action="staff.do?cmd=admin_update&empid=${reqStaff.empid}" method="post" name="frm">
 		<table style="font-size:20px;">
 			<tr><th colspan="2">사원 정보</th></tr>
 			<tr>
@@ -164,7 +164,7 @@
 		</table>
 		<input type="submit" value="수정 완료" >
 		<input type="reset" value="다시 작성" >
-		<input type="button" value="수정 취소" onclick="location.href='staff.do?cmd=admin_detail_page'">
+		<input type="button" value="돌아가기" onclick="location.href='staff.do?cmd=admin_detail_page&empid=${reqStaff.empid}'">
 		</form>
 	</div>
 </div>

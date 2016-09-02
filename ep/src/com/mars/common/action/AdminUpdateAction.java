@@ -16,7 +16,8 @@ public class AdminUpdateAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "staff/adminDetail.jsp";
 		
-		String empid = SS.getEmpid(request);
+//		String empid = SS.getEmpid(request);
+		String empid = request.getParameter("empid");
 		
 		StaffDto sDto = new StaffDto();
 		sDto.setDptcd(request.getParameter("dptcd"));

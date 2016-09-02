@@ -73,11 +73,13 @@ $(function() {
 							"<td id='gugunInfo'>" + zipcdInfo.gugun + "</td>" +
 							"<td id='dongInfo'>" + zipcdInfo.dong + "</td>" +
 							"<td id='bunjiInfo'>" + zipcdInfo.bunji + "</td>" +
-							"<td width='50px'><button id='getzipcd' onclick='setZipcd(" + "\"" + zipcdInfo.zipcd + "\"" 
-																						+ ", " + "\"" + zipcdInfo.sido + "\""
-																						+ ", " + "\"" + zipcdInfo.gugun + "\""
-																						+ ", " + "\"" + zipcdInfo.dong + "\""
-																						+ ");'>선 택</button></td></tr>" 
+							"<td width='50px'>" +
+							"<button id='getzipcd' " +
+							"onclick='setZipcd(" + "\"" + zipcdInfo.zipcd + "\"" 
+												 + ", " + "\"" + zipcdInfo.sido + "\""
+												 + ", " + "\"" + zipcdInfo.gugun + "\""
+												 + ", " + "\"" + zipcdInfo.dong + "\""
+												 + ");'>선 택</button></td></tr>" 
 						);
 					}
 				}

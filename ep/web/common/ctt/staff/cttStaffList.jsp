@@ -7,14 +7,18 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="js/contents.js"></script>
 </head>
 <body>
 <div class="contents">
 	<h1> Mars 사원 목록 </h1>
-	<div id="list-contain" class="ui-widget">
-			<table class="list">
-				<thead>
+	<div id="list_contain" class="ui-widget">
+	<!-- <div class="contain" class="ui-widget"> -->
+		<table class="list" class="ui-widget ui-widget-content">
+			<thead>
+				<tr>
+					<!-- <td class="addbtn" colspan="7" style="text-align:right; border:none;"><a href="#" onClick="history.go(-1)"><button id="back">돌아가기</button></a></td> -->
+					<td class="addbtn" colspan="7" style="text-align:right; border:none;"><a href="#" onClick="history.go(-1)"><button id="back">돌아가기</button></a></td>
+				</tr>
 				<tr class="ui-widget-header">
 					<th>이 름</th>
 					<th>부 서</th>
@@ -24,23 +28,23 @@
 					<th>수 정</th>
 					<th>삭 제</th>
 				</tr>
-				<thead>
-				<tbody>
-				</tbody>
-				<c:forEach var="it" items="${staffList}">
-					<tr class="${it.empid}">
-						<td>
-							<a href="staff.do?cmd=admin_detail_page&empid=${it.empid}">${it.empnm}</a>
-						</td>
-						<td>${it.dptcd}</td>
-						<td>${it.titcd}</td>
-						<td>${it.phone}</td>
-						<td><a href="mailto:${it.empid}@mars.com">${it.empid}@mars.com</a></td>
-						<td><button id="update-list" onclick='staff.do?cmd=admin_update_page&empid=${it.empid}'>수정</button></td>
-						<td><button id="delete-list" onclick='staff.do?cmd=admin_delete_page&empid=${it.empid}'>삭제</button></td>
-					</tr>
-				</c:forEach>
-			</table>
+			</thead>
+			<tbody>
+			<c:forEach var="item" items="${staffList}">
+				<tr class="${item.empno}">
+					<td>
+						<a href="staff.do?cmd=admin_detail_page&empid=${item.empid}">${item.empnm}</a>
+					</td>
+					<td>${item.dptcd}</td>
+					<td>${item.titcd}</td>
+					<td>${item.phone}</td>
+					<td><a href="mailto:${item.empid}@mars.com">${item.empid}@mars.com</a></td>
+					<td><a href="staff.do?cmd=admin_update_page&empid=${item.empid}">수정</a></td>
+					<td><a href="#" onClick="deleteItem('staff','${item.empno}')">삭제</a></td>
+				</tr>
+			</c:forEach>
+			</tbody>
+		</table>
 	</div>
 	<br/>
 </div>
