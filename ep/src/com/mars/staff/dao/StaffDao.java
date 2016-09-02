@@ -7,8 +7,10 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
+import com.mars.common.action.Paging;
 import com.mars.common.db.DBManager;
 import com.mars.staff.dto.StaffDto;
 import com.mars.staff.dto.ZipDto;
@@ -114,7 +116,16 @@ public class StaffDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select * from staff where empid=?";
+		String sql = "SELECT s.empnm, s.empid, s.empno, s.jumin, s.pic, "
+						  + "s.zipcd, s.addr, s.addrdtl, s.sal, s.startdt, "
+						  + "s.enddt, s.regdt, s.admchk, d.dpt, t.tit, s.phone, "
+						  + "s.pwd, s.admnm, s.lastdt, s.logdt "
+					 + "FROM STAFF s "
+					 + "JOIN dpt d "
+					   + "ON s.dptcd=d.dptcd "
+					 + "JOIN tit t "
+					   + "ON s.titcd=t.titcd "
+					+ "WHERE s.empid=?";
 		try{
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -133,8 +144,8 @@ public class StaffDao {
 				sDto.setZipcd(rs.getString("zipcd"));
 				sDto.setAddr(rs.getString("addr"));
 				sDto.setAddrdtl(rs.getString("addrdtl"));
-				sDto.setDptcd(rs.getString("dptcd"));
-				sDto.setTitcd(rs.getString("titcd"));
+				sDto.setDptcd(rs.getString("dpt"));
+				sDto.setTitcd(rs.getString("tit"));
 				sDto.setSal(Integer.parseInt(rs.getString("sal")));
 				sDto.setStartdt(rs.getTimestamp("startdt"));
 				sDto.setEnddt(rs.getTimestamp("enddt"));
@@ -398,8 +409,32 @@ public class StaffDao {
 		return zipcdList;
 	}
 
-	public List<StaffDto> selectAllStaff() {
-		String sql = "select * from staff order by empnm";
+	public List<StaffDto> selectAllStaff(String sttRecNo, String endRecNo) {
+//		String sql = "SELECT count(*) FROM staff";
+//		int pn = pageNo;
+//		int rpp = recPerPage;
+//		int ppb = pagePerBlock;
+//		
+//		HashMap<String, Integer> map = new HashMap<>();
+//		map = Paging.getParam(sql, pn, rpp, ppb);
+		
+//		String sql = "SELECT s.empnm,d.dpt,t.tit,s.phone,s.empid "
+//				+ "FROM staff s JOIN dpt d ON s.dptcd=d.dptcd "
+//				+ "JOIN tit t ON s.titcd=t.titcd";
+		String sql = "SELECT s.empnm,d.dpt,t.tit,s.phone,s.empid "
+					 + "FROM ("
+					 		+ "SELECT ROWNUM R, a.* "
+						     + " FROM ( "
+						     		 + "SELECT empnm,dptcd,titcd,phone,empid "
+									   + "FROM staff ORDER BY empnm "
+									+ ") a "
+						   + ") s "
+					 + "JOIN dpt d "
+					   + "ON s.dptcd=d.dptcd "
+					 + "JOIN tit t "
+					   + "ON s.titcd=t.titcd "
+					+ "WHERE R BETWEEN ? AND ? "
+					+ "ORDER BY s.empnm";
 		
 		List<StaffDto> staffList = new ArrayList<StaffDto>();
 		Connection conn = null;
@@ -409,14 +444,16 @@ public class StaffDao {
 		try{
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, sttRecNo);
+			pstmt.setString(2, endRecNo);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
 				StaffDto sDto = new StaffDto();
 				
 				sDto.setEmpnm(rs.getString("empnm"));
-				sDto.setDptcd(rs.getString("dptcd"));
-				sDto.setTitcd(rs.getString("titcd"));
+				sDto.setDptcd(rs.getString("dpt"));
+				sDto.setTitcd(rs.getString("tit"));
 				sDto.setPhone(rs.getString("Phone"));
 				sDto.setEmpid(rs.getString("empid"));
 				
