@@ -31,7 +31,7 @@
 			</thead>
 			<tbody>
 			<c:forEach var="item" items="${staffList}">
-				<tr class="${item.empno}">
+				<tr class="${item.empid}">
 					<td>
 						<a href="staff.do?cmd=admin_detail_page&empid=${item.empid}">${item.empnm}</a>
 					</td>
@@ -40,7 +40,7 @@
 					<td>${item.phone}</td>
 					<td><a href="mailto:${item.empid}@mars.com">${item.empid}@mars.com</a></td>
 					<td><a href="staff.do?cmd=admin_update_page&empid=${item.empid}">수정</a></td>
-					<td><a href="#" onClick="deleteItem('staff','${item.empno}')">삭제</a></td>
+					<td><a href="#" onClick="deleteItem('staff','${item.empid}')">삭제</a></td>
 				</tr>
 			</c:forEach>
 			</tbody>

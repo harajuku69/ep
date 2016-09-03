@@ -352,8 +352,8 @@ public class StaffDao {
 //		return result;
 	}
 		
-	public int deleteStaff(String empno){
-		String sql = "delete staff where empno=?";
+	public int deleteStaff(String empid){
+		String sql = "delete staff where empid=?";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -364,7 +364,7 @@ public class StaffDao {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 				
-			pstmt.setString(1, empno);
+			pstmt.setString(1, empid);
 				
 			result = pstmt.executeUpdate();
 		} catch(SQLException e){

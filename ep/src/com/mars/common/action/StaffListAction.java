@@ -23,7 +23,7 @@ public class StaffListAction implements Action {
 //		int recPerPage = Integer.parseInt(request.getParameter("recPerPage"));
 //		int pagePerBlock = Integer.parseInt(request.getParameter("pagePerBlock"));
 //		int pageNo = 2;
-		System.out.println(pageNo);
+//		System.out.println(pageNo);
 		int recPerPage = 4;
 		int pagePerBlock = 5;
 		
