@@ -72,12 +72,16 @@ $(function() {
 		var valid = true;
 		//학력 추가 처리
 		eduAllFields.removeClass("ui-state-error");
-		valid = checkLength(loc, 2, 30 );
-		valid = valid && checkRegexp( loc, /^[가-힣a-z0-9]([가-힣a-z0-9])*$/ );
-		valid = valid && checkLength( school, 2, 30 );
+//		valid = checkLength(loc, 2, 30 );
+		valid = checkRegexp( loc, /^[가-힣a-z0-9]([가-힣a-z0-9])*$/ );
+		
+//		valid = valid && checkLength( school, 2, 30 );
 		valid = valid && checkRegexp( school, /^[가-힣a-z0-9]([가-힣a-z0-9])*$/ );
-		valid = valid && checkLength( major, 2, 20 );
+		
+//		valid = valid && checkLength( major, 2, 20 );
 		valid = valid && checkRegexp( major, /^[가-힣a-z0-9]([가-힣a-z0-9])*$/ );
+//		valid = valid && checkLength( enterdt, 2, 20 );
+//		valid = valid && checkLength( graddt, 2, 20 );
 		
 		if ( valid ) {
 			$("#edu tbody").append( "<tr>" +
@@ -94,11 +98,13 @@ $(function() {
 		//경력 추가 처리
 		crrAllFields.removeClass("ui-state-error");
 //		valid = true;
-		valid = valid && checkLength(comnm, 2, 30 );
+//		valid = checkLength(comnm, 2, 30 );
 		valid = valid && checkRegexp(comnm, /^[가-힣a-z0-9]([가-힣a-z0-9])*$/ );
-		valid = valid && checkLength(dpt, 2, 30 );
+		
+//		valid = valid && checkLength(dpt, 2, 30 );
 		valid = valid && checkRegexp(dpt, /^[가-힣a-z0-9]([가-힣a-z0-9])*$/ );
-		valid = valid && checkLength(tit, 2, 20 );
+		
+//		valid = valid && checkLength(tit, 2, 20 );
 		valid = valid && checkRegexp(tit, /^[가-힣a-z0-9]([가-힣a-z0-9])*$/ );
 		if ( valid ) {
 			$("#crr tbody").append( "<tr>" +
@@ -115,11 +121,13 @@ $(function() {
 		//자격증 추가 처리
 		certiAllFields.removeClass("ui-state-error");
 //		valid = true;
-		valid = valid && checkLength(certinm, 2, 30 );
+//		valid = checkLength(certinm, 2, 30 );
 		valid = valid && checkRegexp(certinm, /^[가-힣a-z0-9]([가-힣a-z0-9])*$/ );
-		valid = valid && checkLength(rank, 2, 30 );
+		
+//		valid = valid && checkLength(rank, 2, 30 );
 		valid = valid && checkRegexp(rank, /^[가-힣a-z0-9]([가-힣a-z0-9])*$/ );
-		valid = valid && checkLength(publ, 2, 20 );
+		
+//		valid = valid && checkLength(publ, 2, 20 );
 		valid = valid && checkRegexp(publ, /^[가-힣a-z0-9]([가-힣a-z0-9])*$/ );
 		if ( valid ) {
 			$("#certi tbody").append( "<tr>" +

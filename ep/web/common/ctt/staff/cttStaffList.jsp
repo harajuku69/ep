@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="js/delete.js"></script>
 </head>
 <body>
 <div class="contents">
@@ -95,3 +96,15 @@
 </div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

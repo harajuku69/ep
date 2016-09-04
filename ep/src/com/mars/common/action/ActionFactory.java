@@ -59,12 +59,16 @@ public class ActionFactory {
 			action = new AdminNotiListAction();
 		} else if(cmd.equals("admin_noti_detail")){
 //			action = new AdminNotiDetailAction();
+		} else if(cmd.equals("noti_delete")){
+			action = new NotiDeleteAction();
 		}
 		//notice_action
 		  else if(cmd.equals("admin_pjt_list")){
 			action = new AdminPjtListAction();
 		} else if(cmd.equals("admin_pjt_detail")){
 //			action = new AdminPjtDetailAction();
+		} else if(cmd.equals("pjt_delete")){
+			action = new PjtDeleteAction();
 		}
 		//pjt_action
 		return action;

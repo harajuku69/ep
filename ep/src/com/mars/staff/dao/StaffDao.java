@@ -356,10 +356,10 @@ public class StaffDao {
 	public int deleteStaff(String empno){
 		String sql = "delete staff where empno=?";
 		
+		int result = 0;
+		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		
-		int result = 0;
 		
 		try{
 			conn = DBManager.getConnection();

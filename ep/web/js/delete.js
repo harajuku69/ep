@@ -8,7 +8,7 @@ function deleteItem(field, item){
 		url = "noti.do?cmd=noti_delete&notino=" + item;
 		del = "."+ item;
 	} else if(field == "pjt"){
-		url = "pjt.do?cmd=pjt_delete&=pjtno=" + item;
+		url = "pjt.do?cmd=pjt_delete&pjtno=" + item;
 		del = "."+ item;
 	}
 	$("tr").remove(del);

@@ -24,17 +24,28 @@ public class PjtDao {
 		return instance;
 	}
 	
-	public List<PjtDto> selectAllPjt(){
+	public List<PjtDto> selectAllPjt(String sttRecNo, String endRecNo){
+		String sql = "SELECT * "
+				 	 + "FROM ("
+				 	 		+ "SELECT ROWNUM R, a.* "
+				 	 		 + " FROM ( "
+				 	 		 		  + "SELECT * "
+				 	 		 		    + "FROM pjt ORDER BY pjtno desc "
+				 	 		 	    + ") a "
+				 	 	   + ") p "
+				 	+ "WHERE R BETWEEN ? AND ? "
+				 	+ "ORDER BY p.pjtno desc";
 		
 		List<PjtDto> pjtList = new ArrayList<PjtDto>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select * from pjt order by pjtno desc";
 		try{
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, sttRecNo);
+			pstmt.setString(2, endRecNo);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
@@ -49,6 +60,7 @@ public class PjtDao {
 				pDto.setReguser(rs.getString("reguser"));
 				
 				pjtList.add(pDto);
+//				System.out.println(pjtList);
 			}
 			
 		} catch(SQLException e){
@@ -59,6 +71,29 @@ public class PjtDao {
 		
 		return pjtList;
 	}
+	
+	public int deletePjt(String pjtno){
+		String sql = "delete pjt where pjtno=?";
+		
+		int result = 0;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try{
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, pjtno);
+			
+			result = pstmt.executeUpdate();
+		} catch(SQLException e){
+			e.printStackTrace();
+		} 
+		System.out.println(result);
+		return result;
+	}
+	
 }
 
 
