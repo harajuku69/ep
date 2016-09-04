@@ -20,6 +20,7 @@ public class StaffUpdatePageAction implements Action {
 		StaffDao sDao = StaffDao.getInstance();
 		StaffDto sDto = sDao.selectOneByEmpid(empid);
 		
+		request.setAttribute("reqStaff", sDto);
 		Fmt.toFmtAndReqSet(request, sDto);
 		
 		RequestDispatcher disp = request.getRequestDispatcher(url);

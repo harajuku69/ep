@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,26 +31,26 @@
 				</tr>
 			</thead>
 			<tbody>
-			<c:forEach var="item" items="${staffList}">
-				<tr class="${item.empid}">
+			<c:forEach var="item" items="${reqStaffList}">
+				<tr class="${item.empno}">
 					<td>
 						<a href="staff.do?cmd=admin_detail_page&empid=${item.empid}">${item.empnm}</a>
 					</td>
 					<td>${item.dptcd}</td>
 					<td>${item.titcd}</td>
-					<td>${item.phone}</td>
+					<td>
+						<c:set var="phone" value="${item.phone}"/>
+						<c:set var="dash" value="${'-'}"/>
+						<c:out value="${fn:substring(phone,0,3)}${dash}${fn:substring(phone,3,7)}${dash}${fn:substring(phone,7,11)}"/>
+					</td>
 					<td><a href="mailto:${item.empid}@mars.com">${item.empid}@mars.com</a></td>
 					<td><a href="staff.do?cmd=admin_update_page&empid=${item.empid}">수정</a></td>
-					<td><a href="#" onClick="deleteItem('staff','${item.empid}')">삭제</a></td>
+					<td><a href="#" onClick="deleteItem('staff','${item.empno}')">삭제</a></td>
 				</tr>
 			</c:forEach>
 			</tbody>
 		</table>
 		<div id="paging" style="text-align:center; font-size:20px; padding:1em">
-			<!-- <li class="page-item">
-				<a class="page-link" href="staff.do?cmd=staff_list&pageNo=">i</a>
-      			<span class="sr-only">(current)</span></a>
-    		</li> -->
     		<%-- ${pageNo}
     		${blockNo}
     		${totPage}

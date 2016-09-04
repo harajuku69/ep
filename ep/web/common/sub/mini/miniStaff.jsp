@@ -13,8 +13,11 @@
 </head>
 <body>
 <div class="mini">
-	<p style="display:inline;">Staff </p>|
-	<p style="display:inline;"><a href="staff.do?cmd=admin_home_page"> Admin</a></p>
+	<p style="display:inline;">Staff </p>
+	<c:if test="${ssAdmchk == 1}" >
+		<span>|</span>
+		<p style="display:inline;"><a href="staff.do?cmd=admin_home_page&toStat=1"> Admin</a></p>
+	</c:if>
 	<hr/>
 	<div class="mstaff">
 		<div class="pd">
@@ -33,14 +36,14 @@
 		</div>
 		<div class="simple">
 			<ul>
-				<li>최종 로그인 : ${ssStaff.lastdt}</li>
-				<li>소속 : <a href="#=?부서원 검색결과">${reqStaff.dptcd}</a></li>
-				<li>직급 : ${reqStaff.titcd}</li>
-				<li>사번 : ${reqStaff.empno}</li>
+				<li>최종 로그인 : ${ssLastdt}</li>
+				<li>소속 : <a href="#=?부서원 검색결과">${ssDptcd}</a></li>
+				<li>직급 : ${ssTitcd}</li>
+				<li>사번 : ${ssEmpno}</li>
 				<!-- <li>프로젝트 : <a href="URL=?프로젝트 상세보기">수치예보 41기</a></li> -->
 				<!-- <p><a href="staffdetail.do">개인 상세 정보</a></p> -->
-				<p><a href="staff.do?cmd=staff_detail_page&empid=${ssEmpid}">개인 상세 정보</a></p>
 			</ul>
+				<p><a href="staff.do?cmd=staff_detail_page&empid=${ssEmpid}">개인 상세 정보</a></p>
 		</div>
 	</div>
 </div>

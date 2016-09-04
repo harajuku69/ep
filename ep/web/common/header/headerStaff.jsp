@@ -18,7 +18,14 @@
 				<tr>
 					<td><a href="staff.do?cmd=staff_home_page">Home</a></td>
 					<td><a href="staff.do?cmd=logout">Logout</a></td>
-					<td><a href="staff.do?cmd=admin_home_page">Admin</a></td>
+					<c:choose>
+						<c:when test="${ssAdmchk == 1}">
+							<td><a href="staff.do?cmd=admin_home_page">${ssAdmnm}</a></td>
+						</c:when>
+						<c:otherwise>
+							<td><a href="staff.do?cmd=staff_detail_page&empid={ssEmpid}">${ssEmpnm}</a></td>
+						</c:otherwise>
+					</c:choose>
 				</tr>
 			</table>
 		</div>

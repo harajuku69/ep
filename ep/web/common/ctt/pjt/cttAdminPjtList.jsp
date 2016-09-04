@@ -31,11 +31,11 @@
 				</thead>
 				<tbody>
 				</tbody>
-				<c:forEach var="it" items="${pjtList}">
+				<c:forEach var="it" items="${reqPjtList}">
 					<tr class="${it.pjtno}">
 						<td>${it.pjtno}</td>
 						<td>
-							<a href="pjt.do?cmd=pjt_detail&no=${it.pjtno}">${it.pjtnm}</a>
+							<a href="pjt.do?cmd=admin_pjt_detail&no=${it.pjtno}">${it.pjtnm}</a>
 						</td>
 						<td>${it.startdt}</td>
 						<td>${it.enddt}</td>

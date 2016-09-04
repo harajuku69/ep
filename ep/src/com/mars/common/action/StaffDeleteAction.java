@@ -14,10 +14,10 @@ public class StaffDeleteAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String empid = request.getParameter("empid");
+		String empno = request.getParameter("empno");
 		
 		StaffDao sDao = StaffDao.getInstance();
-		int result = sDao.deleteStaff(empid);
+		int result = sDao.deleteStaff(empno);
 		JsonObject json = new JsonObject();
 		
 		if(result ==1){

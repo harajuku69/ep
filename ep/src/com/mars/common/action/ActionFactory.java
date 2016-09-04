@@ -55,12 +55,16 @@ public class ActionFactory {
 			action = new LogoutAction();
 		}
 		//staff_action
-		  else if(cmd.equals("noti_list")){
-			action = new NotiListAction();
+		  else if(cmd.equals("admin_noti_list")){
+			action = new AdminNotiListAction();
+		} else if(cmd.equals("admin_noti_detail")){
+//			action = new AdminNotiDetailAction();
 		}
 		//notice_action
-		  else if(cmd.equals("pjt_list")){
-			action = new PjtListAction();
+		  else if(cmd.equals("admin_pjt_list")){
+			action = new AdminPjtListAction();
+		} else if(cmd.equals("admin_pjt_detail")){
+//			action = new AdminPjtDetailAction();
 		}
 		//pjt_action
 		return action;

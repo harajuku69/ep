@@ -35,7 +35,7 @@
 			</table>
 		</div>
 		<div id="logmain">
-		<form action="staff.do?cmd=login" method="post" name="frm">
+		<form action="staff.do?cmd=login&toStat=0" method="post" name="frm">
 			<table id="maintable">
 				<tr>
 					<td rowspan="3" id="mainleft">LOGIN</td>

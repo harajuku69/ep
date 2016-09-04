@@ -2,7 +2,7 @@
  * delete function
  */
 function deleteItem(field, item){
-	url = "staff.do?cmd=staff_delete&empid=" + item;
+	url = "staff.do?cmd=staff_delete&empno=" + item;
 	del = "."+ item;//클래스로 선언된 tr만 지울라고 .을 추가하는 것임
 	if(field == "noti"){
 		url = "noti.do?cmd=noti_delete&notino=" + item;

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Staff Detail</title>
+<title>Project List</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -14,9 +14,9 @@
 </head>
 <body>
 <div class="wrap">
-	<jsp:include page="../common/header/headerStaff.jsp"></jsp:include>
-	<jsp:include page="../common/ctt/noti/cttNotiList.jsp"></jsp:include>
-	<jsp:include page="../common/sub/subNotice.jsp"></jsp:include>
+	<jsp:include page="../common/header/headerAdmin.jsp"></jsp:include>
+	<jsp:include page="../common/ctt/pjt/cttAdminPjtList.jsp"></jsp:include>
+	<jsp:include page="../common/sub/subAdminPjt.jsp"></jsp:include>
 	<jsp:include page="../common/footer/footer.jsp"></jsp:include>
 </div>
 </body>

@@ -154,6 +154,7 @@ public class StaffDao {
 				sDto.setLogdt(rs.getString("logdt"));
 				sDto.setAdmchk(rs.getInt("admchk"));
 				sDto.setAdmnm(rs.getString("admnm"));
+//				System.out.println("Dao안에서 찍음 : "+sDto.getJumin());
 			}
 				
 		} catch(SQLException e){
@@ -352,8 +353,8 @@ public class StaffDao {
 //		return result;
 	}
 		
-	public int deleteStaff(String empid){
-		String sql = "delete staff where empid=?";
+	public int deleteStaff(String empno){
+		String sql = "delete staff where empno=?";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -364,7 +365,7 @@ public class StaffDao {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 				
-			pstmt.setString(1, empid);
+			pstmt.setString(1, empno);
 				
 			result = pstmt.executeUpdate();
 		} catch(SQLException e){
@@ -409,23 +410,12 @@ public class StaffDao {
 		return zipcdList;
 	}
 
-	public List<StaffDto> selectAllStaff(String sttRecNo, String endRecNo) {
-//		String sql = "SELECT count(*) FROM staff";
-//		int pn = pageNo;
-//		int rpp = recPerPage;
-//		int ppb = pagePerBlock;
-//		
-//		HashMap<String, Integer> map = new HashMap<>();
-//		map = Paging.getParam(sql, pn, rpp, ppb);
-		
-//		String sql = "SELECT s.empnm,d.dpt,t.tit,s.phone,s.empid "
-//				+ "FROM staff s JOIN dpt d ON s.dptcd=d.dptcd "
-//				+ "JOIN tit t ON s.titcd=t.titcd";
-		String sql = "SELECT s.empnm,d.dpt,t.tit,s.phone,s.empid "
+	public List<StaffDto> selectStaffList(String sttRecNo, String endRecNo) {
+		String sql = "SELECT s.empnm,d.dpt,t.tit,s.phone,s.empid,s.empno "
 					 + "FROM ("
 					 		+ "SELECT ROWNUM R, a.* "
 						     + " FROM ( "
-						     		 + "SELECT empnm,dptcd,titcd,phone,empid "
+						     		 + "SELECT empnm,dptcd,titcd,phone,empid,empno "
 									   + "FROM staff ORDER BY empnm "
 									+ ") a "
 						   + ") s "
@@ -456,7 +446,7 @@ public class StaffDao {
 				sDto.setTitcd(rs.getString("tit"));
 				sDto.setPhone(rs.getString("Phone"));
 				sDto.setEmpid(rs.getString("empid"));
-				
+				sDto.setEmpno(rs.getString("empno"));
 				staffList.add(sDto);
 			}
 		} catch(SQLException e){
@@ -466,6 +456,28 @@ public class StaffDao {
 		}
 		return staffList;
 	}
+
+//	public void updateStat(String empid, String toStat) {
+//		String sql = "update staff set stat=? where empid=?";
+//		String changeStat = toStat;
+//		
+//		Connection conn = null;
+//		PreparedStatement pstmt = null;
+//		
+//		try{
+//			conn = DBManager.getConnection();
+//			pstmt = conn.prepareStatement(sql);
+//				
+//			pstmt.setInt(1, Integer.parseInt(changeStat));	
+//			pstmt.setString(2, empid);
+//			
+//			pstmt.executeUpdate();
+//		} catch(SQLException e){
+//			e.printStackTrace();
+//		} finally{
+//			DBManager.close(conn, pstmt);
+//		}
+//	}
 
 //	public void updateZipcd(String no, String empid) {
 //		String sql = "select zipcd, sido, gugun, dong from zip where no=?";

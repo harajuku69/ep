@@ -32,11 +32,14 @@ public class StaffListAction implements Action {
 		
 		String sttRecNo = map.get("sttRecNo").toString();
 		String endRecNo = map.get("endRecNo").toString();
+		String empid = SS.getEmpid(request);
 		
 		StaffDao sDao = StaffDao.getInstance();
-		List<StaffDto> staffList = sDao.selectAllStaff(sttRecNo, endRecNo);
+		List<StaffDto> staffList = sDao.selectStaffList(sttRecNo, endRecNo);
+		StaffDto sDto = sDao.selectOneByEmpid(empid);
 		
-		request.setAttribute("staffList", staffList);
+		request.setAttribute("reqStaffList", staffList);
+		request.setAttribute("reqStaff", sDto);
 		request.setAttribute("firstPageNoInBlock", map.get("firstPageNoInBlock"));
 		request.setAttribute("lastPageNoInBlock", map.get("lastPageNoInBlock"));
 		request.setAttribute("prevPageNo", map.get("prevPageNo"));

@@ -11,13 +11,12 @@
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <script src="js/jquery-1.10.2.min.js"></script>
 <script src="js/jquery-ui.min.js"></script>
-<script src="js/dtpicker.js"></script>
 </head>
 <body>
 <div class="wrap">
-	<jsp:include page="../common/header/headerAdmin.jsp"></jsp:include>
-	<jsp:include page="../common/ctt/staff/cttAdminDetail.jsp"></jsp:include>
-	<jsp:include page="../common/sub/subAdmin.jsp"></jsp:include>
+	<jsp:include page="../common/header/headerStaff.jsp"></jsp:include>
+	<jsp:include page="../common/ctt/noti/cttStaffNotiList.jsp"></jsp:include>
+	<jsp:include page="../common/sub/subStaffNoti.jsp"></jsp:include>
 	<jsp:include page="../common/footer/footer.jsp"></jsp:include>
 </div>
 </body>

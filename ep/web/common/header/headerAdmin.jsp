@@ -18,7 +18,7 @@
 				<tr>
 					<td><a href="staff.do?cmd=admin_home_page">Home</a></td>
 					<td><a href="staff.do?cmd=logout">Logout</a></td>
-					<td><a href="staff.do?cmd=staff_home_page">Staff</a></td>
+					<td><a href="staff.do?cmd=staff_home_page">${ssEmpnm}</a></td>
 				</tr>
 			</table>
 		</div>
@@ -45,10 +45,10 @@
 							<!-- <p><a href="staff.do?cmd=admin_update_page">사원 정보 수정</a></p> -->
 						</td>
 						<td style="width:200px; line-height:10px">
-							<p><a href="noti.do?cmd=noti_list">공지사항 관리</a></p>
+							<p><a href="noti.do?cmd=admin_noti_list">공지사항 관리</a></p>
 						</td>
 						<td style="width:200px; line-height:10px">
-							<p><a href="pjt.do?cmd=pjt_list">프로젝트 관리</a></p>
+							<p><a href="pjt.do?cmd=admin_pjt_list">프로젝트 관리</a></p>
 						</td>
 					</tr>
 				</table>

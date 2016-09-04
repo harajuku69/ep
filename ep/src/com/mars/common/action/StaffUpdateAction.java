@@ -54,6 +54,7 @@ public class StaffUpdateAction implements Action{
 		
 		sDto = sDao.selectOneByEmpid(empid);
 //		System.out.println("업데이트 후 : " +sDto);
+		request.setAttribute("reqStaff", sDto);
 		Fmt.toFmtAndReqSet(request, sDto);
 		
 		RequestDispatcher disp = request.getRequestDispatcher(url);

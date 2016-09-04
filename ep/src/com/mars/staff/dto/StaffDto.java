@@ -23,6 +23,7 @@ public class StaffDto {
 	private String		logdt;
 	private int			admchk;
 	private String		admnm;
+//	private int			stat;
 	
 	public String getAdmnm() {
 		return admnm;
@@ -138,13 +139,18 @@ public class StaffDto {
 	public void setLogdt(String logdt) {
 		this.logdt = logdt;
 	}	
-	
 	public int getAdmchk() {
 		return admchk;
 	}
 	public void setAdmchk(int admchk) {
 		this.admchk = admchk;
 	}
+//	public int getStat() {
+//		return stat;
+//	}
+//	public void setStat(int stat) {
+//		this.stat = stat;
+//	}
 	@Override
 	public String toString() {
 		return "StaffDto [empid=" + empid + ", pwd=" + pwd + ", empno=" + empno + ", empnm=" + empnm + ", phone=" + phone + ", jumin=" + jumin + ", pic=" + pic + ", zipcd=" + zipcd + ", addr="

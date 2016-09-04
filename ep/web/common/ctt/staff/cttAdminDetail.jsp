@@ -29,7 +29,7 @@
 			<tr><th colspan="2">개인 정보</th></tr>
 			<tr>
 				<td>이 름</td>
-				<td>${reqStaff.empnm}</td>
+				<td>${ssEmpnm}</td>
 			</tr>
 			<tr>
 				<td>주민번호</td>

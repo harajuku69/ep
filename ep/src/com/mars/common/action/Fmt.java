@@ -54,7 +54,7 @@ public class Fmt {
 					+ "-" + sDto.getPhone().substring(3, 7) 
 					+ "-" + sDto.getPhone().substring(7);
 		}
-		request.setAttribute("reqStaff", sDto);
+//		request.setAttribute("reqStaff", sDto);
 		request.setAttribute("jmf", jmf);
 		request.setAttribute("jmb", jmb);
 		request.setAttribute("yyyy", yyyy);

@@ -17,10 +17,16 @@ public class AdminHomePageAction implements Action {
 		String url = "staff/adminHome.jsp";
 		
 		String empid = SS.getEmpid(request) ;
+//		String toStat = request.getParameter("toStat");
+		
 		StaffDao sDao = StaffDao.getInstance();
+//		sDao.updateStat(empid, toStat);
+		
 		StaffDto sDto = sDao.selectOneByEmpid(empid);
 		
-		Fmt.toFmtAndReqSet(request, sDto);
+//		Fmt.toFmtAndReqSet(request, sDto);
+		request.setAttribute("reqStaff", sDto);
+//		request.setAttribute("currStat", toStat);
 		
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);

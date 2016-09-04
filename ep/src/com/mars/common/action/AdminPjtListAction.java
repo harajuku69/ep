@@ -8,19 +8,20 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mars.noti.dao.NotiDao;
-import com.mars.noti.dto.NotiDto;
+import com.mars.common.action.Action;
+import com.mars.pjt.dao.PjtDao;
+import com.mars.pjt.dto.PjtDto;
 
-public class NotiListAction implements Action {
+public class AdminPjtListAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "noti/notiList.jsp";
+		String url = "pjt/adminPjtList.jsp";
 		
-		NotiDao nDao = NotiDao.getInstance();
-		List<NotiDto> notiList = nDao.selectAllNoti();
+		PjtDao pDao = PjtDao.getInstance();
+		List<PjtDto> pjtList= pDao.selectAllPjt();
 		
-		request.setAttribute("notiList", notiList);
+		request.setAttribute("reqPjtList", pjtList);
 		
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);

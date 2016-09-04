@@ -8,9 +8,9 @@
 </head>
 <body>
 <div class="sub">
-	<jsp:include page="mini/miniStaff.jsp"></jsp:include>
-	<jsp:include page="mini/miniStaffNoti.jsp"></jsp:include>
-	<jsp:include page="mini/miniStaffPjt.jsp"></jsp:include>
+	<jsp:include page="mini/miniAdmin.jsp"></jsp:include>
+	<jsp:include page="mini/miniNotiSch.jsp"></jsp:include>
+	<jsp:include page="mini/miniAdminPjt.jsp"></jsp:include>
 </div>
 </body>
 </html>

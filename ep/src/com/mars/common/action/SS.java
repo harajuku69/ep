@@ -14,10 +14,6 @@ public class SS {
 		return ssEmpid;
 	}
 	
-	public static String getPwd(HttpServletRequest request) {
-		String ssPwd = (String)getSS(request).getAttribute("ssPwd");
-		return ssPwd;
-	}
 	public static int getEmpnm(HttpServletRequest request) {
 		int ssEmpnm = (int)getSS(request).getAttribute("ssEmpnm");
 		return ssEmpnm;
@@ -28,13 +24,30 @@ public class SS {
 		return ssAdmnm;
 	}
 	
-//	public static StaffDto getDto(HttpServletRequest request) {
-//		StaffDto sDto = (StaffDto)getSS(request).getAttribute("ssStaff");
-//		return sDto;
-//	}
-//	public static int getAdmchk(HttpServletRequest request) {
-//		int ssAdmchk = (int)getSS(request).getAttribute("ssAdmchk");
-//		return ssAdmchk;
-//	}
+	public static int getAdmchk(HttpServletRequest request) {
+		int ssAdmchk = (int)getSS(request).getAttribute("ssAdmchk");
+		return ssAdmchk;
+	}
+	
+	public static void setDptcd(HttpServletRequest request, String dptcd){
+		getSS(request).setAttribute("ssDptcd", dptcd);
+	}
+	
+	public static void setTitcd(HttpServletRequest request, String titcd){
+		getSS(request).setAttribute("ssTitcd", titcd);
+	}
 }
 
+//	public static void setCurrStat(HttpServletRequest request, String currStat){
+//		getSS(request).setAttribute("ssCurrStat", currStat);
+//	}
+//	
+//	public static int getCurrStat(HttpServletRequest request) {
+//		int currStat = (int)getSS(request).getAttribute("ssCurrStat");
+//		return currStat;
+//	}
+
+//	public static String getPwd(HttpServletRequest request) {
+//		String ssPwd = (String)getSS(request).getAttribute("ssPwd");
+//		return ssPwd;
+//	}

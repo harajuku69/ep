@@ -30,11 +30,11 @@
 				</thead>
 				<tbody>
 				</tbody>
-				<c:forEach var="it" items="${notiList}">
+				<c:forEach var="it" items="${reqNotiList}">
 					<tr class="${it.notino}">
 						<td>${it.notino}</td>
 						<td>
-							<a href="notice.do?cmd=notice_detail&no=${it.notino}">${it.tit}</a>
+							<a href="noti.do?cmd=admin_notice_detail&no=${it.notino}">${it.tit}</a>
 						</td>
 						<td>${it.regdt}</td>
 						<td>${it.empid}</td>
