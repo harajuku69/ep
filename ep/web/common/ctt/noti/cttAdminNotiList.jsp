@@ -34,10 +34,10 @@
 				<tr class="${item.notino}">
 					<td>${item.notino}</td>
 					<td>
-						<a href="noti.do?cmd=admin_noti_detail&no=${item.notino}">${item.tit}</a>
+						<a href="noti.do?cmd=admin_noti_detail_page&notino=${item.notino}&pageNo=${pageNo}">${item.tit}</a>
 					</td>
 					<td>${item.regdt}</td>
-					<td>${item.empid}</td>
+					<td>${item.admnm}</td>
 					<td>${item.rdcnt}</td>
 					<td><a href="noti.do?cmd=noti_update_page&notino=${item.notino}">수정</a></td>
 					<td><a href="#" onClick="deleteItem('noti','${item.notino}')">삭제</a></td>

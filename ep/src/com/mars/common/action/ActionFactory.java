@@ -57,8 +57,10 @@ public class ActionFactory {
 		//staff_action
 		  else if(cmd.equals("admin_noti_list")){
 			action = new AdminNotiListAction();
-		} else if(cmd.equals("admin_noti_detail")){
-//			action = new AdminNotiDetailAction();
+		} else if(cmd.equals("admin_noti_detail_page")){
+			action = new AdminNotiDetailPageAction();
+		} else if(cmd.equals("noti_update_page")){
+			action = new NotiUpdatePageAction();
 		} else if(cmd.equals("noti_delete")){
 			action = new NotiDeleteAction();
 		}

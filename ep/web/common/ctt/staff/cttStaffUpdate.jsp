@@ -170,7 +170,7 @@
 		<br>
 		<div style="clear:both">
 			<p><input type="submit" value="수정 완료" ></p>
-			<p><input type="reset" value="다시 작성" ></p>
+			<p><input type="reset" value="되돌리기" ></p>
 			<p><input type="button" value="수정 취소" onclick="location.href='staff.do?cmd=staff_detail_page'"></p>
 		</div>
 		</form>

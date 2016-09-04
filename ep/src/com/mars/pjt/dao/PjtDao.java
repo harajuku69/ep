@@ -90,7 +90,7 @@ public class PjtDao {
 		} catch(SQLException e){
 			e.printStackTrace();
 		} 
-		System.out.println(result);
+//		System.out.println(result);
 		return result;
 	}
 	

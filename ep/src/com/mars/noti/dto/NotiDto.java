@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class NotiDto {
 	private int 		notino;
-	private String 		empid;
+	private String 		admnm;
 	private String		tit;
 	private String		ctt;
 	private Timestamp	regdt;
@@ -17,11 +17,11 @@ public class NotiDto {
 	public void setNotino(int notino) {
 		this.notino = notino;
 	}
-	public String getEmpid() {
-		return empid;
+	public String getAdmnm() {
+		return admnm;
 	}
-	public void setEmpid(String empid) {
-		this.empid = empid;
+	public void setAdmnm(String admnm) {
+		this.admnm = admnm;
 	}
 	public String getTit() {
 		return tit;
@@ -55,7 +55,7 @@ public class NotiDto {
 	}
 	@Override
 	public String toString() {
-		return "NotiDto [notino=" + notino + ", empid=" + empid + ", tit=" + tit + ", regdt=" + regdt + ", readcnt="
+		return "NotiDto [notino=" + notino + ", admnm=" + admnm + ", tit=" + tit + ", regdt=" + regdt + ", readcnt="
 				+ rdcnt + ", delchk=" + delchk + "]";
 	}
 }

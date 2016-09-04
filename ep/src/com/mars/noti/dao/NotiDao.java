@@ -59,7 +59,7 @@ public class NotiDao {
 				NotiDto nDto = new NotiDto();
 				
 				nDto.setNotino(rs.getInt("notino"));
-				nDto.setEmpid(rs.getString("empid"));
+				nDto.setAdmnm(rs.getString("admnm"));
 				nDto.setTit(rs.getString("tit"));
 				nDto.setCtt(rs.getString("ctt"));
 				nDto.setRegdt(rs.getTimestamp("regdt"));
@@ -97,7 +97,7 @@ public class NotiDao {
 				nDto = new NotiDto();
 				
 				nDto.setNotino(rs.getInt("notino"));
-				nDto.setEmpid(rs.getString("empid"));
+				nDto.setAdmnm(rs.getString("admnm"));
 				nDto.setTit(rs.getString("tit"));
 				nDto.setCtt(rs.getString("ctt"));
 				nDto.setRegdt(rs.getTimestamp("regdt"));
@@ -113,7 +113,7 @@ public class NotiDao {
 	}
 	
 	public void insertNoti(NotiDto nDto){
-		String sql = "insert into noti(notino, empid, title, contents) values(noti_no_seq.nextval,?,?,?)";
+		String sql = "insert into noti(notino, admnm, title, contents) values(noti_no_seq.nextval,?,?,?)";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -122,7 +122,7 @@ public class NotiDao {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, nDto.getEmpid());
+			pstmt.setString(1, nDto.getAdmnm());
 			pstmt.setString(2, nDto.getCtt());
 			pstmt.setString(3, nDto.getTit());
 			
@@ -157,7 +157,7 @@ public class NotiDao {
 	}
 	
 	public void updateNoti(NotiDto nDto){
-		String sql = "update noti set empid=?, title=?, contents=? where notino=?";
+		String sql = "update noti set admnm=?, title=?, contents=? where notino=?";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -166,7 +166,7 @@ public class NotiDao {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 				
-			pstmt.setString(1, nDto.getEmpid());
+			pstmt.setString(1, nDto.getAdmnm());
 			pstmt.setString(2, nDto.getTit());
 			pstmt.setString(3, nDto.getCtt());
 			pstmt.setInt(4, nDto.getNotino());	

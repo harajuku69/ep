@@ -163,7 +163,7 @@
 			</tr>
 		</table>
 		<input type="submit" value="수정 완료" >
-		<input type="reset" value="다시 작성" >
+		<input type="reset" value="되돌리기" >
 		<input type="button" value="돌아가기" onclick="location.href='staff.do?cmd=admin_detail_page&empid=${reqStaff.empid}'">
 		</form>
 	</div>
