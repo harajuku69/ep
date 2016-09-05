@@ -59,6 +59,7 @@ $(function() {
 				url:url,
 				data:'memnm='+name.val()+'&mememail='+email.val()+'&mempwd='+password.val(),
 				/*data:d,*/
+//				dataType:"json",
 				type:'post',
 				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 				success:function(json){
@@ -114,8 +115,8 @@ function deleteUser(no){
 	delno = "."+ no;//클래스로 선언된 tr만 지울라고 .을 추가하는 것임
 	$("tr").remove(delno);
 	$.ajax({
-		type:"get",
 		url:url,
+		type:"get",
 		success:function(msg){
 			alert("정상삭제되었습니다.");
 		}

@@ -136,12 +136,15 @@ public class NotiDao {
 		}
 	}
 	
-	public void writeCmt(CmtDto cDto){
-		String sql = "insert into cmt(cmtno, notino, regid, ctt, regdt, pwd) "
-							+ "values(cmtno_seq.nextval,?,?,?,?,?)";
+	public CmtDto writeCmt(CmtDto cDto){
+		String sql = "insert into cmt(cmtno, notino, regid, ctt, pwd) "
+							+ "values(cmtno_seq.nextval,?,?,?,?)";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+//		CmtDto crDto = new CmtDto();
 		
 		try{
 			conn = DBManager.getConnection();
@@ -150,16 +153,43 @@ public class NotiDao {
 			pstmt.setInt(1, cDto.getNotino());
 			pstmt.setString(2, cDto.getRegid());
 			pstmt.setString(3, cDto.getCtt());
-			pstmt.setTimestamp(4, cDto.getRegdt());
-			pstmt.setInt(5, cDto.getPwd());
+//			pstmt.setTimestamp(4, cDto.getRegdt());
+			pstmt.setInt(4, cDto.getPwd());
 			
 			pstmt.executeUpdate();
+			
 //			System.out.println(result);
 		} catch(SQLException e){
 			e.printStackTrace();
 		} finally{
 			DBManager.close(conn, pstmt);
 		}
+		
+		sql = "SELECT cmtno, regid, ctt, regdt, pwd"
+			 + " FROM cmt "
+			 + "WHERE cmtno = ( "
+			 				  + "SELECT MAX(cmtno) "
+			 				    + "FROM cmt"
+			 			   + ")";
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				cDto.setCmtno(Integer.parseInt(rs.getString("cmtno")));
+//				cDto.setRegid(rs.getString("regid"));
+				cDto.setCtt(rs.getString("ctt"));
+				cDto.setRegdt(rs.getTimestamp("regdt"));
+//				cDto.setPwd(Integer.parseInt(rs.getString("pwd")));
+//				System.out.println(cDto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			DBManager.close(conn, pstmt);
+		}
+		return cDto;
 	}
 	
 	public void updateRdCnt(int notino){

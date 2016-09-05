@@ -19,11 +19,11 @@ pageEncoding="UTF-8"%>
 	<form id="frm">
 	<fieldset>
 		<label for="memnm">이름</label>
-		<input type="text" name="memnm" id="memnm" value="정일대" class="text ui-widget-content ui-corner-all">
+		<input type="text" id="memnm" value="정일대" class="text ui-widget-content ui-corner-all">
 		<label for="mememail">이메일</label>
-		<input type="text" name="mememail" id="mememail" value="ildae.jung@naver.com" class="text ui-widget-content ui-corner-all">
+		<input type="text" id="mememail" value="ildae.jung@naver.com" class="text ui-widget-content ui-corner-all">
 		<label for="mempwd">비밀번호</label>
-		<input type="password" name="mempwd" id="mempwd" value="111111" class="text ui-widget-content ui-corner-all">
+		<input type="password" id="mempwd" value="111111" class="text ui-widget-content ui-corner-all">
 		<!--Allow form submission with keyboard without duplicating the dialog button -->
 		<input type="submit" tabindex="-1" style="position:absolute; top:-1000px">  
 	</fieldset>

@@ -55,7 +55,7 @@ public class CmtDto {
 	}
 	@Override
 	public String toString() {
-		return "CmtDto [cmtno=" + cmtno + ", notino=" + notino + ", regid=" + regid + ", regdt=" + regdt + ", pwd="
-				+ pwd + ", delchk=" + delchk + "]";
+		return "CmtDto [cmtno=" + cmtno + ", notino=" + notino + ", regid=" + regid + ", ctt=" + ctt + ", regdt="
+				+ regdt + ", pwd=" + pwd + ", delchk=" + delchk + "]";
 	}
 }

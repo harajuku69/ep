@@ -216,9 +216,12 @@ public class MemberDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		
 		int lastSeq = 0;
+		
 		StringBuilder lastsql = new StringBuilder();
 		lastsql.append("select memberex_no_seq.currval as lastseq from dual ");
+		
 		StringBuilder sql = new StringBuilder();
 		sql.append("select * from memberex where no = ? ");
 		try{

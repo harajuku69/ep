@@ -14,13 +14,13 @@ public class SS {
 		return ssEmpid;
 	}
 	
-	public static int getEmpnm(HttpServletRequest request) {
-		int ssEmpnm = (int)getSS(request).getAttribute("ssEmpnm");
+	public static String getEmpnm(HttpServletRequest request) {
+		String ssEmpnm = (String)getSS(request).getAttribute("ssEmpnm");
 		return ssEmpnm;
 	}
 	
-	public static int getAdmnm(HttpServletRequest request) {
-		int ssAdmnm = (int)getSS(request).getAttribute("ssAdmnm");
+	public static String getAdmnm(HttpServletRequest request) {
+		String ssAdmnm = (String)getSS(request).getAttribute("ssAdmnm");
 		return ssAdmnm;
 	}
 	
