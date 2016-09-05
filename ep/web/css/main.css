@@ -9,7 +9,7 @@ ul {list-style:none;}
 .header {height:100px; padding:0px;}
 
 /* Hair : a + util ================================= */
-.hair {height:40px; padding:1px; background-color:#50618d;border:1px solid brown;}
+.hair {height:40px; padding:1px; background-color:#50618d;border:1px solid #50618d;}
 .hair a     {line-height:40px; color:#efefef; font-size:30px; font-weight:bold; float:left;}
 .hair a:hover {text-decoration:none; color:#efefef;/*  text-weight:bold */}
 .hair .util {float:right;} 
@@ -19,7 +19,7 @@ ul {list-style:none;}
 .hair .util a:hover {text-decoration:none; color:#efefef;/*  text-weight:bold */}
 
 /* face : logo + nav + search ===================== */
-.face {height:55px; padding:1px; background-color:#efefef; clear:both;border:1px solid purple;}
+.face {height:55px; padding:1px; background-color:#efefef; clear:both;border:1px solid #efefef;}
 .face .logo   {width:135px; height:50px; float:left;}
 .face .logo img {width:65px; height:50px; display:block; margin-left:40px;}
 .face #accordion {width:630px; float:left;font-size:14px;}
@@ -32,7 +32,7 @@ ul {list-style:none;}
 /* ================================================= */
 
 /* <contents> ========================================== */
-.contents {/* width:958px; */ height:540px; margin:0 auto; margin-top:6px; margin-bottom:0px; /* position:absolute; */ border:2px solid red;}
+.contents {/* width:958px; */ height:540px; margin:0 auto; margin-top:6px; margin-bottom:0px; /* position:absolute; */ border:2px solid #f6f6f6;}
 /* .contents .core{width:954px; height:538px; margin:0 auto; border: 1px solid purple;} */
 .contents #guest, #default {width:958px; height:540px; /* display:block;/* position:relative;  */}
 .contents #logleft {width:280px; height:520px; padding:10px; float:left; text-align:center/*  border:3px solid green;  */}
@@ -67,7 +67,7 @@ ul {list-style:none;}
 .contents .list td {text-align:center;}
 
 /* sub : login + notice + project============== */
-.sub {/* width:956px; clear:both;*/  height:215px; background-color:#fff; padding:1px; /* position:absolute; left:480px;top:660px; */ border:1px solid green;}
+.sub {/* width:956px; clear:both;*/  height:215px; background-color:#fff; padding:1px; /* position:absolute; left:480px;top:660px; */ border:1px solid #f6f6f6;}
 
 
 .mini {width:285.5px; height:180px; margin:2.5px; padding:10px; border:4px solid #e5e5e5; float: left;}

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +11,11 @@
 </head>
 <body>
 <div class="mini">
-	<p>Notice Search</p>
+	<p style="display:inline;">Notice Search</p>
+	<c:if test="${ssAdmchk == 1}">
+		<span>|</span>
+		<p style="display:inline;"><a href="staff.do?cmd=admin_noti_list"> List</a></p>
+	</c:if>
 	<hr/>
 	<form action="href=''" method="post" name="frm" class="searchform">
 		<ul>
@@ -28,8 +34,8 @@
 					</tr>
 				</table>
 			</li>
-			<p><a href="''">search</a></p>
 		</ul>
+			<p><a href="''">search</a></p>
 	</form>
 </div>
 </body>

@@ -14,7 +14,7 @@ public class ActionFactory {
 	public Action getAction(String cmd){
 		Action action = null;
 		System.out.println("ActionFactory : " + cmd);
-		
+//		staff_action		
 		if(cmd.equals("index_page")){
 			action = new IndexPageAction();
 		} else if(cmd.equals("login_page")){
@@ -45,8 +45,6 @@ public class ActionFactory {
 			action = new AdminUpdateAction();
 		} else if(cmd.equals("zipcd_search")){
 			action = new ZipcdSearchAction();
-//		} else if(cmd.equals("zipcd_update")){
-//			action = new ZipcdUpdateAction();
 		} else if(cmd.equals("staff_list")){
 			action = new StaffListAction();
 		} else if(cmd.equals("staff_delete")){
@@ -54,17 +52,25 @@ public class ActionFactory {
 		} else if(cmd.equals("logout")){
 			action = new LogoutAction();
 		}
-		//staff_action
+//		notice_action
 		  else if(cmd.equals("admin_noti_list")){
 			action = new AdminNotiListAction();
+		} else if(cmd.equals("noti_write_page")){
+				action = new NotiWritePageAction();
+		} else if(cmd.equals("noti_write")){
+			action = new NotiWriteAction();
 		} else if(cmd.equals("admin_noti_detail_page")){
 			action = new AdminNotiDetailPageAction();
 		} else if(cmd.equals("noti_update_page")){
 			action = new NotiUpdatePageAction();
+		} else if(cmd.equals("noti_update")){
+			action = new NotiUpdateAction();
 		} else if(cmd.equals("noti_delete")){
 			action = new NotiDeleteAction();
+		} else if(cmd.equals("admin_cmt_write")){
+			action = new AdminCmtWriteAction();
 		}
-		//notice_action
+		//project_action
 		  else if(cmd.equals("admin_pjt_list")){
 			action = new AdminPjtListAction();
 		} else if(cmd.equals("admin_pjt_detail")){
@@ -72,7 +78,6 @@ public class ActionFactory {
 		} else if(cmd.equals("pjt_delete")){
 			action = new PjtDeleteAction();
 		}
-		//pjt_action
 		return action;
 	}
 }

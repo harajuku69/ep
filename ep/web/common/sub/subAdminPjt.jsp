@@ -10,7 +10,7 @@
 <div class="sub">
 	<jsp:include page="mini/miniAdmin.jsp"></jsp:include>
 	<jsp:include page="mini/miniAdminNoti.jsp"></jsp:include>
-	<jsp:include page="mini/miniPjtSch.jsp"></jsp:include>
+	<jsp:include page="mini/miniAdminPjtSch.jsp"></jsp:include>
 </div>
 </body>
 </html>

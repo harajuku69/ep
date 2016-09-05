@@ -7,22 +7,20 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mars.staff.dao.StaffDao;
-import com.mars.staff.dto.StaffDto;
-
-public class AdminHomePageAction implements Action {
+public class NotiWritePageAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "staff/adminHome.jsp";
+		String url = "noti/notiWrite.jsp";
 		
-//		String empid = SS.getEmpid(request) ;
+//		int notino = Integer.parseInt(request.getParameter("notino"));
+//		String pageNo = request.getParameter("pageNo");
 		
-//		StaffDao sDao = StaffDao.getInstance();
-//		StaffDto sDto = sDao.selectOneByEmpid(empid);
-		
-//		request.setAttribute("reqStaff", sDto);
-		Paging.getRecentList(request);
+//		NotiDao nDao = NotiDao.getInstance();
+//		NotiDto nDto = nDao.selectOneByNotino(notino);
+//		
+//		request.setAttribute("reqNoti", nDto);
+//		request.setAttribute("pageNo", pageNo);
 		
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);

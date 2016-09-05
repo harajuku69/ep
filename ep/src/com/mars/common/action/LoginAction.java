@@ -44,6 +44,7 @@ public class LoginAction implements Action {
 			session.setAttribute("ssEmpnm", sDto.getEmpnm());
 			session.setAttribute("ssEmpno", sDto.getEmpno());
 			session.setAttribute("ssPwd", sDto.getPwd());
+			session.setAttribute("ssPic", sDto.getPic());
 //			session.setAttribute("ssJumin", sDto.getJumin());
 			session.setAttribute("ssAdmnm", sDto.getAdmnm());
 			session.setAttribute("ssAdmchk", sDto.getAdmchk());

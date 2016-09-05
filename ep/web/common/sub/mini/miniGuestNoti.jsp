@@ -12,22 +12,18 @@
 <body>
 <div class="mini">
 	<p style="display:inline;">Notice</p>
-	<c:if test="${ssAdmchk == 1}">
-		<span>|</span>
-		<p style="display:inline;"><a href="staff.do?cmd=admin_noti_list"> Edit</a></p>
-	</c:if>
 	<hr/>
 	<ul>
-		<c:forEach var="item" items="${ssRecentNotiList}">
-			<li><a href="noti.do?cmd=staff_noti_detail&notino=${item.notino}">${item.tit}</a>
-			<span>
-				<c:set var = "regdt" value="${item.regdt}"/>
-				<c:out value="${fn:substring(regdt, 0, 10)}"/>
-			</span>
-			</li>
-		</c:forEach>
+	<c:forEach var="item" items="${ssRecentNotiList}">
+		<li><a href="staff.do?cmd=login_page">${item.tit}</a>
+		<span>
+			<c:set var = "regdt" value="${item.regdt}"/>
+			<c:out value="${fn:substring(regdt, 0, 10)}"/>
+		</span>
+		</li>
+	</c:forEach>
 	</ul>
-		<p><a href="noti.do?cmd=staff_noti_list">more</a></p>
+		<p><a href="staff.do?cmd=login_page">more</a></p>
 </div>
 </body>
 </html>

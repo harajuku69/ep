@@ -12,14 +12,23 @@ import javax.servlet.http.HttpServletResponse;
 import com.mars.noti.dao.NotiDao;
 import com.mars.noti.dto.NotiDto;
 
-public class AdminNotiListAction implements Action {
+public class NotiWriteAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "noti/adminNotiList.jsp";
+		NotiDto nDto = new NotiDto();
 		
+		nDto.setAdmnm(request.getParameter("admnm"));
+		nDto.setTit(request.getParameter("tit"));
+		nDto.setCtt(request.getParameter("ctt"));
+		
+		NotiDao nDao = NotiDao.getInstance();
+		nDao.writeNoti(nDto);
+
 		String sql = "select count(*) from noti";
-		int pageNo = request.getParameter("pageNo") == null ? 1 : Integer.parseInt(request.getParameter("pageNo"));
+//		int pageNo = request.getParameter("pageNo") == null ? 1 : Integer.parseInt(request.getParameter("pageNo"));
+		int pageNo = 1;
 //		int recPerPage = Integer.parseInt(request.getParameter("recPerPage"));
 //		int pagePerBlock = Integer.parseInt(request.getParameter("pagePerBlock"));
 //		int pageNo = 2;
@@ -32,9 +41,7 @@ public class AdminNotiListAction implements Action {
 		
 		String sttRecNo = map.get("sttRecNo").toString();
 		String endRecNo = map.get("endRecNo").toString();
-//		String notino = request.getParameter("notino");
 		
-		NotiDao nDao = NotiDao.getInstance();
 		List<NotiDto> notiList = nDao.selectAllNoti(sttRecNo, endRecNo);
 //		System.out.println(notiList);
 		request.setAttribute("reqNotiList", notiList);
@@ -47,6 +54,9 @@ public class AdminNotiListAction implements Action {
 		request.setAttribute("blockNo", map.get("blockNo"));
 		request.setAttribute("pageNo", map.get("pageNo"));
 		
+		List<NotiDto> recentNotiList = nDao.selectAllNoti("1", "4");
+		SS.getSS(request).setAttribute("ssRecentNotiList", recentNotiList);
+
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);
 	}

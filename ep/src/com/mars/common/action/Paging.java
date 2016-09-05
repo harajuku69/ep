@@ -5,8 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import com.mars.common.db.DBManager;
+import com.mars.noti.dao.NotiDao;
+import com.mars.noti.dto.NotiDto;
+import com.mars.pjt.dao.PjtDao;
+import com.mars.pjt.dto.PjtDto;
 
 public class Paging {
 	public static HashMap<String, Integer> getParam(String query, int pn, int rpp, int ppb){
@@ -101,6 +108,23 @@ public class Paging {
 		map.put("pageNo", pageNo);
 		
 		return map;
+	}
+	
+	public static void getRecentList(HttpServletRequest request){
+		String sttRecNo = "1";
+		String endRecNo = "4";
+
+		//noti 최근 글 가져오는 action
+		NotiDao nDao = NotiDao.getInstance();
+		List<NotiDto> recentNotiList = nDao.selectAllNoti(sttRecNo, endRecNo);
+				
+		SS.getSS(request).setAttribute("ssRecentNotiList", recentNotiList);
+		
+		//pjt 최근 글 가져오는 action
+		PjtDao pDao = PjtDao.getInstance();
+		List<PjtDto> recentPjtList = pDao.selectAllPjt(sttRecNo, endRecNo);
+				
+		SS.getSS(request).setAttribute("ssRecentPjtList", recentPjtList);
 	}
 }
 

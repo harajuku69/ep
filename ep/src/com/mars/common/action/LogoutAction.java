@@ -14,20 +14,8 @@ public class LogoutAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-//		StaffDao sDao = StaffDao.getInstance();
-		
-//		String empid = SS.getEmpid(request);
-//		String toStat = "-1";
-//		sDao.updateStat(empid,toStat);
-		
-//		HttpSession session = request.getSession();
-//		session.invalidate();
-		
 		SS.getSS(request).invalidate();
 		
-		RequestDispatcher disp = request.getRequestDispatcher("index.jsp");
-		disp.forward(request, response);
+		new IndexPageAction().execute(request,response);
 	}
-
 }

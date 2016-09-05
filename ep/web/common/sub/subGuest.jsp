@@ -11,8 +11,8 @@
 <body>
 <div class="sub">
 	<jsp:include page="mini/miniGuest.jsp"></jsp:include>
-	<jsp:include page="mini/miniStaffNoti.jsp"></jsp:include>
-	<jsp:include page="mini/miniStaffPjt.jsp"></jsp:include>
+	<jsp:include page="mini/miniGuestNoti.jsp"></jsp:include>
+	<jsp:include page="mini/miniGuestPjt.jsp"></jsp:include>
 </div>
 </body>
 </html>

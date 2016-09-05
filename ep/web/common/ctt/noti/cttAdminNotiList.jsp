@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +17,7 @@
 		<table class="list">
 			<thead>
 			<tr>
-				<td class="addbtn" colspan="7" style="text-align:right; border:none;"><a href="pjt.do?cmd=pjt_insert_page"><button id="back">공지사항 등록</button></a></td>
+				<td class="addbtn" colspan="7" style="text-align:right; border:none;"><a href="noti.do?cmd=noti_write_page"><button id="write">공지사항 등록</button></a></td>
 			</tr>
 			<tr class="ui-widget-header">
 				<th>글 번호</th>
@@ -36,7 +37,10 @@
 					<td>
 						<a href="noti.do?cmd=admin_noti_detail_page&notino=${item.notino}&pageNo=${pageNo}">${item.tit}</a>
 					</td>
-					<td>${item.regdt}</td>
+					<td>
+						<c:set var="regdt" value="${item.regdt}"/>
+						<c:out value="${fn:substring(regdt,0,10)}"/>
+					</td>
 					<td>${item.admnm}</td>
 					<td>${item.rdcnt}</td>
 					<td><a href="noti.do?cmd=noti_update_page&notino=${item.notino}">수정</a></td>

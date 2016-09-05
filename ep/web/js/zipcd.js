@@ -44,8 +44,8 @@ $(function() {
 		refresh();
 		var url = "staff.do?cmd=zipcd_search";
 		var valid = true,
-			d = $("#frm").serialize()
-		;
+			d = $("#frm").serialize();
+		
 //		kwdField.removeClass( "ui-state-error" );
 		kwd.removeClass("ui-state-error");
 		

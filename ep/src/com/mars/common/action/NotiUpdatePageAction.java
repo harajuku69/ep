@@ -16,7 +16,7 @@ public class NotiUpdatePageAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "noti/notiUpdate.jsp";
 		
-		String notino = request.getParameter("notino");
+		int notino = Integer.parseInt(request.getParameter("notino"));
 		String pageNo = request.getParameter("pageNo");
 		
 		NotiDao sDao = NotiDao.getInstance();

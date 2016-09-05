@@ -17,18 +17,13 @@ public class StaffHomePageAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "staff/staffHome.jsp";
 		
-//		String empid = request.getParameter("empid");
-		String empid = SS.getEmpid(request) ;
-//		String toStat = request.getParameter("toStat");
+//		String empid = SS.getEmpid(request) ;
 		
-		StaffDao sDao = StaffDao.getInstance();
-//		sDao.updateStat(empid, toStat);
+//		StaffDao sDao = StaffDao.getInstance();
+//		StaffDto sDto = sDao.selectOneByEmpid(empid);
 		
-		StaffDto sDto = sDao.selectOneByEmpid(empid);
-		
-//		Fmt.toFmtAndReqSet(request, sDto);
-		request.setAttribute("reqStaff", sDto);
-//		request.setAttribute("currStat", toStat);
+//		request.setAttribute("reqStaff", sDto);
+		Paging.getRecentList(request);
 		
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);

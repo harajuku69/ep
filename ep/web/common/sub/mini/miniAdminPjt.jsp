@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,16 +12,20 @@
 <body>
 <div class="mini">
 	<p style="display:inline;">Project</p>
-	<c:if test="${ssAdmchk == 1}">
+	<%-- <c:if test="${ssAdmchk == 1}"> --%>
 		<span>|</span>
 		<p style="display:inline;"><a href="staff.do?cmd=admin_pjt_list"> Edit</a></p>
-	</c:if>
+	<%-- </c:if> --%>
 	<hr/>
 	<ul>
-		<li><a href="#">롯데홈쇼핑 프로젝트</a><span>2016-08-15</span></li>
-		<li><a href="#">카카오 드라이버 프로젝트</a><span>2016-08-15</span></li>
-		<li><a href="#">K-start up 1등</a><span>2016-08-15</span></li>
-		<li><a href="#">4번째 프로젝트</a><span>2016-08-15</span></li>
+		<c:forEach var="item" items="${ssRecentPjtList}">
+			<li><a href="pjt.do?cmd=admin_pjt_detail_page&pjtno=${item.pjtno}&pageNo=1">${item.pjtnm}</a>
+			<span>
+				<c:set var = "regdt" value="${item.regdt}"/>
+				<c:out value="${fn:substring(regdt, 0, 10)}"/>
+			</span>
+			</li>
+		</c:forEach>
 	</ul>
 		<p><a href="pjt.do?cmd=admin_pjt_list">more</a></p>
 </div>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>      
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,10 +18,14 @@
 	</c:if>
 	<hr/>
 	<ul>
-		<li><a href="#">롯데홈쇼핑 프로젝트</a><span>2016-08-15</span></li>
-		<li><a href="#">카카오 드라이버 프로젝트</a><span>2016-08-15</span></li>
-		<li><a href="#">K-start up 1등</a><span>2016-08-15</span></li>
-		<li><a href="#">4번째 프로젝트</a><span>2016-08-15</span></li>
+		<c:forEach var="item" items="${ssRecentPjtList}">
+			<li><a href="pjt.do?cmd=staff_pjt_detail&pjtno=${item.pjtno}">${item.pjtnm}</a>
+			<span>
+				<c:set var = "regdt" value="${item.regdt}"/>
+				<c:out value="${fn:substring(regdt, 0, 10)}"/>
+			</span>
+			</li>
+		</c:forEach>
 	</ul>
 		<p><a href="pjt.do?cmd=staff_pjt_list">more</a></p>
 </div>

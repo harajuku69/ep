@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mars.common.db.DBManager;
+import com.mars.noti.dto.CmtDto;
 import com.mars.noti.dto.NotiDto;
 
 public class NotiDao {
@@ -77,7 +78,7 @@ public class NotiDao {
 		return notiList;
 	}
 
-	public NotiDto selectOneByNotino(String notino){
+	public NotiDto selectOneByNotino(int notino){
 		String sql = "select * from noti where notino=?";
 		
 		NotiDto nDto = null;
@@ -90,7 +91,7 @@ public class NotiDao {
 			
 			pstmt = conn.prepareStatement(sql);
 				
-			pstmt.setString(1, notino);
+			pstmt.setInt(1, notino);
 			
 			rs = pstmt.executeQuery();
 			if(rs.next()){
@@ -112,8 +113,8 @@ public class NotiDao {
 		return nDto;
 	}
 	
-	public void insertNoti(NotiDto nDto){
-		String sql = "insert into noti(notino, admnm, title, contents) values(noti_no_seq.nextval,?,?,?)";
+	public void writeNoti(NotiDto nDto){
+		String sql = "insert into noti(notino, admnm, tit, ctt) values(notino_seq.nextval,?,?,?)";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -123,10 +124,11 @@ public class NotiDao {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, nDto.getAdmnm());
-			pstmt.setString(2, nDto.getCtt());
-			pstmt.setString(3, nDto.getTit());
+			pstmt.setString(2, nDto.getTit());
+			pstmt.setString(3, nDto.getCtt());
 			
 			pstmt.executeUpdate();
+//			System.out.println(result);
 		} catch(SQLException e){
 			e.printStackTrace();
 		} finally{
@@ -134,8 +136,34 @@ public class NotiDao {
 		}
 	}
 	
-	public void updateReadCount(String notino){
-		String sql = "update noti set readcnt=readcnt+1 where notino=?";
+	public void writeCmt(CmtDto cDto){
+		String sql = "insert into cmt(cmtno, notino, regid, ctt, regdt, pwd) "
+							+ "values(cmtno_seq.nextval,?,?,?,?,?)";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try{
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, cDto.getNotino());
+			pstmt.setString(2, cDto.getRegid());
+			pstmt.setString(3, cDto.getCtt());
+			pstmt.setTimestamp(4, cDto.getRegdt());
+			pstmt.setInt(5, cDto.getPwd());
+			
+			pstmt.executeUpdate();
+//			System.out.println(result);
+		} catch(SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBManager.close(conn, pstmt);
+		}
+	}
+	
+	public void updateRdCnt(int notino){
+		String sql = "update noti set rdcnt=rdcnt+1 where notino=?";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -144,9 +172,8 @@ public class NotiDao {
 			conn = DBManager.getConnection();
 			
 			pstmt = conn.prepareStatement(sql);
-			
 				
-			pstmt.setString(1, notino);
+			pstmt.setInt(1, notino);
 				
 			pstmt.executeUpdate();
 		} catch(SQLException e){
@@ -157,7 +184,7 @@ public class NotiDao {
 	}
 	
 	public void updateNoti(NotiDto nDto){
-		String sql = "update noti set admnm=?, title=?, contents=? where notino=?";
+		String sql = "update noti set admnm=?, tit=?, ctt=? where notino=?";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;

@@ -23,11 +23,11 @@
 		<div class="pd">
 			<div class="pic">
 				<c:choose>
-				<c:when test="${empty reqStaff.pic}">
+				<c:when test="${empty ssPic}">
 					<img class="stpic" src="images/noimage.gif">
 				</c:when>
 				<c:otherwise>
-					<img class="stpic" src="upload/${reqStaff.pic}">
+					<img class="stpic" src="upload/${ssPic}">
 				</c:otherwise>
 				</c:choose>
 				<!-- <img src="images/me.jpg" class="me" alt="사원사진"> -->
