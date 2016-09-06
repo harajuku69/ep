@@ -30,7 +30,7 @@ public class JoinAction implements Action {
 			request.setAttribute("msg", "회원가입에 실패했습니다. 다시 작성해주세요.");
 		}
 		request.setAttribute("msg", "축하합니다. 회원 가입되었습니다.");
-
+		Paging.getRecentList(request);
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);
 	}

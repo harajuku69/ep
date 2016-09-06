@@ -425,12 +425,11 @@ public class StaffDao {
 					   + "ON s.titcd=t.titcd "
 					+ "WHERE R BETWEEN ? AND ? "
 					+ "ORDER BY s.empnm";
-		
 		List<StaffDto> staffList = new ArrayList<StaffDto>();
+
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
 		try{
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -447,6 +446,7 @@ public class StaffDao {
 				sDto.setPhone(rs.getString("Phone"));
 				sDto.setEmpid(rs.getString("empid"));
 				sDto.setEmpno(rs.getString("empno"));
+				
 				staffList.add(sDto);
 			}
 		} catch(SQLException e){
@@ -455,6 +455,59 @@ public class StaffDao {
 			DBManager.close(conn, pstmt, rs);
 		}
 		return staffList;
+	}
+
+	public List<StaffDto> selectMemberByEmpnm(String empnm, String sttRecNo, String endRecNo) {
+		String sql = " SELECT s.empnm,d.dpt,t.tit,s.phone,s.empid,s.empno "
+					  + "FROM ( "
+					  		  + "SELECT ROWNUM R, a.* "
+					  		    + "FROM ( "
+					  		    		+ "SELECT empnm,dptcd,titcd,phone,empid,empno "
+					  		    		  + "FROM staff "
+					  		    		 + "WHERE empnm=? "
+					  		    		 + "ORDER BY empnm "
+					  		    	  + ") a "
+					  		+ ") s "
+					  + "JOIN dpt d "
+					    + "ON s.dptcd=d.dptcd "
+					  + "JOIN tit t "
+					  	+ "ON s.titcd=t.titcd "
+					 + "WHERE R BETWEEN ? AND ? "
+					 + "ORDER BY s.empno ";
+		List<StaffDto> memberList = new ArrayList<>();
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try{
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, empnm);
+			pstmt.setString(2, sttRecNo);
+			pstmt.setString(3, endRecNo);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				StaffDto sDto = new StaffDto();
+				
+				sDto.setEmpid(rs.getString("empid"));
+				sDto.setEmpno(rs.getString("empno"));
+				sDto.setEmpnm(rs.getString("empnm"));
+				sDto.setPhone(rs.getString("phone"));
+				sDto.setDptcd(rs.getString("dpt"));
+				sDto.setTitcd(rs.getString("tit"));
+				
+				System.out.println(sDto);
+				memberList.add(sDto);
+			}
+		} catch(SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBManager.close(conn, pstmt, rs);
+		}
+		System.out.println(memberList);
+		return memberList;
 	}
 
 //	public void updateStat(String empid, String toStat) {

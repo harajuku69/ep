@@ -55,18 +55,18 @@
 			</div>
 		</div>
 		<div class="search">
-		<form action="URL" method="get" name="frm">
+		<!-- <form action="URL" method="get" name="frm"> -->
 			<table>
 				<tr>
 					<td>
-						<input type="text" name="qry" id="qry" placeholder="이름을 입력하세요" required>
+						<input type="text" name="empnm" id="empnm" placeholder="이름을 입력하세요">
 					</td>
 					<td>
-						<input type="submit" id="btn" value="검색" onclick="return function()">		
+						<input type="button" id="btn" value="검색" onclick="location.href='staff.do?cmd=admin_select_member&empnm=${empnm}'">		
 					</td>
 				</tr>
 			</table>
-		</form>
+		<!-- </form> -->
 		</div>
 	</div>
 </div>

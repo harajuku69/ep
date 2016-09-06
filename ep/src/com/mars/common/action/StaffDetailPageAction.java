@@ -22,7 +22,7 @@ public class StaffDetailPageAction implements Action {
 		
 		request.setAttribute("reqStaff", sDto);
 		Fmt.toFmtAndReqSet(request, sDto);
-		
+		Paging.getRecentList(request);
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);
 	}

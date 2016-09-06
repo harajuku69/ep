@@ -12,6 +12,7 @@ public class JoinPageAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "common/join.jsp";
+		Paging.getRecentList(request);
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);
 	}

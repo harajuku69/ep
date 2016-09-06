@@ -35,7 +35,7 @@ public class NotiUpdateAction implements Action {
 		
 		List<NotiDto> recentNotiList = nDao.selectAllNoti("1", "4");
 		SS.getSS(request).setAttribute("ssRecentNotiList", recentNotiList);
-		
+		Paging.getRecentList(request);
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);
 	}

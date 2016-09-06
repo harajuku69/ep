@@ -57,7 +57,7 @@ public class StaffUpdateAction implements Action{
 		request.setAttribute("reqStaff", sDto);
 		SS.getSS(request).setAttribute("ssPic", sDto.getPic());
 		Fmt.toFmtAndReqSet(request, sDto);
-		
+		Paging.getRecentList(request);
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);
 	}

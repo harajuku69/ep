@@ -25,7 +25,7 @@ public class PjtDeleteAction implements Action {
 		} else{
 			json.addProperty("msg", "fail");
 		}
-		
+		Paging.getRecentList(request);
 		PrintWriter out = response.getWriter();
 		out.print(json);
 	}

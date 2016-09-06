@@ -27,7 +27,7 @@ public class ZipcdSearchAction implements Action {
 		String jsonArray = new Gson().toJson(zipcdList);
 		
 		response.setCharacterEncoding("UTF-8");
-		
+		Paging.getRecentList(request);
 		PrintWriter out = response.getWriter();
 		out.print(jsonArray);
 //		System.out.println(jsonArray);

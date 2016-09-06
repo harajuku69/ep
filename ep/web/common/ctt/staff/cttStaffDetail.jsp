@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,12 +84,19 @@
 			</tr>
 			<tr>
 				<td>입사일</td>
-				<td>${reqStaff.startdt}</td>
+				<td>
+					<c:set var="startdt" value="${reqStaff.startdt}"/>
+					<c:out value="${fn:substring(startdt,0,10)}"/>
+				</td>
 			</tr>
 			<tr>
 				<td>퇴사일</td>
-				<td>${reqStaff.enddt}</td>
+				<td>
+					<c:set var="enddt" value="${reqStaff.enddt}"/>
+					<c:out value="${fn:substring(enddt,0,10)}"/>
+				</td>
 			</tr>
+			<tr>
 				<td>급 여</td>
 				<td>
 					<fmt:formatNumber value="${reqStaff.sal}" type="currency"/>
@@ -96,7 +104,10 @@
 			</tr>
 			<tr>
 				<td>등록일</td>
-				<td>${reqStaff.regdt}</td>
+				<td>
+					<c:set var="regdt" value="${reqStaff.regdt}"/>
+					<c:out value="${fn:substring(regdt,0,10)}"/>
+				</td>
 			</tr>
 		</table>
 		<br/><input type="button" value="수정하기" onclick="location.href='staff.do?cmd=staff_update_page'">

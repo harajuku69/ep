@@ -24,7 +24,6 @@ public class StaffHomePageAction implements Action {
 		
 //		request.setAttribute("reqStaff", sDto);
 		Paging.getRecentList(request);
-		
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);
 	}

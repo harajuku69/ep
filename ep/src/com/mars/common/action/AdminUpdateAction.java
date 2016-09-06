@@ -38,7 +38,7 @@ public class AdminUpdateAction implements Action {
 		Fmt.toFmtAndReqSet(request, sDto);
 		SS.setDptcd(request, sDto.getDptcd());
 		SS.setTitcd(request, sDto.getTitcd());
-		
+		Paging.getRecentList(request);
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);
 

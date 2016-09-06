@@ -27,15 +27,13 @@
 					<th>직 급</th>
 					<th>연락처</th>
 					<th>이메일</th>
-					<th>수 정</th>
-					<th>삭 제</th>
 				</tr>
 			</thead>
 			<tbody>
-			<c:forEach var="item" items="${reqStaffList}">
+			<c:forEach var="item" items="${reqMemberList}">
 				<tr class="${item.empno}">
 					<td>
-						<a href="staff.do?cmd=admin_detail_page&empid=${item.empid}">${item.empnm}</a>
+						<a href="staff.do?cmd=staff_detail_page&empid=${item.empid}">${item.empnm}</a>
 					</td>
 					<td>${item.dptcd}</td>
 					<td>${item.titcd}</td>
@@ -45,8 +43,8 @@
 						<c:out value="${fn:substring(phone,0,3)}${dash}${fn:substring(phone,3,7)}${dash}${fn:substring(phone,7,11)}"/>
 					</td>
 					<td><a href="mailto:${item.empid}@mars.com">${item.empid}@mars.com</a></td>
-					<td><a href="staff.do?cmd=admin_update_page&empid=${item.empid}">수정</a></td>
-					<td><a href="#" onClick="deleteItem('staff','${item.empno}')">삭제</a></td>
+					<%-- <td><a href="staff.do?cmd=admin_update_page&empid=${item.empid}">수정</a></td>
+					<td><a href="#" onClick="deleteItem('staff','${item.empno}')">삭제</a></td> --%>
 				</tr>
 			</c:forEach>
 			</tbody>

@@ -16,17 +16,17 @@
 	<div id="list-contain" class="ui-widget">
 		<table class="list">
 			<thead>
-			<tr>
+			<!-- <tr>
 				<td class="addbtn" colspan="7" style="text-align:right; border:none;"><a href="noti.do?cmd=noti_write_page"><button id="write">공지사항 등록</button></a></td>
-			</tr>
+			</tr> -->
 			<tr class="ui-widget-header">
 				<th>글 번호</th>
 				<th>제 목</th>
 				<th>등록일</th>
 				<th>작성자</th>
 				<th>조회수</th>
-				<th>수정</th>
-				<th>삭제</th>
+				<!-- <th>수정</th>
+				<th>삭제</th> -->
 			</tr>
 			</thead>
 			<tbody>
@@ -34,7 +34,7 @@
 				<tr class="${item.notino}">
 					<td>${item.notino}</td>
 					<td>
-						<a href="noti.do?cmd=admin_noti_detail_page&notino=${item.notino}&pageNo=${pageNo}">${item.tit}</a>
+						<a href="noti.do?cmd=staff_noti_detail_page&notino=${item.notino}&pageNo=${pageNo}">${item.tit}</a>
 					</td>
 					<td>
 						<c:set var="regdt" value="${item.regdt}"/>
@@ -42,8 +42,8 @@
 					</td>
 					<td>${item.admnm}</td>
 					<td>${item.rdcnt}</td>
-					<td><a href="noti.do?cmd=noti_update_page&notino=${item.notino}">수 정</a></td>
-					<td><a href="#" onClick="deleteItem('noti','${item.notino}')">삭 제</a></td>
+					<%-- <td><a href="noti.do?cmd=noti_update_page&notino=${item.notino}">수 정</a></td>
+					<td><a href="#" onClick="deleteItem('noti','${item.notino}')">삭 제</a></td> --%>
 				</tr>
 			</c:forEach>
 			</tbody>

@@ -65,7 +65,7 @@ public class LoginAction implements Action {
 			request.setAttribute("msg", "존재하지 않는 아이디입니다~");
 			url = "common/login.jsp";
 		}
-		
+		Paging.getRecentList(request);
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);
 	}

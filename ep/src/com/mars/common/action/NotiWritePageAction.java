@@ -21,7 +21,7 @@ public class NotiWritePageAction implements Action {
 //		
 //		request.setAttribute("reqNoti", nDto);
 //		request.setAttribute("pageNo", pageNo);
-		
+		Paging.getRecentList(request);
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);
 	}

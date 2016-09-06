@@ -10,6 +10,9 @@ function deleteItem(field, item){
 	} else if(field == "pjt"){
 		url = "pjt.do?cmd=pjt_delete&pjtno=" + item;
 		del = "."+ item;
+	} else if(field == "cmt"){
+		url = "noti.do?cmd=cmt_delete&cmtno=" + item;
+		del = "."+ item;
 	}
 	$("tr").remove(del);
 	$.ajax({

@@ -34,8 +34,6 @@
 		</tr>
 	</table>
 	<br>
-	<input type ="button" value="수정하기" 
-		onclick="location.href='noti.do?cmd=noti_update_page&notino=${reqNoti.notino}&pageNo=${pageNo}'">
 	<input type ="button" value="목록으로" 
 		onclick="location.href='noti.do?cmd=admin_noti_list&pageNo=${pageNo}'">
 	<hr>
@@ -65,7 +63,6 @@
 						<td>${cmt.admnm}</td>
 						<td>${cmt.ctt}</td>
 						<td>${cmt.regdt}</td>
-						<%-- <td><a href='noti.do?cmd=cmt_update&cmtno=${cmt.cmtno}'>수 정</a></td> --%>
 						<td><a href="#" onClick="deleteItem('cmt', '${cmt.cmtno}')">삭 제</a></td>
 					</tr>
 				</c:forEach>

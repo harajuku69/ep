@@ -33,10 +33,10 @@ public class AdminCmtWriteAction implements Action {
 //		json.addProperty("admnm", SS.getAdmnm(request));
 //		json.addProperty("pwd", cDto.getPwd());
 		
-		response.setContentType("charset=UTF-8");
-		
+		response.setCharacterEncoding("UTF-8");
+		Paging.getRecentList(request);
 		PrintWriter out = response.getWriter();
 		out.print(json);
-		System.out.println("out.print(json)에서 찍음 : " + json);
+//		System.out.println("out.print(json)에서 찍음 : " + json);
 	}
 }

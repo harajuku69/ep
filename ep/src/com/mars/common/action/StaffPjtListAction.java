@@ -9,26 +9,18 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mars.noti.dao.NotiDao;
-import com.mars.noti.dto.NotiDto;
+import com.mars.common.action.Action;
+import com.mars.pjt.dao.PjtDao;
+import com.mars.pjt.dto.PjtDto;
 
-public class NotiWriteAction implements Action {
+public class StaffPjtListAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "noti/adminNotiList.jsp";
-		NotiDto nDto = new NotiDto();
+		String url = "pjt/staffPjtList.jsp";
 		
-		nDto.setAdmnm(request.getParameter("admnm"));
-		nDto.setTit(request.getParameter("tit"));
-		nDto.setCtt(request.getParameter("ctt"));
-		
-		NotiDao nDao = NotiDao.getInstance();
-		nDao.writeNoti(nDto);
-
-		String sql = "select count(*) from noti";
-//		int pageNo = request.getParameter("pageNo") == null ? 1 : Integer.parseInt(request.getParameter("pageNo"));
-		int pageNo = 1;
+		String sql = "select count(*) from pjt";
+		int pageNo = request.getParameter("pageNo") == null ? 1 : Integer.parseInt(request.getParameter("pageNo"));
 //		int recPerPage = Integer.parseInt(request.getParameter("recPerPage"));
 //		int pagePerBlock = Integer.parseInt(request.getParameter("pagePerBlock"));
 //		int pageNo = 2;
@@ -41,10 +33,14 @@ public class NotiWriteAction implements Action {
 		
 		String sttRecNo = map.get("sttRecNo").toString();
 		String endRecNo = map.get("endRecNo").toString();
+//		System.out.println(sttRecNo);
+//		System.out.println(endRecNo);
+//		String pjtno = request.getParameter("pjtno");
 		
-		List<NotiDto> notiList = nDao.selectAllNoti(sttRecNo, endRecNo);
-//		System.out.println(notiList);
-		request.setAttribute("reqNotiList", notiList);
+		PjtDao pDao = PjtDao.getInstance();
+		List<PjtDto> pjtList = pDao.selectAllPjt(sttRecNo, endRecNo);
+//		System.out.println(pjtList);
+		request.setAttribute("reqPjtList", pjtList);
 		request.setAttribute("firstPageNoInBlock", map.get("firstPageNoInBlock"));
 		request.setAttribute("lastPageNoInBlock", map.get("lastPageNoInBlock"));
 		request.setAttribute("prevPageNo", map.get("prevPageNo"));
@@ -53,9 +49,6 @@ public class NotiWriteAction implements Action {
 		request.setAttribute("totBlock", map.get("totBlock"));
 		request.setAttribute("blockNo", map.get("blockNo"));
 		request.setAttribute("pageNo", map.get("pageNo"));
-		
-		List<NotiDto> recentNotiList = nDao.selectAllNoti("1", "4");
-		SS.getSS(request).setAttribute("ssRecentNotiList", recentNotiList);
 		Paging.getRecentList(request);
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);

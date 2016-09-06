@@ -52,24 +52,26 @@
 							<p><a href="staff.do?cmd=staff_update_page">개인 정보 수정</a></p>
 						</td>
 						<td style="width:200px; line-height:10px">
-							<p><a href="noti.do?cmd=noti_list">공지사항 목록</a></p>
+							<p><a href="noti.do?cmd=staff_noti_list">공지사항 목록</a></p>
 						</td>
 						<td style="width:200px; line-height:10px">
-							<p><a href="pjt.do?cmd=pjt_list">프로젝트 목록</a></p>
+							<p><a href="pjt.do?cmd=staff_pjt_list">프로젝트 목록</a></p>
 						</td>
 					</tr>
 				</table>
 			</div>
 		</div>
 		<div class="search">
-		<form action="URL" method="get" name="frm">
+		<form action="staff.do?cmd=staff_select_member" method="post" name="frm">
 			<table>
 				<tr>
 					<td>
-						<input type="text" name="qry" id="qry" placeholder="이름을 입력하세요" required>
+						<input type="text" name="empnm" id="empnm" placeholder="이름을 입력하세요" required>
 					</td>
 					<td>
-						<input type="submit" id="btn" value="검색" onclick="return function()">		
+						<%-- <input type="button" id="btn" value="검색" onclick="location.href='staff.do?cmd=staff_select_member&empnm=${}'"> --%>		
+						<!-- <input type="submit" id="qrybtn" value="검색" > -->
+						<input type="submit" id="btn" value="검색" >
 					</td>
 				</tr>
 			</table>

@@ -30,6 +30,7 @@ public class ChkStaffAction implements Action {
 		if(result != 1){
 			url = "common/login.jsp";
 		}
+		Paging.getRecentList(request);
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);
 	}

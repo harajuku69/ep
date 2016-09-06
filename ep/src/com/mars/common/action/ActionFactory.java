@@ -49,18 +49,26 @@ public class ActionFactory {
 			action = new StaffListAction();
 		} else if(cmd.equals("staff_delete")){
 			action = new StaffDeleteAction();
+		} else if(cmd.equals("staff_select_member")){
+			action = new StaffSelectMemberAction();
+		} else if(cmd.equals("admin_select_member")){
+			action = new AdminSelectMemberAction();
 		} else if(cmd.equals("logout")){
 			action = new LogoutAction();
 		}
 //		notice_action
 		  else if(cmd.equals("admin_noti_list")){
 			action = new AdminNotiListAction();
+		} else if(cmd.equals("staff_noti_list")){
+			action = new StaffNotiListAction();
 		} else if(cmd.equals("noti_write_page")){
 				action = new NotiWritePageAction();
 		} else if(cmd.equals("noti_write")){
 			action = new NotiWriteAction();
 		} else if(cmd.equals("admin_noti_detail_page")){
 			action = new AdminNotiDetailPageAction();
+		} else if(cmd.equals("staff_noti_detail_page")){
+			action = new StaffNotiDetailPageAction();
 		} else if(cmd.equals("noti_update_page")){
 			action = new NotiUpdatePageAction();
 		} else if(cmd.equals("noti_update")){
@@ -69,10 +77,14 @@ public class ActionFactory {
 			action = new NotiDeleteAction();
 		} else if(cmd.equals("admin_cmt_write")){
 			action = new AdminCmtWriteAction();
+		} else if(cmd.equals("cmt_delete")){
+			action = new CmtDeleteAction();
 		}
 		//project_action
 		  else if(cmd.equals("admin_pjt_list")){
 			action = new AdminPjtListAction();
+		} else if(cmd.equals("staff_pjt_list")){
+			action = new StaffPjtListAction();
 		} else if(cmd.equals("admin_pjt_detail")){
 //			action = new AdminPjtDetailAction();
 		} else if(cmd.equals("pjt_delete")){
