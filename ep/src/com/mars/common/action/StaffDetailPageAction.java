@@ -16,7 +16,8 @@ public class StaffDetailPageAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "staff/staffDetail.jsp";
 		
-		String empid = SS.getEmpid(request) ;
+//		String empid = SS.getEmpid(request) ;
+		String empid = request.getParameter("empid");
 		StaffDao sDao = StaffDao.getInstance();
 		StaffDto sDto = sDao.selectOneByEmpid(empid);
 		

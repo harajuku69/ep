@@ -1,0 +1,19 @@
+/**
+ *  Drop-down
+ */
+$(function(){
+	$(".gnbmenu").hide();
+	$("#gnb").on({
+		"mouseover":function(){
+			$(".gnbmenu").slideDown(600);
+		}/*,
+		"mouseleave":function(){
+			$(".gnbmenu").slideUp(1000);
+		}*/
+	});
+	$("#gnbtab").on({
+		"mouseleave":function(){
+			$(".gnbmenu").slideUp(600);
+		}
+	});
+});

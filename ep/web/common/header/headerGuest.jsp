@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="js/accordion.js"></script>
+<script src="js/header.js"></script>
 </head>
 <body>
 <div class="header">
@@ -27,27 +27,33 @@
 		<div class="logo">
 			<a href="staff.do?cmd=index_page"><img src="images/logo.png" alt="로고 이미지"></a>
 		</div>
-		<div id="accordion">
+		<div id="gnbarea">
 			<div>
 				<table>
-					<tr>
-						<td style="width:200px; line-height:10px">개인 정보</td>
-						<td style="width:200px; line-height:10px">공지사항</td>
-						<td style="width:200px; line-height:10px">프로젝트</td>
+					<tr id="gnb">
+						<td style="width:200px; line-height:10px">
+							<a href="#">개인 정보</a>
+						</td>
+						<td style="width:200px; line-height:10px">
+							<a href="#">공지사항</a>
+						</td>
+						<td style="width:200px; line-height:10px">
+							<a href="#">프로젝트</a>
+						</td>
 					</tr>
 				</table>
 			</div>
-			<div>
+			<div id="gnbtab">
 				<table>
 					<tr>
 						<td style="width:200px; line-height:10px">
-							<p><a href="staff.do?cmd=login_page">개인 정보 상세</a></p>
+							<p class="gnbmenu"><a href="staff.do?cmd=login_page">개인 정보 상세</a></p>
 						</td>
 						<td style="width:200px; line-height:10px">
-							<p><a href="staff.do?cmd=login_page">공지사항 목록</a></p>
+							<p class="gnbmenu"><a href="staff.do?cmd=login_page">공지사항 목록</a></p>
 						</td>
 						<td style="width:200px; line-height:10px">
-							<p><a href="staff.do?cmd=login_page">프로젝트 목록</a></p>
+							<p class="gnbmenu"><a href="staff.do?cmd=login_page">프로젝트 목록</a></p>
 						</td>
 					</tr>
 				</table>
