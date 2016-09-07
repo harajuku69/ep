@@ -9,8 +9,15 @@ public class NotiDto {
 	private String		ctt;
 	private Timestamp	regdt;
 	private int 		rdcnt;
+	private int			cmtcnt;
 	private int			delchk;
 	
+	public int getCmtcnt() {
+		return cmtcnt;
+	}
+	public void setCmtcnt(int cmtcnt) {
+		this.cmtcnt = cmtcnt;
+	}
 	public int getNotino() {
 		return notino;
 	}

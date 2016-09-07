@@ -65,6 +65,7 @@ public class NotiDao {
 				nDto.setCtt(rs.getString("ctt"));
 				nDto.setRegdt(rs.getTimestamp("regdt"));
 				nDto.setRdcnt(rs.getInt("rdcnt"));
+				nDto.setCmtcnt(rs.getInt("cmtcnt"));
 				nDto.setDelchk(rs.getInt("delchk"));
 				
 				notiList.add(nDto);
@@ -144,13 +145,14 @@ public class NotiDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
+		int notino = cDto.getNotino();
 //		CmtDto crDto = new CmtDto();
 		
 		try{
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, cDto.getNotino());
+			pstmt.setInt(1, notino);
 			pstmt.setString(2, cDto.getRegid());
 			pstmt.setString(3, cDto.getCtt());
 //			pstmt.setTimestamp(4, cDto.getRegdt());
@@ -189,18 +191,61 @@ public class NotiDao {
 		} finally{
 			DBManager.close(conn, pstmt);
 		}
+		
+		updateCmtcnt(notino);
+		
 		return cDto;
 	}
-	
-	public List<CmtDto> selectAllCmt(int notino, String sttRecNo, String endRecNo){
-		String	sql = "SELECT c.cmtno, c.notino, s.admnm, c.regid, c.ctt, c.regdt, c.pwd "
+	public void updateCmtcnt(int notino){
+		String sql = "SELECT COUNT(*) cmtcnt FROM cmt WHERE notino=?";
+		
+		int cmtcnt = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try{
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, notino);				
+			rs = pstmt.executeQuery();
+			rs.next();
+			cmtcnt = rs.getInt("cmtcnt");
+		} catch(SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBManager.close(conn, pstmt);
+		}
+		
+		sql = "update noti set cmtcnt=? where notino=?";
+		
+		conn = null;
+		pstmt = null;
+		
+		try{
+			conn = DBManager.getConnection();
+			
+			pstmt = conn.prepareStatement(sql);
+				
+			pstmt.setInt(1, cmtcnt);
+			pstmt.setInt(2, notino);
+				
+			pstmt.executeUpdate();
+		} catch(SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBManager.close(conn, pstmt);
+		}
+	}
+	public List<CmtDto> selectAllCmt(int notino, int sttRecNo, int endRecNo, int cmtcnt){
+		String	sql = "SELECT R, c.cmtno, c.notino, s.admnm, c.regid, c.ctt, c.regdt, c.pwd "
 					  + "FROM ( "
 					  		  + "SELECT ROWNUM R, a.* "
 					  		  	+ "FROM ( "
 									    + "SELECT cmtno, notino, regid, ctt, regdt, pwd "
 									      + "FROM cmt "
 									     + "WHERE notino=? "
-									     + "ORDER BY cmtno desc "
+									     + "ORDER BY cmtno desc"
 								      + ") a"
 						    + ") c "
 					   + "JOIN staff s "
@@ -216,8 +261,8 @@ public class NotiDao {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, notino);
-			pstmt.setString(2, sttRecNo);
-			pstmt.setString(3, endRecNo);
+			pstmt.setInt(2, sttRecNo);
+			pstmt.setInt(3, endRecNo);
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
@@ -230,6 +275,7 @@ public class NotiDao {
 				cDto.setCtt(rs.getString("ctt"));
 				cDto.setRegdt(rs.getTimestamp("regdt"));
 				cDto.setPwd(Integer.parseInt(rs.getString("pwd")));
+				cDto.setRpno(cmtcnt - Integer.parseInt(rs.getString("R")) + 1);
 				
 				cmtList.add(cDto);
 			}

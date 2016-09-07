@@ -27,10 +27,10 @@
 						"<td>" + data.admnm + "</td>" +
 						"<td>" + data.ctt + "</td>" +
 						"<td>" + data.regdt + "</td>" +
-//						"<td><a href='noti.do?cmd=edu_update&no=${edu.no}'>수 정</a></td>" +
 						"<td><a href='noti.do?cmd=edu_delete&no=${edu.no}'>삭 제</a></td></td>" +
 						"</tr>" );
 				alert("댓글이 등록되었습니다.");
+				history.go(0);
 			}
 		});
 	}

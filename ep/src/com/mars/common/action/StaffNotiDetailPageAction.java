@@ -36,10 +36,11 @@ public class StaffNotiDetailPageAction implements Action {
 		map = Paging.getParam(sql, pageNo, recPerPage, pagePerBlock);
 		
 		
-		String sttRecNo = map.get("sttRecNo").toString();
-		String endRecNo = map.get("endRecNo").toString();
+		int sttRecNo = map.get("sttRecNo");
+		int endRecNo = map.get("endRecNo");
+		int cmtcnt = map.get("totRec");
 		
-		List<CmtDto> cmtList =nDao.selectAllCmt(notino, sttRecNo, endRecNo);
+		List<CmtDto> cmtList =nDao.selectAllCmt(notino, sttRecNo, endRecNo, cmtcnt);
 		
 		NotiDto nDto = nDao.selectOneByNotino(notino);
 		request.setAttribute("reqNoti", nDto);

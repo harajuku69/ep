@@ -61,7 +61,8 @@
 				<tbody>
 				<c:forEach var="cmt" items="${reqCmtList}">
 					<tr class="${cmt.cmtno}">
-						<td>${cmt.cmtno}</td>
+						<td>${cmt.rpno}</td>
+						<%-- <td>${cmt.cmtno}</td> --%>
 						<td>${cmt.admnm}</td>
 						<td>${cmt.ctt}</td>
 						<td>${cmt.regdt}</td>

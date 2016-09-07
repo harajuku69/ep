@@ -106,6 +106,7 @@ public class Paging {
 		map.put("totBlock", totBlock);
 		map.put("blockNo", blockNo);
 		map.put("pageNo", pageNo);
+		map.put("totRec", totRec);
 		
 		return map;
 	}

@@ -66,10 +66,10 @@ ul {list-style:none;}
 .contents .list th {background-color:#e9e9e9; color:#636363;}
 .contents .list td {text-align:center;}
 
-.contents #cmtarea {height:270px;overflow:auto;/* border:1px solid blue; */}
-.contents #cmtinput {height:55px;/* border:2px solid yellow; */}
-.contents #cmtlist {height:140px;/* border:2px solid green; */}
-.contents #paging {line-height:5px;/* border:2px solid red; */}
+/* .contents #cmtarea {height:270px;overflow:auto;border:1px solid blue;} */
+/* .contents #cmtinput {height:55px;border:2px solid yellow;} */
+/* .contents #cmtlist {height:140px;border:2px solid green;} */
+/* .contents #paging {line-height:5px;border:2px solid red;} */
 
 /* sub : login + notice + project============== */
 .sub {/* width:956px; clear:both;*/  height:215px; background-color:#fff; padding:1px; /* position:absolute; left:480px;top:660px; */ border:1px solid #f6f6f6;}

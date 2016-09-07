@@ -464,7 +464,7 @@ public class StaffDao {
 					  		    + "FROM ( "
 					  		    		+ "SELECT empnm,dptcd,titcd,phone,empid,empno "
 					  		    		  + "FROM staff "
-					  		    		 + "WHERE empnm=? "
+					  		    		 + "WHERE empnm like '%' || ? || '%' "
 					  		    		 + "ORDER BY empnm "
 					  		    	  + ") a "
 					  		+ ") s "

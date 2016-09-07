@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 public class CmtDto {
 	private int cmtno;
 	private int notino;
+	private int rpno;
 	private String admnm;
 	private String regid;
 	private String ctt;
@@ -12,6 +13,12 @@ public class CmtDto {
 	private int pwd;
 	private int delchk;
 	
+	public int getRpno() {
+		return rpno;
+	}
+	public void setRpno(int rpno) {
+		this.rpno = rpno;
+	}
 	public int getCmtno() {
 		return cmtno;
 	}
@@ -62,7 +69,7 @@ public class CmtDto {
 	}
 	@Override
 	public String toString() {
-		return "CmtDto [cmtno=" + cmtno + ", notino=" + notino + ", admnm=" + admnm + ", regid=" + regid + ", ctt="
-				+ ctt + ", regdt=" + regdt + ", pwd=" + pwd + ", delchk=" + delchk + "]";
+		return "CmtDto [cmtno=" + cmtno + ", notino=" + notino + ", rpno=" + rpno + ", admnm=" + admnm + ", regid="
+				+ regid + ", ctt=" + ctt + ", regdt=" + regdt + ", pwd=" + pwd + ", delchk=" + delchk + "]";
 	}
 }

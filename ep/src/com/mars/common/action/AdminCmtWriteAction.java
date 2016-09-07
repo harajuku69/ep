@@ -27,6 +27,7 @@ public class AdminCmtWriteAction implements Action {
 		
 		JsonObject json = new JsonObject();
 		json.addProperty("cmtno", cDto.getCmtno());
+		json.addProperty("rpno", cDto.getRpno());
 		json.addProperty("admnm", SS.getAdmnm(request));
 		json.addProperty("ctt", cDto.getCtt());
 		json.addProperty("regdt", cDto.getRegdt().toString());
