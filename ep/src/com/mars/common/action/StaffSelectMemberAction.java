@@ -17,15 +17,14 @@ public class StaffSelectMemberAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String url = "staff/staffMemberList.jsp";
 		String empnm = request.getParameter("empnm");
-//		System.out.println(empnm);
-		String sql = "select count(*) from staff where empnm = '" + empnm +"'";
+		String sql = "select count(*) from staff where empnm like '%' || '" + empnm + "' || '%'";
 		int pageNo = request.getParameter("pageNo") == null ? 1 : Integer.parseInt(request.getParameter("pageNo"));
 //		int recPerPage = Integer.parseInt(request.getParameter("recPerPage"));
 //		int pagePerBlock = Integer.parseInt(request.getParameter("pagePerBlock"));
 //		int pageNo = 2;
-//		System.out.println(pageNo);
 		int recPerPage = 3;
 		int pagePerBlock = 3;
 		
@@ -34,10 +33,12 @@ public class StaffSelectMemberAction implements Action {
 		
 		String sttRecNo = map.get("sttRecNo").toString();
 		String endRecNo = map.get("endRecNo").toString();
-//		System.out.println(sttRecNo + " " + endRecNo);
+//		System.out.println(pageNo + " / "+sttRecNo + " / " + endRecNo);
+//		System.out.println(empnm);
 		StaffDao sDao = StaffDao.getInstance();
 		List<StaffDto> memberList = sDao.selectMemberByEmpnm(empnm, sttRecNo, endRecNo);
 		
+		request.setAttribute("empnm", empnm);
 		request.setAttribute("reqMemberList", memberList);
 		request.setAttribute("firstPageNoInBlock", map.get("firstPageNoInBlock"));
 		request.setAttribute("lastPageNoInBlock", map.get("lastPageNoInBlock"));
@@ -47,8 +48,9 @@ public class StaffSelectMemberAction implements Action {
 		request.setAttribute("totBlock", map.get("totBlock"));
 		request.setAttribute("blockNo", map.get("blockNo"));
 		request.setAttribute("pageNo", map.get("pageNo"));
-		System.out.println(memberList);
+//		System.out.println(memberList);
 		Paging.getRecentList(request);
+//		response.setCharacterEncoding("UTF-8");
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);
 	}

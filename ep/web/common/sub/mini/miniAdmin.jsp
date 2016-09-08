@@ -31,7 +31,6 @@
 			<ul>
 				<li>최종 로그인 : 
 					<c:set var="lastdt" value="${ssLastdt}"/>
-					<%-- <c:out value="${fn:substring(lastdt,4,6)}월${fn:substring(lastdt,6,8)}일${fn:substring(lastdt,8,10)}시"${fn:substring(lastdt,10,12)}분"/> --%>
 					<c:out value="${fn:substring(lastdt,4,6)}월"/>
 					<c:out value="${fn:substring(lastdt,6,8)}일"/>
 					<c:out value="${fn:substring(lastdt,8,10)}시"/>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:if test="${empty ssEmpid}">
 	<jsp:forward page="common/login.jsp"/>
 </c:if>
@@ -36,7 +37,13 @@
 		</div>
 		<div class="simple">
 			<ul>
-				<li>최종 로그인 : ${ssLastdt}</li>
+				<li>최종 로그인 : 
+					<c:set var="lastdt" value="${ssLastdt}"/>
+					<c:out value="${fn:substring(lastdt,4,6)}월"/>
+					<c:out value="${fn:substring(lastdt,6,8)}일"/>
+					<c:out value="${fn:substring(lastdt,8,10)}시"/>
+					<c:out value="${fn:substring(lastdt,10,12)}분"/>
+				</li>
 				<li>소속 : <a href="#=?부서원 검색결과">${ssDptcd}</a></li>
 				<li>직급 : ${ssTitcd}</li>
 				<li>사번 : ${ssEmpno}</li>

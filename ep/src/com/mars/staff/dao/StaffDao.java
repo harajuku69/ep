@@ -498,7 +498,7 @@ public class StaffDao {
 				sDto.setDptcd(rs.getString("dpt"));
 				sDto.setTitcd(rs.getString("tit"));
 				
-				System.out.println(sDto);
+//				System.out.println(sDto);
 				memberList.add(sDto);
 			}
 		} catch(SQLException e){
@@ -506,7 +506,7 @@ public class StaffDao {
 		} finally{
 			DBManager.close(conn, pstmt, rs);
 		}
-		System.out.println(memberList);
+//		System.out.println(memberList);
 		return memberList;
 	}
 

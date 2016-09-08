@@ -51,14 +51,14 @@
 		<div id="paging" style="text-align:center; font-size:20px; padding:1em">
    		<span>
    			<c:if test="${blockNo > 1}">
-   				<span><a href="noti.do?cmd=admin_noti_list&pageNo=${prevPageNo}">&laquo;이전 페이지</a></span>
+   				<span><a href="noti.do?cmd=staff_noti_list&pageNo=${prevPageNo}">&laquo;이전 페이지</a></span>
    			</c:if>
        		<c:choose>
        		<c:when test="${blockNo < totBlock }">
         		<c:forEach var="i" begin="${firstPageNoInBlock}" end="${lastPageNoInBlock}" step="1">
             		<c:choose>
                 		<c:when test="${i eq pageNo}"><span>${i}</span></c:when>
-                		<c:otherwise><a href="noti.do?cmd=admin_noti_list&pageNo=${i}">${i}</a></c:otherwise>
+                		<c:otherwise><a href="noti.do?cmd=staff_noti_list&pageNo=${i}">${i}</a></c:otherwise>
             		</c:choose>
         		</c:forEach>
         	</c:when>
@@ -66,7 +66,7 @@
         		<c:forEach var="i" begin="${firstPageNoInBlock}" end="${totPage}" step="1">
             		<c:choose>
                 		<c:when test="${i eq pageNo}"><span>${i}</span></c:when>
-                		<c:otherwise><a href="noti.do?cmd=admin_noti_list&pageNo=${i}">${i}</a></c:otherwise>
+                		<c:otherwise><a href="noti.do?cmd=staff_noti_list&pageNo=${i}">${i}</a></c:otherwise>
             		</c:choose>
         		</c:forEach>
         	</c:otherwise>

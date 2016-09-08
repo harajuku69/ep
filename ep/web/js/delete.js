@@ -20,6 +20,7 @@ function deleteItem(field, item){
 		url:url,
 		success:function(msg){
 			alert("정상 삭제되었습니다.");
+			history.go(0);
 		}
 	});
 };

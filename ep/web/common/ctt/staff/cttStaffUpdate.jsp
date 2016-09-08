@@ -39,8 +39,8 @@
 		</table>
 		</div>
 	</div>
-	<div id="logleft">
 	<form action="staff.do?cmd=staff_update" method="post" enctype="multipart/form-data" ><!-- name="frm"지움 -->
+	<div id="logleft">
 	<input type="hidden" name="noChangePic" value="${reqStaff.pic}">
 		<c:choose>
 			<c:when test="${empty reqStaff.pic}">
@@ -171,12 +171,12 @@
 		<div style="clear:both">
 			<p><input type="submit" value="수정 완료" ></p>
 			<p><input type="reset" value="되돌리기" ></p>
-			<p><input type="button" value="수정 취소" onclick="location.href='staff.do?cmd=staff_detail_page'"></p>
+			<p><input type="button" value="수정 취소" onclick="location.href='staff.do?cmd=staff_detail_page&empid=${reqStaff.empid}'"></p>
 		</div>
-		</form>
 	</div>
+	</form>
 </div>
-</script>
+<!-- </script> -->
 </body>
 </html>
 

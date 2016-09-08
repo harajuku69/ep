@@ -19,7 +19,7 @@
 			<thead>
 				<tr>
 					<!-- <td class="addbtn" colspan="7" style="text-align:right; border:none;"><a href="#" onClick="history.go(-1)"><button id="back">돌아가기</button></a></td> -->
-					<td class="addbtn" colspan="7" style="text-align:right; border:none;"><a href="#" onClick="history.go(-1)"><button id="back">돌아가기</button></a></td>
+					<td class="addbtn" colspan="5" style="text-align:right; border:none;"><a href="#" onClick="history.go(-1)"><button id="back">돌아가기</button></a></td>
 				</tr>
 				<tr class="ui-widget-header">
 					<th>이 름</th>
@@ -52,14 +52,14 @@
 		<div id="paging" style="text-align:center; font-size:20px; padding:1em">
     		<span>
     			<c:if test="${blockNo > 1}">
-    				<span><a href="staff.do?cmd=staff_list&pageNo=${prevPageNo}">&laquo;이전 페이지</a></span>
+    				<span><a href="staff.do?cmd=staff_select_member&empnm=${empnm}&pageNo=${prevPageNo}">&laquo;이전 페이지</a></span>
     			</c:if>
         		<c:choose>
         		<c:when test="${blockNo < totBlock }">
 	        		<c:forEach var="i" begin="${firstPageNoInBlock}" end="${lastPageNoInBlock}" step="1">
 	            		<c:choose>
 	                		<c:when test="${i eq pageNo}"><span>${i}</span></c:when>
-	                		<c:otherwise><a href="staff.do?cmd=staff_list&pageNo=${i}">${i}</a></c:otherwise>
+	                		<c:otherwise><a href="staff.do?cmd=staff_select_member&empnm=${empnm}&pageNo=${i}">${i}</a></c:otherwise>
 	            		</c:choose>
 	        		</c:forEach>
 	        	</c:when>
@@ -67,13 +67,13 @@
 	        		<c:forEach var="i" begin="${firstPageNoInBlock}" end="${totPage}" step="1">
 	            		<c:choose>
 	                		<c:when test="${i eq pageNo}"><span>${i}</span></c:when>
-	                		<c:otherwise><a href="staff.do?cmd=staff_list&pageNo=${i}">${i}</a></c:otherwise>
+	                		<c:otherwise><a href="staff.do?cmd=staff_select_member&empnm=${empnm}&pageNo=${i}">${i}</a></c:otherwise>
 	            		</c:choose>
 	        		</c:forEach>
 	        	</c:otherwise>
         		</c:choose>
         		<c:if test="${blockNo < totBlock}">
-    				<span><a href="staff.do?cmd=staff_list&pageNo=${nextPageNo}">다음 페이지&raquo;</a></span>
+    				<span><a href="staff.do?cmd=staff_select_member&pageNo=${nextPageNo}&empnm=${empnm}">다음 페이지&raquo;</a></span>
     			</c:if>
     		</span>
 		</div>
