@@ -16,12 +16,10 @@ public class AdminHomePageAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "staff/adminHome.jsp";
 		
-//		String empid = SS.getEmpid(request) ;
+		String empid = request.getParameter("empid") ;
+		StaffDao sDao = StaffDao.getInstance();
+		sDao.changeAdmstat(empid, 1);
 		
-//		StaffDao sDao = StaffDao.getInstance();
-//		StaffDto sDto = sDao.selectOneByEmpid(empid);
-		
-//		request.setAttribute("reqStaff", sDto);
 		Paging.getRecentList(request);
 		
 		RequestDispatcher disp = request.getRequestDispatcher(url);

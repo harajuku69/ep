@@ -110,7 +110,8 @@
 				</td>
 			</tr>
 		</table>
-		<br/><input type="button" value="수정하기" onclick="location.href='staff.do?cmd=staff_update_page&empid=${reqStaff.empid}'">
+		<%-- <br/><input type="button" value="수정하기" onclick="location.href='staff.do?cmd=staff_update_page&empid=${reqStaff.empid}'"> --%>
+		<br/><input type="button" value="수정하기" onclick="chkPwd('staff','${empid}')">
 		<br/><a href="staff.do?cmd=staff_home_page&empid=${reqStaff.empid}"><input type="button" value="돌아가기"></a>
 		<!-- </form> -->
 	</div>

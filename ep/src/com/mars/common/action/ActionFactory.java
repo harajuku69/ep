@@ -15,7 +15,7 @@ public class ActionFactory {
 		Action action = null;
 		System.out.println("ActionFactory : " + cmd);
 //		staff_action		
-		if(cmd.equals("index_page")){
+		if(cmd.equals("index")){
 			action = new IndexPageAction();
 		} else if(cmd.equals("login_page")){
 			action = new LoginPageAction();

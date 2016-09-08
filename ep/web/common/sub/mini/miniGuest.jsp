@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div class="mini">
-		<p>Member Login</p>
+		<p style="display:inline;">Member Login</p>
 		<hr/>
 		<form action="staff.do?cmd=login" method="post" name="frm" id="frm">
 		<table id="logtab">

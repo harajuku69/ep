@@ -38,7 +38,7 @@
 		</div>
 		<br>
 		<input type ="button" value="목록으로" 
-			onclick="location.href='noti.do?cmd=admin_noti_list&pageNo=${pageNo}'">
+			onclick="location.href='noti.do?cmd=staff_noti_list&pageNo=${pageNo}'">
 		<hr>
 		<div id="cmtarea">
 			<div id="cmtinput" class="ui-widget">
@@ -62,11 +62,13 @@
 					<tbody>
 					<c:forEach var="cmt" items="${reqCmtList}">
 						<tr class="${cmt.cmtno}" class="ui-widget-header">
-							<td>${cmt.cmtno}</td>
+							<td>${cmt.rpno}</td>
 							<td>${cmt.admnm}</td>
 							<td>${cmt.ctt}</td>
 							<td>${cmt.regdt}</td>
+							<c:if test="${cmt.regid == ssEmpid}">
 							<td><a href="#" onClick="deleteItem('cmt', '${cmt.cmtno}')">삭 제</a></td>
+							</c:if>
 						</tr>
 					</c:forEach>
 					</tbody>
@@ -75,14 +77,14 @@
 			<div id="paging" style="text-align:center; font-size:20px; padding:1em">
 	    		<span>
 	    			<c:if test="${blockNo > 1}">
-	    				<span><a href="noti.do?cmd=admin_noti_detail_page&cmtPageNo=${prevPageNo}&notino=${reqNoti.notino}&pageNo=${pageNo}">&laquo;이전 페이지</a></span>
+	    				<span><a href="noti.do?cmd=staff_noti_detail_page&cmtPageNo=${prevPageNo}&notino=${reqNoti.notino}&pageNo=${pageNo}">&laquo;이전 페이지</a></span>
 	    			</c:if>
 	        		<c:choose>
 	        		<c:when test="${blockNo < totBlock }">
 		        		<c:forEach var="i" begin="${firstPageNoInBlock}" end="${lastPageNoInBlock}" step="1">
 		            		<c:choose>
 		                		<c:when test="${i eq cmtPageNo}"><span>${i}</span></c:when>
-		                		<c:otherwise><a href="noti.do?cmd=admin_noti_detail_page&cmtPageNo=${i}&notino=${reqNoti.notino}&pageNo=${pageNo}">${i}</a></c:otherwise>
+		                		<c:otherwise><a href="noti.do?cmd=staff_noti_detail_page&cmtPageNo=${i}&notino=${reqNoti.notino}&pageNo=${pageNo}">${i}</a></c:otherwise>
 		            		</c:choose>
 		        		</c:forEach>
 		        	</c:when>
@@ -90,13 +92,13 @@
 		        		<c:forEach var="i" begin="${firstPageNoInBlock}" end="${totPage}" step="1">
 		            		<c:choose>
 		                		<c:when test="${i eq cmtPageNo}"><span>${i}</span></c:when>
-		                		<c:otherwise><a href="noti.do?cmd=admin_noti_detail_page&cmtPageNo=${i}&notino=${reqNoti.notino}&pageNo=${pageNo}">${i}</a></c:otherwise>
+		                		<c:otherwise><a href="noti.do?cmd=staff_noti_detail_page&cmtPageNo=${i}&notino=${reqNoti.notino}&pageNo=${pageNo}">${i}</a></c:otherwise>
 		            		</c:choose>
 		        		</c:forEach>
 		        	</c:otherwise>
 	        		</c:choose>
 	        		<c:if test="${blockNo < totBlock}">
-	    				<span><a href="noti.do?cmd=admin_noti_detail_page&cmtPageNo=${nextPageNo}&notino=${reqNoti.notino}&pageNo=${pageNo}">다음 페이지&raquo;</a></span>
+	    				<span><a href="noti.do?cmd=staff_noti_detail_page&cmtPageNo=${nextPageNo}&notino=${reqNoti.notino}&pageNo=${pageNo}">다음 페이지&raquo;</a></span>
 	    			</c:if>
 	    		</span>
 			</div>

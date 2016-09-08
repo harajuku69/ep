@@ -21,7 +21,7 @@
 					<td><a href="staff.do?cmd=logout">Logout</a></td>
 					<c:choose>
 						<c:when test="${ssAdmchk == 1}">
-							<td><a href="staff.do?cmd=admin_home_page">${ssAdmnm}</a></td>
+							<td><a href="staff.do?cmd=admin_home_page&empid=${ssEmpid}">${ssAdmnm}</a></td>
 						</c:when>
 						<c:otherwise>
 							<td><a href="staff.do?cmd=staff_detail_page&empid={ssEmpid}">${ssEmpnm}</a></td>

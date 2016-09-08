@@ -510,68 +510,27 @@ public class StaffDao {
 		return memberList;
 	}
 
-//	public void updateStat(String empid, String toStat) {
-//		String sql = "update staff set stat=? where empid=?";
-//		String changeStat = toStat;
-//		
-//		Connection conn = null;
-//		PreparedStatement pstmt = null;
-//		
-//		try{
-//			conn = DBManager.getConnection();
-//			pstmt = conn.prepareStatement(sql);
-//				
-//			pstmt.setInt(1, Integer.parseInt(changeStat));	
-//			pstmt.setString(2, empid);
-//			
-//			pstmt.executeUpdate();
-//		} catch(SQLException e){
-//			e.printStackTrace();
-//		} finally{
-//			DBManager.close(conn, pstmt);
-//		}
-//	}
-
-//	public void updateZipcd(String no, String empid) {
-//		String sql = "select zipcd, sido, gugun, dong from zip where no=?";
-//		
-//		Connection conn = null;
-//		PreparedStatement pstmt = null;
-//		ResultSet rs = null;
-//		
-//		String zipcd = null;
-//		StringBuilder addr = new StringBuilder();
-//		try {
-//			conn = DBManager.getConnection();
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setString(1, no);
-//			rs = pstmt.executeQuery();
-//			rs.next();
-//			zipcd=rs.getString("zipcd");
-//			addr.append(rs.getString("sido") + " ")
-//			.append(rs.getString("gugun") + " ")
-//			.append(rs.getString("dong"));
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} 
-//		
-//		sql = "update staff set zipcd=?,addr=? where empid=?";
-//		
-//		try {
-//			conn = DBManager.getConnection();
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setString(1, zipcd);
-//			pstmt.setString(2, addr.toString());
-//			pstmt.setString(3, empid);
-//			
-//			pstmt.executeUpdate();
-//			
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} finally {
-//			DBManager.close(conn, pstmt, rs);
-//		}
-//	}
+	public void changeAdmstat(String empid, int admstat) {
+		String sql = "update staff set admstat=? where empid=?";
+		int toStat = admstat;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try{
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+				
+			pstmt.setInt(1,toStat);	
+			pstmt.setString(2, empid);
+			
+			pstmt.executeUpdate();
+		} catch(SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBManager.close(conn, pstmt);
+		}
+	}
 }//class end
 
 

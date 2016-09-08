@@ -23,7 +23,7 @@ public class StaffDto {
 	private String		logdt;
 	private int			admchk;
 	private String		admnm;
-//	private int			stat;
+	private int			admstat;
 	
 	public String getAdmnm() {
 		return admnm;
@@ -145,17 +145,18 @@ public class StaffDto {
 	public void setAdmchk(int admchk) {
 		this.admchk = admchk;
 	}
-//	public int getStat() {
-//		return stat;
-//	}
-//	public void setStat(int stat) {
-//		this.stat = stat;
-//	}
+	public int getAdmstat() {
+		return admstat;
+	}
+	public void setAdmstat(int admstat) {
+		this.admstat = admstat;
+	}
 	@Override
 	public String toString() {
-		return "StaffDto [empid=" + empid + ", pwd=" + pwd + ", empno=" + empno + ", empnm=" + empnm + ", phone=" + phone + ", jumin=" + jumin + ", pic=" + pic + ", zipcd=" + zipcd + ", addr="
-				+ addr + ", addrdtl=" + addrdtl + ", dptcd=" + dptcd + ", titcd=" + titcd + ", sal=" + sal
-				+ ", startdt=" + startdt + ", enddt=" + enddt + ", regdt=" + regdt + ", lastdt=" + lastdt + ", logdt="
-				+ logdt + ", admchk=" + admchk + ", admnm=" + admnm + "]";
+		return "StaffDto [empid=" + empid + ", pwd=" + pwd + ", empno=" + empno + ", empnm=" + empnm + ", phone="
+				+ phone + ", jumin=" + jumin + ", pic=" + pic + ", zipcd=" + zipcd + ", addr=" + addr + ", addrdtl="
+				+ addrdtl + ", dptcd=" + dptcd + ", titcd=" + titcd + ", sal=" + sal + ", startdt=" + startdt
+				+ ", enddt=" + enddt + ", regdt=" + regdt + ", lastdt=" + lastdt + ", logdt=" + logdt + ", admchk="
+				+ admchk + ", admnm=" + admnm + ", admstat=" + admstat + "]";
 	}
 }

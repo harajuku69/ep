@@ -17,7 +17,7 @@
 	<p style="display:inline;">Staff </p>
 	<c:if test="${ssAdmchk == 1}" >
 		<span>|</span>
-		<p style="display:inline;"><a href="staff.do?cmd=admin_home_page&toStat=1"> Admin</a></p>
+		<p style="display:inline;"><a href="staff.do?cmd=admin_home_page&empid=${ssEmpid}"> Admin</a></p>
 	</c:if>
 	<hr/>
 	<div class="mstaff">
@@ -37,12 +37,18 @@
 		</div>
 		<div class="simple">
 			<ul>
-				<li>최종 로그인 : 
-					<c:set var="lastdt" value="${ssLastdt}"/>
-					<c:out value="${fn:substring(lastdt,4,6)}월"/>
-					<c:out value="${fn:substring(lastdt,6,8)}일"/>
-					<c:out value="${fn:substring(lastdt,8,10)}시"/>
-					<c:out value="${fn:substring(lastdt,10,12)}분"/>
+				<li>최종 로그인 :
+					<c:choose>
+						<c:when test="${ssLastdt == '첫 로그인입니다'}">${ssLastdt}
+						</c:when> 
+						<c:otherwise>
+							<c:set var="lastdt" value="${ssLastdt}"/>
+							<c:out value="${fn:substring(lastdt,4,6)}월"/>
+							<c:out value="${fn:substring(lastdt,6,8)}일"/>
+							<c:out value="${fn:substring(lastdt,8,10)}시"/>
+							<c:out value="${fn:substring(lastdt,10,12)}분"/>
+						</c:otherwise>
+					</c:choose>
 				</li>
 				<li>소속 : <a href="#=?부서원 검색결과">${ssDptcd}</a></li>
 				<li>직급 : ${ssTitcd}</li>

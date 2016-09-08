@@ -19,7 +19,7 @@
 				<tr>
 					<td><a href="staff.do?cmd=admin_home_page">Home</a></td>
 					<td><a href="staff.do?cmd=logout">Logout</a></td>
-					<td><a href="staff.do?cmd=staff_home_page">${ssEmpnm}</a></td>
+					<td><a href="staff.do?cmd=staff_home_page&empid=${ssEmpid}">${ssEmpnm}</a></td>
 				</tr>
 			</table>
 		</div>
