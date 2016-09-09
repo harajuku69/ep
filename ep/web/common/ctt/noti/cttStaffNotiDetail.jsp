@@ -13,6 +13,16 @@
 </head>
 <body>
 <div class="contents">
+	<div id="pwd-dialog" title="비밀번호 확인">
+		<p class="validateTips">본인 확인이 필요합니다.</p>
+		<fieldset>
+			<form id="frm">
+				<label for="pwd">비밀번호를 입력해주세요.</label><br>
+				<input type="password" name="pwd" id="pwd" placeholder="비밀번호" class="text ui-widget-content ui-corner-all"  ><br>
+		</form>
+		</fieldset>
+		<p id="pwdChkRs"></p>
+	</div> 
 	<div id="list-contain" class="ui-widget">
 		<div id="noti_dtl_area">
 			<table class="list">
@@ -67,7 +77,8 @@
 							<td>${cmt.ctt}</td>
 							<td>${cmt.regdt}</td>
 							<c:if test="${cmt.regid == ssEmpid}">
-							<td><a href="#" onClick="deleteItem('cmt', '${cmt.cmtno}')">삭 제</a></td>
+							<%-- <td><a href="#" onClick="deleteItem('cmt', '${cmt.cmtno}')">삭 제</a></td> --%>
+							<td><input type="button" id="chk_pwd" value="삭제"></td>
 							</c:if>
 						</tr>
 					</c:forEach>

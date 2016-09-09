@@ -53,6 +53,10 @@ public class ActionFactory {
 			action = new StaffSelectMemberAction();
 		} else if(cmd.equals("admin_select_member")){
 			action = new AdminSelectMemberAction();
+		} else if(cmd.equals("check_staff_pwd")){
+			action = new CheckStaffPwdAction();
+		} else if(cmd.equals("check_pwd_pop")){
+			action = new CheckPwdPopAction();
 		} else if(cmd.equals("logout")){
 			action = new LogoutAction();
 		}
@@ -75,8 +79,8 @@ public class ActionFactory {
 			action = new NotiUpdateAction();
 		} else if(cmd.equals("noti_delete")){
 			action = new NotiDeleteAction();
-		} else if(cmd.equals("admin_cmt_write")){
-			action = new AdminCmtWriteAction();
+		} else if(cmd.equals("cmt_write")){
+			action = new CmtWriteAction();
 		} else if(cmd.equals("cmt_delete")){
 			action = new CmtDeleteAction();
 		}

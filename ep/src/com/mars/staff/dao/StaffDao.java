@@ -531,6 +531,32 @@ public class StaffDao {
 			DBManager.close(conn, pstmt);
 		}
 	}
+
+	public int checkStaffPwd(String empid, String pwd) {
+		String sql = "select pwd from staff where empid=?";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int result = 0;
+		try{
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, empid);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				if(rs.getString("pwd").equals(pwd)){
+					result = 1;
+				}
+			}
+		} catch(Exception e){
+			e.printStackTrace();
+		} finally{
+			DBManager.close(conn, pstmt, rs);
+		}
+		return result;
+	}
 }//class end
 
 

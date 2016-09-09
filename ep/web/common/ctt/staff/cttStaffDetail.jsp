@@ -9,10 +9,20 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="js/check.js"></script>
 </head>
 <body>
 <div class="contents">
-	<!-- <form name="frm" style="clear:left;"> -->
+			<div id="pwd-dialog" title="비밀번호 확인">
+				<p class="validateTips">본인 확인이 필요합니다.</p>
+				<fieldset>
+					<form id="frm">
+						<label for="pwd">비밀번호를 입력해주세요.</label><br>
+						<input type="password" name="pwd" id="pwd" placeholder="비밀번호" class="text ui-widget-content ui-corner-all"  ><br>
+				</form>
+				</fieldset>
+				<p id="pwdChkRs"></p>
+			</div> 
 	<div id="logleft" style="clear:left;">
 		<c:choose>
 			<c:when test="${empty reqStaff.pic}">
@@ -110,8 +120,7 @@
 				</td>
 			</tr>
 		</table>
-		<%-- <br/><input type="button" value="수정하기" onclick="location.href='staff.do?cmd=staff_update_page&empid=${reqStaff.empid}'"> --%>
-		<br/><input type="button" value="수정하기" onclick="chkPwd('staff','${empid}')">
+		<br/><input type="button" value="수정하기" id="chk_pwd" >
 		<br/><a href="staff.do?cmd=staff_home_page&empid=${reqStaff.empid}"><input type="button" value="돌아가기"></a>
 		<!-- </form> -->
 	</div>

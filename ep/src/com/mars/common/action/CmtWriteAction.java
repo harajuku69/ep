@@ -11,7 +11,7 @@ import com.google.gson.JsonObject;
 import com.mars.noti.dao.NotiDao;
 import com.mars.noti.dto.CmtDto;
 
-public class AdminCmtWriteAction implements Action {
+public class CmtWriteAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

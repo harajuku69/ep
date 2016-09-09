@@ -1,20 +1,15 @@
 /**
  * 
  */
-//var dialog;
 $(function() {
 	//modal
 	var dialog, form,
-//	var form,
-	kwd = $("#kwd"),
+		kwd = $("#kwd"),
 	
-//	kwdField = $([]).add(kwd),
 	tips = $(".validateTips");
 	
 	function updateTips(t) {
 		tips.text(t).addClass("ui-state-highlight");//하일라이트 주는 것
-		//위 구문은 tip.text(t).addClass("ui-state-highlight");와 동일한 구문임
-		//ui-state-highlight는 내장되어 있는 클래스임. jquery-ui.min.css 요기에
 		setTimeout(function() {
 			tips.removeClass("ui-state-highlight", 2500);//하일라이트 없어지는 것
 		}, 500 );
@@ -46,7 +41,6 @@ $(function() {
 		var valid = true,
 			d = $("#frm").serialize();
 		
-//		kwdField.removeClass( "ui-state-error" );
 		kwd.removeClass("ui-state-error");
 		
 		valid = checkLength(kwd, 2, 10 );
@@ -98,17 +92,12 @@ $(function() {
 //			zipcdsch()함수가 실행될 떄 기존에 있떤 내역들을 삭제하는, 
 //			즉 초기화하는 기능을 넣어야 함.그래야 검색할 때마다새로운 정보만 나열함.
 			"취 소": function() {
-//				refresh();
-//				kwd.removeClass("ui-state-error");
-//				form[0].reset();
-//				form[0].focus();
 				dialog.dialog("close");
 			}
 		},
 		close: function() {
 			refresh();
 			form[0].reset();
-//			kwd.removeClass("ui-state-error");
 		}
 	});
 	
@@ -125,17 +114,6 @@ $(function() {
 });
 
 function setZipcd(zipcd, sido, gugun, dong){
-//	url = "staff.do?cmd=zipcd_update&no="+no;
-//	
-//	$.ajax({
-//		type:"get",
-//		url:url,
-//		success:function(msg){
-//			alert("우편번호가 변경되었습니다.");
-//		}
-//	});
-//	$("#getzipcd").on("click", function(){
-//	});
     $("#zipcd").val(zipcd);
     $("#addr").val(sido + " " + gugun + " " + dong);
 	$("#zip-dialog").dialog("close");
