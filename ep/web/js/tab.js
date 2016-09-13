@@ -1,8 +1,6 @@
 /**
  * Tab setting : tab + modal
  */
-var tips;
-
 $(function() {
 	//tabs
 	tips = $(".validateTips");
@@ -14,7 +12,8 @@ $(function() {
 		}
 	});
 });
-//$(function() {
+
+var tips;
 
 function updateTips(t) {
 //	alert(t);
@@ -43,8 +42,6 @@ function checkRegexp(o, regexp) {
 		return true;
 	}
 }
-//});
-
 
 $(function() {
 	//modal
@@ -87,6 +84,7 @@ $(function() {
 		
 	function addEdu() {
 		var valid = true;
+			d = $("#frm_edu").serialize();
 		//학력 추가 처리
 		eduAllFields.removeClass("ui-state-error");
 		valid = checkLength(loc, 2, 30 );
@@ -97,18 +95,39 @@ $(function() {
 		
 		valid = valid && checkLength( major, 2, 20 );
 		valid = valid && checkRegexp( major, /^[가-힣a-z0-9]([가-힣a-z0-9])*$/ );
-		
+		var url = "staff.do?cmd=add_edu";
 		if ( valid ) {
-			$("#edu tbody").append( "<tr>" +
-			"<td>" + loc.val() + "</td>" +
-			"<td>" + school.val() + "</td>" +
-			"<td>" + major.val() + "</td>" +
-			"<td>" + enterdt.val() + "</td>" +
-			"<td>" + graddt.val() + "</td>" +
-			"<td><a href='staff.do?cmd=edu_update&no=${edu.no}'>수 정</a></td>" +
-			"<td><a href='staff.do?cmd=edu_delete&no=${edu.no}'>삭 제</a></td></td>" +
-			"</tr>" );
-			$("#edu-dialog").dialog("close");
+			$.ajax({
+				url:url,
+				data:d,
+//				dataType:"json",
+				type:'post',
+				contentsType: "application/x-www-form-urlencoded; charset=UTF-8",
+				success:function(result){
+					data = JSON.parse(result);
+//					$("#edu tbody").append( "<tr>" +
+//					"<td>" + loc.val() + "</td>" +
+//					"<td>" + school.val() + "</td>" +
+//					"<td>" + major.val() + "</td>" +
+//					"<td>" + enterdt.val() + "</td>" +
+//					"<td>" + graddt.val() + "</td>" +
+//					"<td><a href='staff.do?cmd=edu_update&no=${edu.no}'>수 정</a></td>" +
+//					"<td><a href='staff.do?cmd=edu_delete&no=${edu.no}'>삭 제</a></td></td>" +
+//					"</tr>" );
+					$("#edu tbody").append( 
+						"<tr class='" + data.eduno + "'>" +
+						"<td>" + data.loc + "</td>" +
+						"<td>" + data.school + "</td>" +
+						"<td>" + data.major + "</td>" +
+						"<td>" + data.enterdt + "</td>" +
+						"<td>" + data.graddt + "</td>" +
+						"<td><a href='staff.do?cmd=edu_update&no=${edu.no}'>수 정</a></td>" +
+						"<td><a href='staff.do?cmd=edu_delete&no=${edu.no}'>삭 제</a></td></td>" +
+						"</tr>" );
+					alert("정상 등록되었습니다.");
+					$("#edu-dialog").dialog("close");
+				}
+			});
 		}
 		return valid;
 	}

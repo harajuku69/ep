@@ -31,6 +31,8 @@ public class ActionFactory {
 			action = new JoinPageAction();
 		} else if(cmd.equals("chk_id")){
 			action = new ChkIdAction();
+		} else if(cmd.equals("add_edu")){
+			action = new AddEduAction();
 		} else if(cmd.equals("staff_detail_page")){
 			action = new StaffDetailPageAction();
 		} else if(cmd.equals("admin_detail_page")){

@@ -12,6 +12,7 @@ import java.util.List;
 
 import com.mars.common.action.Paging;
 import com.mars.common.db.DBManager;
+import com.mars.staff.dto.EduDto;
 import com.mars.staff.dto.StaffDto;
 import com.mars.staff.dto.ZipDto;
 
@@ -554,6 +555,35 @@ public class StaffDao {
 			e.printStackTrace();
 		} finally{
 			DBManager.close(conn, pstmt, rs);
+		}
+		return result;
+	}
+
+	public int addItem(EduDto eDto) {
+		String sql = "insert into edu(eduno, empid, loc, school, major, enterdt, graddt) "
+					+ "values(eduno_seq.nextval,?,?,?,?,?,?)";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, eDto.getEmpid());
+			pstmt.setString(2, eDto.getLoc());
+			pstmt.setString(3, eDto.getSchool());
+			pstmt.setString(4, eDto.getMajor());
+			pstmt.setTimestamp(5, eDto.getEnterdt());
+			pstmt.setTimestamp(6, eDto.getGraddt());
+			
+			result = pstmt.executeUpdate();
+			System.out.println(result);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
 		}
 		return result;
 	}

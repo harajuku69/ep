@@ -68,8 +68,8 @@
 							<td>${cmt.admnm}</td>
 							<td>${cmt.ctt}</td>
 							<td>${cmt.regdt}</td>
-							<%-- <td><a href="#" onClick="deleteItem('cmt', '${cmt.cmtno}')">삭 제</a></td> --%>
-							<td><input type="button" id="chk_pwd" value="삭제"></td>
+							<td><a href="#" onClick="deleteItem('cmt', '${cmt.cmtno}')">삭 제</a></td>
+							<!-- <td><input type="button" id="chk_pwd" value="삭제"></td> -->
 						</tr>
 					</c:forEach>
 					</tbody>
