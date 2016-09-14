@@ -3,18 +3,21 @@
  */
 function deleteItem(field, item){
 	url = "staff.do?cmd=staff_delete&empno=" + item;
-	del = "."+ item;//클래스로 선언된 tr만 지울라고 .을 추가하는 것임
+	delno = "."+ item;//클래스로 선언된 tr만 지울라고 .을 추가하는 것임
 	if(field == "noti"){
 		url = "noti.do?cmd=noti_delete&notino=" + item;
-		del = "."+ item;
+		delno = "."+ item;
 	} else if(field == "pjt"){
 		url = "pjt.do?cmd=pjt_delete&pjtno=" + item;
-		del = "."+ item;
+		delno = "."+ item;
 	} else if(field == "cmt"){
 		url = "noti.do?cmd=cmt_delete&cmtno=" + item;
-		del = "."+ item;
+		delno = "."+ item;
+	} else if(field == "edu"){
+		url = "staff.do?cmd=edu_delete&eduno=" + item;
+		delno = "."+ item;
 	}
-	$("tr").remove(del);
+	$("tr").remove(delno);
 	$.ajax({
 		type:"get",
 		url:url,

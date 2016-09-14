@@ -559,7 +559,7 @@ public class StaffDao {
 		return result;
 	}
 
-	public int addItem(EduDto eDto) {
+	public int addEdu(EduDto eDto) {
 		String sql = "insert into edu(eduno, empid, loc, school, major, enterdt, graddt) "
 					+ "values(eduno_seq.nextval,?,?,?,?,?,?)";
 		
@@ -579,12 +579,66 @@ public class StaffDao {
 			pstmt.setTimestamp(6, eDto.getGraddt());
 			
 			result = pstmt.executeUpdate();
-			System.out.println(result);
+//			System.out.println(result);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			DBManager.close(conn, pstmt);
 		}
+		return result;
+	}
+
+	public List<EduDto> selectAllEdu(String empid) {
+		String sql = "select * from edu where empid = ? order by eduno desc";
+		List<EduDto> eduList = new ArrayList<>();
+	
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try{
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, empid);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				EduDto eDto = new EduDto();
+				
+				eDto.setEduno(Integer.parseInt(rs.getString("eduno")));
+				eDto.setLoc(rs.getString("loc"));
+				eDto.setSchool(rs.getString("school"));
+				eDto.setMajor(rs.getString("major"));
+				eDto.setEnterdt(rs.getTimestamp("enterdt"));
+				eDto.setGraddt(rs.getTimestamp("graddt"));
+				
+				eduList.add(eDto);
+			}
+		} catch(SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBManager.close(conn, pstmt, rs);
+		}
+		return eduList;
+	}
+	public int deleteEdu(int eduno){
+		String sql = "delete edu where eduno=?";
+		
+		int result = 0;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try{
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+				
+			pstmt.setInt(1, eduno);
+				
+			result = pstmt.executeUpdate();
+		} catch(SQLException e){
+			e.printStackTrace();
+		} 
 		return result;
 	}
 }//class end

@@ -36,7 +36,6 @@ public class Fmt {
 		String adm ="일반";
 		String fmtphone = "번호 등록 필요";
 		int admchk = sDto.getAdmchk();
-//		System.out.println("SS 안에서 if문 전에는 " + admchk);
 		
 		if(gd%2 == 0){
 			gen="여";
@@ -54,7 +53,6 @@ public class Fmt {
 					+ "-" + sDto.getPhone().substring(3, 7) 
 					+ "-" + sDto.getPhone().substring(7);
 		}
-//		request.setAttribute("reqStaff", sDto);
 		request.setAttribute("jmf", jmf);
 		request.setAttribute("jmb", jmb);
 		request.setAttribute("yyyy", yyyy);

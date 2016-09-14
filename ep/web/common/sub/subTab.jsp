@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="js/tab.js"></script>
+<script src="js/delete.js"></script>
 </head>
 <body>
 	<div id="tabs">
@@ -47,11 +48,30 @@
 							<th>전 공</th>
 							<th>입 학</th>
 							<th>졸 업</th>
-							<th>수 정</th>
+							<!-- <th>수 정</th> -->
 							<th>삭 제</th>
 						</tr>
 					</thead>
 					<tbody>
+					<c:forEach var="edu" items="${reqEduList}">
+						<tr class="${edu.eduno}" class="ui-widget-header">
+							<td>${edu.loc}</td>
+							<td>${edu.school}</td>
+							<td>${edu.major}</td>
+							<td>
+								<c:set var="enterdt" value="${edu.enterdt}"/>
+								<c:out value="${fn:substring(enterdt,0,10)}"/>
+							</td>
+							<td>
+								<c:set var="graddt" value="${edu.graddt}" />
+								<c:out value="${fn:substring(graddt,0,10) }" />
+							</td>
+							<td>
+								<!-- <input type="button" id="del_edu" value="삭제"> -->
+								<a href="#" onClick="deleteItem('edu', '${edu.eduno}')">삭 제</a>
+							</td>
+						</tr>
+					</c:forEach>
 					</tbody>
 				</table>
 			</div>
@@ -87,7 +107,7 @@
 							<th>근무직급</th>
 							<th>입사일</th>
 							<th>퇴사일</th>
-							<th>수 정</th>
+							<!-- <th>수 정</th> -->
 							<th>삭 제</th>
 						</tr>
 					</thead>
@@ -128,7 +148,7 @@
 							<th>발행기관</th>
 							<th>취득일</th>
 							<th>만료일</th>
-							<th>수 정</th>
+							<!-- <th>수 정</th> -->
 							<th>삭 제</th>
 						</tr>
 					</thead>

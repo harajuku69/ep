@@ -31,8 +31,6 @@ public class CmtWriteAction implements Action {
 		json.addProperty("admnm", SS.getAdmnm(request));
 		json.addProperty("ctt", cDto.getCtt());
 		json.addProperty("regdt", cDto.getRegdt().toString());
-//		json.addProperty("admnm", SS.getAdmnm(request));
-//		json.addProperty("pwd", cDto.getPwd());
 		
 		response.setCharacterEncoding("UTF-8");
 		Paging.getRecentList(request);

@@ -49,7 +49,6 @@ $(function() {
 		if ( valid ) {
 			$.ajax({
 				url:url,
-//				data:'kwd' + kwd.val(),
 				data: d,
 				dataType:"json",
 //				alert(data.kwd);
@@ -59,7 +58,6 @@ $(function() {
 					for(var index = 0; index < jsonArray.length; index++){
 						var jsonObject = JSON.stringify(jsonArray[index]);
 						var zipcdInfo = JSON.parse(jsonObject);
-//						console.log(zipcdInfo.sido);
 						$("#ZipcdSearchResult tbody").append(
 							"<tr class='" + zipcdInfo.no + "'>" +
 							"<td id='zipcdInfo'>" + zipcdInfo.zipcd + "</td>" +
