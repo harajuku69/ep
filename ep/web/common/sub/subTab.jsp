@@ -15,7 +15,7 @@
 		<ul>
 			<li><a href="#tabedu">학력</a></li>
 			<li><a href="#tabcrr">경력</a></li>
-			<li><a href="#tabcerti">자격증</a></li>
+			<li><a href="#tabcrt">자격증</a></li>
 		</ul>
 		<div id="tabedu">
 			<div id="edu-dialog" title="학력 추가">
@@ -53,25 +53,25 @@
 						</tr>
 					</thead>
 					<tbody>
-					<c:forEach var="edu" items="${reqEduList}">
-						<tr class="${edu.eduno}" class="ui-widget-header">
-							<td>${edu.loc}</td>
-							<td>${edu.school}</td>
-							<td>${edu.major}</td>
-							<td>
-								<c:set var="enterdt" value="${edu.enterdt}"/>
-								<c:out value="${fn:substring(enterdt,0,10)}"/>
-							</td>
-							<td>
-								<c:set var="graddt" value="${edu.graddt}" />
-								<c:out value="${fn:substring(graddt,0,10) }" />
-							</td>
-							<td>
-								<!-- <input type="button" id="del_edu" value="삭제"> -->
-								<a href="#" onClick="deleteItem('edu', '${edu.eduno}')">삭 제</a>
-							</td>
-						</tr>
-					</c:forEach>
+						<c:forEach var="edu" items="${reqEduList}">
+							<tr class="${edu.eduno}" class="ui-widget-header">
+								<td>${edu.loc}</td>
+								<td>${edu.school}</td>
+								<td>${edu.major}</td>
+								<td>
+									<c:set var="enterdt" value="${edu.enterdt}"/>
+									<c:out value="${fn:substring(enterdt,0,10)}"/>
+								</td>
+								<td>
+									<c:set var="graddt" value="${edu.graddt}" />
+									<c:out value="${fn:substring(graddt,0,10) }" />
+								</td>
+								<td>
+									<!-- <input type="button" id="del_edu" value="삭제"> -->
+									<a href="#" onClick="deleteItem('edu', '${edu.eduno}')">삭 제</a>
+								</td>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>
@@ -112,18 +112,35 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr></tr>
+						<c:forEach var="crr" items="${reqCrrList}">
+							<tr class="${crr.crrno}">
+								<td>${crr.comnm}</td>
+								<td>${crr.dpt}</td>
+								<td>${crr.tit}</td>
+								<td>
+									<c:set var="empdt" value="${crr.empdt}"/>
+									<c:out value="${fn:substring(empdt, 0, 10)}"/>
+								</td>
+								<td>
+									<c:set var="outdt" value="${crr.outdt}"/>
+									<c:out value="${fn:substring(outdt, 0, 10)}"/>
+								</td>
+								<td>
+									<a href="#" onClick="deleteItem('crr', '${crr.crrno}')">삭 제</a>
+								</td>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>
 		</div>
-		<div id="tabcerti">
-			<div id="certi-dialog" title="자격(증) 추가">
+		<div id="tabcrt">
+			<div id="crt-dialog" title="자격(증) 추가">
 				<p class="validateTips">모든 필드가 입력되어야 합니다.</p>
-				<form id="frm_certi">
+				<form id="frm_crt">
 					<fieldset>
-						<label for="certinm">자격(증)명</label><br>
-						<input type="text" name="certinm" id="certinm" placeholder="정보처리/TOEIC" class="text ui-widget-content ui-corner-all"  ><br>
+						<label for="crtnm">자격(증)명</label><br>
+						<input type="text" name="crtnm" id="crtnm" placeholder="정보처리/TOEIC" class="text ui-widget-content ui-corner-all"  ><br>
 						<label for="rank">성적(등급)</label><br>
 						<input type="text" name="rank" id="rank" placeholder="산업기사/990" class="text ui-widget-content ui-corner-all"  ><br>
 						<label for="publ">발행기관</label><br>
@@ -137,10 +154,10 @@
 				</form>
 			</div> 
 		 	<div class="contain" class="ui-widget">
-				<table id="certi" class="ui-widget ui-widget-content">
+				<table id="crt" class="ui-widget ui-widget-content">
 					<thead>
 						<tr>
-							<td class="addbtn" colspan="7" style="text-align:right; border:none;"><button id="add-certi">추가 등록</button></td>
+							<td class="addbtn" colspan="7" style="text-align:right; border:none;"><button id="add-crt">추가 등록</button></td>
 						</tr>
 						<tr class="ui-widget-header">
 							<th>자격(증)명</th>
@@ -153,7 +170,24 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr></tr>
+						<c:forEach var="crt" items="${reqCrtList}">
+							<tr class="${crt.crtno}">
+								<td>${crt.crtnm}</td>
+								<td>${crt.rank}</td>
+								<td>${crt.publ}</td>
+								<td>
+									<c:set var="regdt" value="${crt.regdt}"/>
+									<c:out value="${fn:substring(regdt, 0, 10)}"/>
+								</td>
+								<td>
+									<c:set var="expdt" value="${crt.expdt}"/>
+									<c:out value="${fn:substring(expdt, 0, 10)}"/>
+								</td>
+								<td>
+									<a href="#" onClick="deleteItem('crt', '${crt.crtno}')">삭 제</a>
+								</td>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>

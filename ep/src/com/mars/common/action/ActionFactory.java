@@ -35,6 +35,14 @@ public class ActionFactory {
 			action = new EduAddAction();
 		} else if(cmd.equals("edu_delete")){
 			action = new EduDeleteAction();
+		} else if(cmd.equals("crr_add")){
+			action = new CrrAddAction();
+		} else if(cmd.equals("crr_delete")){
+			action = new CrrDeleteAction();
+		} else if(cmd.equals("crt_add")){
+			action = new CrtAddAction();
+		} else if(cmd.equals("crt_delete")){
+			action = new CrtDeleteAction();
 		} else if(cmd.equals("staff_detail_page")){
 			action = new StaffDetailPageAction();
 		} else if(cmd.equals("admin_detail_page")){

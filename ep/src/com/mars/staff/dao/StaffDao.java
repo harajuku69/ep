@@ -7,11 +7,11 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 
-import com.mars.common.action.Paging;
+import com.mars.common.action.CrtDto;
 import com.mars.common.db.DBManager;
+import com.mars.staff.dto.CrrDto;
 import com.mars.staff.dto.EduDto;
 import com.mars.staff.dto.StaffDto;
 import com.mars.staff.dto.ZipDto;
@@ -561,7 +561,7 @@ public class StaffDao {
 
 	public int addEdu(EduDto eDto) {
 		String sql = "insert into edu(eduno, empid, loc, school, major, enterdt, graddt) "
-					+ "values(eduno_seq.nextval,?,?,?,?,?,?)";
+							+ "values(eduno_seq.nextval,?,?,?,?,?,?)";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -605,7 +605,7 @@ public class StaffDao {
 			while(rs.next()){
 				EduDto eDto = new EduDto();
 				
-				eDto.setEduno(Integer.parseInt(rs.getString("eduno")));
+				eDto.setEduno(rs.getInt("eduno"));
 				eDto.setLoc(rs.getString("loc"));
 				eDto.setSchool(rs.getString("school"));
 				eDto.setMajor(rs.getString("major"));
@@ -640,6 +640,168 @@ public class StaffDao {
 			e.printStackTrace();
 		} 
 		return result;
+	}
+
+	public int addCrr(CrrDto crDto) {
+		String sql = "insert into crr(crrno, empid, comnm, dpt, tit, empdt, outdt) "
+							+ "values(crrno_seq.nextval,?,?,?,?,?,?)";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, crDto.getEmpid());
+			pstmt.setString(2, crDto.getComnm());
+			pstmt.setString(3, crDto.getDpt());
+			pstmt.setString(4, crDto.getTit());
+			pstmt.setTimestamp(5, crDto.getEmpdt());
+			pstmt.setTimestamp(6, crDto.getOutdt());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		return result;
+	}
+
+	public int deleteCrr(int crrno) {
+		String sql = "delete crr where crrno = ? ";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, crrno);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		return result;
+	}
+
+	public List<CrrDto> selectAllCrr(String empid) {
+		String sql = "select * from crr where empid = ? order by crrno desc";
+		List<CrrDto> crrList = new ArrayList<>();
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, empid);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				CrrDto crDto= new CrrDto();
+
+				crDto.setEmpid(empid);
+				crDto.setCrrno(rs.getInt("crrno"));
+				crDto.setComnm(rs.getString("comnm"));
+				crDto.setDpt(rs.getString("dpt"));
+				crDto.setTit(rs.getString("tit"));
+				crDto.setEmpdt(rs.getTimestamp("empdt"));
+				crDto.setOutdt(rs.getTimestamp("outdt"));
+				
+				crrList.add(crDto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return crrList;
+	}
+
+	public int addCrt(CrtDto ctDto) {
+		String sql = "insert into crt(crtno, empid, crtnm, rank, publ, regdt, expdt) "
+							+ "values(crtno_seq.nextval,?,?,?,?,?,?)";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, ctDto.getEmpid());
+			pstmt.setString(2, ctDto.getCrtnm());
+			pstmt.setString(3, ctDto.getRank());
+			pstmt.setString(4, ctDto.getPubl());
+			pstmt.setTimestamp(5, ctDto.getRegdt());
+			pstmt.setTimestamp(6, ctDto.getExpdt());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		return result;
+	}
+
+	public int deleteCrt(int crtno) {
+		String sql = "delete crt where crtno = ? ";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, crtno);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		return result;
+	}
+	
+	public List<CrtDto> selectAllCrt(String empid) {
+		String sql = "select * from crt where empid = ? order by crtno desc";
+		List<CrtDto> crtList = new ArrayList<>();
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, empid);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				CrtDto ctDto= new CrtDto();
+
+				ctDto.setEmpid(empid);
+				ctDto.setCrtno(rs.getInt("crtno"));
+				ctDto.setCrtnm(rs.getString("crtnm"));
+				ctDto.setRank(rs.getString("rank"));
+				ctDto.setPubl(rs.getString("publ"));
+				ctDto.setRegdt(rs.getTimestamp("regdt"));
+				ctDto.setExpdt(rs.getTimestamp("expdt"));
+				
+				crtList.add(ctDto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return crtList;
 	}
 }//class end
 

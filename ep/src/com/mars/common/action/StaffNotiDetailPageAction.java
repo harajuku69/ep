@@ -29,7 +29,7 @@ public class StaffNotiDetailPageAction implements Action {
 		
 		String sql = "select count(*) from cmt where notino=" + Integer.toString(notino);
 		int cmtPageNo = request.getParameter("cmtPageNo") == null ? 1 : Integer.parseInt(request.getParameter("cmtPageNo"));
-		int recPerPage = 3;
+		int recPerPage = 5;
 		int pagePerBlock = 5;
 		
 		HashMap<String, Integer> map = new HashMap<>();

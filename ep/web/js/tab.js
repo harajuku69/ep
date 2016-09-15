@@ -89,13 +89,13 @@ $(function() {
 		//학력 추가 처리
 		eduAllFields.removeClass("ui-state-error");
 		valid = checkLength(loc, 2, 30 );
-		valid = valid && checkRegexp( loc, /^[가-힣a-z0-9]([가-힣a-z0-9])*$/ );
+		valid = valid && checkRegexp( loc, /^[가-힣a-zA-Z0-9]([가-힣a-zA-Z0-9])*$/ );
 		
 		valid = valid && checkLength( school, 2, 30 );
-		valid = valid && checkRegexp( school, /^[가-힣a-z0-9]([가-힣a-z0-9])*$/ );
+		valid = valid && checkRegexp( school, /^[가-힣a-zA-Z0-9]([가-힣a-zA-Z0-9])*$/ );
 		
 		valid = valid && checkLength( major, 2, 20 );
-		valid = valid && checkRegexp( major, /^[가-힣a-z0-9]([가-힣a-z0-9])*$/ );
+		valid = valid && checkRegexp( major, /^[가-힣a-zA-Z0-9]([가-힣a-zA-Z0-9])*$/ );
 		if ( valid ) {
 			$.ajax({
 				url:url,
@@ -120,7 +120,7 @@ $(function() {
 						"</td>" +
 //						"<td>" + data.graddt + "</td>" +
 //						"<td><a href='staff.do?cmd=edu_update&no=${edu.no}'>수 정</a></td>" +
-						"<td><a href='staff.do?cmd=edu_delete&no=${edu.no}'>삭 제</a></td>" +
+						"<td><a href='#' onClick='deleteItem('edu','" + data.eduno + "')>삭 제</a></td>" +
 						"</tr>" );
 //					alert("정상 등록되었습니다.");
 					$("#edu-dialog").dialog("close");
@@ -172,29 +172,41 @@ $(function() {
 		crrAllFields = $([]).add(comnm).add(dpt).add(tit).add(empdt).add(outdt);
 		
 	function addCrr() {
-		var valid = true;
+		var valid = true,
+			url = "staff.do?cmd=crr_add";
+			d = $("#frm_crr").serialize();
 		//경력 추가 처리
 		crrAllFields.removeClass("ui-state-error");
 		valid = checkLength(comnm, 2, 30 );
-		valid = valid && checkRegexp(comnm, /^[가-힣a-z0-9]([가-힣a-z0-9])*$/ );
+		valid = valid && checkRegexp(comnm, /^[가-힣a-zA-Z0-9]([가-힣a-zA-Z0-9])*$/ );
 		
 		valid = valid && checkLength(dpt, 2, 30 );
-		valid = valid && checkRegexp(dpt, /^[가-힣a-z0-9]([가-힣a-z0-9])*$/ );
+		valid = valid && checkRegexp(dpt, /^[가-힣a-zA-Z0-9]([가-힣a-zA-Z0-9])*$/ );
 		
 		valid = valid && checkLength(tit, 2, 20 );
-		valid = valid && checkRegexp(tit, /^[가-힣a-z0-9]([가-힣a-z0-9])*$/ );
+		valid = valid && checkRegexp(tit, /^[가-힣a-zA-Z0-9]([가-힣a-zA-Z0-9])*$/ );
 		
 		if ( valid ) {
-			$("#crr tbody").append( "<tr>" +
-			"<td>" + comnm.val() + "</td>" +
-			"<td>" + dpt.val() + "</td>" +
-			"<td>" + tit.val() + "</td>" +
-			"<td>" + empdt.val() + "</td>" +
-			"<td>" + outdt.val() + "</td>" +
-			"<td><a href='staff.do?cmd=edu_update&no=${edu.no}'>수 정</a></td>" +
-			"<td><a href='staff.do?cmd=edu_delete&no=${edu.no}'>삭 제</a></td></td>" +
-			"</tr>" );
-			$("#crr-dialog").dialog("close");
+			$.ajax({
+				url: url,
+				data: d,
+				type:'post',
+				contentsType: "application/x-www-form-urlencoded; charset=UTF-8",
+				success: function(result){
+					data = JSON.parse(result);
+					$("#crr tbody").prepend( 
+						"<tr class='" + data.crrno + "'>" +
+							"<td>" + data.comnm + "</td>" +
+							"<td>" + data.dpt + "</td>" +
+							"<td>" + data.tit + "</td>" +
+							"<td>" + data.empdt + "</td>" +
+							"<td>" + data.outdt + "</td>" +
+							/*"<td><a href='staff.do?cmd=edu_update&no=${edu.no}'>수 정</a></td>" +*/
+							"<td><a href='#' onClick='deleteItem('crr', '" + data.crrno + "')>삭 제</a></td>" +
+						"</tr>" );
+					$("#crr-dialog").dialog("close");
+				}
+			});
 		}
 		return valid;
 	}
@@ -205,63 +217,76 @@ $(function() {
 	//modal
 	var dialog, form;
 	
-	dialog = $("#certi-dialog").dialog({
+	dialog = $("#crt-dialog").dialog({
 		autoOpen: false,
 		width: 400,
 		height: 750,
 		modal: true,
 		buttons: {
-			"추가": addCerti,
+			"추가": addCrt,
 			"취소": function() {
 				dialog.dialog("close");
 			}
 		},
 		close: function() {
 			form[0].reset();
-			certiAllFields.removeClass("ui-state-error");
+			crtAllFields.removeClass("ui-state-error");
 		}
 	});
 	
 	form = dialog.find("form").on("submit", function(event) {
 		event.preventDefault();
-		addCerti();
+		addCrt();
 		return false;
 	});
 	
-	$("#add-certi").button().on("click", function() {
-		$("#certi-dialog").dialog("open");
+	$("#add-crt").button().on("click", function() {
+		$("#crt-dialog").dialog("open");
 	});
 	
-	var certinm = $("#certinm"),
+	var crtnm = $("#crtnm"),
 		rank = $("#rank"),
 		publ = $("#publ"),
 		regdt = $("#regdt"),
 		expdt = $("#expdt"),
-		certiAllFields = $([]).add(certinm).add(rank).add(publ).add(regdt).add(expdt);
-	function addCerti() {
-		var valid = true;
+		crtAllFields = $([]).add(crtnm).add(rank).add(publ).add(regdt).add(expdt);
+	
+	function addCrt() {
+		var valid = true,
+			url = "staff.do?cmd=crt_add",
+			d = $("#frm_crt").serialize();
 		//자격증 추가 처리
-		certiAllFields.removeClass("ui-state-error");
-		valid = checkLength(certinm, 2, 30 );
-		valid = valid && checkRegexp(certinm, /^[가-힣a-z0-9]([가-힣a-z0-9])*$/ );
+		crtAllFields.removeClass("ui-state-error");
+		valid = checkLength(crtnm, 2, 30 );
+		valid = valid && checkRegexp(crtnm, /^[가-힣a-zA-Z0-9]([가-힣a-zA-Z0-9])*$/ );
 		
 		valid = valid && checkLength(rank, 2, 30 );
-		valid = valid && checkRegexp(rank, /^[가-힣a-z0-9]([가-힣a-z0-9])*$/ );
+		valid = valid && checkRegexp(rank, /^[가-힣a-zA-Z0-9]([가-힣a-zA-Z0-9])*$/ );
 		
 		valid = valid && checkLength(publ, 2, 20 );
-		valid = valid && checkRegexp(publ, /^[가-힣a-z0-9]([가-힣a-z0-9])*$/ );
+		valid = valid && checkRegexp(publ, /^[가-힣a-zA-Z0-9]([가-힣a-zA-Z0-9])*$/ );
 		
 		if ( valid ) {
-			$("#certi tbody").append( "<tr>" +
-			"<td>" + certinm.val() + "</td>" +
-			"<td>" + rank.val() + "</td>" +
-			"<td>" + publ.val() + "</td>" +
-			"<td>" + regdt.val() + "</td>" +
-			"<td>" + expdt.val() + "</td>" +
-			"<td><a href='staff.do?cmd=edu_update&no=${edu.no}'>수 정</a></td>" +
-			"<td><a href='staff.do?cmd=edu_delete&no=${edu.no}'>삭 제</a></td></td>" +
-			"</tr>" );
-			$("#certi-dialog").dialog("close");
+			$.ajax({
+				url: url,
+				data: d,
+				type: 'post',
+				contentsType: "application/x-www-form-urlencoded; charset=UTF-8",
+				success: function(result){
+					data = JSON.parse(result);
+					$("#crt tbody").prepend( 
+						"<tr class='" + data.crtno + "'>" +
+							"<td>" + data.crtnm + "</td>" +
+							"<td>" + data.rank + "</td>" +
+							"<td>" + data.publ + "</td>" +
+							"<td>" + data.regdt + "</td>" +
+							"<td>" + data.expdt + "</td>" +
+							/*"<td><a href='staff.do?cmd=edu_update&no=${edu.no}'>수 정</a></td>" +*/
+							"<td><a href='#' onClick='deleteItem('crt', '" + data.crtno + "')>삭 제</a></td>" +
+						"</tr>" );
+					$("#crt-dialog").dialog("close");
+				}
+			});
 		}
 		return valid;
 	}

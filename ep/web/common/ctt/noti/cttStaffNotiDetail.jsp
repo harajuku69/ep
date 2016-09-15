@@ -26,23 +26,28 @@
 	<div id="list-contain" class="ui-widget">
 		<div id="noti_dtl_area">
 			<table class="list">
-				<tr class="ui-widget-header">
-					<th>글 번호</th><td>${reqNoti.notino}</td>
-					<th>조회수</th><td>${reqNoti.rdcnt}</td>
+				<tr>
+					<th>글 번호</th>
+						<td>${reqNoti.notino}</td>
+					<th>조회수</th>
+						<td>${reqNoti.rdcnt}</td>
 				</tr>
-				<tr class="ui-widget-header">
+				<tr>
 					<th>작성일</th>
-					<td>
-						<c:set var="regdt" value="${reqNoti.regdt}"/>
-						<c:out value="${fn:substring(regdt,0,10)}"/>
-					</td>
-					<th>작성자</th><td>${reqNoti.admnm}</td>
+						<td>
+							<c:set var="regdt" value="${reqNoti.regdt}"/>
+							<c:out value="${fn:substring(regdt,0,10)}"/>
+						</td>
+					<th>작성자</th>
+						<td>${reqNoti.admnm}</td>
 				</tr>
-				<tr class="ui-widget-header">
-					<th>제목</th><td colspan="3">${reqNoti.tit}</td>
+				<tr>
+					<th>제목</th>
+						<td colspan="3">${reqNoti.tit}</td>
 				</tr>
-				<tr class="ui-widget-header">
-					<th>내용</th><td colspan="3"><pre>${reqNoti.ctt}</pre></td>
+				<tr>
+					<th>내용</th>
+						<td colspan="3"><pre>${reqNoti.ctt}</pre></td>
 				</tr>
 			</table>
 		</div>

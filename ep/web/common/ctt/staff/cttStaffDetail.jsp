@@ -121,7 +121,8 @@
 			</tr>
 		</table>
 		<br/><input type="button" value="수정하기" id="chk_pwd" >
-		<br/><a href="staff.do?cmd=staff_home_page&empid=${reqStaff.empid}"><input type="button" value="돌아가기"></a>
+		<%-- <br/><a href="staff.do?cmd=staff_home_page&empid=${reqStaff.empid}"><input type="button" value="돌아가기"></a> --%>
+		<br/><input type="button" value="돌아가기" onclick="location.href='staff.do?cmd=staff_home_page&empid=${reqStaff.empid}'">
 		<!-- </form> -->
 	</div>
 </div>

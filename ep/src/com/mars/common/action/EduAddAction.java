@@ -35,7 +35,7 @@ public class EduAddAction implements Action {
 		JsonObject json = new JsonObject();
 		
 		if(result == 1){
-			json.addProperty("eduno", eDto.getEduno());
+//			json.addProperty("eduno", eDto.getEduno());
 			json.addProperty("loc", eDto.getLoc());
 			json.addProperty("school", eDto.getSchool());
 			json.addProperty("major", eDto.getMajor());

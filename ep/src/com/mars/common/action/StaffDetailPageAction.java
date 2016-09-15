@@ -8,7 +8,9 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import com.mars.staff.dao.StaffDao;
+import com.mars.staff.dto.CrrDto;
 import com.mars.staff.dto.EduDto;
 import com.mars.staff.dto.StaffDto;
 
@@ -25,8 +27,16 @@ public class StaffDetailPageAction implements Action {
 		List<EduDto> eduList = new ArrayList<>();
 		eduList = sDao.selectAllEdu(empid);
 		
-		request.setAttribute("reqEduList", eduList);
+		List<CrrDto> crrList = new ArrayList<>();
+		crrList = sDao.selectAllCrr(empid);
+		
+		List<CrtDto> crtList = new ArrayList<>();
+		crtList = sDao.selectAllCrt(empid);
+		
 		request.setAttribute("reqStaff", sDto);
+		request.setAttribute("reqEduList", eduList);
+		request.setAttribute("reqCrrList", crrList);
+		request.setAttribute("reqCrtList", crtList);
 		Fmt.toFmtAndReqSet(request, sDto);
 		
 		RequestDispatcher disp = request.getRequestDispatcher(url);
