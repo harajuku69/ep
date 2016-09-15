@@ -23,10 +23,6 @@ public class ActionFactory {
 			action = new LoginAction();
 		}  else if(cmd.equals("join")){
 			action = new JoinAction();
-		} else if(cmd.equals("staff_home_page")){
-			action = new StaffHomePageAction();
-		} else if(cmd.equals("admin_home_page")){
-			action = new AdminHomePageAction();
 		} else if(cmd.equals("join_page")){
 			action = new JoinPageAction();
 		} else if(cmd.equals("chk_id")){
@@ -43,6 +39,10 @@ public class ActionFactory {
 			action = new CrtAddAction();
 		} else if(cmd.equals("crt_delete")){
 			action = new CrtDeleteAction();
+		} else if(cmd.equals("staff_home_page")){
+			action = new StaffHomePageAction();
+		} else if(cmd.equals("admin_home_page")){
+			action = new AdminHomePageAction();
 		} else if(cmd.equals("staff_detail_page")){
 			action = new StaffDetailPageAction();
 		} else if(cmd.equals("admin_detail_page")){
@@ -65,6 +65,10 @@ public class ActionFactory {
 			action = new StaffSelectMemberAction();
 		} else if(cmd.equals("admin_select_member")){
 			action = new AdminSelectMemberAction();
+		} else if(cmd.equals("staff_select_dpt_member")){
+			action = new StaffSelectDptMemberAction();
+		} else if(cmd.equals("admin_select_dpt_member")){
+			action = new AdminSelectDptMemberAction();
 		} else if(cmd.equals("check_staff_pwd")){
 			action = new CheckStaffPwdAction();
 		} else if(cmd.equals("check_pwd_pop")){

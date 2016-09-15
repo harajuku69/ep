@@ -9,11 +9,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.mars.common.action.CrtDto;
 import com.mars.common.db.DBManager;
 import com.mars.staff.dto.CrrDto;
+import com.mars.staff.dto.CrtDto;
+import com.mars.staff.dto.DptDto;
 import com.mars.staff.dto.EduDto;
 import com.mars.staff.dto.StaffDto;
+import com.mars.staff.dto.TitDto;
 import com.mars.staff.dto.ZipDto;
 
 public class StaffDao {
@@ -166,10 +168,16 @@ public class StaffDao {
 		return sDto;
 	}
 	
-	public List<StaffDto> selectAllStaffByDpt(){
-		String sql = "select empnm, empid, dptcd, titcd, email, phone from Staff where dptcd=?"; 
-
-		List<StaffDto> list = new ArrayList<StaffDto>();
+	public List<StaffDto> selectAllStaffByDpt(String dpt){
+		String sql = "SELECT s.empnm,d.dpt,t.tit,s.phone,s.empid,s.empno "
+					 + "FROM staff s "
+					 + "JOIN dpt d "
+					   + "ON s.dptcd=d.dptcd "
+					 + "JOIN tit t "
+					   + "ON s.titcd=t.titcd "
+					+ "WHERE d.dpt = ? "
+					+ "ORDER BY s.empnm";
+		List<StaffDto> staffList = new ArrayList<StaffDto>();
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -178,24 +186,27 @@ public class StaffDao {
 		try{
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dpt);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
 				StaffDto sDto = new StaffDto();
 				
-				/*sDto.setNo(rs.getInt("no"));
 				sDto.setEmpnm(rs.getString("Empnm"));
-				sDto.setEmpemail(rs.getString("Empemail"));
-				sDto.setEmppwd(rs.getString("Emppwd"));*/
+				sDto.setDptcd(rs.getString("dpt"));
+				sDto.setTitcd(rs.getString("tit"));
+				sDto.setPhone(rs.getString("phone"));
+				sDto.setEmpid(rs.getString("empid"));
+				sDto.setEmpno(rs.getString("empno"));
 				
-				list.add(sDto);
+				staffList.add(sDto);
 			}
 		} catch(SQLException e){
 			e.printStackTrace();
 		} finally{
 			DBManager.close(conn, pstmt, rs);
 		}
-		return list;
+		return staffList;
 	}
 	
 	public int insertStaff(StaffDto sDto){
@@ -802,6 +813,65 @@ public class StaffDao {
 			DBManager.close(conn, pstmt, rs);
 		}
 		return crtList;
+	}
+
+	public List<DptDto> selectAllDpt() {
+		String sql = "select * from dpt";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List<DptDto> dptList = new ArrayList<>();
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				DptDto dDto = new DptDto();
+				
+				dDto.setDpt(rs.getString("dpt"));
+				dDto.setDptcd(rs.getString("dptcd"));
+				
+				dptList.add(dDto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return dptList;
+	}
+	
+	public List<TitDto> selectAllTit() {
+		String sql = "select * from tit";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List<TitDto> titList = new ArrayList<>();
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				TitDto tDto = new TitDto();
+				
+				tDto.setTit(rs.getString("tit"));
+				tDto.setTitcd(rs.getString("titcd"));
+				
+				titList.add(tDto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return titList;
 	}
 }//class end
 

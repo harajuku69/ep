@@ -20,10 +20,6 @@ public class StaffListAction implements Action {
 		
 		String sql = "select count(*) from staff";
 		int pageNo = request.getParameter("pageNo") == null ? 1 : Integer.parseInt(request.getParameter("pageNo"));
-//		int recPerPage = Integer.parseInt(request.getParameter("recPerPage"));
-//		int pagePerBlock = Integer.parseInt(request.getParameter("pagePerBlock"));
-//		int pageNo = 2;
-//		System.out.println(pageNo);
 		int recPerPage = 4;
 		int pagePerBlock = 5;
 		

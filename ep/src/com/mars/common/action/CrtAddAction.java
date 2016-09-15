@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.JsonObject;
 import com.mars.staff.dao.StaffDao;
-import com.mars.staff.dto.CrrDto;
+import com.mars.staff.dto.CrtDto;
 
 public class CrtAddAction implements Action {
 

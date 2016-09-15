@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -103,15 +104,16 @@
 				<td>부 서</td>
 				<td>
 					<select name="dptcd" id="dptbx">
-						<option value="">부서 선택</option>
-						<option value="00">관리부</option>
-						<option value="10">개발부</option>
-						<option value="20">구매부</option>
-						<option value="30">생산부</option>
-						<option value="40">영업부</option>
-						<option value="50">인사부</option>
-						<option value="60">총무부</option>
-						<option value="70">품질부</option>
+						<c:forEach var="dpt" items="${reqDptList}">
+							<c:choose>
+							<c:when test="${dpt.dpt == reqStaff.dptcd}">
+								<option value="${dpt.dptcd}" selected="selected" >${dpt.dpt}</option>
+							</c:when>
+							<c:otherwise>
+								<option value="${dpt.dptcd}">${dpt.dpt}</option>
+							</c:otherwise>
+							</c:choose>
+						</c:forEach>
 					</select>
 				</td>
 			</tr>
@@ -119,28 +121,28 @@
 				<td>직 급</td>
 				<td>
 					<select name="titcd" id="titbx">
-						<option value="">직급 선택</option>
-						<option value="00">대표</option>
-						<option value="10">사원</option>
-						<option value="20">대리</option>
-						<option value="30">과장</option>
-						<option value="40">차장</option>
-						<option value="50">부장</option>
-						<option value="60">이사</option>
-						<option value="70">상무</option>
-						<option value="80">전무</option>
-						<option value="90">사장</option>
+						<c:forEach var="tit" items="${reqTitList}">
+							<c:choose>
+							<c:when test="${tit.tit == reqStaff.titcd}">
+								<option value="${tit.titcd}" selected="selected" >${tit.tit}</option>
+							</c:when>
+							<c:otherwise>
+								<option value="${tit.titcd}">${tit.tit}</option>
+							</c:otherwise>
+							</c:choose>
+						</c:forEach>
 					</select>
 				</td>
 			</tr>
 			<tr>
 				<td>입사일</td>
-				<td><input type="text" name="startdt" id="startdt" value="${reqStaff.startdt}"></td>
+				<td><input type="text" name="startdt" id="startdt" value="${fn:substring(reqStaff.startdt, 0, 10)}"></td>
 			</tr>
 			<tr>
 				<td>퇴사일</td>
-				<td><input type="text" name="enddt" id="enddt" value="${reqStaff.enddt}"></td>
+				<td><input type="text" name="enddt" id="enddt" value="${fn:substring(reqStaff.enddt, 0, 10)}"></td>
 			</tr>
+			<tr>
 				<td>급 여</td>
 				<td>
 					<%-- <fmt:formatNumber type="currency" value="${reqStaff.sal}"/> --%>
@@ -151,14 +153,24 @@
 				<td>등록일</td>
 				<td>
 					<%-- <input type="text" name="regdt" value="${reqStaff.regdt}" readonly> --%>
-					${reqStaff.regdt}
+					${fn:substring(reqStaff.regdt, 0, 10)}
 				</td>
 			</tr>
 			<tr>
 				<td>권 한</td>
 				<td>
-					<input type="radio" name="admchk" value="0" checked="checked">일반
-					<input type="radio" name="admchk" value="1" >관리자
+					<!-- <input type="radio" name="admchk" value="0" checked="checked">일반
+					<input type="radio" name="admchk" value="1" >관리자 -->
+					<c:choose>
+						<c:when test="${reqStaff.admchk == '0'}">
+							<input type="radio" name="admchk" value="0" checked="checked">일 반
+							<input type="radio" name="admchk" value="1" >관리자
+						</c:when>
+						<c:otherwise>
+							<input type="radio" name="admchk" value="0" >일 반
+							<input type="radio" name="admchk" value="1" checked="checked">관리자
+						</c:otherwise>
+					</c:choose>
 				</td>
 			</tr>
 		</table>

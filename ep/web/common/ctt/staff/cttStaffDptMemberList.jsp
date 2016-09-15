@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class="contents">
-	<h1> Mars 사원 목록 </h1>
+	<h1> Mars 사원 목록  </h1>
 	<div id="list_contain" class="ui-widget">
 	<!-- <div class="contain" class="ui-widget"> -->
 		<table class="list" class="ui-widget ui-widget-content">
@@ -27,8 +27,6 @@
 					<th>직 급</th>
 					<th>연락처</th>
 					<th>이메일</th>
-					<th>수 정</th>
-					<th>삭 제</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -37,7 +35,7 @@
 					<td>
 						<a href="staff.do?cmd=admin_detail_page&empid=${item.empid}">${item.empnm}</a>
 					</td>
-					<td><a href ="staff.do?cmd=admin_select_dpt_member&dpt=${item.dptcd}">${item.dptcd}</a></td>
+					<td>${item.dptcd}</td>
 					<td>${item.titcd}</td>
 					<td>
 						<c:set var="phone" value="${item.phone}"/>
@@ -45,40 +43,10 @@
 						<c:out value="${fn:substring(phone,0,3)}${dash}${fn:substring(phone,3,7)}${dash}${fn:substring(phone,7,11)}"/>
 					</td>
 					<td><a href="mailto:${item.empid}@mars.com">${item.empid}@mars.com</a></td>
-					<td><a href="staff.do?cmd=admin_update_page&empid=${item.empid}">수정</a></td>
-					<td><a href="#" onClick="deleteItem('staff','${item.empno}')">삭제</a></td>
 				</tr>
 			</c:forEach>
 			</tbody>
 		</table>
-		<div id="paging" style="text-align:center; font-size:20px; padding:1em">
-    		<span>
-    			<c:if test="${blockNo > 1}">
-    				<span><a href="staff.do?cmd=staff_list&pageNo=${prevPageNo}">&laquo;이전 페이지</a></span>
-    			</c:if>
-        		<c:choose>
-        		<c:when test="${blockNo < totBlock }">
-	        		<c:forEach var="i" begin="${firstPageNoInBlock}" end="${lastPageNoInBlock}" step="1">
-	            		<c:choose>
-	                		<c:when test="${i eq pageNo}"><span>${i}</span></c:when>
-	                		<c:otherwise><a href="staff.do?cmd=staff_list&pageNo=${i}">${i}</a></c:otherwise>
-	            		</c:choose>
-	        		</c:forEach>
-	        	</c:when>
-	        	<c:otherwise>
-	        		<c:forEach var="i" begin="${firstPageNoInBlock}" end="${totPage}" step="1">
-	            		<c:choose>
-	                		<c:when test="${i eq pageNo}"><span>${i}</span></c:when>
-	                		<c:otherwise><a href="staff.do?cmd=staff_list&pageNo=${i}">${i}</a></c:otherwise>
-	            		</c:choose>
-	        		</c:forEach>
-	        	</c:otherwise>
-        		</c:choose>
-        		<c:if test="${blockNo < totBlock}">
-    				<span><a href="staff.do?cmd=staff_list&pageNo=${nextPageNo}">다음 페이지&raquo;</a></span>
-    			</c:if>
-    		</span>
-		</div>
 	</div>
 	<br/>
 </div>

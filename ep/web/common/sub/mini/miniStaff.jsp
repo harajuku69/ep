@@ -50,7 +50,7 @@
 						</c:otherwise>
 					</c:choose>
 				</li>
-				<li>소속 : <a href="#=?부서원 검색결과">${ssDptcd}</a></li>
+				<li>소속 : <a href="staff.do?cmd=staff_select_dpt_member&dpt=${ssDptcd}">${ssDptcd}</a></li>
 				<li>직급 : ${ssTitcd}</li>
 				<li>사번 : ${ssEmpno}</li>
 				<!-- <li>프로젝트 : <a href="URL=?프로젝트 상세보기">수치예보 41기</a></li> -->

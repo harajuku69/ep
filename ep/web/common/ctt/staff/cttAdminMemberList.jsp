@@ -37,7 +37,7 @@
 					<td>
 						<a href="staff.do?cmd=admin_detail_page&empid=${item.empid}">${item.empnm}</a>
 					</td>
-					<td>${item.dptcd}</td>
+					<td><a href ="staff.do?cmd=admin_select_dpt_member&dpt=${item.dptcd}">${item.dptcd}</a></td>
 					<td>${item.titcd}</td>
 					<td>
 						<c:set var="phone" value="${item.phone}"/>

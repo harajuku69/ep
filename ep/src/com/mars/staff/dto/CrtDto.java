@@ -1,4 +1,4 @@
-package com.mars.common.action;
+package com.mars.staff.dto;
 
 import java.sql.Timestamp;
 
