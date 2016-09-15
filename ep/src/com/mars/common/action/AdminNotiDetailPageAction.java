@@ -20,12 +20,16 @@ public class AdminNotiDetailPageAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "noti/adminNotiDetail.jsp";
 //		System.out.println(url);
-		int notino = Integer.parseInt(request.getParameter("notino"));
-		int pageNo = Integer.parseInt(request.getParameter("pageNo"));
+		int notino  = Integer.parseInt(request.getParameter("notino"));
+		int pageNo = request.getParameter("pageNo") == null ? 1 : Integer.parseInt(request.getParameter("pageNo"));
 		
 		NotiDao nDao = NotiDao.getInstance();
 
 		nDao.updateRdCnt(notino);
+		
+		NotiDto nDto = nDao.selectOneByNotino(notino);
+		request.setAttribute("reqNoti", nDto);
+		request.setAttribute("pageNo", pageNo);
 		
 		String sql = "select count(*) from cmt where notino=" + Integer.toString(notino);
 		int cmtPageNo = request.getParameter("cmtPageNo") == null ? 1 : Integer.parseInt(request.getParameter("cmtPageNo"));
@@ -40,11 +44,6 @@ public class AdminNotiDetailPageAction implements Action {
 		int cmtcnt = map.get("totRec");
 		
 		List<CmtDto> cmtList =nDao.selectAllCmt(notino, sttRecNo, endRecNo, cmtcnt);
-		
-		NotiDto nDto = nDao.selectOneByNotino(notino);
-		request.setAttribute("reqNoti", nDto);
-		
-		request.setAttribute("pageNo", pageNo);
 		
 		request.setAttribute("reqCmtList", cmtList);
 		request.setAttribute("firstPageNoInBlock", map.get("firstPageNoInBlock"));

@@ -4,7 +4,7 @@
 $(function() {
 	//datepicker 설정
 	var dateFormat = "yy-mm-dd",
-      from = $("#startdt, #enterdt, #empdt, #regdt").datepicker({
+      from = $("#startdt, #enterdt, #empdt, #regdt, #from").datepicker({
         	dateFormat:"yy-mm-dd",
         	defaultDate: "+1d",
         	changeMonth: true,
@@ -14,7 +14,7 @@ $(function() {
         }).on("change", function() {
           to.datepicker("option", "minDate", getDate(this));
         }),
-      to = $("#enddt, #graddt, #outdt, #expdt").datepicker({
+      to = $("#enddt, #graddt, #outdt, #expdt, #to").datepicker({
     	  dateFormat:"yy-mm-dd",
     	  defaultDate: "+1d",
     	  changeMonth: true,

@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class="contents">
-	<h1> Mars 사원 목록  </h1>
+	<h1> ${reqDpt} 인원 검색 결과  </h1>
 	<div id="list_contain" class="ui-widget">
 	<!-- <div class="contain" class="ui-widget"> -->
 		<table class="list" class="ui-widget ui-widget-content">

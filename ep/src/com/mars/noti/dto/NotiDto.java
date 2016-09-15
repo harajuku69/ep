@@ -11,6 +11,7 @@ public class NotiDto {
 	private int 		rdcnt;
 	private int			cmtcnt;
 	private int			delchk;
+	private int			pageNo;
 	
 	public int getCmtcnt() {
 		return cmtcnt;
@@ -60,9 +61,15 @@ public class NotiDto {
 	public void setDelchk(int delchk) {
 		this.delchk = delchk;
 	}
+	public int getPageNo() {
+		return pageNo;
+	}
+	public void setPageNo(int pageNo) {
+		this.pageNo = pageNo;
+	}
 	@Override
 	public String toString() {
-		return "NotiDto [notino=" + notino + ", admnm=" + admnm + ", tit=" + tit + ", regdt=" + regdt + ", readcnt="
-				+ rdcnt + ", delchk=" + delchk + "]";
+		return "NotiDto [notino=" + notino + ", admnm=" + admnm + ", tit=" + tit + ", ctt=" + ctt + ", regdt=" + regdt
+				+ ", rdcnt=" + rdcnt + ", cmtcnt=" + cmtcnt + ", delchk=" + delchk + ", pageNo=" + pageNo + "]";
 	}
 }

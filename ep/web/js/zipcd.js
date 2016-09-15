@@ -71,7 +71,7 @@ $(function() {
 												 + ", " + "\"" + zipcdInfo.sido + "\""
 												 + ", " + "\"" + zipcdInfo.gugun + "\""
 												 + ", " + "\"" + zipcdInfo.dong + "\""
-												 + ");'>선 택</button></td></tr>" 
+												 + ")'>선 택</button></td></tr>" 
 						);
 					}
 				}
@@ -82,7 +82,7 @@ $(function() {
 	
 	dialog = $("#zip-dialog").dialog({
 		autoOpen: false,
-		width: 500,
+		width: 650,
 		height: 500,
 		modal: true,
 		buttons: {

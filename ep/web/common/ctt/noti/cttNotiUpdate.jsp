@@ -45,10 +45,12 @@
 	<%-- <input type="hidden" name="pageNo" value="${pageNo}"> --%>
 	<input type ="submit" value="수정 완료">
 	<input type="reset" value="되돌리기">
-	<input type ="button" value="목록으로" 
-		onclick="location.href='noti.do?cmd=admin_noti_list&pageNo=${pageNo}'">
-	<%-- <input type ="button" value="삭제하기" 
-		onclick="noti.do?cmd=noti_delete&notino=${reqNoti.notino}&pageNo=${pageNo}"> --%>
+	<%-- <input type ="button" value="목록으로" 
+		onclick="location.href='noti.do?cmd=admin_noti_list&pageNo=${pageNo}'"> --%>
+	<!-- <input type ="button" value="목록으로" 
+		onclick="location.href='noti.do?cmd=admin_noti_list'"> -->
+	<input type ="button" value="돌아가기" 
+		onclick="history.go(-1)">
 	</form>
 </div>
 </body>

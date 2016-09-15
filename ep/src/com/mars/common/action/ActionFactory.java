@@ -81,14 +81,16 @@ public class ActionFactory {
 			action = new AdminNotiListAction();
 		} else if(cmd.equals("staff_noti_list")){
 			action = new StaffNotiListAction();
-		} else if(cmd.equals("noti_write_page")){
-				action = new NotiWritePageAction();
-		} else if(cmd.equals("noti_write")){
-			action = new NotiWriteAction();
 		} else if(cmd.equals("admin_noti_detail_page")){
 			action = new AdminNotiDetailPageAction();
 		} else if(cmd.equals("staff_noti_detail_page")){
 			action = new StaffNotiDetailPageAction();
+		} else if(cmd.equals("admin_noti_search")){
+			action = new AdminNotiSearchAction();	
+		} else if(cmd.equals("noti_write_page")){
+				action = new NotiWritePageAction();
+		} else if(cmd.equals("noti_write")){
+			action = new NotiWriteAction();
 		} else if(cmd.equals("noti_update_page")){
 			action = new NotiUpdatePageAction();
 		} else if(cmd.equals("noti_update")){

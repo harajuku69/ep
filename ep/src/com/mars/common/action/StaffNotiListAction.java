@@ -24,8 +24,8 @@ public class StaffNotiListAction implements Action {
 //		int pagePerBlock = Integer.parseInt(request.getParameter("pagePerBlock"));
 //		int pageNo = 2;
 //		System.out.println(pageNo);
-		int recPerPage = 3;
-		int pagePerBlock = 3;
+		int recPerPage = 5;
+		int pagePerBlock = 5;
 		
 		HashMap<String, Integer> map = new HashMap<>();
 		map = Paging.getParam(sql, pageNo, recPerPage, pagePerBlock);

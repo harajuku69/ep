@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mars.common.action.Paging;
 import com.mars.common.db.DBManager;
 import com.mars.noti.dto.CmtDto;
 import com.mars.noti.dto.NotiDto;
@@ -26,13 +27,6 @@ public class NotiDao {
 	}
 	
 	public List<NotiDto> selectAllNoti(String sttRecNo, String endRecNo){
-//		String sql = "SELECT * "
-//					 + "FROM ("
-//					 		+ "SELECT * "
-//					 		  + "FROM noti ORDER BY notino "
-//					 		+ ") a "
-//					 + ") s "
-//					 		+ "noti order by notino desc";
 		String sql = "SELECT * "
 				 	 + "FROM ("
 				 	 		+ "SELECT ROWNUM R, a.* "
@@ -401,6 +395,78 @@ public class NotiDao {
 			e.printStackTrace();
 		} 
 	}
+
+	public List<NotiDto> selectNotiByStr(String field, String item) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("select * from noti where ");
+		sql.append(field);
+		sql.append(" like '%'|| ? ||'%' order by notino desc");
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<NotiDto> notiList = new ArrayList<>();
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, item);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				NotiDto nDto = new NotiDto();
+				
+				nDto.setNotino(rs.getInt("notino"));
+				nDto.setTit(rs.getString("tit"));
+				nDto.setCmtcnt(rs.getInt("cmtcnt"));
+				nDto.setRdcnt(rs.getInt("rdcnt"));
+				nDto.setRegdt(rs.getTimestamp("regdt"));
+				nDto.setAdmnm(rs.getString("admnm"));
+				nDto.setCtt(rs.getString("ctt"));
+//				nDto.setPageNo(Paging.calPageNo(totRec, nDto.getNotino(), recPerPage));
+//				nDto.setPageNo(Paging.calPageNo(rs.getInt("R"), recPerPage));
+				
+				notiList.add(nDto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return notiList;
+	}
+
+	public List<NotiDto> selectNotiByDt(String from, String to) {
+		String sql = "select * from noti where regdt between ? and ?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<NotiDto> notiList = new ArrayList<>();
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, from);
+			pstmt.setString(2, to);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				NotiDto nDto = new NotiDto();
+				
+				nDto.setNotino(rs.getInt("notino"));
+				nDto.setTit(rs.getString("tit"));
+				nDto.setCmtcnt(rs.getInt("cmtcnt"));
+				nDto.setRdcnt(rs.getInt("rdcnt"));
+				nDto.setRegdt(rs.getTimestamp("regdt"));
+				nDto.setAdmnm(rs.getString("admnm"));
+				nDto.setCtt(rs.getString("ctt"));
+				
+				notiList.add(nDto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return notiList;
+	}
+
 }//class end
 
 

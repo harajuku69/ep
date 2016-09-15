@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="js/check.js"></script>
+<script src="js/checkpwd.js"></script>
 </head>
 <body>
 <div class="contents">

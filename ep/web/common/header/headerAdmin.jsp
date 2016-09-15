@@ -65,7 +65,7 @@
 			<table>
 				<tr>
 					<td>
-						<input type="text" name="empnm" id="empnm" placeholder="이름을 입력하세요">
+						<input type="text" name="empnm" id="empnm" placeholder="이름을 입력하세요" required>
 					</td>
 					<td>
 						<%-- <input type="button" id="btn" value="검색" onclick="location.href='staff.do?cmd=admin_select_member&empnm=${empnm}'"> --%>

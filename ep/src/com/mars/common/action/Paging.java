@@ -31,13 +31,13 @@ public class Paging {
 		int prevPageNo = 0;
 		int nextPageNo = 0;
 		
+//		1.total Record를 구한다
 		String sql = query;
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 				
-//		1.total Record를 구한다
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -127,6 +127,39 @@ public class Paging {
 				
 		SS.getSS(request).setAttribute("ssRecentPjtList", recentPjtList);
 	}
+	
+	public static int calPageNo(int R, int recPerPage){
+		int pageNo = 0;
+		
+		if(R%recPerPage == 0){
+			pageNo = R/recPerPage;
+		}
+		pageNo = R/recPerPage + 1;
+		
+		return pageNo;
+	}
+//	public static int calTotRec(){
+//		String sql = "select count(*) from noti";
+//		
+//		Connection conn = null;
+//		PreparedStatement pstmt = null;
+//		ResultSet rs = null;
+//		int totRec = 0;
+//		
+//		try {
+//			conn = DBManager.getConnection();
+//			pstmt = conn.prepareStatement(sql);
+//			rs = pstmt.executeQuery();
+//			rs.next();
+//			totRec = rs.getInt(1);
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			DBManager.close(conn, pstmt, rs);
+//		}
+//		return totRec;
+//	}
+	
 }
 
 

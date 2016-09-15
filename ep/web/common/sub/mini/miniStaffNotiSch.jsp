@@ -12,10 +12,10 @@
 <body>
 <div class="mini">
 	<p style="display:inline;">Notice Search</p>
-	<c:if test="${ssAdmchk == 1}">
+	<%-- <c:if test="${ssAdmchk == 1}"> --%>
 		<span>|</span>
 		<p style="display:inline;"><a href="staff.do?cmd=admin_noti_list"> List</a></p>
-	</c:if>
+	<%-- </c:if> --%>
 	<hr/>
 	<form action="href=''" method="post" name="frm" class="searchform">
 		<ul>

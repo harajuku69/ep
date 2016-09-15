@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script type="text/javascript" src="js/ajaxSelbox.js"></script>
+<!-- <script type="text/javascript" src="js/ajaxSelbox.js"></script> -->
 </head>
 <body>
 <div class="contents">
@@ -176,7 +176,9 @@
 		</table>
 		<input type="submit" value="수정 완료" >
 		<input type="reset" value="되돌리기" >
-		<input type="button" value="돌아가기" onclick="location.href='staff.do?cmd=admin_detail_page&empid=${reqStaff.empid}'">
+		<%-- <input type="button" value="돌아가기" onclick="location.href='staff.do?cmd=admin_detail_page&empid=${reqStaff.empid}'"> --%>
+		<input type="button" value="돌아가기" onclick="history.go(-1)">
+		
 		</form>
 	</div>
 </div>

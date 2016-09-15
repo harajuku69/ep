@@ -20,7 +20,7 @@ public class StaffListAction implements Action {
 		
 		String sql = "select count(*) from staff";
 		int pageNo = request.getParameter("pageNo") == null ? 1 : Integer.parseInt(request.getParameter("pageNo"));
-		int recPerPage = 4;
+		int recPerPage = 5;
 		int pagePerBlock = 5;
 		
 		HashMap<String, Integer> map = new HashMap<>();
