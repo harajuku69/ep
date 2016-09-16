@@ -52,8 +52,10 @@
 			</table>
 		</div>
 		<br>
-		<input type ="button" value="목록으로" 
-			onclick="location.href='noti.do?cmd=staff_noti_list&pageNo=${pageNo}'">
+		<%-- <input type ="button" value="목록으로" 
+			onclick="location.href='noti.do?cmd=staff_noti_list&pageNo=${pageNo}'"> --%>
+		<input type ="button" value="돌아가기" 
+			onclick="history.go(-1)">
 		<hr>
 		<div id="cmtarea">
 			<div id="cmtinput" class="ui-widget">
@@ -64,7 +66,7 @@
 							<textarea cols="80" rows="1"  id="ctt" name="ctt" placeholder="댓글을 입력하세요." ></textarea>
 							<input type="hidden" id="notino" name="notino" value="${reqNoti.notino}">
 						</td>
-						<td><input type="password" id="pwd" name="pwd" placeholder="비밀번호(숫자 4자리)"></td>
+						<td><input type="password" id="pwd" name="pwd" size="4" placeholder="비밀번호(숫자 4자리)"></td>
 						<td>
 							<input type="button" value="입 력" onclick="addCmt()">
 						</td>
@@ -78,7 +80,7 @@
 					<c:forEach var="cmt" items="${reqCmtList}">
 						<tr class="${cmt.cmtno}" class="ui-widget-header">
 							<td>${cmt.rpno}</td>
-							<td>${cmt.admnm}</td>
+							<td>${cmt.regnm}</td>
 							<td>${cmt.ctt}</td>
 							<td>${cmt.regdt}</td>
 							<c:if test="${cmt.regid == ssEmpid}">

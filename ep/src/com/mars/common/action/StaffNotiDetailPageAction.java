@@ -21,11 +21,15 @@ public class StaffNotiDetailPageAction implements Action {
 		String url = "noti/staffNotiDetail.jsp";
 		
 		int notino = Integer.parseInt(request.getParameter("notino"));
-		int pageNo = Integer.parseInt(request.getParameter("pageNo"));
+		int pageNo = request.getParameter("pageNo") == null ? 1 : Integer.parseInt(request.getParameter("pageNo"));
 		
 		NotiDao nDao = NotiDao.getInstance();
 
 		nDao.updateRdCnt(notino);
+		
+		NotiDto nDto = nDao.selectOneByNotino(notino);
+		request.setAttribute("reqNoti", nDto);
+		request.setAttribute("pageNo", pageNo);
 		
 		String sql = "select count(*) from cmt where notino=" + Integer.toString(notino);
 		int cmtPageNo = request.getParameter("cmtPageNo") == null ? 1 : Integer.parseInt(request.getParameter("cmtPageNo"));
@@ -42,11 +46,6 @@ public class StaffNotiDetailPageAction implements Action {
 		
 		List<CmtDto> cmtList =nDao.selectAllCmt(notino, sttRecNo, endRecNo, cmtcnt);
 		
-		NotiDto nDto = nDao.selectOneByNotino(notino);
-		request.setAttribute("reqNoti", nDto);
-		
-		request.setAttribute("pageNo", pageNo);
-		
 		request.setAttribute("reqCmtList", cmtList);
 		request.setAttribute("firstPageNoInBlock", map.get("firstPageNoInBlock"));
 		request.setAttribute("lastPageNoInBlock", map.get("lastPageNoInBlock"));
@@ -58,8 +57,8 @@ public class StaffNotiDetailPageAction implements Action {
 		request.setAttribute("cmtPageNo", map.get("pageNo"));
 		Paging.getRecentList(request);
 		
-		String empid = SS.getEmpid(request);
-		SS.getSS(request).setAttribute("ssEmpid", empid);
+//		String empid = SS.getEmpid(request);
+//		SS.getSS(request).setAttribute("ssEmpid", empid);
 		
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);

@@ -35,7 +35,15 @@
 				<tr class="${item.notino}">
 					<td>${item.notino}</td>
 					<td>
-						<a href="noti.do?cmd=admin_noti_detail_page&notino=${item.notino}&pageNo=${pageNo}">${item.tit} &nbsp;[${item.cmtcnt}]</a>
+						<c:choose>
+							<c:when test="${item.cmtcnt > 0}">
+								<a href="noti.do?cmd=admin_noti_detail_page&notino=${item.notino}">${item.tit} &nbsp;[${item.cmtcnt}]</a>
+							</c:when>
+							<c:otherwise>
+								<a href="noti.do?cmd=admin_noti_detail_page&notino=${item.notino}">${item.tit}</a>
+							</c:otherwise>
+						</c:choose>
+						<%-- <a href="noti.do?cmd=admin_noti_detail_page&notino=${item.notino}&pageNo=${pageNo}">${item.tit} &nbsp;[${item.cmtcnt}]</a> --%>
 					</td>
 					<td>${item.rdcnt}</td>
 					<%-- <td>${item.cmtcnt}</td> --%>

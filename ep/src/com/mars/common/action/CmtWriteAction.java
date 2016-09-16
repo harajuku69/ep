@@ -28,7 +28,8 @@ public class CmtWriteAction implements Action {
 		JsonObject json = new JsonObject();
 		json.addProperty("cmtno", cDto.getCmtno());
 		json.addProperty("rpno", cDto.getRpno());
-		json.addProperty("admnm", SS.getAdmnm(request));
+//		json.addProperty("admnm", SS.getAdmnm(request));
+		json.addProperty("regnm", cDto.getRegnm());
 		json.addProperty("ctt", cDto.getCtt());
 		json.addProperty("regdt", cDto.getRegdt().toString());
 		
@@ -36,6 +37,5 @@ public class CmtWriteAction implements Action {
 		Paging.getRecentList(request);
 		PrintWriter out = response.getWriter();
 		out.print(json);
-//		System.out.println("out.print(json)에서 찍음 : " + json);
 	}
 }

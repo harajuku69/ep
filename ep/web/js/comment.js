@@ -1,13 +1,29 @@
 /**
  * ajax 
  */
+
 function addCmt() {
+	if(isNull($("#ctt").val().trim())){
+		alert("댓글을 입력해주세요");
+		$("#ctt").val("");
+//		$("#pwd").focus();
+		return false
+	}
+	if(isNull($("#pwd").val().trim())){
+		alert("비밀번호를 입력해주세요");
+		$("#pwd").val("");
+//		$("#pwd").focus();
+		return false
+	}
+	if(isNaN($("#pwd").val())){
+		alert("비밀번호는 숫자로 입력해주세요");
+		$("#pwd").val("");
+		return false
+	}
 	var	notino = $("#notino").val(),
 	 	ctt = $("#ctt").val(),
 	 	pwd = $("#pwd").val();
-//		 alert(notino+ctt+pwd);
 		url = "noti.do?cmd=cmt_write"; 
-//		console.log(url);
 	$.ajax({
 		url: url,
 		data: 'notino=' + notino + '&ctt=' + ctt + '&pwd='+ pwd,
@@ -28,4 +44,12 @@ function addCmt() {
 			history.go(0);
 		}
 	});
+}
+
+function isNull(obj){
+	return (typeof obj != "undefined" && obj != null && obj.trim() != "") ? false : true;
+}
+
+String.prototype.trim = function() {
+    return this.replace(/(^\s*)|(\s*$)/gi, "");
 }

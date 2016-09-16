@@ -17,7 +17,7 @@
 		<table class="list">
 			<thead>
 			<tr>
-				<td class="addbtn" colspan="7" style="text-align:right; border:none;"><a href="noti.do?cmd=noti_write_page"><button id="write">공지사항 등록</button></a></td>
+				<td class="addbtn" colspan="7" style="text-align:right; border:none;"><a href="noti.do?cmd=staff_noti_list"><button id="write">목록으로</button></a></td>
 			</tr>
 			<tr class="ui-widget-header">
 				<th>글 번호</th>
@@ -26,8 +26,8 @@
 				<!-- <th>댓글수</th> -->
 				<th>등록일</th>
 				<th>작성자</th>
-				<th>수정</th>
-				<th>삭제</th>
+				<!-- <th>수정</th>
+				<th>삭제</th> -->
 			</tr>
 			</thead>
 			<tbody>
@@ -37,15 +37,12 @@
 					<td>
 						<c:choose>
 							<c:when test="${item.cmtcnt > 0}">
-								<a href="noti.do?cmd=admin_noti_detail_page&notino=${item.notino}">${item.tit} &nbsp;[${item.cmtcnt}]</a>
+								<a href="noti.do?cmd=staff_noti_detail_page&notino=${item.notino}">${item.tit} &nbsp;[${item.cmtcnt}]</a>
 							</c:when>
 							<c:otherwise>
-								<a href="noti.do?cmd=admin_noti_detail_page&notino=${item.notino}">${item.tit}</a>
+								<a href="noti.do?cmd=staff_noti_detail_page&notino=${item.notino}">${item.tit}</a>
 							</c:otherwise>
 						</c:choose>
-						<%-- <a href="noti.do?cmd=admin_noti_detail_page&notino=${item.notino}">${item.tit} &nbsp;[${item.cmtcnt}]</a> --%>
-						<%-- <a href="noti.do?cmd=admin_noti_detail_page&notino=${item.notino}&pageNo=${item.pageNo}">${item.tit} &nbsp;[${item.cmtcnt}]</a> --%>
-						<%-- <a href="noti.do?cmd=admin_noti_detail_page&notino=${item.notino}">${item.tit} &nbsp;[${item.cmtcnt}]</a> --%>
 					</td>
 					<td>${item.rdcnt}</td>
 					<%-- <td>${item.cmtcnt}</td> --%>
@@ -54,8 +51,8 @@
 						<c:out value="${fn:substring(regdt,0,10)}"/>
 					</td>
 					<td>${item.admnm}</td>
-					<td><a href="noti.do?cmd=noti_update_page&notino=${item.notino}">수 정</a></td>
-					<td><a href="#" onClick="deleteItem('noti','${item.notino}')">삭 제</a></td>
+					<%-- <td><a href="noti.do?cmd=noti_update_page&notino=${item.notino}">수 정</a></td>
+					<td><a href="#" onClick="deleteItem('noti','${item.notino}')">삭 제</a></td> --%>
 				</tr>
 			</c:forEach>
 			</tbody>

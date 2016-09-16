@@ -25,7 +25,7 @@ public class StaffSelectDptMemberAction implements Action {
 		
 		request.setAttribute("reqStaffList", staffList);
 		request.setAttribute("reqStaff", sDto);
-		
+		request.setAttribute("reqDpt", dpt);
 		Paging.getRecentList(request);
 		
 		RequestDispatcher disp = request.getRequestDispatcher(url);

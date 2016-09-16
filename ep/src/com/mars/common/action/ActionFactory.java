@@ -87,6 +87,8 @@ public class ActionFactory {
 			action = new StaffNotiDetailPageAction();
 		} else if(cmd.equals("admin_noti_search")){
 			action = new AdminNotiSearchAction();	
+		} else if(cmd.equals("staff_noti_search")){
+			action = new StaffNotiSearchAction();
 		} else if(cmd.equals("noti_write_page")){
 				action = new NotiWritePageAction();
 		} else if(cmd.equals("noti_write")){

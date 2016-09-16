@@ -17,7 +17,7 @@
 		<p style="display:inline;"><a href="staff.do?cmd=admin_noti_list"> List</a></p>
 	<%-- </c:if> --%>
 	<hr/>
-	<form action="noti.do?cmd=admin_noti_search" method="post" name="frm_noti_sch" class="searchform">
+	<form action="noti.do?cmd=admin_noti_search" method="post" name="frm" class="searchform">
 	<!-- <form name="frm" class="searchform"> -->
 		<ul>
 			<li> &nbsp;글 제목 <input type="text" name="tit" id="tit" class="searchtabnotinm"></li>

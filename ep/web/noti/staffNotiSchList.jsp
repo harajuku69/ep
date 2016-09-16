@@ -13,9 +13,9 @@
 </head>
 <body>
 <div class="wrap">
-	<jsp:include page="../common/header/headerAdmin.jsp"></jsp:include>
-	<jsp:include page="../common/ctt/noti/cttAdminNotiSchList.jsp"></jsp:include>
-	<jsp:include page="../common/sub/subAdminNoti.jsp"></jsp:include>
+	<jsp:include page="../common/header/headerStaff.jsp"></jsp:include>
+	<jsp:include page="../common/ctt/noti/cttStaffNotiSchList.jsp"></jsp:include>
+	<jsp:include page="../common/sub/subStaffNoti.jsp"></jsp:include>
 	<jsp:include page="../common/footer/footer.jsp"></jsp:include>
 </div>
 </body>

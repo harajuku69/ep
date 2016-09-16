@@ -6,7 +6,7 @@ public class CmtDto {
 	private int cmtno;
 	private int notino;
 	private int rpno;
-	private String admnm;
+	private String regnm;
 	private String regid;
 	private String ctt;
 	private Timestamp regdt;
@@ -31,11 +31,11 @@ public class CmtDto {
 	public void setNotino(int notino) {
 		this.notino = notino;
 	}
-	public String getAdmnm() {
-		return admnm;
+	public String getRegnm() {
+		return regnm;
 	}
-	public void setAdmnm(String admnm) {
-		this.admnm = admnm;
+	public void setRegnm(String regnm) {
+		this.regnm = regnm;
 	}
 	public String getRegid() {
 		return regid;
@@ -69,7 +69,7 @@ public class CmtDto {
 	}
 	@Override
 	public String toString() {
-		return "CmtDto [cmtno=" + cmtno + ", notino=" + notino + ", rpno=" + rpno + ", admnm=" + admnm + ", regid="
+		return "CmtDto [cmtno=" + cmtno + ", notino=" + notino + ", rpno=" + rpno + ", regnm=" + regnm + ", regid="
 				+ regid + ", ctt=" + ctt + ", regdt=" + regdt + ", pwd=" + pwd + ", delchk=" + delchk + "]";
 	}
 }

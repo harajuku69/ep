@@ -30,7 +30,7 @@ ul {list-style:none;}
 /* ================================================= */
 
 /* <contents> ========================================== */
-.contents {/* width:958px; */ height:540px; margin:0 auto; margin-top:6px; margin-bottom:0px; /* position:absolute; */ border:2px solid #f6f6f6;}
+.contents {/* width:958px; */ height:540px; margin:0 auto; margin-top:6px; margin-bottom:0px; overflow:auto;/* position:absolute; */ border:2px solid #f6f6f6;}
 /* .contents .core{width:954px; height:538px; margin:0 auto; border: 1px solid purple;} */
 .contents #guest, #default {width:958px; height:540px; /* display:block;/* position:relative;  */}
 .contents #logleft {width:280px; height:520px; padding:10px; float:left; text-align:center/*  border:3px solid green;  */}

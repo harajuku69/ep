@@ -69,7 +69,7 @@
 					<c:forEach var="cmt" items="${reqCmtList}">
 						<tr class="${cmt.cmtno}" class="ui-widget-header">
 							<td>${cmt.rpno}</td>
-							<td>${cmt.admnm}</td>
+							<td>${cmt.regnm}</td>
 							<td>${cmt.ctt}</td>
 							<td>${cmt.regdt}</td>
 							<td><a href="#" onClick="deleteItem('cmt', '${cmt.cmtno}')">삭 제</a></td>
