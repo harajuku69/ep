@@ -29,36 +29,23 @@
 			<a href="staff.do?cmd=admin_home_page"><img src="../images/logo.png" alt="로고 이미지"></a>
 		</div>
 		<div id="gnbarea">
-			<div>
-				<table>
-					<tr id="gnb">
-						<td style="width:200px; line-height:10px">
-							<a href="#">사원 정보</a>
-						</td>
-						<td style="width:200px; line-height:10px">
-							<a href="#">공지사항</a>
-						</td>
-						<td style="width:200px; line-height:10px">
-							<a href="#">프로젝트</a>
-						</td>
-					</tr>
-				</table>
-			</div>
-			<div id="gnbtab">
-				<table>
-					<tr>
-						<td style="width:200px; line-height:10px">
-							<p class="gnbmenu"><a href="staff.do?cmd=staff_list" >사원 정보 관리</a></p>
-						</td>
-						<td style="width:200px; line-height:10px">
-							<p class="gnbmenu"><a href="noti.do?cmd=admin_noti_list">공지사항 관리</a></p>
-						</td>
-						<td style="width:200px; line-height:10px">
-							<p class="gnbmenu"><a href="pjt.do?cmd=admin_pjt_list">프로젝트 관리</a></p>
-						</td>
-					</tr>
-				</table>
-			</div>
+			<ul class ="menu">
+				<li><a href="#">사원 정보</a>
+					<ul>
+						<li><a href="staff.do?cmd=staff_list" class="documents">사원 정보 관리</a></li>
+					</ul>
+				</li>
+				<li><a href="#">공지사항</a>
+					<ul>
+						<li><a href="noti.do?cmd=admin_noti_list" class="documents">공지사항 관리</a></li>
+					</ul>
+				</li>
+				<li><a href="#">프로젝트</a>
+					<ul>
+						<li><a href="pjt.do?cmd=admin_pjt_list" class="documents">프로젝트 관리</a></li>
+					</ul>
+				</li>
+			</ul>
 		</div>
 		<div class="search">
 		<form action="staff.do?cmd=admin_select_member" method="post" name="frm">

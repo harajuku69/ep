@@ -39,7 +39,6 @@ public class StaffNotiDetailPageAction implements Action {
 		HashMap<String, Integer> map = new HashMap<>();
 		map = Paging.getParam(sql, cmtPageNo, recPerPage, pagePerBlock);
 		
-		
 		int sttRecNo = map.get("sttRecNo");
 		int endRecNo = map.get("endRecNo");
 		int cmtcnt = map.get("totRec");
@@ -56,9 +55,6 @@ public class StaffNotiDetailPageAction implements Action {
 		request.setAttribute("blockNo", map.get("blockNo"));
 		request.setAttribute("cmtPageNo", map.get("pageNo"));
 		Paging.getRecentList(request);
-		
-//		String empid = SS.getEmpid(request);
-//		SS.getSS(request).setAttribute("ssEmpid", empid);
 		
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);

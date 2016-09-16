@@ -19,7 +19,7 @@
 	<hr/>
 	<ul>
 		<c:forEach var="item" items="${ssRecentNotiList}">
-			<li><a href="noti.do?cmd=staff_noti_detail&notino=${item.notino}">${item.tit}</a>
+			<li><a href="noti.do?cmd=staff_noti_detail_page&notino=${item.notino}&pageNo=1">${item.tit}</a>
 			<span>
 				<c:set var = "regdt" value="${item.regdt}"/>
 				<c:out value="${fn:substring(regdt, 0, 10)}"/>

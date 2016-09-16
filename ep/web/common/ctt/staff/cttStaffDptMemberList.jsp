@@ -33,7 +33,7 @@
 			<c:forEach var="item" items="${reqStaffList}">
 				<tr class="${item.empno}">
 					<td>
-						<a href="staff.do?cmd=admin_detail_page&empid=${item.empid}">${item.empnm}</a>
+						<a href="staff.do?cmd=staff_detail_page&empid=${item.empid}">${item.empnm}</a>
 					</td>
 					<td>${item.dptcd}</td>
 					<td>${item.titcd}</td>

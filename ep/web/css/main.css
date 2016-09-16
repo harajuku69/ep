@@ -22,17 +22,82 @@ ul {list-style:none;}
 .face {height:55px; padding:1px; background-color:#efefef; clear:both;border:1px solid #efefef;}
 .face .logo   {width:135px; height:50px; float:left;}
 .face .logo img {width:65px; height:50px; display:block; margin-left:40px;}
-.face #gnbarea {width:630px; float:left;font-size:14px;}
+.face #gnbarea {width:630px; float:left;font-size:14px;margin-top:7px;}
 .face .search {width:185px; float:left;padding:3px;}
 .face .search table {width:185px; height:51px; border-collapse:collapse; /* float:right; */}
 .face .search table td #empnm {width:135px; font-size:14px; color:#afafaf; font-weight:bold; float:left;}
 .face .search table td #btn {width:45px; float:left;/*  clear:left; */}
+.face .menu, .menu ul, .menu li, .menu a {margin: 0; padding: 0; border: none; outline: none;}
+.face .menu {height: 40px; /* width :1100px; */	
+	/* background: #4c4e5a; */
+	/* background: -webkit-linear-gradient(top, #4c4e5a 0%,#2c2d33 100%); */
+	background: -moz-linear-gradient(top, #4c4e5a 0%,#2c2d33 100%);
+	background: -o-linear-gradient(top, #4c4e5a 0%,#2c2d33 100%);
+	background: -ms-linear-gradient(top, #4c4e5a 0%,#2c2d33 100%);
+	background: linear-gradient(top, #4c4e5a 0%,#2c2d33 100%);
+
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.face .menu li {position: relative;	list-style: none; float: left; display: block; height: 40px; width:200px;}
+.face .menu li a {display: block; padding: 0 14px; margin: 6px 0; line-height: 28px; text-decoration: none; text-align:center; /* text-indent:30px; */
+	/* border-left: 1px solid #393942;	
+	border-right: 1px solid #efefef ; */
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight: bold;
+	font-size: 15px;
+
+	color: #636363;
+	/* text-shadow: 1px 1px 1px rgba(0,0,0,.6); */
+
+	-webkit-transition: color .2s ease-in-out;
+	-moz-transition: color .2s ease-in-out;
+	-o-transition: color .2s ease-in-out;
+	-ms-transition: color .2s ease-in-out;
+	transition: color .2s ease-in-out;
+}
+.face .menu li:first-child a { border-left: none; }
+.face .menu li:last-child a{ border-right: none; }
+
+.face .menu li ul li:hover > a { color: red; /*#50618d;/* #8fde62; */ }
+
+.face .menu ul {position: absolute; top: 40px; left: 0;	opacity: 0;	background: #efefef;
+	-webkit-border-radius: 0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+	border-radius: 0 0 5px 5px;
+
+	-webkit-transition: opacity .25s ease .1s;
+	-moz-transition: opacity .25s ease .1s;
+	-o-transition: opacity .25s ease .1s;
+	-ms-transition: opacity .25s ease .1s;
+	transition: opacity .25s ease .1s;
+}
+
+.face .menu li:hover > ul { opacity: 1; }
+
+.face .menu ul li {height: 0; overflow: hidden;	padding: 0; width: 200px; 
+	-webkit-transition: height .25s ease .1s;
+	-moz-transition: height .25s ease .1s;
+	-o-transition: height .25s ease .1s;
+	-ms-transition: height .25s ease .1s;
+	transition: height .25s ease .1s;
+}
+
+.face .menu li:hover > ul li {height: 36px; overflow: visible; padding: 0;}
+
+.face .menu ul li a {width: 150px; padding: 4px 0 4px 40px; margin: 0; border: none; border-bottom: 1px solid #353539;text-align:center;}
+
+.face .menu ul li:last-child a { border: none; }
+
+/* .face .menu a.documents { background: url(../images/arrow.png) no-repeat 6px center; } */
+
 /* ================================================= */
 
 /* <contents> ========================================== */
-.contents {/* width:958px; */ height:540px; margin:0 auto; margin-top:6px; margin-bottom:0px; overflow:auto;/* position:absolute; */ border:2px solid #f6f6f6;}
+.contents {/* width:958px; */ height:540px; margin:0 auto; margin-top:6px; margin-bottom:0px;/* overflow:auto; position:absolute; */ border:2px solid #f6f6f6;}
 /* .contents .core{width:954px; height:538px; margin:0 auto; border: 1px solid purple;} */
-.contents #guest, #default {width:958px; height:540px; /* display:block;/* position:relative;  */}
+.contents #guest, #default {width:956px; height:542px; /* display:block;/* position:relative;  */}
 .contents #logleft {width:280px; height:520px; padding:10px; float:left; text-align:center/*  border:3px solid green;  */}
 .contents #logleft .stpic {width:200px ; height:250px; margin:0 auto;border:3px solid #dfdfdf}
 .contents #logleft p img {width:240px; height:130px;/* border:3px solid yellow*/} 
@@ -40,24 +105,25 @@ ul {list-style:none;}
 .contents #logleft ul li {margin:0 auto; text-indent:10px;}
 .contents #logleft ul li a {font-size:15px; color:#636363; text-indent:15px;}
 .contents #logright {width:654px; height:540px; float:left;/*  border:1px solid blue; */}
-.contents #logright #logintro {width:650px; height:260px; margin-top:55px; /* border:1px solid green; */}
+.contents #logright #logintro {width:650px; height:260px; margin-top:25px; /* border:1px solid green; */}
 .contents #logright #logintro #introtable {width:650px;height:250px;}
 .contents #logright #logintro #introtable #desc {width:450px;padding:15px; text-indent:15px; /* border:2px solid black; */}
 .contents #logright #logintro #introtable #desc p {font-size:13px;}
 .contents #logright #logintro #introtable #lock {vertical-align:bottom;}
 .contents #logright #logintro #introtable #lock p {text-align:center}
 .contents #logright #logintro #introtable #lock p img {width:120px;height:120px;}
-
 .contents #logright #logmain {width:650px;height:220px; /* border:1px solid purple; */}
-.contents #logright #logmain #maintable {width:450px; height:165px; margin-bottom:55px; margin:0 auto; border-collapse:collapse; }
+.contents #logright #logmain #maintable {width:450px; height:165px; margin-bottom:55px; margin:0 auto; border-collapse:collapse; /* align:left; */ }
 .contents #logright #logmain #maintable td {margin:0 auto; padding:2px; border:1px solid #dfdfdf;}
 .contents #logright #logmain #maintable #mainleft {width:150px;font-size:25px;text-align:center;}
-.contents #logright #logmain #maintable #maincenter {text-align:center;}
-.contents #logright #logmain #maintable #maincenter .idpw {height:35px;}
-.contents #logright #logmain #maintable #mainright {width:100px;}
-.contents #logright #logmain #maintable #mainright .login {width:100px;height:100px;}
-.contents #logright #logmain #maintable #maincenter .find {width:175px; height:35px;}
-.contents #logright #logmain #maintable #mainright .join {width:100px;height:35px;}
+.contents #logright #logmain #maintable .mainleft {text-align:center;}
+.contents #logright #logmain #maintable .maincenter {text-align:center;}
+.contents #logright #logmain #maintable .maincenter .idpw {height:35px;}
+.contents #logright #logmain #maintable .mainright {width:100px; text-align:center;}
+.contents #logright #logmain #maintable .checktd {width:200px; text-align:center; font-size:13px; color:white; */}
+.contents #logright #logmain #maintable .mainright .login {width:100px;height:100px;}
+.contents #logright #logmain #maintable .maincenter .find {width:175px; height:35px;}
+.contents #logright #logmain #maintable .mainright .join {width:100px;height:35px;}
 .contents #logright #logmain #maintable #msg {color:red; text-align:center;height:20px;/* line-height:20px; */}
 /* ================================================= */
 .contents .list {width:900px;}

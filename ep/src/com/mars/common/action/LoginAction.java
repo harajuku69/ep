@@ -25,6 +25,7 @@ public class LoginAction implements Action {
 //		System.out.println("result : "+result);
 		
 		if(result == 1){
+			sDao.changeAdmstat(empid, 0);
 			StaffDto sDto = sDao.selectOneByEmpid(empid);
 			String lastdt = sDto.getLogdt();
 			if(lastdt == null){

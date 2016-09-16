@@ -19,7 +19,7 @@ public class AdminNotiDetailPageAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "noti/adminNotiDetail.jsp";
-//		System.out.println(url);
+
 		int notino  = Integer.parseInt(request.getParameter("notino"));
 		int pageNo = request.getParameter("pageNo") == null ? 1 : Integer.parseInt(request.getParameter("pageNo"));
 		

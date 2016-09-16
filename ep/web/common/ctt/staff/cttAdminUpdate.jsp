@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- <script type="text/javascript" src="js/ajaxSelbox.js"></script> -->
+<script src="js/checkUpdate.js"></script>
 </head>
 <body>
 <div class="contents">
@@ -86,7 +86,7 @@
 				</td>
 			</tr>
 		</table>
-		<form action="staff.do?cmd=admin_update&empid=${reqStaff.empid}" method="post" name="frm">
+		<form action="staff.do?cmd=admin_update&empid=${reqStaff.empid}" method="post" name="frm" >
 		<table style="font-size:20px;">
 			<tr><th colspan="2">사원 정보</th></tr>
 			<tr>
@@ -146,7 +146,7 @@
 				<td>급 여</td>
 				<td>
 					<%-- <fmt:formatNumber type="currency" value="${reqStaff.sal}"/> --%>
-					<input type="text" name="sal" id="sal" value="${reqStaff.sal}">
+					<input type="text" name="sal" id="sal" maxlength="9" value="${reqStaff.sal}">
 				</td>
 			</tr>
 			<tr>
@@ -174,7 +174,7 @@
 				</td>
 			</tr>
 		</table>
-		<input type="submit" value="수정 완료" >
+		<input type="submit" value="수정 완료" onclick="return chkSal()">
 		<input type="reset" value="되돌리기" >
 		<%-- <input type="button" value="돌아가기" onclick="location.href='staff.do?cmd=admin_detail_page&empid=${reqStaff.empid}'"> --%>
 		<input type="button" value="돌아가기" onclick="history.go(-1)">

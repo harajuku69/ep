@@ -39,7 +39,7 @@ $(function() {
 		refresh();
 		var url = "staff.do?cmd=zipcd_search";
 		var valid = true,
-			d = $("#frm").serialize();
+			d = $("#kwd").serialize();
 		
 		kwd.removeClass("ui-state-error");
 		

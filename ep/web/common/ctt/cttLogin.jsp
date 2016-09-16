@@ -39,15 +39,15 @@
 			<table id="maintable">
 				<tr>
 					<td rowspan="3" id="mainleft">LOGIN</td>
-					<td id="maincenter"><input type="text"  name="empid" class="idpw" placeholder="아이디" value="${empid}" required></td>
-					<td rowspan="2" id="mainright"><input type="submit" value="LOGIN" class="login" onclick="return loginCheck()"></td>
+					<td class="maincenter"><input type="text"  name="empid" class="idpw" placeholder="아이디" value="${empid}" required></td>
+					<td rowspan="2" class="mainright"><input type="submit" value="LOGIN" class="login" onclick="return loginCheck()"></td>
 				</tr>
 				<tr>
-					<td id="maincenter"><input type="password" name="pwd" class="idpw" placeholder="비밀번호" required></td>
+					<td class="maincenter"><input type="password" name="pwd" class="idpw" placeholder="비밀번호" required></td>
 				</tr>
 				<tr>
-					<td id="maincenter"><input type="button" value="아이디/비밀번호 찾기" class="find" onclick="location.href='URL'"></td>
-					<td id="mainright"><input type="button" value="회원 가입" class="join" onclick="location.href='staff.do?cmd=join_page'"></td>
+					<td class="maincenter"><input type="button" value="아이디/비밀번호 찾기" class="find" onclick="location.href='URL'"></td>
+					<td class="mainright"><input type="button" value="회원 가입" class="join" onclick="location.href='staff.do?cmd=join_page'"></td>
 				</tr>
 				<tr>
 					<td colspan="3" id="msg">${msg}</td>

@@ -255,7 +255,7 @@ public class StaffDao {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			rs.next();
-			System.out.println(rs.getInt("lastno"));
+//			System.out.println(rs.getInt("lastno"));
 			if(rs.getInt("lastno") != 9999){
 				lastno=rs.getInt("lastno") + 1;
 			}

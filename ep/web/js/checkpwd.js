@@ -70,7 +70,7 @@ $(function() {
 				contentsType: "application/x-www-form-urlencoded; charset=UTF-8",
 				success:function(result){
 //					data = JSON.parse(result);
-					msg = "비밀번호가 일치합니다. 3초후 자동으로 이동합니다.";
+					msg = "비밀번호가 일치합니다. 자동으로 이동합니다.";
 //					var i = 5;
 //					var t = setInterval(i--,1000);
 //					move = "초후 자동으로 이동합니다.";
@@ -82,7 +82,7 @@ $(function() {
 //						setTimeout($("#pwdChkRs").text(msg+'3'+move),1000);
 //						setTimeout($("#pwdChkRs").text(msg+'2'+move),1000);
 //						setTimeout($("#pwdChkRs").text(msg+'1'+move),1000);
-						setTimeout("location.href='staff.do?cmd=staff_update_page'",3000);
+						setTimeout("location.href='staff.do?cmd=staff_update_page'",1500);
 					} else{
 						msg = "비밀번호가 일치하지 않습니다. 다시 입력해주세요."
 						$("#pwdChkRs").text(msg);

@@ -13,16 +13,16 @@
 </head>
 <body>
 <div class="contents">
-			<div id="pwd-dialog" title="비밀번호 확인">
-				<p class="validateTips">본인 확인이 필요합니다.</p>
-				<fieldset>
-					<form id="frm">
-						<label for="pwd">비밀번호를 입력해주세요.</label><br>
-						<input type="password" name="pwd" id="pwd" placeholder="비밀번호" class="text ui-widget-content ui-corner-all"  ><br>
-				</form>
-				</fieldset>
-				<p id="pwdChkRs"></p>
-			</div> 
+	<div id="pwd-dialog" title="비밀번호 확인">
+		<p class="validateTips">본인 확인이 필요합니다.</p>
+		<fieldset>
+			<form id="frm">
+				<label for="pwd">비밀번호를 입력해주세요.</label><br>
+				<input type="password" name="pwd" id="pwd" placeholder="비밀번호" class="text ui-widget-content ui-corner-all"  ><br>
+		</form>
+		</fieldset>
+		<p id="pwdChkRs"></p>
+	</div> 
 	<div id="logleft" style="clear:left;">
 		<c:choose>
 			<c:when test="${empty reqStaff.pic}">

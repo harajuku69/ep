@@ -10,13 +10,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="js/zipcd.js"></script>
 <script src="js/imgchange.js"></script>
+<script src="js/checkUpdate.js"></script>
 </head>
 <body>
 <div class="contents">
 	<div id="zip-dialog" title="Zipcode Search" >
 		<h2>주소 검색</h2>
 		<p class="validateTips">한글과 숫자로 공백없이 입력하세요. ex)청천2동 or 압구정</p>
-		<form id="frm">
+		<form>
 			<input type="text" name="kwd" id="kwd" class="text ui-widget-content ui-corner-all" placeholder="동(읍/면) 이름을 입력하세요"><br>
 			<!-- <input type="button" value="검 색" onclick="schzipcd()"> -->
 			<input type="submit" tabindex="-1" style="position:absolute; left:-1000px">
@@ -87,7 +88,7 @@
 			<tr>
 				<td>연락처</td>
 				<td>
-					<input type="text" name="phone" id="phone" value="${reqStaff.phone}" >
+					<input type="text" name="phone" id="phone" maxlength="11" value="${reqStaff.phone}" >
 				</td>
 			</tr>
 			<tr>
@@ -169,9 +170,9 @@
 		</table>
 		<br>
 		<div style="clear:both">
-			<p><input type="submit" value="수정 완료" ></p>
+			<p><input type="submit" value="수정 완료" onclick="return chkPhone()"></p>
 			<p><input type="reset" value="되돌리기" ></p>
-			<p><input type="button" value="수정 취소" onclick="location.href='staff.do?cmd=staff_detail_page&empid=${reqStaff.empid}'"></p>
+			<p><input type="button" value="돌아가기" onclick="location.href='staff.do?cmd=staff_detail_page&empid=${reqStaff.empid}'"></p>
 		</div>
 	</div>
 	</form>

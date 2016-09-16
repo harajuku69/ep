@@ -28,36 +28,23 @@
 			<a href="staff.do?cmd=index_page"><img src="images/logo.png" alt="로고 이미지"></a>
 		</div>
 		<div id="gnbarea">
-			<div>
-				<table>
-					<tr id="gnb">
-						<td style="width:200px; line-height:10px">
-							<a href="#">개인 정보</a>
-						</td>
-						<td style="width:200px; line-height:10px">
-							<a href="#">공지사항</a>
-						</td>
-						<td style="width:200px; line-height:10px">
-							<a href="#">프로젝트</a>
-						</td>
-					</tr>
-				</table>
-			</div>
-			<div id="gnbtab">
-				<table>
-					<tr>
-						<td style="width:200px; line-height:10px">
-							<p class="gnbmenu"><a href="staff.do?cmd=login_page">개인 정보 상세</a></p>
-						</td>
-						<td style="width:200px; line-height:10px">
-							<p class="gnbmenu"><a href="staff.do?cmd=login_page">공지사항 목록</a></p>
-						</td>
-						<td style="width:200px; line-height:10px">
-							<p class="gnbmenu"><a href="staff.do?cmd=login_page">프로젝트 목록</a></p>
-						</td>
-					</tr>
-				</table>
-			</div>
+			<ul class ="menu">
+				<li><a href="#">개인 정보</a>
+					<ul>
+						<li><a href="staff.do?cmd=login_page" class="documents">개인 정보 상세</a></li>
+					</ul>
+				</li>
+				<li><a href="#">공지사항</a>
+					<ul>
+						<li><a href="staff.do?cmd=login_page" class="documents">공지사항 목록</a></li>
+					</ul>
+				</li>
+				<li><a href="#">프로젝트</a>
+					<ul>
+						<li><a href="staff.do?cmd=login_page" class="documents">프로젝트 목록</a></li>
+					</ul>
+				</li>
+			</ul>
 		</div>
 		<div class="search">
 		<!-- <form action="staff.do?cmd=login_page" method="get" name="frm"> -->

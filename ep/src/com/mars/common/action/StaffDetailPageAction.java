@@ -22,6 +22,7 @@ public class StaffDetailPageAction implements Action {
 		String url = "staff/staffDetail.jsp";
 		
 		String empid = request.getParameter("empid");
+		
 		StaffDao sDao = StaffDao.getInstance();
 		StaffDto sDto = sDao.selectOneByEmpid(empid);
 		
