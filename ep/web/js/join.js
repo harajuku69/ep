@@ -13,37 +13,42 @@ function chkJoin(){
 		$("#name").focus();
 		return false;
 	}
-	if(isNull($("#juminf").val().trim())){
-		alert("주민번호 앞자리를 입력해주세요.");
+	if(isNull($("#juminf,#juminb").val().trim())){
+		alert("주민번호 중복검사를 해주세요.");
 //		$("#notify").text("주민번호 앞자리를 입력해주세요.");
 		$("#juminf").focus();
 		return false;
 	}
-	if(isNaN($("#juminf").val())){
-		alert("주민번호 앞자리는 숫자로 입력해야 합니다.");
-		$("#juminf").val("");
-		$("#juminf").focus();
-		return false;
-	} 
-	if(($("#juminf").val().trim().length < 6)){
-		alert("주민번호 앞자리는 6자리(yymmdd)로 입력해야 합니다.");
-		$("#juminf").focus();
-		return false;
-	}
-	if(isNull($("#juminb").val().trim())){
-		alert("주민번호 뒷자리를 입력해주세요.");
-		$("#juminb").focus();
-		return false;
-	}
-	if(isNaN($("#juminb").val())){
-		alert("주민번호 뒷자리는 숫자로 입력해야 합니다.");
-		$("#juminb").val("");
-		$("#juminb").focus();
-		return false;
-	} 
-	if(($("#juminb").val().trim().length < 7)){
-		alert("주민번호 뒷자리는 7자리로 입력해야 합니다.");
-		$("#juminb").focus();
+//	if(isNaN($("#juminf").val())){
+//		alert("주민번호 앞자리는 숫자로 입력해야 합니다.");
+//		$("#juminf").val("");
+//		$("#juminf").focus();
+//		return false;
+//	} 
+//	if(($("#juminf").val().trim().length < 6)){
+//		alert("주민번호 앞자리는 6자리(yymmdd)로 입력해야 합니다.");
+//		$("#juminf").focus();
+//		return false;
+//	}
+//	if(isNull($("#juminb").val().trim())){
+//		alert("주민번호 뒷자리를 입력해주세요.");
+//		$("#juminb").focus();
+//		return false;
+//	}
+//	if(isNaN($("#juminb").val())){
+//		alert("주민번호 뒷자리는 숫자로 입력해야 합니다.");
+//		$("#juminb").val("");
+//		$("#juminb").focus();
+//		return false;
+//	} 
+//	if(($("#juminb").val().trim().length < 7)){
+//		alert("주민번호 뒷자리는 7자리로 입력해야 합니다.");
+//		$("#juminb").focus();
+//		return false;
+//	}
+	if(isNull($("#empid").val().trim())){
+		alert("아이디 중복 검사를 해주세요.");
+		$("#chkid").focus();
 		return false;
 	}
 	if(isNull($("#pwd").val().trim())){
@@ -64,7 +69,6 @@ function chkJoin(){
 		$("#same").text("");
 		return false;
 	}
-	
 	return true;
 }
 
@@ -95,7 +99,7 @@ $(function(){
 	});
 
 	$("#name").focus(function(){
-		setTimeout("$('#alarm').text('')",3500);	
+		setTimeout("$('#alarm').text('')",4000);	
 	});
 	
 	$("#pwd_re").keydown(function(){

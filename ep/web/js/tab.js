@@ -1,6 +1,8 @@
 /**
  * Tab setting : tab + modal
  */
+var tips;
+
 $(function() {
 	//tabs
 	tips = $(".validateTips");
@@ -13,10 +15,7 @@ $(function() {
 	});
 });
 
-var tips;
-
 function updateTips(t) {
-//	alert(t);
 	tips.text(t).addClass("ui-state-highlight");//하일라이트 주는 것
 	setTimeout(function() {
 		tips.removeClass("ui-state-highlight", 2500);//하일라이트 없어지는 것

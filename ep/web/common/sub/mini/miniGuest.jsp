@@ -34,14 +34,14 @@
 					</table>
 				</td>
 				<td id="new">
-					<input type="button" class="join" value="신규 등록" onclick="location.href='staff.do?cmd=join_page'">
+					<input type="button" class="join" value="회원 가입" onclick="location.href='staff.do?cmd=join_page'">
 				</td>
 			</tr>
-			<tr>
+			<!-- <tr>
 				<td colspan="2" class="find">
 					<p><a href="location.href='staff.do?cmd=staff_find">ID/PW 찾기</a></p>
 				</td>
-			</tr>
+			</tr> -->
 		</table>
 		</form>
 	</div>

@@ -16,7 +16,7 @@
 		<div class="util">
 			<table>
 				<tr>
-					<td><a href="staff.do?cmd=index_page">Home</a></td>
+					<td><a href="staff.do?cmd=index">Home</a></td>
 					<td><a href="staff.do?cmd=login_page">Login</a></td>
 					<td><a href="staff.do?cmd=join_page">Join</a></td>
 				</tr>
@@ -25,7 +25,7 @@
 	</div>
 	<div class="face">
 		<div class="logo">
-			<a href="staff.do?cmd=index_page"><img src="images/logo.png" alt="로고 이미지"></a>
+			<a href="staff.do?cmd=index"><img src="images/logo.png" alt="로고 이미지"></a>
 		</div>
 		<div id="gnbarea">
 			<ul class ="menu">

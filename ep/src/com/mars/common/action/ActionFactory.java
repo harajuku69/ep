@@ -25,8 +25,10 @@ public class ActionFactory {
 			action = new JoinAction();
 		} else if(cmd.equals("join_page")){
 			action = new JoinPageAction();
-		} else if(cmd.equals("chk_id")){
-			action = new ChkIdAction();
+		} else if(cmd.equals("check_id")){
+			action = new CheckIdAction();
+		} else if(cmd.equals("check_jumin")){
+			action = new CheckJuminAction();
 		} else if(cmd.equals("edu_add")){
 			action = new EduAddAction();
 		} else if(cmd.equals("edu_delete")){

@@ -101,9 +101,7 @@ public class StaffDao {
 			rs = pstmt.executeQuery();
 			if(rs.next()){
 				result = 1;
-			} else{
-				result = 0;//id와 같은 id가 리턴되지 않았을 때
-			}
+			} 
 		} catch(Exception e){
 			e.printStackTrace();
 		} finally{
@@ -872,6 +870,31 @@ public class StaffDao {
 			DBManager.close(conn, pstmt, rs);
 		}
 		return titList;
+	}
+
+	public int chkJm(String jumin) {
+		int result = 0;
+		String sql = "select jumin from staff where jumin = ?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try{
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, jumin);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				result = 1;
+			} 
+		} catch(Exception e){
+			e.printStackTrace();
+		} finally{
+			DBManager.close(conn, pstmt, rs);
+		}
+		return result;
 	}
 }//class end
 

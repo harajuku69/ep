@@ -13,9 +13,9 @@
 	<div id="logleft">
 		<ul>
 			<li><p><img src="../images/member.png" alt="member"></p><hr/></li>
-			<li>로그인</li><hr/>
-			<li><a href="staff.do?cmd=join_page">회원 가입</a></li><hr/>
-			<li><a href="URL">아이디/비밀번호 찾기</a></li><hr/>			
+			<li>로그인<hr/></li>
+			<li><a href="staff.do?cmd=join_page">회원 가입</a><hr/></li>
+			<!-- <li><a href="URL">아이디/비밀번호 찾기</a><hr/></li> -->			
 		</ul>
 	</div>
 	<div id="logright">
@@ -46,7 +46,8 @@
 					<td class="maincenter"><input type="password" name="pwd" class="idpw" placeholder="비밀번호" required></td>
 				</tr>
 				<tr>
-					<td class="maincenter"><input type="button" value="아이디/비밀번호 찾기" class="find" onclick="location.href='URL'"></td>
+					<td><input type="text" value="처음 오셨나요?"  style="text-align:center;background-color:#dfdfdf;height:30px;color:#636363;font-weight:bold"></td>
+					<!-- <td class="maincenter"><input type="button" value="아이디/비밀번호 찾기" class="find" onclick="location.href='URL'"></td> -->
 					<td class="mainright"><input type="button" value="회원 가입" class="join" onclick="location.href='staff.do?cmd=join_page'"></td>
 				</tr>
 				<tr>

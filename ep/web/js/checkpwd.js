@@ -3,8 +3,7 @@
  */
 $(function() {
 	//modal
-	var dialog, 
-		pwd = $("#pwd"),
+	var dialog, form;
 		tips = $(".validateTips");
 	
 		dialog = $("#pwd-dialog").dialog({
@@ -19,6 +18,12 @@ $(function() {
 				refresh();
 			}
 		});
+		
+	form = dialog.find("form").on("submit", function(event) {
+		event.preventDefault();
+		chkPwd();
+		return false;
+	});
 	
 	$("#chk_pwd").button().on("click", function() {
 		$("#pwd-dialog").dialog("open");
@@ -50,13 +55,15 @@ $(function() {
 			return true;
 		}
 	}
+	var pwd = $("#pwd"),
+		pwdField = $([]).add(pwd);
 	
 	function chkPwd() {
 		var url = "staff.do?cmd=check_staff_pwd";
 		var valid = true;
 //			d = $("#pwd").serialize();
 		
-		pwd.removeClass("ui-state-error");
+		pwdField.removeClass("ui-state-error");
 		valid = checkLength(pwd, 2, 30 );
 		valid = valid && checkRegexp(pwd, /^[가-힣a-z0-9]([가-힣a-z0-9])*$/ );
 		if ( valid ) {
@@ -70,11 +77,11 @@ $(function() {
 				contentsType: "application/x-www-form-urlencoded; charset=UTF-8",
 				success:function(result){
 //					data = JSON.parse(result);
-					msg = "비밀번호가 일치합니다. 자동으로 이동합니다.";
 //					var i = 5;
 //					var t = setInterval(i--,1000);
 //					move = "초후 자동으로 이동합니다.";
 					if(result == '1'){
+						msg = "비밀번호가 일치합니다. 자동으로 이동합니다.";
 						$("#pwdChkRs").text(msg);
 //						for(i=5;i>=0;i--){
 //							setTimeout($("#pwdChkRs").text(msg+i+move),1000);
