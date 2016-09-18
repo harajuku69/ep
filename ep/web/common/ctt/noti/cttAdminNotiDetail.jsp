@@ -39,12 +39,8 @@
 		<br>
 		<input type ="button" value="수정하기" 
 			onclick="location.href='noti.do?cmd=noti_update_page&notino=${reqNoti.notino}&pageNo=${pageNo}'">
-		<%-- <input type ="button" value="목록으로" 
-			onclick="location.href='noti.do?cmd=admin_noti_list&pageNo=${pageNo}'"> --%>
 		<input type ="button" value="목록으로" 
 			onclick="location.href='noti.do?cmd=admin_noti_list'">
-		<!-- <input type ="button" value="돌아가기" 
-			onclick="history.go(-1)"> -->
 		<hr>
 		<div id="cmtarea">
 			<div id="cmtinput" class="ui-widget">

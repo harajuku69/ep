@@ -9,7 +9,7 @@ public class PjtDto {
 	private Timestamp	startdt;
 	private Timestamp	enddt;
 	private Timestamp	regdt;
-	private String		reguser;
+	private String		regnm;
 	
 	public int getPjtno() {
 		return pjtno;
@@ -47,15 +47,15 @@ public class PjtDto {
 	public void setRegdt(Timestamp regdt) {
 		this.regdt = regdt;
 	}
-	public String getReguser() {
-		return reguser;
+	public String getRegnm() {
+		return regnm;
 	}
-	public void setReguser(String reguser) {
-		this.reguser = reguser;
+	public void setRegnm(String regnm) {
+		this.regnm = regnm;
 	}
 	@Override
 	public String toString() {
 		return "PjtDto [pjtno=" + pjtno + ", pjtnm=" + pjtnm + ", startdt=" + startdt + ", enddt=" + enddt + ", regdt="
-				+ regdt + ", reguser=" + reguser + "]";
+				+ regdt + ", regnm=" + regnm + "]";
 	}
 }

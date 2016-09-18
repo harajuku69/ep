@@ -16,7 +16,7 @@
 		<table class="list">
 			<thead>
 			<tr>
-				<td class="addbtn" colspan="8" style="text-align:right; border:none;"><a href="pjt.do?cmd=pjt_insert_page"><button id="back">프로젝트 등록</button></a></td>
+				<td class="addbtn" colspan="8" style="text-align:right; border:none;"><a href="pjt.do?cmd=pjt_write_page"><button id="write">프로젝트 등록</button></a></td>
 			</tr>
 			<tr class="ui-widget-header">
 				<th>번호</th>
@@ -40,7 +40,7 @@
 					<td>${item.startdt}</td>
 					<td>${item.enddt}</td>
 					<td>${item.regdt}</td>
-					<td>${item.reguser}</td>
+					<td>${item.regnm}</td>
 					<td><a href="pjt.do?cmd=pjt_update_page&pjtno=${item.pjtno}">수정</a></td>
 					<td><a href="#" onClick="deleteItem('pjt','${item.pjtno}')">삭제</a></td>
 				</tr>

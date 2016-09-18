@@ -19,7 +19,7 @@
 			<form id="frm">
 				<label for="pwd">비밀번호를 입력해주세요.</label><br>
 				<input type="password" name="pwd" id="pwd" placeholder="비밀번호" class="text ui-widget-content ui-corner-all"  ><br>
-		</form>
+			</form>
 		</fieldset>
 		<p id="pwdChkRs"></p>
 	</div> 

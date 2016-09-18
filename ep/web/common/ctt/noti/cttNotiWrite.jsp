@@ -25,11 +25,11 @@
 			<td><input type="text" size="12" name="admnm" value="${ssAdmnm}" required>* 필수</td>
 		</tr>
 		<tr>
-			<th>제목</th>
+			<th>제 목</th>
 			<td colspan="3"><input type="text" size="70" name="tit" required>* 필수</td>
 		</tr>
 		<tr>
-			<th>내용</th>
+			<th>내 용</th>
 			<td colspan="3"><textarea cols="70" rows="15" name="ctt" required></textarea></td>
 		</tr>
 	</table>

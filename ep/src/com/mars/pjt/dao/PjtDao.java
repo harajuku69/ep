@@ -57,7 +57,7 @@ public class PjtDao {
 				pDto.setStartdt(rs.getTimestamp("startdt"));
 				pDto.setEnddt(rs.getTimestamp("enddt"));
 				pDto.setRegdt(rs.getTimestamp("regdt"));
-				pDto.setReguser(rs.getString("reguser"));
+				pDto.setRegnm(rs.getString("regnm"));
 				
 				pjtList.add(pDto);
 //				System.out.println(pjtList);

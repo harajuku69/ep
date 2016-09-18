@@ -40,7 +40,7 @@
 					<td>${item.startdt}</td>
 					<td>${item.enddt}</td>
 					<td>${item.regdt}</td>
-					<td>${item.reguser}</td>
+					<td>${item.regnm}</td>
 					<%-- <td><a href="pjt.do?cmd=pjt_update_page&pjtno=${item.pjtno}">수정</a></td>
 					<td><a href="#" onClick="deleteItem('pjt','${item.pjtno}')">삭제</a></td> --%>
 				</tr>

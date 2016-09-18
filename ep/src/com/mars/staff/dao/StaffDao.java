@@ -519,7 +519,52 @@ public class StaffDao {
 //		System.out.println(memberList);
 		return memberList;
 	}
-
+	public List<StaffDto> selectMemberByEmpnm(String empnm) {
+		String sql = " SELECT s.empnm,d.dpt,t.tit,NVL(s.phone,' ') as phone,s.empid,s.empno "
+					  + "FROM staff s "
+					  + "JOIN dpt d "
+					    + "ON s.dptcd=d.dptcd "
+					  + "JOIN tit t "
+					  	+ "ON s.titcd=t.titcd "
+					 + "WHERE empnm like '%' || ? || '%' "
+					 + "ORDER BY s.empno ";
+		List<StaffDto> memberList = new ArrayList<>();
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try{
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, empnm);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				StaffDto sDto = new StaffDto();
+				
+				sDto.setEmpno(rs.getString("empno"));
+				sDto.setEmpid(rs.getString("empid"));
+				sDto.setEmpnm(rs.getString("empnm"));
+				if(rs.getString("phone").length() == 1){
+					sDto.setPhone(" ");
+				} else{
+					sDto.setPhone(rs.getString("phone").substring(0, 3)	+ "-" 
+								+ rs.getString("phone").substring(3, 7)	+ "-"
+								+ rs.getString("phone").substring(7));
+				}
+				sDto.setDptcd(rs.getString("dpt"));
+				sDto.setTitcd(rs.getString("tit"));
+				
+				memberList.add(sDto);
+			}
+		} catch(SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBManager.close(conn, pstmt, rs);
+		}
+		return memberList;
+	}
 	public void changeAdmstat(String empid, int admstat) {
 		String sql = "update staff set admstat=? where empid=?";
 		int toStat = admstat;

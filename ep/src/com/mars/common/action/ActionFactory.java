@@ -75,6 +75,8 @@ public class ActionFactory {
 			action = new CheckStaffPwdAction();
 		} else if(cmd.equals("check_pwd_pop")){
 			action = new CheckPwdPopAction();
+		} else if(cmd.equals("select_pl")){
+			action = new SelectPlAction();
 		} else if(cmd.equals("logout")){
 			action = new LogoutAction();
 		}
@@ -113,6 +115,8 @@ public class ActionFactory {
 			action = new StaffPjtListAction();
 		} else if(cmd.equals("admin_pjt_detail")){
 //			action = new AdminPjtDetailAction();
+		} else if(cmd.equals("pjt_write_page")){
+			action = new PjtWritePageAction();
 		} else if(cmd.equals("pjt_delete")){
 			action = new PjtDeleteAction();
 		}
