@@ -117,8 +117,12 @@ public class ActionFactory {
 //			action = new AdminPjtDetailAction();
 		} else if(cmd.equals("pjt_write_page")){
 			action = new PjtWritePageAction();
+		} else if(cmd.equals("pjt_write")){
+			action = new PjtWriteAction();
 		} else if(cmd.equals("pjt_delete")){
 			action = new PjtDeleteAction();
+		} else if(cmd.equals("pl_detail")){
+			action = new PlDetailAction();
 		}
 		return action;
 	}

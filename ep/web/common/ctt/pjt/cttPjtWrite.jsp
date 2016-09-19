@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
@@ -38,7 +37,7 @@
 		</table>
 		</div>
 	</div>
-	<form action="noti.do?cmd=noti_write" method="post" name="frm">
+	<form action="noti.do?cmd=pjt_write" method="post" name="frm">
 	<table>
 		<tr>
 			<th>작성일</th>
@@ -52,7 +51,7 @@
 		</tr>
 		<tr>
 			<th>프로젝트 명</th>
-			<td colspan="3"><input type="text" size="70" name="tit" required></td>
+			<td colspan="3"><input type="text" size="70" name="pjtnm" required></td>
 		</tr>
 		<tr>
 			<th>기 간</th>
@@ -101,7 +100,7 @@
 		</tr>
 		<tr>
 			<th>상세내용</th>
-			<td colspan="3"><textarea cols="72" rows="10" name="ctt" required></textarea></td>
+			<td colspan="3"><textarea cols="72" rows="10" name="pjtdtl" required></textarea></td>
 		</tr>
 		<tr>
 			<th>프로젝트 리더</th>

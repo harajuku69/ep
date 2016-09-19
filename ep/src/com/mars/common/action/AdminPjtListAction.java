@@ -23,10 +23,6 @@ public class AdminPjtListAction implements Action {
 		
 		String sql = "select count(*) from pjt";
 		int pageNo = request.getParameter("pageNo") == null ? 1 : Integer.parseInt(request.getParameter("pageNo"));
-//		int recPerPage = Integer.parseInt(request.getParameter("recPerPage"));
-//		int pagePerBlock = Integer.parseInt(request.getParameter("pagePerBlock"));
-//		int pageNo = 2;
-//		System.out.println(pageNo);
 		int recPerPage = 5;
 		int pagePerBlock = 5;
 		
@@ -35,14 +31,11 @@ public class AdminPjtListAction implements Action {
 		
 		String sttRecNo = map.get("sttRecNo").toString();
 		String endRecNo = map.get("endRecNo").toString();
-//		System.out.println(sttRecNo);
-//		System.out.println(endRecNo);
-//		String pjtno = request.getParameter("pjtno");
 		
 		PjtDao pDao = PjtDao.getInstance();
 		List<PjtDto> pjtList = pDao.selectAllPjt(sttRecNo, endRecNo);
-//		System.out.println(pjtList);
 		request.setAttribute("reqPjtList", pjtList);
+		
 		request.setAttribute("firstPageNoInBlock", map.get("firstPageNoInBlock"));
 		request.setAttribute("lastPageNoInBlock", map.get("lastPageNoInBlock"));
 		request.setAttribute("prevPageNo", map.get("prevPageNo"));

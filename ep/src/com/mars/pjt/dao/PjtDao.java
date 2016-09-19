@@ -25,7 +25,7 @@ public class PjtDao {
 	}
 	
 	public List<PjtDto> selectAllPjt(String sttRecNo, String endRecNo){
-		String sql = "SELECT * "
+		String sql = "SELECT p.pjtno, p.pjtnm, p.pjtdtl, p.startdt, p.enddt, p.regdt, p.plid, s.empnm "
 				 	 + "FROM ("
 				 	 		+ "SELECT ROWNUM R, a.* "
 				 	 		 + " FROM ( "
@@ -33,6 +33,8 @@ public class PjtDao {
 				 	 		 		    + "FROM pjt ORDER BY pjtno desc "
 				 	 		 	    + ") a "
 				 	 	   + ") p "
+				 	+ " JOIN staff s "
+				 	  + " ON p.plid =s.empid "
 				 	+ "WHERE R BETWEEN ? AND ? "
 				 	+ "ORDER BY p.pjtno desc";
 		
@@ -57,7 +59,8 @@ public class PjtDao {
 				pDto.setStartdt(rs.getTimestamp("startdt"));
 				pDto.setEnddt(rs.getTimestamp("enddt"));
 				pDto.setRegdt(rs.getTimestamp("regdt"));
-				pDto.setRegnm(rs.getString("regnm"));
+				pDto.setPlnm(rs.getString("empnm"));
+				pDto.setPlid(rs.getString("plid"));
 				
 				pjtList.add(pDto);
 //				System.out.println(pjtList);
@@ -92,6 +95,31 @@ public class PjtDao {
 		} 
 //		System.out.println(result);
 		return result;
+	}
+
+	public void writePjt(PjtDto pDto) {
+		String sql = "insert into pjt(pjtno, pjtnm, pjtdtl, startdt, enddt, plid) "
+							+ "values(pjtno_seq.nextval,?,?,?,?,?)";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try{
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, pDto.getPjtnm());
+			pstmt.setString(2, pDto.getPjtdtl());
+			pstmt.setTimestamp(3, pDto.getStartdt());
+			pstmt.setTimestamp(4, pDto.getEnddt());
+			pstmt.setString(5, pDto.getPlid());
+			
+			pstmt.executeUpdate();
+		} catch(SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBManager.close(conn, pstmt);
+		}
 	}
 	
 }

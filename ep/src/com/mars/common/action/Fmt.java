@@ -17,7 +17,6 @@ public class Fmt {
 		Timestamp tstp = null;
 		try {
 			udt = sdf.parse(date.replace("/", "-"));
-//			java.sql.Date sdt = new java.sql.Date(udt.getTime()); 
 			tstp = new Timestamp(udt.getTime());
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -34,7 +33,7 @@ public class Fmt {
 		String gen ="남";
 		int gd = Integer.parseInt(sDto.getJumin().substring(6,7));
 		String adm ="일반";
-		String fmtphone = "번호 등록 필요";
+//		String fmtphone = "번호 등록 필요";
 		int admchk = sDto.getAdmchk();
 		
 		if(gd%2 == 0){
@@ -48,18 +47,18 @@ public class Fmt {
 		if(admchk == 1){
 			adm = "관리자";
 		}
-		if(sDto.getPhone() != null){
-			fmtphone = sDto.getPhone().substring(0, 3) 
-					+ "-" + sDto.getPhone().substring(3, 7) 
-					+ "-" + sDto.getPhone().substring(7);
-		}
+//		if(sDto.getPhone() != null){
+//			fmtphone = sDto.getPhone().substring(0, 3) 
+//					+ "-" + sDto.getPhone().substring(3, 7) 
+//					+ "-" + sDto.getPhone().substring(7);
+//		}
 		request.setAttribute("jmf", jmf);
 		request.setAttribute("jmb", jmb);
 		request.setAttribute("yyyy", yyyy);
 		request.setAttribute("MM", MM);
 		request.setAttribute("dd", dd);
 		request.setAttribute("gen", gen);
-		request.setAttribute("fmtphone", fmtphone);
+//		request.setAttribute("fmtphone", fmtphone);
 		request.setAttribute("adm", adm);
 	}
 }

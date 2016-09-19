@@ -39,10 +39,17 @@
 					</td>
 					<td><a href ="staff.do?cmd=admin_select_dpt_member&dpt=${item.dptcd}">${item.dptcd}</a></td>
 					<td>${item.titcd}</td>
-					<td>
+					<td>${item.phone}
+					<%-- <c:choose>
+					<c:when test="${item.phone == null}">
+						번호 정보 없음
+					</c:when>
+					<c:otherwise>
 						<c:set var="phone" value="${item.phone}"/>
 						<c:set var="dash" value="${'-'}"/>
 						<c:out value="${fn:substring(phone,0,3)}${dash}${fn:substring(phone,3,7)}${dash}${fn:substring(phone,7,11)}"/>
+					</c:otherwise>
+					</c:choose> --%>
 					</td>
 					<td><a href="mailto:${item.empid}@mars.com">${item.empid}@mars.com</a></td>
 					<td><a href="staff.do?cmd=admin_update_page&empid=${item.empid}">수정</a></td>

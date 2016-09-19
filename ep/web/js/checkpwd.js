@@ -100,7 +100,6 @@ $(function() {
 		refresh();
 		return valid;
 	}
-	
 });
 
 function refresh(){
