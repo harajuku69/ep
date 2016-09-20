@@ -63,9 +63,9 @@ ul {list-style:none;}
 .face .menu li ul li:hover > a { color: red; /*#50618d;/* #8fde62; */ }
 
 .face .menu ul {position: absolute; top: 40px; left: 0;	opacity: 0;	background: #efefef;
-	-webkit-border-radius: 0 0 5px 5px;
-	-moz-border-radius: 0 0 5px 5px;
-	border-radius: 0 0 5px 5px;
+	-webkit-border-radius: 0 0 1px 1px;
+	-moz-border-radius: 0 0 1px 1px;
+	border-radius: 0 0 1px 1px;
 
 	-webkit-transition: opacity .25s ease .1s;
 	-moz-transition: opacity .25s ease .1s;
