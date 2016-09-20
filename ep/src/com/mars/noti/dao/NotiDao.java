@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mars.common.action.Paging;
 import com.mars.common.db.DBManager;
 import com.mars.noti.dto.CmtDto;
 import com.mars.noti.dto.NotiDto;

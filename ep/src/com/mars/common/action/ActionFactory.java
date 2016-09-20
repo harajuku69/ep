@@ -1,5 +1,53 @@
 package com.mars.common.action;
 
+import com.mars.noti.action.AdminNotiDetailPageAction;
+import com.mars.noti.action.AdminNotiListAction;
+import com.mars.noti.action.AdminNotiSearchAction;
+import com.mars.noti.action.CmtDeleteAction;
+import com.mars.noti.action.CmtWriteAction;
+import com.mars.noti.action.NotiDeleteAction;
+import com.mars.noti.action.NotiUpdateAction;
+import com.mars.noti.action.NotiUpdatePageAction;
+import com.mars.noti.action.NotiWriteAction;
+import com.mars.noti.action.NotiWritePageAction;
+import com.mars.noti.action.StaffNotiDetailPageAction;
+import com.mars.noti.action.StaffNotiListAction;
+import com.mars.noti.action.StaffNotiSearchAction;
+import com.mars.pjt.action.AdminPjtListAction;
+import com.mars.pjt.action.PjtDeleteAction;
+import com.mars.pjt.action.PjtWriteAction;
+import com.mars.pjt.action.PjtWritePageAction;
+import com.mars.pjt.action.PlDetailAction;
+import com.mars.pjt.action.SelectPlAction;
+import com.mars.pjt.action.StaffPjtListAction;
+import com.mars.staff.action.AdminDetailPageAction;
+import com.mars.staff.action.AdminHomePageAction;
+import com.mars.staff.action.AdminSelectDptMemberAction;
+import com.mars.staff.action.AdminSelectMemberAction;
+import com.mars.staff.action.AdminUpdateAction;
+import com.mars.staff.action.AdminUpdatePageAction;
+import com.mars.staff.action.CheckIdAction;
+import com.mars.staff.action.CheckJuminAction;
+import com.mars.staff.action.CheckStaffPwdAction;
+import com.mars.staff.action.CrrAddAction;
+import com.mars.staff.action.CrrDeleteAction;
+import com.mars.staff.action.CrtAddAction;
+import com.mars.staff.action.CrtDeleteAction;
+import com.mars.staff.action.EduAddAction;
+import com.mars.staff.action.EduDeleteAction;
+import com.mars.staff.action.JoinAction;
+import com.mars.staff.action.LoginAction;
+import com.mars.staff.action.LogoutAction;
+import com.mars.staff.action.StaffDeleteAction;
+import com.mars.staff.action.StaffDetailPageAction;
+import com.mars.staff.action.StaffHomePageAction;
+import com.mars.staff.action.StaffListAction;
+import com.mars.staff.action.StaffSelectDptMemberAction;
+import com.mars.staff.action.StaffSelectMemberAction;
+import com.mars.staff.action.StaffUpdateAction;
+import com.mars.staff.action.StaffUpdatePageAction;
+import com.mars.staff.action.ZipcdSearchAction;
+
 public class ActionFactory {
 	private static ActionFactory instance = new ActionFactory();
 	
@@ -14,21 +62,26 @@ public class ActionFactory {
 	public Action getAction(String cmd){
 		Action action = null;
 		System.out.println("ActionFactory : " + cmd);
-//		staff_action		
+		
+//		common_action
 		if(cmd.equals("index")){
-			action = new IndexPageAction();
+			action = new IndexAction();
 		} else if(cmd.equals("login_page")){
 			action = new LoginPageAction();
+		} else if(cmd.equals("join_page")){
+			action = new JoinPageAction();
+			
+//		staff_action		
 		} else if(cmd.equals("login")){
 			action = new LoginAction();
 		}  else if(cmd.equals("join")){
 			action = new JoinAction();
-		} else if(cmd.equals("join_page")){
-			action = new JoinPageAction();
 		} else if(cmd.equals("check_id")){
 			action = new CheckIdAction();
 		} else if(cmd.equals("check_jumin")){
 			action = new CheckJuminAction();
+		} else if(cmd.equals("check_staff_pwd")){
+			action = new CheckStaffPwdAction();
 		} else if(cmd.equals("edu_add")){
 			action = new EduAddAction();
 		} else if(cmd.equals("edu_delete")){
@@ -71,15 +124,10 @@ public class ActionFactory {
 			action = new StaffSelectDptMemberAction();
 		} else if(cmd.equals("admin_select_dpt_member")){
 			action = new AdminSelectDptMemberAction();
-		} else if(cmd.equals("check_staff_pwd")){
-			action = new CheckStaffPwdAction();
-		} else if(cmd.equals("check_pwd_pop")){
-			action = new CheckPwdPopAction();
-		} else if(cmd.equals("select_pl")){
-			action = new SelectPlAction();
 		} else if(cmd.equals("logout")){
 			action = new LogoutAction();
 		}
+		
 //		notice_action
 		  else if(cmd.equals("admin_noti_list")){
 			action = new AdminNotiListAction();
@@ -108,7 +156,8 @@ public class ActionFactory {
 		} else if(cmd.equals("cmt_delete")){
 			action = new CmtDeleteAction();
 		}
-		//project_action
+		
+//		project_action
 		  else if(cmd.equals("admin_pjt_list")){
 			action = new AdminPjtListAction();
 		} else if(cmd.equals("staff_pjt_list")){
@@ -123,6 +172,8 @@ public class ActionFactory {
 			action = new PjtDeleteAction();
 		} else if(cmd.equals("pl_detail")){
 			action = new PlDetailAction();
+		} else if(cmd.equals("select_pl")){
+			action = new SelectPlAction();
 		}
 		return action;
 	}
