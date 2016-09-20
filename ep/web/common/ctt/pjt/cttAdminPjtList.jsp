@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,9 +9,28 @@
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="js/delete.js"></script>
+<script src="js/pldtl.js"></script>
 </head>
 <body>
 <div class="contents">
+	<div id="pl-info" title="Project Leader">
+		<h2>PL 정보</h2>
+		<div class="contain" class="ui-widget">
+		<table id="plSchRs" class="ui-widget ui-widget-content">
+			<thead>
+				<tr class="ui-widget-header">
+					<th>이 름</th>
+					<th>부 서</th>
+					<th>직 급</th>
+					<th>연락처</th>
+					<th>이메일</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+		</div>
+	</div>
 	<h1> 프로젝트 목록 </h1>
 	<div id="list_contain" class="ui-widget">
 		<table class="list">
@@ -21,30 +41,33 @@
 			<tr class="ui-widget-header">
 				<th>번호</th>
 				<th>프로젝트명</th>
+				<th>Project Leader</th>
 				<th>시작일</th>
 				<th>종료일</th>
 				<th>등록일</th>
-				<th>작성자</th>
 				<th>수정</th>
 				<th>삭제</th>
 			</tr>
 			</thead>
 			<tbody>
-			</tbody>
 			<c:forEach var="item" items="${reqPjtList}">
 				<tr class="${item.pjtno}">
 					<td>${item.pjtno}</td>
 					<td>
 						<a href="pjt.do?cmd=admin_pjt_detail&no=${item.pjtno}">${item.pjtnm}</a>
 					</td>
-					<td>${item.startdt}</td>
-					<td>${item.enddt}</td>
-					<td>${item.regdt}</td>
-					<td>${item.regnm}</td>
+					<td>
+					 	<a href="#" class="plnm">${item.plnm}</a>
+						<input type="hidden" class="plid" value="${item.plid}">
+					</td>
+					<td><c:out value="${fn:substring(item.startdt,0,10)}"/></td>
+					<td><c:out value="${fn:substring(item.enddt,0,10)}"/></td>
+					<td><c:out value="${fn:substring(item.regdt,0,10)}"/></td>
 					<td><a href="pjt.do?cmd=pjt_update_page&pjtno=${item.pjtno}">수정</a></td>
 					<td><a href="#" onClick="deleteItem('pjt','${item.pjtno}')">삭제</a></td>
 				</tr>
 			</c:forEach>
+			</tbody>
 		</table>
 		<div id="paging" style="text-align:center; font-size:20px; padding:1em">
    		<span>

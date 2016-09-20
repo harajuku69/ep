@@ -9,9 +9,10 @@ public class PjtDto {
 	private Timestamp	startdt;
 	private Timestamp	enddt;
 	private Timestamp	regdt;
-	private String		regnm;
+	private String		plnm;
+	private String		plid;
 	
-	public int getPjtno() {
+		public int getPjtno() {
 		return pjtno;
 	}
 	public void setPjtno(int pjtno) {
@@ -47,15 +48,21 @@ public class PjtDto {
 	public void setRegdt(Timestamp regdt) {
 		this.regdt = regdt;
 	}
-	public String getRegnm() {
-		return regnm;
+	public String getPlnm() {
+		return plnm;
 	}
-	public void setRegnm(String regnm) {
-		this.regnm = regnm;
+	public void setPlnm(String plnm) {
+		this.plnm = plnm;
+	}
+	public String getPlid() {
+		return plid;
+	}
+	public void setPlid(String plid) {
+		this.plid = plid;
 	}
 	@Override
 	public String toString() {
-		return "PjtDto [pjtno=" + pjtno + ", pjtnm=" + pjtnm + ", startdt=" + startdt + ", enddt=" + enddt + ", regdt="
-				+ regdt + ", regnm=" + regnm + "]";
+		return "PjtDto [pjtno=" + pjtno + ", pjtnm=" + pjtnm + ", pjtdtl=" + pjtdtl + ", startdt=" + startdt
+				+ ", enddt=" + enddt + ", regdt=" + regdt + ", plnm=" + plnm + ", plid=" + plid + "]";
 	}
 }

@@ -139,7 +139,14 @@ public class StaffDao {
 				sDto.setPwd(rs.getString("pwd"));
 				sDto.setEmpno(rs.getString("empno"));
 				sDto.setEmpnm(rs.getString("empnm"));
-				sDto.setPhone(rs.getString("phone"));
+//				sDto.setPhone(rs.getString("phone"));
+				if(rs.getString("phone") == null){
+					sDto.setPhone("번호 정보 없음");
+				} else{
+					sDto.setPhone(rs.getString("phone").substring(0, 3)	+ "-" 
+								+ rs.getString("phone").substring(3, 7)	+ "-"
+								+ rs.getString("phone").substring(7));
+				}
 				sDto.setJumin(rs.getString("jumin"));
 				sDto.setPic(rs.getString("pic"));
 				sDto.setZipcd(rs.getString("zipcd"));
@@ -453,7 +460,13 @@ public class StaffDao {
 				sDto.setEmpnm(rs.getString("empnm"));
 				sDto.setDptcd(rs.getString("dpt"));
 				sDto.setTitcd(rs.getString("tit"));
-				sDto.setPhone(rs.getString("Phone"));
+				if(rs.getString("phone") == null){
+					sDto.setPhone("번호 정보 없음");
+				} else{
+					sDto.setPhone(rs.getString("phone").substring(0, 3)	+ "-" 
+								+ rs.getString("phone").substring(3, 7)	+ "-"
+								+ rs.getString("phone").substring(7));
+				}
 				sDto.setEmpid(rs.getString("empid"));
 				sDto.setEmpno(rs.getString("empno"));
 				
@@ -520,14 +533,22 @@ public class StaffDao {
 		return memberList;
 	}
 	public List<StaffDto> selectMemberByEmpnm(String empnm) {
-		String sql = " SELECT s.empnm,d.dpt,t.tit,NVL(s.phone,' ') as phone,s.empid,s.empno "
-					  + "FROM staff s "
-					  + "JOIN dpt d "
-					    + "ON s.dptcd=d.dptcd "
-					  + "JOIN tit t "
-					  	+ "ON s.titcd=t.titcd "
-					 + "WHERE empnm like '%' || ? || '%' "
-					 + "ORDER BY s.empno ";
+//		String sql = " SELECT s.empnm,d.dpt,t.tit,NVL(s.phone,' ') as phone,s.empid,s.empno "
+//					  + "FROM staff s "
+//					  + "JOIN dpt d "
+//					    + "ON s.dptcd=d.dptcd "
+//					  + "JOIN tit t "
+//					  	+ "ON s.titcd=t.titcd "
+//					 + "WHERE empnm like '%' || ? || '%' "
+//					 + "ORDER BY s.empno ";
+		String sql = " SELECT s.empnm,d.dpt,t.tit,s.phone,s.empid,s.empno "
+				  + "FROM staff s "
+				  + "JOIN dpt d "
+				    + "ON s.dptcd=d.dptcd "
+				  + "JOIN tit t "
+				  	+ "ON s.titcd=t.titcd "
+				 + "WHERE empnm like '%' || ? || '%' "
+				 + "ORDER BY s.empno ";
 		List<StaffDto> memberList = new ArrayList<>();
 		
 		Connection conn = null;
@@ -546,8 +567,8 @@ public class StaffDao {
 				sDto.setEmpno(rs.getString("empno"));
 				sDto.setEmpid(rs.getString("empid"));
 				sDto.setEmpnm(rs.getString("empnm"));
-				if(rs.getString("phone").length() == 1){
-					sDto.setPhone(" ");
+				if(rs.getString("phone") == null){
+					sDto.setPhone("번호 정보 없음");
 				} else{
 					sDto.setPhone(rs.getString("phone").substring(0, 3)	+ "-" 
 								+ rs.getString("phone").substring(3, 7)	+ "-"

@@ -17,11 +17,9 @@ public class SelectPlAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String empnm = request.getParameter("plnm");
-//		System.out.println("zipcdsearchAction plnm : "+plnm);
 		StaffDao sDao = StaffDao.getInstance();
 		
 		List<StaffDto> plList = sDao.selectMemberByEmpnm(empnm);
-//		System.out.println(zipcdList);
 		String jsonArray = new Gson().toJson(plList);
 		
 		response.setCharacterEncoding("UTF-8");
@@ -30,7 +28,6 @@ public class SelectPlAction implements Action {
 		
 		PrintWriter out = response.getWriter();
 		out.print(jsonArray);
-//		System.out.println(jsonArray);
 	}
 
 }

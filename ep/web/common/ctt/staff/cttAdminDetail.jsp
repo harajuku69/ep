@@ -46,7 +46,8 @@
 			</tr>
 			<tr>
 				<td>연락처</td>
-				<td>${fmtphone}</td>
+				<%-- <td>${fmtphone}</td> --%>
+				<td>${reqStaff.phone}</td>
 			</tr>
 			<tr>
 				<td>우편번호</td>
