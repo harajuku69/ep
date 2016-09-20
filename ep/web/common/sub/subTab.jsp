@@ -16,6 +16,7 @@
 			<li><a href="#tabedu">학력</a></li>
 			<li><a href="#tabcrr">경력</a></li>
 			<li><a href="#tabcrt">자격증</a></li>
+			<li><a href="#tabsk">보유 스킬</a></li>
 		</ul>
 		<div id="tabedu">
 			<div id="edu-dialog" title="학력 추가">
@@ -40,7 +41,7 @@
 				<table id="edu" class="ui-widget ui-widget-content">
 					<thead>
 						<tr>
-							<td class="addbtn" colspan="7" style="text-align:right; border:none;"><button id="add-edu">추가 등록</button></td>
+							<td class="addbtn" colspan="7" style="text-align:right; border:none;"><button id="add-edu">등록</button></td>
 						</tr>
 						<tr class="ui-widget-header">
 							<th>지 역</th>
@@ -99,7 +100,7 @@
 				<table id="crr" class="ui-widget ui-widget-content">
 					<thead>
 						<tr>
-							<td class="addbtn" colspan="7" style="text-align:right; border:none;"><button id="add-crr">추가 등록</button></td>
+							<td class="addbtn" colspan="7" style="text-align:right; border:none;"><button id="add-crr">등록</button></td>
 						</tr>
 						<tr class="ui-widget-header">
 							<th>회사명</th>
@@ -157,7 +158,7 @@
 				<table id="crt" class="ui-widget ui-widget-content">
 					<thead>
 						<tr>
-							<td class="addbtn" colspan="7" style="text-align:right; border:none;"><button id="add-crt">추가 등록</button></td>
+							<td class="addbtn" colspan="7" style="text-align:right; border:none;"><button id="add-crt">등록</button></td>
 						</tr>
 						<tr class="ui-widget-header">
 							<th>자격(증)명</th>
@@ -188,6 +189,135 @@
 								</td>
 							</tr>
 						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div id="tabsk">
+			<div id="sk-dialog" title="보유 스킬 추가">
+				<!-- <p class="validateTips"></p> -->
+				<form id="frm_sk">
+				<table>
+					<tr>
+						<th class="ui-widget-header">스킬 종류</th>
+						<td>
+							<fieldset class="skset">
+								<legend><b>Platform Skill</b></legend>
+								<table>
+									<tr>
+										<td class="skbx">
+											<label for="Java">Java</label>
+										</td>
+										<td class="chkbx">
+											<input type="checkbox" name="platform" id="Java" value="01" >
+										</td>
+									</tr>
+									<tr>
+										<td class="skbx">
+											<label for="Object C">Object C</label>
+										</td>
+										<td class="chkbx">
+											<input type="checkbox" name="platform" id="Object C" value="02" >
+										</td>
+									</tr>
+									<tr>
+										<td class="skbx">
+											<label for=".NET">.NET</label>
+										</td>
+										<td class="chkbx">
+											<input type="checkbox" name="platform" id=".NET" value="03" >
+										</td>
+									</tr>
+								</table>
+							</fieldset>
+						</td>
+						<td>
+							<fieldset class="skset">
+								<legend><b>Web Skill</b></legend>
+								<table>
+									<tr>
+										<td class="skbx">
+											<label for="HTML">HTML</label>
+										</td>
+										<td class="chkbx">
+											<input type="checkbox" name="web" id="HTML" value="11" >
+										</td>
+									</tr>
+									<tr>
+										<td class="skbx">
+											<label for="CSS">CSS</label>
+										</td>
+										<td class="chkbx">
+											<input type="checkbox" name="web" id="CSS" value="12" >
+										</td>
+									</tr>
+									<tr>
+										<td class="skbx">
+											<label for="Javascript">Javascript</label>
+										</td>
+										<td class="chkbx">
+											<input type="checkbox" name="web" id="Javascript" >
+										</td>
+									</tr>
+								</table>
+							</fieldset>
+						</td>
+						<td>
+							<fieldset class="skset">
+								<legend><b>Server Skill</b></legend>
+								<table>
+									<tr>
+										<td class="skbx">
+											<label for="JSP">JSP</label>
+										</td>
+										<td class="chkbx">
+											<input type="checkbox" name="svr" id="JSP" value="21">
+										</td>
+									</tr>
+									<tr>
+										<td class="skbx">
+											<label for="ASP">ASP</label>
+										</td>
+										<td class="chkbx">
+											<input type="checkbox" name="svr" id="ASP" value="22">
+										</td>
+									</tr>
+									<tr>
+										<td class="skbx">
+											<label for="PHP">PHP</label>
+										</td>
+										<td class="chkbx">
+											<input type="checkbox" name="svr" id="PHP" value="23">
+										</td>
+									</tr>
+								</table>
+							</fieldset>
+						</td>
+					</tr>
+				</table>
+				</form>
+			</div> 
+		 	<div class="contain" class="ui-widget">
+				<table id="sk" class="ui-widget ui-widget-content">
+					<tbody>
+						<tr>
+							<td class="addbtn" colspan="7" style="text-align:right; border:none;"><button id="add-sk">등록</button></td>
+						</tr>
+						<tr>
+							<th class="ui-widget-header">Platform Skill</th>
+							<td>java
+							</td>
+						</tr>
+						<tr>
+							<th class="ui-widget-header">Web Skill</th>
+							<td>html
+							</td>
+						</tr>
+						<tr>
+							<th class="ui-widget-header">Server Skill</th>
+							<td>jsp
+							</td>
+						</tr>
 					</tbody>
 				</table>
 			</div>

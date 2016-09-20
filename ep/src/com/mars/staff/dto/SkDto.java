@@ -1,12 +1,13 @@
 package com.mars.staff.dto;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 public class SkDto {
-	private int 		skno;
-	private String 		empid;
-	private String		skcd;
-	private Timestamp	regdt;
+	private int 			skno;
+	private String 			empid;
+	private List<String>	skList;
+	private Timestamp		regdt;
 	
 	public int getSkno() {
 		return skno;
@@ -20,11 +21,11 @@ public class SkDto {
 	public void setEmpid(String empid) {
 		this.empid = empid;
 	}
-	public String getSkcd() {
-		return skcd;
+	public List<String> getSkList() {
+		return skList;
 	}
-	public void setSkcd(String skcd) {
-		this.skcd = skcd;
+	public void setSkList(List<String> skList) {
+		this.skList = skList;
 	}
 	public Timestamp getRegdt() {
 		return regdt;
@@ -34,6 +35,6 @@ public class SkDto {
 	}
 	@Override
 	public String toString() {
-		return "SkDto [skno=" + skno + ", empid=" + empid + ", skcd=" + skcd + ", regdt=" + regdt + "]";
+		return "SkDto [skno=" + skno + ", empid=" + empid + ", skList=" + skList + ", regdt=" + regdt + "]";
 	}
 }

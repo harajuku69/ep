@@ -291,3 +291,82 @@ $(function() {
 	}
 	
 });
+
+$(function() {
+	var dialog, form;
+	
+	dialog = $("#sk-dialog").dialog({
+		autoOpen: false,
+		width: 530,
+		height: 230,
+		modal: true,
+		buttons: {
+			"추가": addCrt,
+			"취소": function() {
+				dialog.dialog("close");
+			}
+		},
+		close: function() {
+			form[0].reset();
+			skAllFields.removeClass("ui-state-error");
+		}
+	});
+	
+	form = dialog.find("form").on("submit", function(event) {
+		event.preventDefault();
+		addCrt();
+		return false;
+	});
+	
+	$("#add-sk").button().on("click", function() {
+		$("#sk-dialog").dialog("open");
+	});
+	
+	var sknm = $("#sknm"),
+		rank = $("#rank"),
+		publ = $("#publ"),
+		regdt = $("#regdt"),
+		expdt = $("#expdt"),
+		skAllFields = $([]).add(sknm).add(rank).add(publ).add(regdt).add(expdt);
+	
+	function addCrt() {
+		var valid = true,
+			url = "staff.do?cmd=sk_add",
+			d = $("#frm_sk").serialize();
+		//자격증 추가 처리
+		skAllFields.removeClass("ui-state-error");
+		valid = checkLength(sknm, 2, 30 );
+		valid = valid && checkRegexp(sknm, /^[가-힣a-zA-Z0-9]([가-힣a-zA-Z0-9])*$/ );
+		
+		valid = valid && checkLength(rank, 2, 30 );
+		valid = valid && checkRegexp(rank, /^[가-힣a-zA-Z0-9]([가-힣a-zA-Z0-9])*$/ );
+		
+		valid = valid && checkLength(publ, 2, 20 );
+		valid = valid && checkRegexp(publ, /^[가-힣a-zA-Z0-9]([가-힣a-zA-Z0-9])*$/ );
+		
+		if ( valid ) {
+			$.ajax({
+				url: url,
+				data: d,
+				type: 'post',
+				contentsType: "application/x-www-form-urlencoded; charset=UTF-8",
+				success: function(result){
+					data = JSON.parse(result);
+					$("#sk tbody").prepend( 
+						"<tr class='" + data.skno + "'>" +
+							"<td>" + data.sknm + "</td>" +
+							"<td>" + data.rank + "</td>" +
+							"<td>" + data.publ + "</td>" +
+							"<td>" + data.regdt + "</td>" +
+							"<td>" + data.expdt + "</td>" +
+							/*"<td><a href='staff.do?cmd=edu_update&no=${edu.no}'>수 정</a></td>" +*/
+							"<td><a href='#' onClick='deleteItem('sk', '" + data.skno + "')>삭 제</a></td>" +
+						"</tr>" );
+					$("#sk-dialog").dialog("close");
+				}
+			});
+		}
+		return valid;
+	}
+	
+});

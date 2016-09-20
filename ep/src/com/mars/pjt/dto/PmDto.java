@@ -1,6 +1,6 @@
 package com.mars.pjt.dto;
 
-public class PmgDto {
+public class PmDto {
 	private int		pjtno;
 	private String	empid;
 	private String	rolecd;

@@ -439,8 +439,6 @@ public class NotiDao {
 				nDto.setRegdt(rs.getTimestamp("regdt"));
 				nDto.setAdmnm(rs.getString("admnm"));
 				nDto.setCtt(rs.getString("ctt"));
-//				nDto.setPageNo(Paging.calPageNo(totRec, nDto.getNotino(), recPerPage));
-//				nDto.setPageNo(Paging.calPageNo(rs.getInt("R"), recPerPage));
 				
 				notiList.add(nDto);
 			}

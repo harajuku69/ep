@@ -1,23 +1,32 @@
 package com.mars.pjt.dto;
 
-public class PskDto {
-	private int		pjtno;
-	private String	skcd;
+import java.util.List;
 
+public class PskDto {
+	private int				pskno;
+	private int				pjtno;
+	private List<String>	skList;
+
+	public int getPskno() {
+		return pskno;
+	}
+	public void setPskno(int pskno) {
+		this.pskno = pskno;
+	}
 	public int getPjtno() {
 		return pjtno;
 	}
 	public void setPjtno(int pjtno) {
 		this.pjtno = pjtno;
 	}
-	public String getSkcd() {
-		return skcd;
+	public List<String> getSkList() {
+		return skList;
 	}
-	public void setSkcd(String skcd) {
-		this.skcd = skcd;
+	public void setSkList(List<String> skList) {
+		this.skList = skList;
 	}
 	@Override
 	public String toString() {
-		return "PskDto [pjtno=" + pjtno + ", skcd=" + skcd + "]";
+		return "PskDto [pskno=" + pskno + ", pjtno=" + pjtno + ", skList=" + skList + "]";
 	}
 }

@@ -9,6 +9,8 @@ import java.util.List;
 
 import com.mars.common.db.DBManager;
 import com.mars.pjt.dto.PjtDto;
+import com.mars.pjt.dto.PmDto;
+import com.mars.pjt.dto.PskDto;
 
 public class PjtDao {
 	
@@ -97,7 +99,7 @@ public class PjtDao {
 		return result;
 	}
 
-	public void writePjt(PjtDto pDto) {
+	public void regPjt(PjtDto pDto) {
 		String sql = "insert into pjt(pjtno, pjtnm, pjtdtl, startdt, enddt, plid) "
 							+ "values(pjtno_seq.nextval,?,?,?,?,?)";
 		
@@ -121,7 +123,49 @@ public class PjtDao {
 			DBManager.close(conn, pstmt);
 		}
 	}
-	
+
+	public void regPjtSkl(PskDto pskDto) {
+		String sql = "insert into psk(pskno, pjtno, sklist) "
+				+ "values(pskno_seq.nextval,pjtno_seq.currval,?)";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try{
+		conn = DBManager.getConnection();
+		pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setString(1, pskDto.getSkList().toString());
+		
+		pstmt.executeUpdate();
+		} catch(SQLException e){
+		e.printStackTrace();
+		} finally{
+		DBManager.close(conn, pstmt);
+		}
+	}
+
+	public void regPjtMember(PmDto pmDto) {
+		String sql = "insert into pm(pjtno, empid, rolecd) "
+					+ "values(pjtno_seq.currval,?,?)";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try{
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, pmDto.getEmpid());
+			pstmt.setString(2, pmDto.getRolecd());
+			
+			pstmt.executeUpdate();
+		} catch(SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBManager.close(conn, pstmt);
+		}
+	}
 }
 
 

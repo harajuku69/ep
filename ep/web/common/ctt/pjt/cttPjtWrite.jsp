@@ -68,11 +68,11 @@
 				<fieldset class="skset">
 					<legend><b>Platform Skill</b></legend>
 					<label for="Java">Java</label>
-					<input type="checkbox" name="Platform" id="Java" value="01" ><br/>
+					<input type="radio" name="platform" id="Java" value="01" ><br/>
 					<label for="Object C">Object C</label>
-					<input type="checkbox" name="Platform" id="Object C" value="02"><br/>
-					<label for=".NET"></label>
-					<input type="checkbox" name="Platform" id=".NET" value="03">
+					<input type="radio" name="platform" id="Object C" value="02"><br/>
+					<label for=".NET">.NET</label>
+					<input type="radio" name="platform" id=".NET" value="03">
 				</fieldset>
 			</td>
 			<td>
@@ -83,18 +83,18 @@
 					<label for="CSS">CSS</label>
 					<input type="checkbox" name="web" id="CSS" value="12"><br/>
 					<label for="Javascript">Javascript</label>
-					<input type="checkbox" name="web" id="Javascript" value="13"><br/>
+					<input type="checkbox" name="web" id="Javascript" value="13">
 				</fieldset>
 			</td>
 			<td>
 				<fieldset class="skset">
 					<legend><b>Server Skill</b></legend>
 					<label for="JSP">JSP</label>
-					<input type="checkbox" name="Server" id="JSP" value="21"><br/>
-					<label for="ASP">Servlet</label>
-					<input type="checkbox" name="Server" id="ASP" value="22">
-					<label for="PHP">Publisher</label>
-					<input type="checkbox" name="Server" id="PHP" value="23">
+					<input type="checkbox" name="svr" id="JSP" value="21"><br/>
+					<label for="ASP">ASP</label>
+					<input type="checkbox" name="svr" id="ASP" value="22"><br/>
+					<label for="PHP">PHP</label>
+					<input type="checkbox" name="svr" id="PHP" value="23">
 				</fieldset>
 			</td>
 		</tr>
