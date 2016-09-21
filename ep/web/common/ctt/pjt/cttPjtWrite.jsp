@@ -47,11 +47,8 @@
 				<c:out value="${today}"/>
 			</td>
 			<th>작성자</th>
-			<td><input type="text" size="12" name="admnm" value="${ssAdmnm}" required></td>
-		</tr>
-		<tr>
-			<th>프로젝트 명</th>
-			<td colspan="3"><input type="text" size="70" name="pjtnm" required></td>
+			<%-- <td><input type="text" size="12" name="admnm" value="${ssAdmnm}" readonly></td> --%>
+			<td>${ssAdmnm}</td>
 		</tr>
 		<tr>
 			<th>기 간</th>
@@ -61,6 +58,14 @@
 				<!-- <label for="enddt">종료일</label><br> -->
 				<input type="text" name="enddt" id="enddt" placeholder="종료일" class="text ui-widget-content ui-corner-all" style="width:45%;float:right" required >
 			</td>
+		</tr>
+		<tr>
+			<th>프로젝트 명</th>
+			<td colspan="3"><input type="text" size="70" name="pjtnm" required></td>
+		</tr>
+		<tr>
+			<th>상세내용</th>
+			<td colspan="3"><textarea cols="72" rows="10" name="pjtdtl" required></textarea></td>
 		</tr>
 		<tr>
 			<th>사용스킬</th>
@@ -99,14 +104,10 @@
 			</td>
 		</tr>
 		<tr>
-			<th>상세내용</th>
-			<td colspan="3"><textarea cols="72" rows="10" name="pjtdtl" required></textarea></td>
-		</tr>
-		<tr>
 			<th>프로젝트 리더</th>
 			<td colspan="2">
 				<input type="text" name="plnm" id="plnm" readonly required>
-				<input type="hidden" name="plid" id="plid">
+				<input type="hidden" name="plno" id="plno">
 			</td>
 			<td><input type="button" name="plschbtn" id="plschbtn" value="검 색"></td>
 		</tr>

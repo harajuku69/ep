@@ -26,13 +26,13 @@ public class PjtWriteAction implements Action {
 		PmDto pmDto = new PmDto();
 		List<String> skList = new ArrayList<>();
 		
-		String plid = request.getParameter("plid"); 
+		String plno = request.getParameter("plno"); 
 //		PJT 등록
 		pDto.setPjtnm(request.getParameter("pjtnm"));
 		pDto.setPjtdtl(request.getParameter("pjtdtl"));
 		pDto.setStartdt(Fmt.strToTimestamp(request.getParameter("startdt")));
 		pDto.setEnddt(Fmt.strToTimestamp(request.getParameter("enddt")));
-		pDto.setPlid(plid);
+		pDto.setPlno(plno);
 //		PJT skill 등록
 		skList.add(request.getParameter("platform"));
 		String[] skset = request.getParameterValues("web");
@@ -45,8 +45,8 @@ public class PjtWriteAction implements Action {
 		}
 		pskDto.setSkList(skList);
 //		PJT member 등록
-		pmDto.setEmpid(plid);
-		pmDto.setRolecd("00");
+		pmDto.setEmpno(plno);
+		pmDto.setRole("00");
 		
 //		Dao 처리
 		PjtDao pDao = PjtDao.getInstance();

@@ -28,7 +28,6 @@ public class StaffUpdatePageAction implements Action {
 		Fmt.toFmtAndReqSet(request, sDto);
 		Paging.getRecentList(request);
 		
-//		SS.getSS(request).setAttribute("ssAdmnm", SS.getAdmnm(request));
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);
 	}

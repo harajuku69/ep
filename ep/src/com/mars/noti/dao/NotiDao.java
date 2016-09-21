@@ -238,20 +238,6 @@ public class NotiDao {
 		}
 	}
 	public List<CmtDto> selectAllCmt(int notino, int sttRecNo, int endRecNo, int cmtcnt){
-		/*String	sql = "SELECT R, c.cmtno, c.notino, s.admnm, c.regnm, c.ctt, c.regdt, c.pwd "
-					  + "FROM ( "
-					  		  + "SELECT ROWNUM R, a.* "
-					  		  	+ "FROM ( "
-									    + "SELECT cmtno, notino, regnm, ctt, regdt, pwd "
-									      + "FROM cmt "
-									     + "WHERE notino=? "
-									     + "ORDER BY cmtno desc"
-								      + ") a"
-						    + ") c "
-					   + "JOIN staff s "
-					     + "ON c.regid = s.empid "
-					  + "WHERE R BETWEEN ? AND ? "
-					  + "ORDER BY cmtno desc ";*/
 		String	sql = "SELECT R, cmtno, notino, regid, regnm, ctt, regdt, pwd "
 					  + "FROM ( "
 					  		  + "SELECT ROWNUM R, a.* "

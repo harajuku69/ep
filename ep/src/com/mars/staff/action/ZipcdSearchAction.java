@@ -19,18 +19,15 @@ public class ZipcdSearchAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String kwd = request.getParameter("kwd");
-//		System.out.println("zipcdsearchAction kwd : "+kwd);
 		StaffDao sDao = StaffDao.getInstance();
 		
 		List<ZipDto> zipcdList = sDao.selectZipcdListByKwd(kwd);
-//		System.out.println(zipcdList);
 		String jsonArray = new Gson().toJson(zipcdList);
 		
 		response.setCharacterEncoding("UTF-8");
 		Paging.getRecentList(request);
 		PrintWriter out = response.getWriter();
 		out.print(jsonArray);
-//		System.out.println(jsonArray);
 	}
 
 }

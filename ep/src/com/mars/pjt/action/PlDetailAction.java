@@ -16,11 +16,11 @@ public class PlDetailAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String empid = request.getParameter("plid");
+		String empno = request.getParameter("plno");
 		
 		StaffDto sDto = new StaffDto();
 		StaffDao sDao = StaffDao.getInstance();
-		sDto = sDao.selectOneByEmpid(empid);
+		sDto = sDao.selectOneByEmpno(empno);
 		
 		JsonObject json = new JsonObject();
 		

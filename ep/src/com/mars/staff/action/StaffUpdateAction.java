@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mars.common.action.Action;
 import com.mars.common.action.Fmt;
-import com.mars.common.action.Paging;
 import com.mars.common.action.SS;
 import com.mars.staff.dao.StaffDao;
 import com.mars.staff.dto.StaffDto;
@@ -60,7 +59,6 @@ public class StaffUpdateAction implements Action{
 		request.setAttribute("reqStaff", sDto);
 		SS.getSS(request).setAttribute("ssPic", sDto.getPic());
 		Fmt.toFmtAndReqSet(request, sDto);
-		Paging.getRecentList(request);
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);
 	}

@@ -44,7 +44,6 @@ public class StaffSelectMemberAction implements Action {
 		request.setAttribute("totBlock", map.get("totBlock"));
 		request.setAttribute("blockNo", map.get("blockNo"));
 		request.setAttribute("pageNo", map.get("pageNo"));
-		Paging.getRecentList(request);
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);
 	}

@@ -14,7 +14,7 @@
 	<p style="display:inline;">Project</p>
 	<c:if test="${ssAdmchk == 1}">
 		<span>|</span>
-		<p style="display:inline;"><a href="staff.do?cmd=admin_pjt_list"> Edit</a></p>
+		<p style="display:inline;"><a href="staff.do?cmd=admin_pjt_list"> Search</a></p>
 	</c:if>
 	<hr/>
 	<ul>

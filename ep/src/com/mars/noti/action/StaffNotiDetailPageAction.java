@@ -56,7 +56,6 @@ public class StaffNotiDetailPageAction implements Action {
 		request.setAttribute("totBlock", map.get("totBlock"));
 		request.setAttribute("blockNo", map.get("blockNo"));
 		request.setAttribute("cmtPageNo", map.get("pageNo"));
-		Paging.getRecentList(request);
 		
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);

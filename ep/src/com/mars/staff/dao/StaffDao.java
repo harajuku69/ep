@@ -962,9 +962,52 @@ public class StaffDao {
 		}
 		return result;
 	}
+
+	public StaffDto selectOneByEmpno(String empno) {
+		StaffDto sDto = new StaffDto();
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT s.empnm, s.empid, s.empno, "
+						  + "d.dpt, t.tit, s.phone "
+					 + "FROM STAFF s "
+					 + "JOIN dpt d "
+					   + "ON s.dptcd=d.dptcd "
+					 + "JOIN tit t "
+					   + "ON s.titcd=t.titcd "
+					+ "WHERE s.empno=?";
+		try{
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, empno);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				
+				sDto.setEmpid(rs.getString("empid"));
+				sDto.setEmpno(rs.getString("empno"));
+				sDto.setEmpnm(rs.getString("empnm"));
+				if(rs.getString("phone") == null){
+					sDto.setPhone("번호 정보 없음");
+				} else{
+					sDto.setPhone(rs.getString("phone").substring(0, 3)	+ "-" 
+								+ rs.getString("phone").substring(3, 7)	+ "-"
+								+ rs.getString("phone").substring(7));
+				}
+				sDto.setDptcd(rs.getString("dpt"));
+				sDto.setTitcd(rs.getString("tit"));
+			}
+				
+		} catch(SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBManager.close(conn, pstmt, rs);
+		}
+		return sDto;
+	}
 }//class end
-
-
 
 
 

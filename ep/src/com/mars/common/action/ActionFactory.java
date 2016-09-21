@@ -13,6 +13,7 @@ import com.mars.noti.action.NotiWritePageAction;
 import com.mars.noti.action.StaffNotiDetailPageAction;
 import com.mars.noti.action.StaffNotiListAction;
 import com.mars.noti.action.StaffNotiSearchAction;
+import com.mars.pjt.action.AdminPjtDetailPageAction;
 import com.mars.pjt.action.AdminPjtListAction;
 import com.mars.pjt.action.PjtDeleteAction;
 import com.mars.pjt.action.PjtWriteAction;
@@ -162,8 +163,8 @@ public class ActionFactory {
 			action = new AdminPjtListAction();
 		} else if(cmd.equals("staff_pjt_list")){
 			action = new StaffPjtListAction();
-		} else if(cmd.equals("admin_pjt_detail")){
-//			action = new AdminPjtDetailAction();
+		} else if(cmd.equals("admin_pjt_detail_page")){
+			action = new AdminPjtDetailPageAction();
 		} else if(cmd.equals("pjt_write_page")){
 			action = new PjtWritePageAction();
 		} else if(cmd.equals("pjt_write")){

@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.mars.common.action.Action;
-import com.mars.common.action.Paging;
 import com.mars.staff.dao.StaffDao;
 import com.mars.staff.dto.StaffDto;
 
@@ -25,8 +24,6 @@ public class SelectPlAction implements Action {
 		String jsonArray = new Gson().toJson(plList);
 		
 		response.setCharacterEncoding("UTF-8");
-		
-		Paging.getRecentList(request);
 		
 		PrintWriter out = response.getWriter();
 		out.print(jsonArray);

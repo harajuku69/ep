@@ -52,19 +52,19 @@
 			<tbody>
 			<c:forEach var="item" items="${reqPjtList}">
 				<tr class="${item.pjtno}">
-					<td>${item.pjtno}</td>
-					<td>
-						<a href="pjt.do?cmd=admin_pjt_detail&no=${item.pjtno}">${item.pjtnm}</a>
+					<td class="tit">${item.pjtno}</td>
+					<td class="tit">
+						<a href="pjt.do?cmd=admin_pjt_detail_page&pjtno=${item.pjtno}">${item.pjtnm}</a>
 					</td>
-					<td>
+					<td class="tit">
 					 	<a href="#" class="plnm">${item.plnm}</a>
-						<input type="hidden" class="plid" value="${item.plid}">
+						<input type="hidden" class="plno" value="${item.plno}">
 					</td>
-					<td><c:out value="${fn:substring(item.startdt,0,10)}"/></td>
-					<td><c:out value="${fn:substring(item.enddt,0,10)}"/></td>
-					<td><c:out value="${fn:substring(item.regdt,0,10)}"/></td>
-					<td><a href="pjt.do?cmd=pjt_update_page&pjtno=${item.pjtno}">수정</a></td>
-					<td><a href="#" onClick="deleteItem('pjt','${item.pjtno}')">삭제</a></td>
+					<td class="tit"><c:out value="${fn:substring(item.startdt,0,10)}"/></td>
+					<td class="tit"><c:out value="${fn:substring(item.enddt,0,10)}"/></td>
+					<td class="tit"><c:out value="${fn:substring(item.regdt,0,10)}"/></td>
+					<td class="tit"><a href="pjt.do?cmd=pjt_update_page&pjtno=${item.pjtno}">수정</a></td>
+					<td class="tit"><a href="#" onClick="deleteItem('pjt','${item.pjtno}')">삭제</a></td>
 				</tr>
 			</c:forEach>
 			</tbody>

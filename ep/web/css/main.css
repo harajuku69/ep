@@ -126,9 +126,9 @@ ul {list-style:none;}
 .contents #logright #logmain #maintable .mainright .join {width:100px;height:35px;}
 .contents #logright #logmain #maintable #msg {color:red; text-align:center;height:20px;/* line-height:20px; */}
 /* ================================================= */
-.contents .list {width:900px;}
-.contents .list th {background-color:#e9e9e9; color:#636363;}
-.contents .list td {text-align:center;}
+.contents .list {width:100%;}
+.contents .list th {background-color:#f9f9f9; color:#636363;}
+.contents .list .tit {text-align:center}
 
 .contents #noti_dtl_area {height:250px;/* overflow:auto;border:1px solid blue; */} 
 .contents #cmtarea {height:270px;/* overflow:auto;border:1px solid blue; */} 

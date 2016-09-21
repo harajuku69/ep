@@ -33,8 +33,8 @@
 			<tbody>
 			<c:forEach var="item" items="${reqNotiList}">
 				<tr class="${item.notino}">
-					<td>${item.notino}</td>
-					<td>
+					<td class="tit">${item.notino}</td>
+					<td class="tit">
 						<c:choose>
 							<c:when test="${item.cmtcnt > 0}">
 								<a href="noti.do?cmd=admin_noti_detail_page&notino=${item.notino}">${item.tit} &nbsp;[${item.cmtcnt}]</a>
@@ -45,15 +45,15 @@
 						</c:choose>
 						<%-- <a href="noti.do?cmd=admin_noti_detail_page&notino=${item.notino}&pageNo=${pageNo}">${item.tit} &nbsp;[${item.cmtcnt}]</a> --%>
 					</td>
-					<td>${item.rdcnt}</td>
+					<td class="tit">${item.rdcnt}</td>
 					<%-- <td>${item.cmtcnt}</td> --%>
-					<td>
+					<td class="tit">
 						<c:set var="regdt" value="${item.regdt}"/>
 						<c:out value="${fn:substring(regdt,0,10)}"/>
 					</td>
-					<td>${item.admnm}</td>
-					<td><a href="noti.do?cmd=noti_update_page&notino=${item.notino}">수 정</a></td>
-					<td><a href="#" onClick="deleteItem('noti','${item.notino}')">삭 제</a></td>
+					<td class="tit">${item.admnm}</td>
+					<td class="tit"><a href="noti.do?cmd=noti_update_page&notino=${item.notino}">수 정</a></td>
+					<td class="tit"><a href="#" onClick="deleteItem('noti','${item.notino}')">삭 제</a></td>
 				</tr>
 			</c:forEach>
 			</tbody>

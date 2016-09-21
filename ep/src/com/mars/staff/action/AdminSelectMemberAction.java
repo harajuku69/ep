@@ -50,7 +50,6 @@ public class AdminSelectMemberAction implements Action {
 		request.setAttribute("blockNo", map.get("blockNo"));
 		request.setAttribute("pageNo", map.get("pageNo"));
 //		System.out.println(memberList);
-		Paging.getRecentList(request);
 //		response.setCharacterEncoding("UTF-8");
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);

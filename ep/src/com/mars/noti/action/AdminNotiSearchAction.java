@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.mars.common.action.Action;
-import com.mars.common.action.Paging;
 import com.mars.noti.dao.NotiDao;
 import com.mars.noti.dto.NotiDto;
 
@@ -36,7 +35,6 @@ public class AdminNotiSearchAction implements Action {
 			notiList = nDao.selectNotiByDt(from, to);
 		}
 		
-		Paging.getRecentList(request);
 		request.setAttribute("reqNotiList", notiList);
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);

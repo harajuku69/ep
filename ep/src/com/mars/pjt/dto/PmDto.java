@@ -2,29 +2,51 @@ package com.mars.pjt.dto;
 
 public class PmDto {
 	private int		pjtno;
-	private String	empid;
-	private String	rolecd;
-	
+	private String	empno;
+	private String  memnm;
+	private String  dpt;
+	private String  tit;
+	private String	role;
+
 	public int getPjtno() {
 		return pjtno;
 	}
 	public void setPjtno(int pjtno) {
 		this.pjtno = pjtno;
 	}
-	public String getEmpid() {
-		return empid;
+	public String getEmpno() {
+		return empno;
 	}
-	public void setEmpid(String empid) {
-		this.empid = empid;
+	public void setEmpno(String empno) {
+		this.empno = empno;
 	}
-	public String getRolecd() {
-		return rolecd;
+	public String getMemnm() {
+		return memnm;
 	}
-	public void setRolecd(String rolecd) {
-		this.rolecd = rolecd;
+	public void setMemnm(String memnm) {
+		this.memnm = memnm;
+	}
+	public String getDpt() {
+		return dpt;
+	}
+	public void setDpt(String dpt) {
+		this.dpt = dpt;
+	}
+	public String getTit() {
+		return tit;
+	}
+	public void setTit(String tit) {
+		this.tit = tit;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
 	}
 	@Override
 	public String toString() {
-		return "PmgDto [pjtno=" + pjtno + ", empid=" + empid + ", rolecd=" + rolecd + "]";
+		return "PmDto [pjtno=" + pjtno + ", empno=" + empno + ", memnm=" + memnm + ", dpt=" + dpt + ", tit=" + tit
+				+ ", role=" + role + "]";
 	}
 }

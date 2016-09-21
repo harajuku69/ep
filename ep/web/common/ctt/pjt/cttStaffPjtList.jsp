@@ -33,14 +33,14 @@
 			</tbody>
 			<c:forEach var="item" items="${reqPjtList}">
 				<tr class="${item.pjtno}">
-					<td>${item.pjtno}</td>
-					<td>
+					<td class="tit">${item.pjtno}</td>
+					<td class="tit">
 						<a href="pjt.do?cmd=admin_pjt_detail&no=${item.pjtno}">${item.pjtnm}</a>
 					</td>
-					<td>${item.startdt}</td>
-					<td>${item.enddt}</td>
-					<td>${item.regdt}</td>
-					<td>${item.regnm}</td>
+					<td class="tit">${item.startdt}</td>
+					<td class="tit">${item.enddt}</td>
+					<td class="tit">${item.regdt}</td>
+					<td class="tit">${item.regnm}</td>
 					<%-- <td><a href="pjt.do?cmd=pjt_update_page&pjtno=${item.pjtno}">수정</a></td>
 					<td><a href="#" onClick="deleteItem('pjt','${item.pjtno}')">삭제</a></td> --%>
 				</tr>

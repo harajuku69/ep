@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.JsonObject;
 import com.mars.common.action.Action;
-import com.mars.common.action.Paging;
 import com.mars.common.action.SS;
 import com.mars.noti.dao.NotiDao;
 import com.mars.noti.dto.CmtDto;
@@ -31,13 +30,11 @@ public class CmtWriteAction implements Action {
 		JsonObject json = new JsonObject();
 		json.addProperty("cmtno", cDto.getCmtno());
 		json.addProperty("rpno", cDto.getRpno());
-//		json.addProperty("admnm", SS.getAdmnm(request));
 		json.addProperty("regnm", cDto.getRegnm());
 		json.addProperty("ctt", cDto.getCtt());
 		json.addProperty("regdt", cDto.getRegdt().toString());
 		
 		response.setCharacterEncoding("UTF-8");
-		Paging.getRecentList(request);
 		PrintWriter out = response.getWriter();
 		out.print(json);
 	}

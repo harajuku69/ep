@@ -64,7 +64,7 @@ $(function() {
 	
 	function plsch() {
 		refresh();
-		var url = "staff.do?cmd=select_pl";
+		var url = "pjt.do?cmd=select_pl";
 		var valid = true;
 //			d = $("#plnm").serialize();
 		
@@ -95,7 +95,7 @@ $(function() {
 							"<td width='50px'>" +
 							"<button id='getPl' " +
 							"onclick='setPl(" + "\"" + plInfo.empnm + "\"" 
-												 + ", " + "\"" + plInfo.empid + "\""
+												 + ", " + "\"" + plInfo.empno + "\""
 												 + ")'>선 택</button></td></tr>" 
 						);
 					}
@@ -106,9 +106,9 @@ $(function() {
 	}
 });
 
-function setPl(plnm, plid){
+function setPl(plnm, plno){
     $("#plnm").val(plnm);
-    $("#plid").val(plid);
+    $("#plno").val(plno);
 	$("#pl-dialog").dialog("close");
 };
 

@@ -10,7 +10,7 @@ public class PjtDto {
 	private Timestamp	enddt;
 	private Timestamp	regdt;
 	private String		plnm;
-	private String		plid;
+	private String		plno;
 	
 		public int getPjtno() {
 		return pjtno;
@@ -54,15 +54,15 @@ public class PjtDto {
 	public void setPlnm(String plnm) {
 		this.plnm = plnm;
 	}
-	public String getPlid() {
-		return plid;
+	public String getPlno() {
+		return plno;
 	}
-	public void setPlid(String plid) {
-		this.plid = plid;
+	public void setPlno(String plno) {
+		this.plno = plno;
 	}
 	@Override
 	public String toString() {
 		return "PjtDto [pjtno=" + pjtno + ", pjtnm=" + pjtnm + ", pjtdtl=" + pjtdtl + ", startdt=" + startdt
-				+ ", enddt=" + enddt + ", regdt=" + regdt + ", plnm=" + plnm + ", plid=" + plid + "]";
+				+ ", enddt=" + enddt + ", regdt=" + regdt + ", plnm=" + plnm + ", plno=" + plno + "]";
 	}
 }

@@ -25,12 +25,12 @@ $(function() {
 		pldtl($(this).next());
 	});
 	
-	function pldtl(plid) {
+	function pldtl(plno) {
 //		var plid = $(".plid"),
-		url = "staff.do?cmd=pl_detail&plid=" + plid.val();
+		url = "pjt.do?cmd=pl_detail&plno=" + plno.val();
 		$.ajax({
 			url: url,
-			data: {"plid":plid.val()},
+			data: {"plno":plno.val()},
 			dataType: "json",
 			type: 'post',
 			contentsType: "application/x-www-form-urlencoded; charset=UTF-8",

@@ -22,10 +22,6 @@ public class StaffNotiListAction implements Action {
 		
 		String sql = "select count(*) from noti";
 		int pageNo = request.getParameter("pageNo") == null ? 1 : Integer.parseInt(request.getParameter("pageNo"));
-//		int recPerPage = Integer.parseInt(request.getParameter("recPerPage"));
-//		int pagePerBlock = Integer.parseInt(request.getParameter("pagePerBlock"));
-//		int pageNo = 2;
-//		System.out.println(pageNo);
 		int recPerPage = 5;
 		int pagePerBlock = 5;
 		
@@ -34,11 +30,9 @@ public class StaffNotiListAction implements Action {
 		
 		String sttRecNo = map.get("sttRecNo").toString();
 		String endRecNo = map.get("endRecNo").toString();
-//		String notino = request.getParameter("notino");
 		
 		NotiDao nDao = NotiDao.getInstance();
 		List<NotiDto> notiList = nDao.selectAllNoti(sttRecNo, endRecNo);
-//		System.out.println(notiList);
 		request.setAttribute("reqNotiList", notiList);
 		request.setAttribute("firstPageNoInBlock", map.get("firstPageNoInBlock"));
 		request.setAttribute("lastPageNoInBlock", map.get("lastPageNoInBlock"));
@@ -48,7 +42,6 @@ public class StaffNotiListAction implements Action {
 		request.setAttribute("totBlock", map.get("totBlock"));
 		request.setAttribute("blockNo", map.get("blockNo"));
 		request.setAttribute("pageNo", map.get("pageNo"));
-		Paging.getRecentList(request);
 		
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);

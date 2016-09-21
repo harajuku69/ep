@@ -6,7 +6,14 @@ public class PskDto {
 	private int				pskno;
 	private int				pjtno;
 	private List<String>	skList;
+	private String			sk;
 
+	public String getSk() {
+		return sk;
+	}
+	public void setSk(String sk) {
+		this.sk = sk;
+	}
 	public int getPskno() {
 		return pskno;
 	}
@@ -27,6 +34,6 @@ public class PskDto {
 	}
 	@Override
 	public String toString() {
-		return "PskDto [pskno=" + pskno + ", pjtno=" + pjtno + ", skList=" + skList + "]";
+		return "PskDto [pskno=" + pskno + ", pjtno=" + pjtno + ", skList=" + skList + ", sk=" + sk + "]";
 	}
 }

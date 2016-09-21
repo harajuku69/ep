@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.mars.common.action.Action;
-import com.mars.common.action.Paging;
 import com.mars.common.action.SS;
 import com.mars.staff.dao.StaffDao;
 import com.mars.staff.dto.StaffDto;
@@ -29,7 +28,6 @@ public class AdminSelectDptMemberAction implements Action {
 		request.setAttribute("reqStaffList", staffList);
 		request.setAttribute("reqStaff", sDto);
 		request.setAttribute("reqDpt", dpt);
-		Paging.getRecentList(request);
 		
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);
