@@ -22,5 +22,5 @@ public class MemberDaoImple implements MemberDao {
 	public void insertMember(MemberDto dto) {
 		sqlSession.insert(namespace+".insertMember", dto);
 	}
-
+	//
 }
