@@ -41,7 +41,7 @@
 			<tr class="ui-widget-header">
 				<th>번호</th>
 				<th>프로젝트명</th>
-				<th>Project Leader</th>
+				<th>PL</th>
 				<th>시작일</th>
 				<th>종료일</th>
 				<th>등록일</th>

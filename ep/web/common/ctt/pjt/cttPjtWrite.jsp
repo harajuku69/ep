@@ -66,13 +66,13 @@
 			<th>사용스킬</th>
 			<td>
 				<fieldset class="skset">
-					<legend><b>Basic Skill</b></legend>
-					<label for="JAVA">JAVA</label>
-					<input type="checkbox" name="basic" id="JAVA" value="01" ><br/>
-					<label for="c++">C++</label>
-					<input type="checkbox" name="basic" id="c++" value="02"><br/>
-					<label for="c">C</label>
-					<input type="checkbox" name="basic" id="c" value="03">
+					<legend><b>Platform Skill</b></legend>
+					<label for="Java">Java</label>
+					<input type="radio" name="platform" id="Java" value="01" ><br/>
+					<label for="Object C">Object C</label>
+					<input type="radio" name="platform" id="Object C" value="02"><br/>
+					<label for=".NET">.NET</label>
+					<input type="radio" name="platform" id=".NET" value="03">
 				</fieldset>
 			</td>
 			<td>
@@ -82,19 +82,19 @@
 					<input type="checkbox" name="web" id="HTML" value="11"><br/>
 					<label for="CSS">CSS</label>
 					<input type="checkbox" name="web" id="CSS" value="12"><br/>
-					<label for="Publisher">Publisher</label>
-					<input type="checkbox" name="web" id="Publisher" value="13">
+					<label for="Javascript">Javascript</label>
+					<input type="checkbox" name="web" id="Javascript" value="13">
 				</fieldset>
 			</td>
 			<td>
 				<fieldset class="skset">
-					<legend><b>Etc Skill</b></legend>
-					<label for="Javascript">Javascript</label>
-					<input type="checkbox" name="web" id="Javascript" value="21"><br/>
+					<legend><b>Server Skill</b></legend>
 					<label for="JSP">JSP</label>
-					<input type="checkbox" name="web" id="JSP" value="22"><br/>
-					<label for="Servlet">Servlet</label>
-					<input type="checkbox" name="web" id="Servlet" value="23">
+					<input type="checkbox" name="svr" id="JSP" value="21"><br/>
+					<label for="ASP">ASP</label>
+					<input type="checkbox" name="svr" id="ASP" value="22"><br/>
+					<label for="PHP">PHP</label>
+					<input type="checkbox" name="svr" id="PHP" value="23">
 				</fieldset>
 			</td>
 		</tr>

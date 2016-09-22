@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mars.common.action.Paging;
 import com.mars.common.db.DBManager;
 import com.mars.noti.dto.CmtDto;
 import com.mars.noti.dto.NotiDto;
@@ -440,8 +439,6 @@ public class NotiDao {
 				nDto.setRegdt(rs.getTimestamp("regdt"));
 				nDto.setAdmnm(rs.getString("admnm"));
 				nDto.setCtt(rs.getString("ctt"));
-//				nDto.setPageNo(Paging.calPageNo(totRec, nDto.getNotino(), recPerPage));
-//				nDto.setPageNo(Paging.calPageNo(rs.getInt("R"), recPerPage));
 				
 				notiList.add(nDto);
 			}

@@ -5,13 +5,13 @@ import java.sql.Timestamp;
 public class CmtDto {
 	private int cmtno;
 	private int notino;
-	private int rpno;
-	private String regnm;
 	private String regid;
+	private String regnm;
 	private String ctt;
-	private Timestamp regdt;
 	private int pwd;
+	private Timestamp regdt;
 	private int delchk;
+	private int rpno;
 	
 	public int getRpno() {
 		return rpno;
