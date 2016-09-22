@@ -11,7 +11,14 @@ public class PjtDto {
 	private Timestamp	regdt;
 	private String		plnm;
 	private String		plno;
+	private int			memcnt;
 	
+	public int getMemcnt() {
+		return memcnt;
+	}
+	public void setMemcnt(int memcnt) {
+		this.memcnt = memcnt;
+	}
 		public int getPjtno() {
 		return pjtno;
 	}

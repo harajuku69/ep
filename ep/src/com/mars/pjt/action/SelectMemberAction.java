@@ -13,11 +13,11 @@ import com.mars.common.action.Action;
 import com.mars.staff.dao.StaffDao;
 import com.mars.staff.dto.StaffDto;
 
-public class SelectPlAction implements Action {
+public class SelectMemberAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String empnm = request.getParameter("plnm");
+		String empnm = request.getParameter("schnm");
 		StaffDao sDao = StaffDao.getInstance();
 		
 		List<StaffDto> plList = sDao.selectMemberByEmpnm(empnm);

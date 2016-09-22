@@ -64,7 +64,7 @@ $(function() {
 	
 	function plsch() {
 		refresh();
-		var url = "pjt.do?cmd=select_pl";
+		var url = "pjt.do?cmd=select_member";
 		var valid = true;
 //			d = $("#plnm").serialize();
 		
@@ -77,7 +77,7 @@ $(function() {
 			$.ajax({
 				url:url,
 //				data: d,
-				data: {"plnm":plnm.val()},
+				data: {"schnm":plnm.val()},
 				dataType:"json",
 				type:'post',
 				contentsType: "application/x-www-form-urlencoded; charset=UTF-8",

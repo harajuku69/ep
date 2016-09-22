@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Project Registration</title>
+<title>Project Update</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -14,7 +14,7 @@
 <body>
 <div class="wrap">
 	<jsp:include page="../common/header/headerAdmin.jsp"></jsp:include>
-	<jsp:include page="../common/ctt/pjt/cttPjtWrite.jsp"></jsp:include>
+	<jsp:include page="../common/ctt/pjt/cttPjtUpdate.jsp"></jsp:include>
 	<jsp:include page="../common/sub/subAdminPjt.jsp"></jsp:include>
 	<jsp:include page="../common/footer/footer.jsp"></jsp:include>
 </div>

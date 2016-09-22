@@ -37,7 +37,7 @@
 		</table>
 		</div>
 	</div>
-	<form action="noti.do?cmd=pjt_write" method="post" name="frm">
+	<form action="pjt.do?cmd=pjt_write" method="post" name="frm">
 	<table>
 		<tr>
 			<th>작성일</th>

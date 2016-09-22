@@ -14,23 +14,21 @@ import com.mars.pjt.dao.PjtDao;
 import com.mars.pjt.dto.PjtDto;
 import com.mars.pjt.dto.PmDto;
 import com.mars.pjt.dto.PskDto;
+import com.mars.pjt.dto.RoleDto;
 
-public class AdminPjtDetailPageAction implements Action {
+public class PjtUpdatePageAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "pjt/adminPjtDetail.jsp";
-
-		int pjtno  = Integer.parseInt(request.getParameter("pjtno"));
+		String url = "pjt/pjtUpdate.jsp";
+		
+		int pjtno = Integer.parseInt(request.getParameter("pjtno"));
+		String pageNo = request.getParameter("pageNo");
 		
 		PjtDao pDao = PjtDao.getInstance();
-
+		
 		PjtDto pDto = pDao.selectOneByPjtno(pjtno);
 		request.setAttribute("reqPjt", pDto);
-		
-		List<PmDto> pmList = new ArrayList<>();
-		pmList = pDao.selectAllPjtMember(pjtno);
-		request.setAttribute("reqPjtMemList", pmList);
 		
 		String sklist = pDao.selectPjtSkByPjtno(pjtno);
 		String[] skset = sklist.substring(1,(sklist.length()-1)).split(", ");
@@ -63,6 +61,14 @@ public class AdminPjtDetailPageAction implements Action {
 		}
 		request.setAttribute("reqSvrList", svrList);
 		
+		List<PmDto> pmList = new ArrayList<>();
+		pmList = pDao.selectAllPjtMember(pjtno);
+		request.setAttribute("reqPjtMemList", pmList);
+		
+		List<RoleDto> roleList = pDao.selectAllRole();
+		request.setAttribute("reqRoleList", roleList);
+		
+		request.setAttribute("pageNo", pageNo);
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);
 	}

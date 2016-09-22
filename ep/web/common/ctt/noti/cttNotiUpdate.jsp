@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,10 +21,13 @@
 			<td>${reqNoti.rdcnt}</td>
 		</tr>
 		<tr>
-			<th>작성일</th>
+			<th>수정일</th>
 			<td>
-				<c:set var="regdt" value="${reqNoti.regdt}"/>
-				<c:out value="${fn:substring(regdt,0,10)}"/>
+				<%-- <c:set var="regdt" value="${reqNoti.regdt}"/>
+				<c:out value="${fn:substring(regdt,0,10)}"/> --%>
+				<jsp:useBean id="now" class="java.util.Date"/>
+				<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today"/>
+				<c:out value="${today}"/>
 			</td>
 			<th>작성자</th>
 			<td><input type="text" size="12" name="admnm" value="${reqNoti.admnm}" required>* 필수</td>

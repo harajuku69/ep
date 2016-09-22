@@ -334,24 +334,13 @@ public class StaffDao {
 	}
 	
 	public void updateStaffEmpInfo(StaffDto sDto){
-//		StringBuilder sql = new StringBuilder();
-//		sql.append("update staff");
-//		sql.append(" set dptcd=" + sDto.getDptcd());
-//		sql.append(" , titcd=" + sDto.getTitcd());
-//		sql.append(" , sal=" + sDto.getSal());
-//		sql.append(" , startdt=" + sDto.getStartdt()); 
-//		sql.append(" , enddt=" + sDto.getEnddt());
-//		sql.append(" where empid=" +sDto.getEmpid());
 		String sql = "update staff set dptcd=?,titcd=?,sal=?,startdt=?,enddt=?,admchk=? where empid=?";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		
-//		int result = -1;
-		
 		try{
 			conn = DBManager.getConnection();
-//			pstmt = conn.prepareStatement(sql.toString());
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, sDto.getDptcd());
 			pstmt.setString(2, sDto.getTitcd());
@@ -361,13 +350,11 @@ public class StaffDao {
 			pstmt.setInt(6, sDto.getAdmchk());
 			pstmt.setString(7, sDto.getEmpid());
 			pstmt.executeUpdate();
-//			result = pstmt.executeUpdate();
 		} catch(SQLException e){
 			e.printStackTrace();
 		} finally{
 			DBManager.close(conn, pstmt);
 		}
-//		return result;
 	}
 		
 	public int deleteStaff(String empno){

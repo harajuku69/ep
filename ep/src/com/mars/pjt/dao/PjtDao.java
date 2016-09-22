@@ -11,6 +11,7 @@ import com.mars.common.db.DBManager;
 import com.mars.pjt.dto.PjtDto;
 import com.mars.pjt.dto.PmDto;
 import com.mars.pjt.dto.PskDto;
+import com.mars.pjt.dto.RoleDto;
 
 public class PjtDao {
 	
@@ -63,6 +64,7 @@ public class PjtDao {
 				pDto.setRegdt(rs.getTimestamp("regdt"));
 				pDto.setPlnm(rs.getString("empnm"));
 				pDto.setPlno(rs.getString("plno"));
+				pDto.setMemcnt(checkMemcnt(pDto.getPjtno()));
 				
 				pjtList.add(pDto);
 //				System.out.println(pjtList);
@@ -166,7 +168,28 @@ public class PjtDao {
 			DBManager.close(conn, pstmt);
 		}
 	}
+	public void insertMember(PmDto pmDto) {
+		String sql = "insert into pm(pjtno, empno, rolecd) "
+					+ "values(?,?,?)";
 
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try{
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, pmDto.getPjtno());
+			pstmt.setString(2, pmDto.getEmpno());
+			pstmt.setString(3, pmDto.getRole());
+			
+			pstmt.executeUpdate();
+		} catch(SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBManager.close(conn, pstmt);
+		}
+	}
 	public PjtDto selectOneByPjtno(int pjtno) {
 		String sql = "select p.pjtno,p.pjtnm,p.pjtdtl,p.startdt,p.enddt,p.regdt,s.empnm "
 					 + "from pjt p "
@@ -304,6 +327,64 @@ public class PjtDao {
 			DBManager.close(conn, pstmt, rs);
 		}
 		return psDto;
+	}
+
+	public int checkMemcnt(int pjtno) {
+		String sql = "select count(*) as memcnt from pm where pjtno = ?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int memcnt = 0;
+		try{
+			conn = DBManager.getConnection();
+			
+			pstmt = conn.prepareStatement(sql);
+				
+			pstmt.setInt(1, pjtno);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				memcnt = rs.getInt("memcnt");
+			}
+				
+		} catch(SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBManager.close(conn, pstmt, rs);
+		}
+		return memcnt;
+	}
+
+	public List<RoleDto> selectAllRole() {
+		String sql = "select * from role";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List<RoleDto> roleList = new ArrayList<>();
+		try{
+			conn = DBManager.getConnection();
+			
+			pstmt = conn.prepareStatement(sql);
+				
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				RoleDto rDto = new RoleDto();
+				
+				rDto.setRolecd(rs.getString("rolecd"));
+				rDto.setRole(rs.getString("role"));
+				
+				roleList.add(rDto);
+			}
+				
+		} catch(SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBManager.close(conn, pstmt, rs);
+		}
+		return roleList;
 	}
 }
 

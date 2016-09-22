@@ -64,7 +64,7 @@
 					<td class="tit"><c:out value="${fn:substring(item.startdt,0,10)}"/></td>
 					<td class="tit"><c:out value="${fn:substring(item.enddt,0,10)}"/></td>
 					<%-- <td class="tit"><c:out value="${fn:substring(item.regdt,0,10)}"/></td> --%>
-					<td class="tit">${item.memcnt}</td>
+					<td class="tit">${item.memcnt}명</td>
 					<td class="tit"><a href="pjt.do?cmd=pjt_update_page&pjtno=${item.pjtno}">수정</a></td>
 					<td class="tit"><a href="#" onClick="deleteItem('pjt','${item.pjtno}')">삭제</a></td>
 				</tr>

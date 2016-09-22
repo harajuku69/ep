@@ -16,10 +16,11 @@ import com.mars.noti.action.StaffNotiSearchAction;
 import com.mars.pjt.action.AdminPjtDetailPageAction;
 import com.mars.pjt.action.AdminPjtListAction;
 import com.mars.pjt.action.PjtDeleteAction;
+import com.mars.pjt.action.PjtUpdatePageAction;
 import com.mars.pjt.action.PjtWriteAction;
 import com.mars.pjt.action.PjtWritePageAction;
 import com.mars.pjt.action.PlDetailAction;
-import com.mars.pjt.action.SelectPlAction;
+import com.mars.pjt.action.SelectMemberAction;
 import com.mars.pjt.action.StaffPjtListAction;
 import com.mars.staff.action.AdminDetailPageAction;
 import com.mars.staff.action.AdminHomePageAction;
@@ -165,6 +166,8 @@ public class ActionFactory {
 			action = new StaffPjtListAction();
 		} else if(cmd.equals("admin_pjt_detail_page")){
 			action = new AdminPjtDetailPageAction();
+		} else if(cmd.equals("pjt_update_page")){
+			action = new PjtUpdatePageAction();
 		} else if(cmd.equals("pjt_write_page")){
 			action = new PjtWritePageAction();
 		} else if(cmd.equals("pjt_write")){
@@ -173,8 +176,10 @@ public class ActionFactory {
 			action = new PjtDeleteAction();
 		} else if(cmd.equals("pl_detail")){
 			action = new PlDetailAction();
-		} else if(cmd.equals("select_pl")){
-			action = new SelectPlAction();
+		} else if(cmd.equals("select_member")){
+			action = new SelectMemberAction();
+		} else if(cmd.equals("insert_member")){
+			action = new InsertMemberAction();
 		}
 		return action;
 	}

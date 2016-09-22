@@ -88,7 +88,7 @@
 		</table>
 		<br>
 		<div style="padding-left:250px">
-			<input type ="button" value="수정하기" onclick="" style="float:left;">
+			<input type ="button" value="수정하기" onclick="location.href='pjt.do?cmd=pjt_update_page&pjtno=${reqPjt.pjtno}&pageNo=${pageNo}'" style="float:left;">
 			<input type ="button" value="목록으로" 
 				onclick="location.href='pjt.do?cmd=admin_pjt_list'">
 		</div>
