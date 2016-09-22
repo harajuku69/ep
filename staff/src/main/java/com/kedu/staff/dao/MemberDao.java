@@ -5,10 +5,8 @@ package com.kedu.staff.dao;
 import com.kedu.staff.dto.MemberDto;
 
 public interface MemberDao {
-	public String 				getTime();
-	public void				 	insertMember(MemberDto dto);
-//	public ArrayList<MemberDto> selectAll();
-//	public MemberDto			selectByUserId(String userid);
-//	public void					updateMember(MemberDto dto);
-//	public void					deleteMember(String userid);
+	public String 			getTime();
+	public void			 	insertMember(MemberDto dto);
+	public MemberDto		readMember(String userid) throws Exception;
+	public MemberDto		readWithPW(String userid, String userpw) throws Exception;
 }

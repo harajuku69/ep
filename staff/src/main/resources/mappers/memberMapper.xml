@@ -22,5 +22,28 @@ PUBLIC "-//mybatis.org//DTD Maper 3.0//EN"
 						, #{email}
 						)
 	</insert>
-	
+	<select id="selectMember" resultType="com.kedu.staff.dto.MemberDto">
+	select * from tbl_member where userid = #{userid}
+	</select>
+	<select id="readWithPW" resultType="com.kedu.staff.dto.MemberDto">
+	select * from tbl_member where userid = #{userid} and userpw = #{userpw}
+	</select>
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
