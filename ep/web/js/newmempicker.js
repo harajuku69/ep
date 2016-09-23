@@ -83,37 +83,69 @@ $(function() {
 					for(var index = 0; index < jsonArray.length; index++){
 						var json = JSON.stringify(jsonArray[index]);
 						var newmemInfo = JSON.parse(json);
+//						$("#newMemSchRs tbody").append(
+//							"<tr class='" + newmemInfo.empno + "'>" +
+//								"<td>" + newmemInfo.empnm + "</td>" +
+//								"<td>" + newmemInfo.dptcd + "</td>" +
+//								"<td>" + newmemInfo.titcd + "</td>" +
+//								/*"<td>" + newmemInfo.phone + "</td>" +*/
+//								"<td>" + newmemInfo.empid + "@mars.com</td>" +
+//								"<td>" +
+//								"<select name='rolecd' id='rolecd'>" +
+//									"<option value='99'>선택하세요</option>" +
+//									"<option value='00'>Project Leader</option>" +
+//									"<option value='01'>Project Manager</option>" +
+//									"<option value='02'>Model Leader</option>" +
+//									"<option value='03'>Model Manager</option>" +
+//									"<option value='04'>Publisher</option>" +
+//									"<option value='05'>Designer</option>" +
+//									"<option value='06'>Developer</option>" +
+//									"<option value='07'>Coder</option>" +
+//									"<option value='08'>Staff</option>" +
+//								"</select>" +
+//								"</td>" +
+//								"<td width='50px'>" +
+//								"<button " +
+//								"onclick='setMember(" + "\"" + newmemInfo.empno + "\"" 
+//													 + ", " + "\"" + newmemInfo.empnm + "\""
+//													 + ", " + "\"" + newmemInfo.dptcd + "\""
+//													 + ", " + "\"" + newmemInfo.titcd + "\""
+//													 + ", " + "\"" + $('#rolecd option:selected').val() + "\""                       
+//													 + ")'>등 록</button>" +
+//								"</td>" +
+//							"</tr>" 
+//						);
 						$("#newMemSchRs tbody").append(
-							"<tr class='" + newmemInfo.empno + "'>" +
-								"<td>" + newmemInfo.empnm + "</td>" +
-								"<td>" + newmemInfo.dptcd + "</td>" +
-								"<td>" + newmemInfo.titcd + "</td>" +
-								/*"<td>" + newmemInfo.phone + "</td>" +*/
-								"<td>" + newmemInfo.empid + "@mars.com</td>" +
-								"<td>" +
-								"<select name='rolecd' id='rolecd'>" +
-									"<option value='99' selected='selected'>선택하세요</option>" +
-									"<option value='00'>Project Leader</option>" +
-									"<option value='01'>Project Manager</option>" +
-									"<option value='02'>Model Leader</option>" +
-									"<option value='03'>Model Manager</option>" +
-									"<option value='04'>Publisher</option>" +
-									"<option value='05'>Designer</option>" +
-									"<option value='06'>Developer</option>" +
-									"<option value='07'>Coder</option>" +
-									"<option value='08'>Staff</option>" +
-								"</select>" +
-								"</td>" +
-								"<td width='50px'>" +
-								"<button " +
-								"onclick='setMember(" + "\"" + newmemInfo.empno + "\"" 
-													 + ", " + "\"" + newmemInfo.empnm + "\""
-													 + ", " + "\"" + newmemInfo.dptcd + "\""
-													 + ", " + "\"" + newmemInfo.titcd + "\""
-													 + ", " + "\"" + $('#rolecd').val() + "\""                       
-													 + ")'>등 록</button>" +
-								"</td>" +
-							"</tr>" 
+								"<tr class='" + newmemInfo.empno + "'>" +
+									"<td>" + newmemInfo.empnm + "</td>" +
+									"<td>" + newmemInfo.dptcd + "</td>" +
+									"<td>" + newmemInfo.titcd + "</td>" +
+									/*"<td>" + newmemInfo.phone + "</td>" +*/
+									"<td>" + newmemInfo.empid + "@mars.com</td>" +
+									"<td>" +
+									"<select name='rolecd' id='rolecd'>" +
+										"<option value='99'>선택하세요</option>" +
+										"<option value='00'>Project Leader</option>" +
+										"<option value='01'>Project Manager</option>" +
+										"<option value='02'>Model Leader</option>" +
+										"<option value='03'>Model Manager</option>" +
+										"<option value='04'>Publisher</option>" +
+										"<option value='05'>Designer</option>" +
+										"<option value='06'>Developer</option>" +
+										"<option value='07'>Coder</option>" +
+										"<option value='08'>Staff</option>" +
+									"</select>" +
+									"</td>" +
+									"<td width='50px'>" +
+									"<button class='xxx' " +
+									"onclick='setMember(" + "\"" + newmemInfo.empno + "\"" 
+														 + ", " + "\"" + newmemInfo.empnm + "\""
+														 + ", " + "\"" + newmemInfo.dptcd + "\""
+														 + ", " + "\"" + newmemInfo.titcd + "\""
+														 + ", " + "\"" + $('#rolecd option:selected').val() + "\""                       
+														 + ")'>등 록</button>" +
+									"</td>" +
+								"</tr>" 
 						);
 					}
 				}
@@ -124,6 +156,7 @@ $(function() {
 });
 
 function setMember(newmemno, newmemnm, newmemdpt, newmemtit, newmemrole){
+	alert(newmemrole);
 	var url = "pjt.do?cmd=insert_member";
 		pjtno = $("#pjtno");
 	$.ajax({
