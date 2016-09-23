@@ -44,7 +44,7 @@ public class PjtWriteAction implements Action {
 			skList.add(svr);
 		}
 		pskDto.setSkList(skList);
-		System.out.println(skList);
+//		System.out.println(skList);
 //		PJT member 등록
 		pmDto.setEmpno(plno);
 		pmDto.setRole("00");
