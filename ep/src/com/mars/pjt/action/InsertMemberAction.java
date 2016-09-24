@@ -7,31 +7,27 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.JsonObject;
 import com.mars.common.action.Action;
-import com.mars.common.action.Paging;
 import com.mars.pjt.dao.PjtDao;
+import com.mars.pjt.dto.PmDto;
 
-public class PjtDeleteAction implements Action {
+public class InsertMemberAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String pjtno = request.getParameter("pjtno");
+		int pjtno = Integer.parseInt(request.getParameter("pjtno"));
+		String empno = request.getParameter("empno");
+		String rolecd = request.getParameter("rolecd");
+		
+		PmDto pmDto = new PmDto();
+		pmDto.setPjtno(pjtno);
+		pmDto.setEmpno(empno);
+		pmDto.setRole(rolecd);
 		
 		PjtDao pDao = PjtDao.getInstance();
-		int result = pDao.deletePjt(pjtno);
-		pDao.deletePjtMember(pjtno);
-		
-		JsonObject json = new JsonObject();
-		
-		if(result ==1){
-			json.addProperty("msg", "success");
-		} else{
-			json.addProperty("msg", "fail");
-		}
-		Paging.getRecentList(request);
+		int result = pDao.insertMember(pmDto);
 		PrintWriter out = response.getWriter();
-		out.print(json);
+		out.print(result);
 	}
 
 }

@@ -68,19 +68,19 @@
 				<th colspan="4" class="ui-widget-header">Project Member</th>
 			</tr>
 			<tr>
+				<td>수행 역할</td>
 				<td>이 름</td>
 				<td>부 서</td>
 				<td>직 급</td>
-				<td>수행역할</td>
 				<!-- <td>삭 제</td> -->
 			</tr>
 			<tbody>
 			<c:forEach var="item" items="${reqPjtMemList}">
 				<tr class="${item.empno}">
+					<td>${item.role}</td>
 					<td>${item.memnm}</td>
 					<td>${item.dpt}</td>
 					<td>${item.tit}</td>
-					<td>${item.role}</td>
 					<%-- <td><a href="#" onClick="deleteItem('pjtmem','${item.empno}')">삭 제</a></td> --%>
 				</tr>
 			</c:forEach>

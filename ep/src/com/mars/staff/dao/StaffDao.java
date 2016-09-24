@@ -139,7 +139,6 @@ public class StaffDao {
 				sDto.setPwd(rs.getString("pwd"));
 				sDto.setEmpno(rs.getString("empno"));
 				sDto.setEmpnm(rs.getString("empnm"));
-//				sDto.setPhone(rs.getString("phone"));
 				if(rs.getString("phone") == null){
 					sDto.setPhone("번호 정보 없음");
 				} else{
@@ -162,7 +161,6 @@ public class StaffDao {
 				sDto.setLogdt(rs.getString("logdt"));
 				sDto.setAdmchk(rs.getInt("admchk"));
 				sDto.setAdmnm(rs.getString("admnm"));
-//				System.out.println("Dao안에서 찍음 : "+sDto.getJumin());
 			}
 				
 		} catch(SQLException e){

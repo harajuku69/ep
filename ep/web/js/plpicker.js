@@ -66,7 +66,6 @@ $(function() {
 		refresh();
 		var url = "pjt.do?cmd=select_member";
 		var valid = true;
-//			d = $("#plnm").serialize();
 		
 		plnm.removeClass("ui-state-error");
 		
@@ -76,10 +75,9 @@ $(function() {
 		if ( valid ) {
 			$.ajax({
 				url:url,
-//				data: d,
 				data: {"schnm":plnm.val()},
 				dataType:"json",
-				type:'post',
+				type:"post",
 				contentsType: "application/x-www-form-urlencoded; charset=UTF-8",
 				success:function(jsonArray){
 					for(var index = 0; index < jsonArray.length; index++){

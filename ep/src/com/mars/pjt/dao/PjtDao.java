@@ -147,7 +147,7 @@ public class PjtDao {
 		}
 	}
 
-	public void regPjtMember(PmDto pmDto) {
+	public void regPL(PmDto pmDto) {
 		String sql = "insert into pm(pjtno, empno, rolecd) "
 					+ "values(pjtno_seq.currval,?,?)";
 
@@ -168,13 +168,13 @@ public class PjtDao {
 			DBManager.close(conn, pstmt);
 		}
 	}
-	public void insertMember(PmDto pmDto) {
+	public int insertMember(PmDto pmDto) {
 		String sql = "insert into pm(pjtno, empno, rolecd) "
 					+ "values(?,?,?)";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		
+		int result = 0;
 		try{
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -183,12 +183,13 @@ public class PjtDao {
 			pstmt.setString(2, pmDto.getEmpno());
 			pstmt.setString(3, pmDto.getRole());
 			
-			pstmt.executeUpdate();
+			result = pstmt.executeUpdate();
 		} catch(SQLException e){
 			e.printStackTrace();
 		} finally{
 			DBManager.close(conn, pstmt);
 		}
+		return result;
 	}
 	public PjtDto selectOneByPjtno(int pjtno) {
 		String sql = "select p.pjtno,p.pjtnm,p.pjtdtl,p.startdt,p.enddt,p.regdt,s.empnm "
@@ -241,7 +242,8 @@ public class PjtDao {
 					 + "  on s.titcd = t.titcd "
 					 + "join role r "
 					 + "  on p.rolecd = r.rolecd "
-					+ "where p.pjtno = ? ";
+					+ "where p.pjtno = ? "
+					+ "order by p.regdt ";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -385,6 +387,47 @@ public class PjtDao {
 			DBManager.close(conn, pstmt, rs);
 		}
 		return roleList;
+	}
+
+	public int deleteMember(String empno) {
+		String sql = "delete pm where empno = ?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try{
+			conn = DBManager.getConnection();
+			
+			pstmt = conn.prepareStatement(sql);
+				
+			pstmt.setString(1, empno);
+			
+			result = pstmt.executeUpdate();
+				
+		} catch(SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBManager.close(conn, pstmt);
+		}
+		return result;
+	}
+
+	public void deletePjtMember(String pjtno) {
+		String sql = "delete pm where pjtno = ? ";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try{
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, pjtno);
+			pstmt.executeUpdate();
+				
+		} catch(SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBManager.close(conn, pstmt);
+		}
 	}
 }
 

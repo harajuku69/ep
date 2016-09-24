@@ -15,6 +15,8 @@ import com.mars.noti.action.StaffNotiListAction;
 import com.mars.noti.action.StaffNotiSearchAction;
 import com.mars.pjt.action.AdminPjtDetailPageAction;
 import com.mars.pjt.action.AdminPjtListAction;
+import com.mars.pjt.action.DeleteMemberAction;
+import com.mars.pjt.action.InsertMemberAction;
 import com.mars.pjt.action.PjtDeleteAction;
 import com.mars.pjt.action.PjtUpdatePageAction;
 import com.mars.pjt.action.PjtWriteAction;
@@ -180,6 +182,8 @@ public class ActionFactory {
 			action = new SelectMemberAction();
 		} else if(cmd.equals("insert_member")){
 			action = new InsertMemberAction();
+		} else if(cmd.equals("delete_member")){
+			action = new DeleteMemberAction();
 		}
 		return action;
 	}

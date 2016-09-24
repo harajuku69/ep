@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="js/dtpicker.js"></script>
-<script src="js/newmempicker.js"></script>
+<script src="js/memberEdit.js"></script>
 </head>
 <body>
 <div class="contents">
@@ -97,10 +97,13 @@
 					</fieldset>
 				</td>
 			</tr>
+		</table>
+		<table class="list">
 			<tr>
-				<th colspan="4" class="ui-widget-header">Project Member</th>
+				<th colspan="5" class="ui-widget-header">Project Member</th>
 			</tr>
 			<tr>
+				<td>선 택</td>
 				<td>이 름</td>
 				<td>부 서</td>
 				<td>직 급</td>
@@ -110,44 +113,34 @@
 			<c:forEach var="item" items="${reqPjtMemList}">
 				<tr class="${item.empno}">
 					<td>
-						<input type="radio" name="memnm" id="memnm" value="${item.empno}">
-						${item.memnm}
-					</td>
-					<td>${item.dpt}</td>
-					<td>${item.tit}</td>
-					<td>${item.role}
-					<%-- ${item.role} --%>
-					<!-- <select name="rolecd" id="rolebx"> 
-						<c:forEach var="role" items="${reqRoleList}">
-							<c:choose>
-							<c:when test="${role.role == item.role}">
-								<option value="${role.rolecd}" selected="selected" >${role.role}</option>
+						<c:choose>
+							<c:when test="${item.role =='Project Leader'}">
 							</c:when>
 							<c:otherwise>
-								<option value="${role.rolecd}">${role.role}</option>
+								<input type="radio" name="memnm" class="memnm" value="${item.empno}">
 							</c:otherwise>
-							</c:choose>
-						</c:forEach>
-					</select> -->
+						</c:choose>
 					</td>
-					<%-- <td><a href="#" onClick="deleteItem('pjtmem','${item.empno}')">삭 제</a></td> --%>
+					<td>${item.memnm}</td>
+					<td>${item.dpt}</td>
+					<td>${item.tit}</td>
+					<td>${item.role}</td>
 				</tr>
 			</c:forEach>
 			<tbody id="newmember">
 			</tbody>
 			<tr>
 				<td colspan="4">
-				<input type="button" id="newmemschbtn" value="멤버 등록">
-				<input type="button" id="memdelbtn" value="멤버 삭제" onclick="deleteMember()">
+				<input type="button" id="newMemRegBtn" value="멤버 등록">
+				<input type="button" id="memDelBtn" value="멤버 삭제">
 				</td>
 			</tr>
-			</tbody>
 		</table>
 		<br>
 		<div style="padding-left:250px">
 			<input type ="submit" value="수정 완료" style="float:left;">
 			<input type ="reset" value="되돌리기"> 
-			<input type ="button" value="돌아가기"	onclick="history.go(-1)">
+			<input type ="button" value="돌아가기"	onclick="location.href='pjt.do?cmd=admin_pjt_detail_page&pjtno=${reqPjt.pjtno}'">
 		</div>
 	</form>
 	</div>

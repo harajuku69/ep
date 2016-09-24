@@ -53,7 +53,7 @@ public class PjtWriteAction implements Action {
 		PjtDao pDao = PjtDao.getInstance();
 		pDao.regPjt(pDto);
 		pDao.regPjtSkl(pskDto);
-		pDao.regPjtMember(pmDto);
+		pDao.regPL(pmDto);
 		
 		Paging.getRecentList(request);
 		response.sendRedirect(url);
