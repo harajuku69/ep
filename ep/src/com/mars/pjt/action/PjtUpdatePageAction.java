@@ -15,6 +15,7 @@ import com.mars.pjt.dto.PjtDto;
 import com.mars.pjt.dto.PmDto;
 import com.mars.pjt.dto.PskDto;
 import com.mars.pjt.dto.RoleDto;
+import com.mars.pjt.dto.SklDto;
 
 public class PjtUpdatePageAction implements Action {
 
@@ -45,21 +46,46 @@ public class PjtUpdatePageAction implements Action {
 				server.add(skset[i]);
 			}
 		}
-		List<PskDto> pfList = new ArrayList<>();
-		List<PskDto> webList = new ArrayList<>();
-		List<PskDto> svrList = new ArrayList<>();
+		List<PskDto> selPfList = new ArrayList<>();
+		List<PskDto> selWebList = new ArrayList<>();
+		List<PskDto> selSvrList = new ArrayList<>();
 		for(int i=0;i<platform.size();i++){
-			pfList.add(pDao.selectSkNm(platform.get(i)));
+			selPfList.add(pDao.selectSkNm(platform.get(i)));
 		}
-		request.setAttribute("reqPfList", pfList);
+		request.setAttribute("reqSelPfList", selPfList);
+		
 		for(int i=0;i<web.size();i++){
-			webList.add(pDao.selectSkNm(web.get(i)));
+			selWebList.add(pDao.selectSkNm(web.get(i)));
 		}
-		request.setAttribute("reqWebList", webList);
+		request.setAttribute("reqSelWebList", selWebList);
+		request.setAttribute("sizeOfSelWebList",selWebList.size());
+		
 		for(int i=0;i<server.size();i++){
-			svrList.add(pDao.selectSkNm(server.get(i)));
+			selSvrList.add(pDao.selectSkNm(server.get(i)));
 		}
-		request.setAttribute("reqSvrList", svrList);
+		request.setAttribute("reqSelSvrList", selSvrList);
+		request.setAttribute("sizeOfSelSvrList",selSvrList.size());
+		
+		List<SklDto> sklList = new ArrayList<>();
+		
+		sklList = pDao.selectAllSkill();
+		
+		List<SklDto> pfList = new ArrayList<>();
+		List<SklDto> webList = new ArrayList<>();
+		List<SklDto> svrList = new ArrayList<>();
+		for(int i=0;i<sklList.size();i++){
+			if(sklList.get(i).getSkcd().charAt(0) == '0'){
+				pfList.add(sklList.get(i));
+			} else if(sklList.get(i).getSkcd().charAt(0) == '1'){
+				webList.add(sklList.get(i));
+			} else {
+				svrList.add(sklList.get(i));
+			}
+		}
+		
+		request.setAttribute("pfList", pfList);
+		request.setAttribute("webList", webList);
+		request.setAttribute("svrList", svrList);
 		
 		List<PmDto> pmList = new ArrayList<>();
 		pmList = pDao.selectAllPjtMember(pjtno);
@@ -67,10 +93,39 @@ public class PjtUpdatePageAction implements Action {
 		
 		List<RoleDto> roleList = pDao.selectAllRole();
 		request.setAttribute("reqRoleList", roleList);
-		
+//		Test
+//		for(int i=0;i<3;i++){
+//			int[] skl = {11,12,13};
+//			int[] sel = {12,13};
+//			int cnt = 0;
+//			for(int j=0;j<2;j++){
+//				if(skl[i] == sel[j]){
+//					System.out.println("checked : "+skl[i]);
+//				}
+//				else{
+//					cnt++;
+//				}
+//			}
+//			if(cnt == sel.length){
+//				System.out.println("unchecked : "+skl[i]);
+//			}
+//		}
 		request.setAttribute("pageNo", pageNo);
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

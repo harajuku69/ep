@@ -8,10 +8,24 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="js/pjtjoin.js"></script>
 </head>
 <body>
 <div class="contents">
+	<div id="join-dialog" title="Project 참여">
+		<h2>수행 역할 선택</h2>
+		<select name ="rolebx" id="rolebx">
+			<option value="99">선택하세요</option>
+			<c:forEach var="item" items="${reqRoleList}">
+			<c:if test="${item.rolecd != '00' }">
+				<option value="${item.rolecd}">${item.role}</option>
+			</c:if>
+			</c:forEach>
+		</select>	
+	</div>
 	<div id="list-contain" class="ui-widget">
+	<input type="hidden" id="pjtno" value="${reqPjt.pjtno}">
+	<input type="hidden" id="empno" value="${ssEmpno}">
 		<table class="list">
 			<tr>
 				<th>등록일</th>
@@ -90,9 +104,9 @@
 		</div>
 		<br>
 		<div style="padding-left:250px">
-			<input type ="button" value="수정하기" onclick="location.href='pjt.do?cmd=pjt_update_page&pjtno=${reqPjt.pjtno}&pageNo=${pageNo}'" style="float:left;">
+			<input type ="button" value="참여하기" id="joinBtn">
 			<input type ="button" value="목록으로" 
-				onclick="location.href='pjt.do?cmd=admin_pjt_list'">
+				onclick="location.href='pjt.do?cmd=staff_pjt_list'">
 		</div>
 	</div>
 </div>

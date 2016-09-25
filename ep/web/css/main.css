@@ -96,7 +96,10 @@ ul {list-style:none;}
 
 /* <contents> ========================================== */
 .contents {/* width:958px; */ height:540px; margin:0 auto; margin-top:6px; margin-bottom:0px;/* overflow:auto; position:absolute; */ border:2px solid #f6f6f6;}
-/* .contents .core{width:954px; height:538px; margin:0 auto; border: 1px solid purple;} */
+.contents input {display:inline}
+.contents #memberList {height: 270px; overflow:auto}
+.contents #memberuList {height: 175px; overflow:auto}
+.contents #list_contain {height: 450px; overflow:auto}
 .contents #guest, #default {width:956px; height:542px; /* display:block;/* position:relative;  */}
 .contents #logleft {width:280px; height:520px; padding:10px; float:left; text-align:center/*  border:3px solid green;  */}
 .contents #logleft .stpic {width:200px ; height:250px; margin:0 auto;border:3px solid #dfdfdf}
@@ -105,6 +108,10 @@ ul {list-style:none;}
 .contents #logleft ul li {margin:0 auto; text-indent:10px;}
 .contents #logleft ul li a {font-size:15px; color:#636363; text-indent:15px;}
 .contents #logright {width:654px; height:540px; float:left;/*  border:1px solid blue; */}
+.contents #logright #ind {float:left;}
+.contents #logright table .infhd {background-color:#cdcdcd}
+.contents #logright table th {width:80px;background-color:#efefef; font-weight:normal;font-size:17px;}
+.contents #logright table td {width:220px;text-indent:10px;}
 .contents #logright #logintro {width:650px; height:260px; margin-top:25px; /* border:1px solid green; */}
 .contents #logright #logintro #introtable {width:650px;height:250px;}
 .contents #logright #logintro #introtable #desc {width:450px;padding:15px; text-indent:15px; /* border:2px solid black; */}
@@ -136,12 +143,13 @@ ul {list-style:none;}
 .contents #cmtlist {height:115px;font-size:15px;/* border:2px solid green; */} 
 .contents #paging {line-height:5px; /* border:2px solid red; */} 
 .contents .skset input {float:right;}
+.contents .skset label {line-height:20px;}
+/* #frm_sk .skset .skbx{width:80px; border:1px solid blue;}
+#frm_sk .skset .chkbx {text-align:right}
+#sk th {width:200px} */
 
 /* sub : login + notice + project============== */
 .sub {/* width:956px; clear:both;*/  height:215px; background-color:#fff; padding:1px; /* position:absolute; left:480px;top:660px; */ border:1px solid #f6f6f6;}
-#frm_sk .skset .skbx{width:80px; /* border:1px solid blue; */}
-#frm_sk .skset .chkbx {text-align:right}
-#sk th {width:200px}
 
 .mini {width:285.5px; height:180px; margin:2.5px; padding:10px; border:4px solid #e5e5e5; float: left;}
 
@@ -247,4 +255,3 @@ input.text {margin-bottom:12px; width:90%; padding:.4em; margin:0 auto; }
 
 
 
-5

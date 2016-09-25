@@ -92,7 +92,7 @@ $(function() {
 									"<td>" +
 										"<select name='rolecd' class='rolecd'>" +
 											"<option value='' >선택하세요</option>" +
-											"<option value='00'>Project Leader</option>" +
+//											"<option value='00'>Project Leader</option>" +
 											"<option value='01'>Project Manager</option>" +
 											"<option value='02'>Model Leader</option>" +
 											"<option value='03'>Model Manager</option>" +
@@ -141,12 +141,13 @@ $(function() {
 			type:"post",
 			contentsType:"application/x-www-form-urlencoded; charset=UTF-8",
 			success:function(result){
-				if(result == '1'){
+				if(result == '0'){
 					msg = "등록되었습니다.";
 					alert(msg);
 					$("#newmember").append(
 							"<tr class='" + newmemno + "'>" +
-							"<td><input type='radio' name='memnm' id='memnm' value='" + newmemno +"'>" + " " + newmemnm + "</td>" +
+							"<td><input type='radio' name='memnm' id='memnm' value='" + newmemno +"'></td>" + 
+							"<td>" + newmemnm + "</td>" +
 							"<td>" + newmemdpt + "</td>" +
 							"<td>" + newmemtit + "</td>" +
 							"<td>" + newmemrole +"</td>" +
@@ -162,15 +163,21 @@ $(function() {
 	};
 	
 	$("#memDelBtn").button().on("click",function(){
-		radioval = $(".memnm:checked").val();
-		deleteItem(radioval);
+		if(!($(".memnm").is(":checked"))){
+			alert("멤버를 선택해주세요!");
+			$(this).focus();
+		} else {
+			empno = $(".memnm:checked").val();
+			pjtno = $("#pjtno").val();
+			deleteItem(empno,pjtno);
+		};
 	});
-	function deleteItem(item){
-		var delno = "."+ item;//클래스로 선언된 tr만 지울라고 .을 추가하는 것임
+	function deleteItem(empno, pjtno){
+		var delno = "."+ empno;//클래스로 선언된 tr만 지울라고 .을 추가하는 것임
 		var url = "pjt.do?cmd=delete_member";
 		$.ajax({
 			url: url,
-			data: {"empno":item},
+			data: {"empno":empno,"pjtno":pjtno},
 			type: "post",
 			contentsType: "application/x-www-form-urlencoded; charset=UTF-8",
 			success:function(result){
@@ -178,7 +185,7 @@ $(function() {
 					alert("삭제되었습니다.");
 					$("tr").remove(delno);
 				} else {
-//					alert(result);
+					alert(result);
 					alert("등록 후 바로 삭제되지 않았습니다. 새로 고침 후 지워주세요.");
 				}
 			}

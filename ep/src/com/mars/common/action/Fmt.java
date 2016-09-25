@@ -47,18 +47,12 @@ public class Fmt {
 		if(admchk == 1){
 			adm = "관리자";
 		}
-//		if(sDto.getPhone() != null){
-//			fmtphone = sDto.getPhone().substring(0, 3) 
-//					+ "-" + sDto.getPhone().substring(3, 7) 
-//					+ "-" + sDto.getPhone().substring(7);
-//		}
 		request.setAttribute("jmf", jmf);
 		request.setAttribute("jmb", jmb);
 		request.setAttribute("yyyy", yyyy);
 		request.setAttribute("MM", MM);
 		request.setAttribute("dd", dd);
 		request.setAttribute("gen", gen);
-//		request.setAttribute("fmtphone", fmtphone);
 		request.setAttribute("adm", adm);
 	}
 }

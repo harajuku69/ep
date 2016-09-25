@@ -11,30 +11,29 @@ import com.mars.common.action.Action;
 import com.mars.pjt.dao.PjtDao;
 import com.mars.pjt.dto.PmDto;
 
-public class InsertMemberAction implements Action {
+public class JoinMemberAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int pjtno = Integer.parseInt(request.getParameter("pjtno"));
+		String Pjtno = request.getParameter("pjtno");
+		int pjtno = Integer.parseInt(Pjtno);
 		String empno = request.getParameter("empno");
 		String rolecd = request.getParameter("rolecd");
-		
-		PmDto pmDto = new PmDto();
-		pmDto.setPjtno(pjtno);
-		pmDto.setEmpno(empno);
-		pmDto.setRole(rolecd);
-		
 		PjtDao pDao = PjtDao.getInstance();
+		
 		int result = pDao.checkMember(pjtno, empno);
+		
 		if(result == 0){
+			PmDto pmDto = new PmDto();
+			pmDto.setPjtno(pjtno);
+			pmDto.setEmpno(empno);
+			pmDto.setRole(rolecd);
+			
 			pDao.insertMember(pmDto);
-			PrintWriter out = response.getWriter();
-			out.print(result);
-		} else{
-			result = 1;
-			PrintWriter out = response.getWriter();
-			out.print(result);
-		}
+		} 
+			
+		PrintWriter out = response.getWriter();
+		out.print(result);
 	}
 
 }

@@ -17,12 +17,15 @@ import com.mars.pjt.action.AdminPjtDetailPageAction;
 import com.mars.pjt.action.AdminPjtListAction;
 import com.mars.pjt.action.DeleteMemberAction;
 import com.mars.pjt.action.InsertMemberAction;
+import com.mars.pjt.action.JoinMemberAction;
 import com.mars.pjt.action.PjtDeleteAction;
+import com.mars.pjt.action.PjtUpdateAction;
 import com.mars.pjt.action.PjtUpdatePageAction;
 import com.mars.pjt.action.PjtWriteAction;
 import com.mars.pjt.action.PjtWritePageAction;
 import com.mars.pjt.action.PlDetailAction;
 import com.mars.pjt.action.SelectMemberAction;
+import com.mars.pjt.action.StaffPjtDetailPageAction;
 import com.mars.pjt.action.StaffPjtListAction;
 import com.mars.staff.action.AdminDetailPageAction;
 import com.mars.staff.action.AdminHomePageAction;
@@ -168,12 +171,16 @@ public class ActionFactory {
 			action = new StaffPjtListAction();
 		} else if(cmd.equals("admin_pjt_detail_page")){
 			action = new AdminPjtDetailPageAction();
+		} else if(cmd.equals("staff_pjt_detail_page")){
+			action = new StaffPjtDetailPageAction();
 		} else if(cmd.equals("pjt_update_page")){
 			action = new PjtUpdatePageAction();
 		} else if(cmd.equals("pjt_write_page")){
 			action = new PjtWritePageAction();
 		} else if(cmd.equals("pjt_write")){
 			action = new PjtWriteAction();
+		} else if(cmd.equals("pjt_update")){
+			action = new PjtUpdateAction();
 		} else if(cmd.equals("pjt_delete")){
 			action = new PjtDeleteAction();
 		} else if(cmd.equals("pl_detail")){
@@ -184,6 +191,8 @@ public class ActionFactory {
 			action = new InsertMemberAction();
 		} else if(cmd.equals("delete_member")){
 			action = new DeleteMemberAction();
+		} else if(cmd.equals("join_member")){
+			action = new JoinMemberAction();
 		}
 		return action;
 	}

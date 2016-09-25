@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,27 +14,28 @@ import com.mars.common.action.Fmt;
 import com.mars.common.action.Paging;
 import com.mars.pjt.dao.PjtDao;
 import com.mars.pjt.dto.PjtDto;
-import com.mars.pjt.dto.PmDto;
 import com.mars.pjt.dto.PskDto;
 
-public class PjtWriteAction implements Action {
+public class PjtUpdateAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "pjt.do?cmd=admin_pjt_list";
+//		String url = "pjt/adminPjtDetail.jsp";
+		String Pjtno = request.getParameter("pjtno");
+		int pjtno = Integer.parseInt(Pjtno);
+		
+		String url = "pjt.do?cmd=admin_pjt_detail_page&pjtno=" + Pjtno;
+		
 		PjtDto pDto = new PjtDto();
 		PskDto pskDto = new PskDto();
-		PmDto pmDto = new PmDto();
 		List<String> skList = new ArrayList<>();
-		
-		String plno = request.getParameter("plno"); 
-//		PJT 등록
+//		PJT 업데이트
 		pDto.setStartdt(Fmt.strToTimestamp(request.getParameter("startdt")));
 		pDto.setEnddt(Fmt.strToTimestamp(request.getParameter("enddt")));
 		pDto.setPjtnm(request.getParameter("pjtnm"));
 		pDto.setPjtdtl(request.getParameter("pjtdtl"));
-		pDto.setPlno(plno);
-//		PJT skill 등록
+		pDto.setPjtno(pjtno);
+//		PJT skill 업데이트
 		skList.add(request.getParameter("platform"));
 		String[] skset = request.getParameterValues("web");
 		for(String web : skset){
@@ -43,22 +45,16 @@ public class PjtWriteAction implements Action {
 		for(String server : skset){
 			skList.add(server);
 		}
+		pskDto.setPjtno(pjtno);
 		pskDto.setSkList(skList);
-//		System.out.println(skList);
-//		PJT member 등록
-		pmDto.setEmpno(plno);
-		pmDto.setRole("00");
-		
 //		Dao 처리
 		PjtDao pDao = PjtDao.getInstance();
-		pDao.regPjt(pDto);
-		pDao.regPjtSkl(pskDto);
-		pDao.regPL(pmDto);
+		pDao.updatePjt(pDto);
+		pDao.updatePjtSkl(pskDto);
 		
 		Paging.getRecentList(request);
-		response.sendRedirect(url);
-
+		RequestDispatcher disp = request.getRequestDispatcher(url);
+		disp.forward(request, response);
 	}
 
 }
-

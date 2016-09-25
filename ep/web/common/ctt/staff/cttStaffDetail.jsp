@@ -32,89 +32,85 @@
 				<img class="stpic" src="upload/${reqStaff.pic}">
 			</c:otherwise>
 		</c:choose>
-		<!-- <input type="button" value="변경">
-		<input type="button" value="삭제"> -->
 	</div>
 	<div id="logright">
-		<table style="font-size:20px;float:left">
-			<tr><th colspan="2">개인 정보</th></tr>
+			<table id="ind">
+				<tr><th colspan="2" class="infhd">개인 정보</th></tr>
+				<tr>
+					<th>이 름</th>
+					<td>${reqStaff.empnm}</td>
+				</tr>
+				<tr>
+					<th>주민번호</th>
+					<td>${jmf}-${jmb}</td>
+				</tr>
+				<tr>
+					<th>생년월일</th>
+					<td>${yyyy}년 ${MM}월 ${dd}일</td>
+				</tr>
+				<tr>
+					<th>성 별</th>
+					<td>${gen}</td>
+				</tr>
+				<tr>
+					<th>연락처</th>
+					<td>${reqStaff.phone}</td>
+				</tr>
+				<tr>
+					<th>우편번호</th>
+					<td>${reqStaff.zipcd}</td>
+				</tr>
+				<tr>
+					<th>기본주소</th>
+					<td>${reqStaff.addr}</td>
+				</tr>
+				<tr>
+					<th>상세주소</th>
+					<td>
+						<div style="width:200px;">${reqStaff.addrdtl}</div>
+					</td>
+				</tr>
+			</table>
+		<table id="emp">
+			<tr><th colspan="2" class="infhd">사원 정보</th></tr>
 			<tr>
-				<td>이 름</td>
-				<td>${reqStaff.empnm}</td>
-			</tr>
-			<tr>
-				<td>주민번호</td>
-				<td>${jmf}-${jmb}</td>
-			</tr>
-			<tr>
-				<td>생년월일</td>
-				<td>${yyyy}년 ${MM}월 ${dd}일</td>
-			</tr>
-			<tr>
-				<td>성 별</td>
-				<td>${gen}</td>
-			</tr>
-			<tr>
-				<td>연락처</td>
-				<%-- <td>${fmtphone}</td> --%>
-				<td>${reqStaff.phone}</td>
-			</tr>
-			<tr>
-				<td>우편번호</td>
-				<td>${reqStaff.zipcd}</td>
-			</tr>
-			<tr>
-				<td>기본주소</td>
-				<td>${reqStaff.addr}</td>
-			</tr>
-			<tr>
-				<td>상세주소</td>
-				<td>
-					<div style="width:200px;">${reqStaff.addrdtl}</div>
-					<%-- ${reqStaff.addrdtl} --%>
-				</td>
-			</tr>
-		</table>
-		<table style="font-size:20px;">
-			<tr><th colspan="2">사원 정보</th></tr>
-			<tr>
-				<td>사 번</td>
+				<th>사 번</th>
 				<td>${reqStaff.empno}</td>
 			</tr>
 			<tr>
-				<td>사 원 아이디</td>
+				<th>아이디</th>
 				<td>${reqStaff.empid}</td>
 			</tr>
 			<tr>
-				<td>부 서</td>
+				<th>부 서</th>
 				<td>${reqStaff.dptcd}</td>
 			</tr>
 			<tr>
-				<td>직 급</td>
+				<th>직 급</th>
 				<td>${reqStaff.titcd}</td>
 			</tr>
 			<tr>
-				<td>입사일</td>
+				<th>입사일</th>
 				<td>
 					<c:set var="startdt" value="${reqStaff.startdt}"/>
 					<c:out value="${fn:substring(startdt,0,10)}"/>
 				</td>
 			</tr>
 			<tr>
-				<td>퇴사일</td>
+				<th>퇴사일</th>
 				<td>
 					<c:set var="enddt" value="${reqStaff.enddt}"/>
 					<c:out value="${fn:substring(enddt,0,10)}"/>
 				</td>
 			</tr>
 			<tr>
-				<td>급 여</td>
+				<th>급 여</th>
 				<td>
 					<fmt:formatNumber value="${reqStaff.sal}" type="currency"/>
 				</td>
 			</tr>
 			<tr>
-				<td>등록일</td>
+				<th>등록일</th>
 				<td>
 					<c:set var="regdt" value="${reqStaff.regdt}"/>
 					<c:out value="${fn:substring(regdt,0,10)}"/>
@@ -122,9 +118,7 @@
 			</tr>
 		</table>
 		<br/><input type="button" value="수정하기" id="chk_pwd" >
-		<%-- <br/><a href="staff.do?cmd=staff_home_page&empid=${reqStaff.empid}"><input type="button" value="돌아가기"></a> --%>
 		<br/><input type="button" value="돌아가기" onclick="location.href='staff.do?cmd=staff_home_page&empid=${reqStaff.empid}'">
-		<!-- </form> -->
 	</div>
 </div>
 </body>

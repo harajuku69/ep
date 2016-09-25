@@ -20,7 +20,7 @@ public class PjtDeleteAction implements Action {
 		
 		PjtDao pDao = PjtDao.getInstance();
 		int result = pDao.deletePjt(pjtno);
-		pDao.deletePjtMember(pjtno);
+		pDao.deletePjtAllMember(pjtno);
 		
 		JsonObject json = new JsonObject();
 		

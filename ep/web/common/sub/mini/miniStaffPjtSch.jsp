@@ -14,7 +14,7 @@
 	<p style="display:inline;">Project Search</p>
 	<%-- <c:if test="${ssAdmchk == 1}"> --%>
 		<span>|</span>
-		<p style="display:inline;"><a href="staff.do?cmd=admin_pjt_list"> List</a></p>
+		<p style="display:inline;"><a href="staff.do?cmd=staff_pjt_list"> List</a></p>
 	<%-- </c:if> --%>
 	<hr/>
 	<form action="href='URL'" method="post" name="frm" class="searchform">

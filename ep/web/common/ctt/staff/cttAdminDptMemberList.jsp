@@ -34,19 +34,19 @@
 			<tbody>
 			<c:forEach var="item" items="${reqStaffList}">
 				<tr class="${item.empno}">
-					<td>
+					<td class="tit">
 						<a href="staff.do?cmd=admin_detail_page&empid=${item.empid}">${item.empnm}</a>
 					</td>
-					<td>${item.dptcd}</td>
-					<td>${item.titcd}</td>
-					<td>
+					<td class="tit">${item.dptcd}</td>
+					<td class="tit">${item.titcd}</td>
+					<td class="tit">
 						<c:set var="phone" value="${item.phone}"/>
 						<c:set var="dash" value="${'-'}"/>
 						<c:out value="${fn:substring(phone,0,3)}${dash}${fn:substring(phone,3,7)}${dash}${fn:substring(phone,7,11)}"/>
 					</td>
-					<td><a href="mailto:${item.empid}@mars.com">${item.empid}@mars.com</a></td>
-					<td><a href="staff.do?cmd=admin_update_page&empid=${item.empid}">수정</a></td>
-					<td><a href="#" onClick="deleteItem('staff','${item.empno}')">삭제</a></td>
+					<td class="tit"><a href="mailto:${item.empid}@mars.com">${item.empid}@mars.com</a></td>
+					<td class="tit"><a href="staff.do?cmd=admin_update_page&empid=${item.empid}">수정</a></td>
+					<td class="tit"><a href="#" onClick="deleteItem('staff','${item.empno}')">삭제</a></td>
 				</tr>
 			</c:forEach>
 			</tbody>

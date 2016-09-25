@@ -25,8 +25,8 @@
 					<td id="desc" >
 						<h1>로그인</h1>
 						<h5>mars의 로그인 페이지입니다.</h5>
-						<p>일반 : 사원 정보, 공지사항, 프로젝트 검색을 이용하실 수 있습니다.</p>
-						<p>관리자 : 사원 정보, 공지사항, 프로젝트 등록/수정/삭제를 할 수 있습니다. </p>
+						<p>일반 : 사원 /공지사항/프로젝트 확인을 이용하실 수 있습니다.</p>
+						<p>관리자 : 사원/공지사항/프로젝트 확인 및 편집을 할 수 있습니다. </p>
 					</td>
 					<td id="lock">
 						<p><img src="../images/lock_01.png" alt="locker img"></p>
@@ -46,7 +46,7 @@
 					<td class="maincenter"><input type="password" name="pwd" class="idpw" placeholder="비밀번호" required></td>
 				</tr>
 				<tr>
-					<td><input type="text" value="처음 오셨나요?"  style="text-align:center;background-color:#dfdfdf;height:30px;color:#636363;font-weight:bold"></td>
+					<td style="text-align:center;"><input type="text" value="처음 오셨나요?"  style="text-align:center;background-color:#dfdfdf;height:30px;color:#636363;font-weight:bold"></td>
 					<!-- <td class="maincenter"><input type="button" value="아이디/비밀번호 찾기" class="find" onclick="location.href='URL'"></td> -->
 					<td class="mainright"><input type="button" value="회원 가입" class="join" onclick="location.href='staff.do?cmd=join_page'"></td>
 				</tr>

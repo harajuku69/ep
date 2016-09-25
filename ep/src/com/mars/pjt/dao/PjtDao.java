@@ -12,6 +12,7 @@ import com.mars.pjt.dto.PjtDto;
 import com.mars.pjt.dto.PmDto;
 import com.mars.pjt.dto.PskDto;
 import com.mars.pjt.dto.RoleDto;
+import com.mars.pjt.dto.SklDto;
 
 public class PjtDao {
 	
@@ -134,16 +135,16 @@ public class PjtDao {
 		PreparedStatement pstmt = null;
 		
 		try{
-		conn = DBManager.getConnection();
-		pstmt = conn.prepareStatement(sql);
-		
-		pstmt.setString(1, pskDto.getSkList().toString());
-		
-		pstmt.executeUpdate();
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, pskDto.getSkList().toString());
+			
+			pstmt.executeUpdate();
 		} catch(SQLException e){
-		e.printStackTrace();
+			e.printStackTrace();
 		} finally{
-		DBManager.close(conn, pstmt);
+			DBManager.close(conn, pstmt);
 		}
 	}
 
@@ -168,13 +169,12 @@ public class PjtDao {
 			DBManager.close(conn, pstmt);
 		}
 	}
-	public int insertMember(PmDto pmDto) {
+	public void insertMember(PmDto pmDto) {
 		String sql = "insert into pm(pjtno, empno, rolecd) "
 					+ "values(?,?,?)";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		int result = 0;
 		try{
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -183,13 +183,12 @@ public class PjtDao {
 			pstmt.setString(2, pmDto.getEmpno());
 			pstmt.setString(3, pmDto.getRole());
 			
-			result = pstmt.executeUpdate();
+			pstmt.executeUpdate();
 		} catch(SQLException e){
 			e.printStackTrace();
 		} finally{
 			DBManager.close(conn, pstmt);
 		}
-		return result;
 	}
 	public PjtDto selectOneByPjtno(int pjtno) {
 		String sql = "select p.pjtno,p.pjtnm,p.pjtdtl,p.startdt,p.enddt,p.regdt,s.empnm "
@@ -389,8 +388,8 @@ public class PjtDao {
 		return roleList;
 	}
 
-	public int deleteMember(String empno) {
-		String sql = "delete pm where empno = ?";
+	public int deleteOneMember(String empno, int pjtno) {
+		String sql = "delete pm where empno = ? and pjtno = ? ";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -401,6 +400,7 @@ public class PjtDao {
 			pstmt = conn.prepareStatement(sql);
 				
 			pstmt.setString(1, empno);
+			pstmt.setInt(2, pjtno);
 			
 			result = pstmt.executeUpdate();
 				
@@ -412,7 +412,7 @@ public class PjtDao {
 		return result;
 	}
 
-	public void deletePjtMember(String pjtno) {
+	public void deletePjtAllMember(String pjtno) {
 		String sql = "delete pm where pjtno = ? ";
 		
 		Connection conn = null;
@@ -428,6 +428,108 @@ public class PjtDao {
 		} finally{
 			DBManager.close(conn, pstmt);
 		}
+	}
+
+	public List<SklDto> selectAllSkill() {
+		String sql = "select * from skl";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List<SklDto> sklList = new ArrayList<>();
+		try{
+			conn = DBManager.getConnection();
+			
+			pstmt = conn.prepareStatement(sql);
+				
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				SklDto sDto = new SklDto();
+				
+				sDto.setSkcd(rs.getString("skcd"));
+				sDto.setSk(rs.getString("sk"));
+				
+				sklList.add(sDto);
+			}
+		} catch(SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBManager.close(conn, pstmt, rs);
+		}
+		return sklList;
+	}
+
+	public void updatePjt(PjtDto pDto) {
+		String sql = "update pjt set startdt=?, enddt=?, pjtnm=?, pjtdtl=? where pjtno=? ";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try{
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setTimestamp(1, pDto.getStartdt());
+			pstmt.setTimestamp(2, pDto.getEnddt());
+			pstmt.setString(3, pDto.getPjtnm());
+			pstmt.setString(4, pDto.getPjtdtl());
+			pstmt.setInt(5, pDto.getPjtno());
+			
+			pstmt.executeUpdate();
+		} catch(SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBManager.close(conn, pstmt);
+		}
+	}
+
+	public void updatePjtSkl(PskDto pskDto) {
+		String sql = "update psk set sklist=? where pjtno = ?";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try{
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, pskDto.getSkList().toString());
+			pstmt.setInt(2, pskDto.getPjtno());
+			
+			pstmt.executeUpdate();
+		} catch(SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBManager.close(conn, pstmt);
+		}
+	}
+
+	public int checkMember(int pjtno, String empno) {
+		String sql = "select empno from pm where pjtno = ? and empno = ? ";
+		int result = 0;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try{
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, pjtno);
+			pstmt.setString(2, empno);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				result = 1;
+			}
+				
+		} catch(SQLException e){
+			e.printStackTrace();
+		} finally{
+			DBManager.close(conn, pstmt, rs);
+		}
+		return result;
 	}
 }
 

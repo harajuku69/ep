@@ -57,8 +57,8 @@
 			<tr>
 				<th>기 간</th>
 				<td colspan="3">
-					<input type="text" id="startdt" placeholder="From : ${fn:substring(reqPjt.startdt,0,10)}" class="text ui-widget-content ui-corner-all" style="width:45%; float:left;" required>
-					<input type="text" id="enddt" placeholder="To : ${fn:substring(reqPjt.enddt,0,10)}" class="text ui-widget-content ui-corner-all" style="width:45%;float:right" required>
+					<input type="text" name="startdt" id="startdt" value="${fn:substring(reqPjt.startdt,0,10)}" class="text ui-widget-content ui-corner-all" style="width:45%; float:left;" required>
+					<input type="text" name="enddt" id="enddt" value="${fn:substring(reqPjt.enddt,0,10)}" class="text ui-widget-content ui-corner-all" style="width:45%;float:right" required>
 				</td>
 			</tr>
 			<tr>
@@ -75,67 +75,106 @@
 				<td>
 					<fieldset class="skset">
 					<legend><b>Platform Skill</b></legend>
-					<c:forEach var="item" items="${reqPfList}">
-						<span>${item.sk} </span>
+					<c:forEach var="item" items="${pfList}">
+						<c:forEach var="sel" items="${reqSelPfList}">
+						<c:choose>
+							<c:when test="${item.sk == sel.sk}">
+								<label for="${item.sk}">${item.sk}</label>
+								<input type="radio" name="platform" id="${item.sk}" value="${item.skcd}" checked="checked"><br/>
+							</c:when>
+							<c:otherwise>
+								<label for="${item.sk}">${item.sk}</label>
+								<input type="radio" name="platform" id="${item.sk}" value="${item.skcd}"><br/>
+							</c:otherwise>
+						</c:choose>
+						</c:forEach>
 					</c:forEach>
 					</fieldset>
 				</td>
 				<td>
 					<fieldset class="skset">
 					<legend><b>Web Skill</b></legend>
-					<c:forEach var="item" items="${reqWebList}">
-						<span>${item.sk} &nbsp;</span>
+					<c:forEach var="item" items="${webList}">
+					<c:set var="cnt" value="${0}"/>
+						<c:forEach var="sel" items="${reqSelWebList}">
+							<c:choose>
+								<c:when test="${item.sk == sel.sk}">
+									<label for="${item.sk}">${item.sk}</label>
+									<input type="checkbox" name="web" id="${item.sk}" value="${item.skcd}" checked="checked"><br/>
+								</c:when>
+								<c:otherwise>
+									<c:set var="cnt" value="${cnt+1}"/>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+						<c:if test="${cnt == sizeOfSelWebList}">
+							<label for="${item.sk}">${item.sk}</label>
+							<input type="checkbox" name="web" id="${item.sk}" value="${item.skcd}"><br/>
+						</c:if>
 					</c:forEach>
 					</fieldset>
 				</td>
 				<td>
 					<fieldset class="skset">
 					<legend><b>Server Skill</b></legend>
-					<c:forEach var="item" items="${reqSvrList}">
-						<span>${item.sk} &nbsp;</span>
+					<c:forEach var="item" items="${svrList}">
+					<c:set var="cnt" value="${0}"/>
+						<c:forEach var="sel" items="${reqSelSvrList}">
+							<c:choose>
+								<c:when test="${item.sk == sel.sk}">
+									<label for="${item.sk}">${item.sk}</label>
+									<input type="checkbox" name="server" id="${item.sk}" value="${item.skcd}" checked="checked"><br/>
+								</c:when>
+								<c:otherwise>
+									<c:set var="cnt" value="${cnt+1}"/>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+						<c:if test="${cnt == sizeOfSelSvrList}">
+							<label for="${item.sk}">${item.sk}</label>
+							<input type="checkbox" name="server" id="${item.sk}" value="${item.skcd}"><br/>
+						</c:if>
 					</c:forEach>
-					</fieldset>
+					
+					</fieldset> 
 				</td>
 			</tr>
 		</table>
-		<table class="list">
-			<tr>
-				<th colspan="5" class="ui-widget-header">Project Member</th>
-			</tr>
-			<tr>
-				<td>선 택</td>
-				<td>이 름</td>
-				<td>부 서</td>
-				<td>직 급</td>
-				<td>수행 역할</td>
-				<!-- <td>삭 제</td> -->
-			</tr>
-			<c:forEach var="item" items="${reqPjtMemList}">
-				<tr class="${item.empno}">
-					<td>
-						<c:choose>
-							<c:when test="${item.role =='Project Leader'}">
-							</c:when>
-							<c:otherwise>
-								<input type="radio" name="memnm" class="memnm" value="${item.empno}">
-							</c:otherwise>
-						</c:choose>
-					</td>
-					<td>${item.memnm}</td>
-					<td>${item.dpt}</td>
-					<td>${item.tit}</td>
-					<td>${item.role}</td>
+		<div id="memberuList">
+			<table class="list">
+				<tr>
+					<th colspan="5" class="ui-widget-header">Project Member</th>
 				</tr>
-			</c:forEach>
-			<tbody id="newmember">
-			</tbody>
-			<tr>
-				<td colspan="4">
-				<input type="button" id="newMemRegBtn" value="멤버 등록">
-				<input type="button" id="memDelBtn" value="멤버 삭제">
-				</td>
-			</tr>
-		</table>
+				<tr>
+					<td>선 택</td>
+					<td>이 름</td>
+					<td>부 서</td>
+					<td>직 급</td>
+					<td>수행 역할</td>
+				</tr>
+				<c:forEach var="item" items="${reqPjtMemList}">
+					<tr class="${item.empno}">
+						<td>
+							<c:choose>
+								<c:when test="${item.role =='Project Leader'}">
+								</c:when>
+								<c:otherwise>
+									<input type="radio" name="memnm" class="memnm" value="${item.empno}">
+								</c:otherwise>
+							</c:choose>
+						</td>
+						<td>${item.memnm}</td>
+						<td>${item.dpt}</td>
+						<td>${item.tit}</td>
+						<td>${item.role}</td>
+					</tr>
+				</c:forEach>
+				<tbody id="newmember">
+				</tbody>
+			</table>
+		</div>
+		<input type="button" id="newMemRegBtn" value="멤버 등록">
+		<input type="button" id="memDelBtn" value="멤버 삭제">
 		<br>
 		<div style="padding-left:250px">
 			<input type ="submit" value="수정 완료" style="float:left;">

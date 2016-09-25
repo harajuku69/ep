@@ -53,9 +53,7 @@
 		<tr>
 			<th>기 간</th>
 			<td colspan="3">
-				<!-- <label for="startdt">시작일</label><br> -->
 				<input type="text" name="startdt" id="startdt" placeholder="시작일" class="text ui-widget-content ui-corner-all" style="width:45%; float:left;"required >
-				<!-- <label for="enddt">종료일</label><br> -->
 				<input type="text" name="enddt" id="enddt" placeholder="종료일" class="text ui-widget-content ui-corner-all" style="width:45%;float:right" required >
 			</td>
 		</tr>
@@ -72,34 +70,28 @@
 			<td>
 				<fieldset class="skset">
 					<legend><b>Platform Skill</b></legend>
-					<label for="Java">Java</label>
-					<input type="radio" name="platform" id="Java" value="01" ><br/>
-					<label for="Object C">Object C</label>
-					<input type="radio" name="platform" id="Object C" value="02"><br/>
-					<label for=".NET">.NET</label>
-					<input type="radio" name="platform" id=".NET" value="03">
+					<c:forEach var="item" items="${pfList}">
+						<label for="${item.sk}">${item.sk}</label>
+						<input type="radio" name="platform" id="${item.sk}" value="${item.skcd}"><br/>
+					</c:forEach>
 				</fieldset>
 			</td>
 			<td>
 				<fieldset class="skset">
 					<legend><b>Web Skill</b></legend>
-					<label for="HTML">HTML</label>
-					<input type="checkbox" name="web" id="HTML" value="11"><br/>
-					<label for="CSS">CSS</label>
-					<input type="checkbox" name="web" id="CSS" value="12"><br/>
-					<label for="Javascript">Javascript</label>
-					<input type="checkbox" name="web" id="Javascript" value="13">
+					<c:forEach var="item" items="${webList}">
+						<label for="${item.sk}">${item.sk}</label>
+						<input type="checkbox" name="web" id="${item.sk}" value="${item.skcd}"><br/>
+					</c:forEach>
 				</fieldset>
 			</td>
 			<td>
 				<fieldset class="skset">
 					<legend><b>Server Skill</b></legend>
-					<label for="JSP">JSP</label>
-					<input type="checkbox" name="svr" id="JSP" value="21"><br/>
-					<label for="ASP">ASP</label>
-					<input type="checkbox" name="svr" id="ASP" value="22"><br/>
-					<label for="PHP">PHP</label>
-					<input type="checkbox" name="svr" id="PHP" value="23">
+					<c:forEach var="item" items="${svrList}">
+						<label for="${item.sk}">${item.sk}</label>
+						<input type="checkbox" name="server" id="${item.sk}" value="${item.skcd}"><br/>
+					</c:forEach>
 				</fieldset>
 			</td>
 		</tr>

@@ -14,7 +14,6 @@
 <div class="contents">
 	<h1> Mars 사원 검색 결과 </h1>
 	<div id="list_contain" class="ui-widget">
-	<!-- <div class="contain" class="ui-widget"> -->
 		<table class="list" class="ui-widget ui-widget-content">
 			<thead>
 				<tr>
@@ -32,17 +31,18 @@
 			<tbody>
 			<c:forEach var="item" items="${reqMemberList}">
 				<tr class="${item.empno}">
-					<td>
-						<a href="staff.do?cmd=staff_detail_page&empid=${item.empid}">${item.empnm}</a>
+					<td class="tit">
+						<%-- <a href="staff.do?cmd=staff_detail_page&empid=${item.empid}">${item.empnm}</a> --%>
+						${item.empnm}
 					</td>
-					<td><a href ="staff.do?cmd=staff_select_dpt_member&dpt=${item.dptcd}">${item.dptcd}</a></td>
-					<td>${item.titcd}</td>
-					<td>
+					<td class="tit"><a href ="staff.do?cmd=staff_select_dpt_member&dpt=${item.dptcd}">${item.dptcd}</a></td>
+					<td class="tit">${item.titcd}</td>
+					<td class="tit">
 						<c:set var="phone" value="${item.phone}"/>
 						<c:set var="dash" value="${'-'}"/>
 						<c:out value="${fn:substring(phone,0,3)}${dash}${fn:substring(phone,3,7)}${dash}${fn:substring(phone,7,11)}"/>
 					</td>
-					<td><a href="mailto:${item.empid}@mars.com">${item.empid}@mars.com</a></td>
+					<td class="tit"><a href="mailto:${item.empid}@mars.com">${item.empid}@mars.com</a></td>
 					<%-- <td><a href="staff.do?cmd=admin_update_page&empid=${item.empid}">수정</a></td>
 					<td><a href="#" onClick="deleteItem('staff','${item.empno}')">삭제</a></td> --%>
 				</tr>

@@ -15,10 +15,11 @@ public class DeleteMemberAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String empno = request.getParameter("empno");
+		int pjtno = Integer.parseInt(request.getParameter("pjtno"));
 
 		PjtDao pDao = PjtDao.getInstance();
-		int result = pDao.deleteMember(empno);
-//		System.out.println(result);
+		int result = pDao.deleteOneMember(empno, pjtno);
+
 		PrintWriter out = response.getWriter();
 		out.print(result);
 	}
