@@ -16,7 +16,7 @@
 			<li><a href="#tabedu">학력</a></li>
 			<li><a href="#tabcrr">경력</a></li>
 			<li><a href="#tabcrt">자격증</a></li>
-			<li><a href="#tabsk">보유 스킬</a></li>
+			<!-- <li><a href="#tabsk">보유 스킬</a></li> -->
 		</ul>
 		<div id="tabedu">
 			<div id="edu-dialog" title="학력 추가">
@@ -193,9 +193,9 @@
 				</table>
 			</div>
 		</div>
-		<div id="tabsk">
+		<!-- <div id="tabsk">
 			<div id="sk-dialog" title="보유 스킬 추가">
-				<!-- <p class="validateTips"></p> -->
+				<p class="validateTips"></p>
 				<form id="frm_sk">
 				<table>
 					<tr>
@@ -321,7 +321,7 @@
 					</tbody>
 				</table>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </body>
 </html>
