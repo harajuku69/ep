@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+ var iNum = 3;
+ iNum = iNum+5;
+ document.write("<p>" + iNum + "</p>");
+ var strColor = "blue";
+ document.write("<p>" + strColor + "</p>");
+ var strDrink=new Array();
+ strDrink[0]="Coffee";
+ strDrink[1]="Ice tea";
+ strDrink[2]="Green Tea";
+ 
+ var icnt=0;
+ for(icnt=0;icnt<=2;icnt++){
+	 document.write("<p>" + "number:" + icnt + ", drink:" + strDrink[icnt] + "</p>");
+ }
+ var dt=new Date();
+ var hr=dt.getHours();
+ if(dt>=6&&hr<=10){
+	 document.write("<b>Good morning</b>");
+ } else{
+	 document.write("<b>How are you?</b>");
+ }
+</script>
+</head>
+<body>
+
+</body>
+</html>
