@@ -17,8 +17,8 @@ public class BoardDaoImpl implements BoardDao {
 	private static String namespace = "com.kedu.board.mapper.BoardMapper";
 	
 	@Override
-	public void create(BoardDto dto) throws Exception {
-		session.insert(namespace + ".create", dto);
+	public void create(BoardDto board) throws Exception {
+		session.insert(namespace + ".create", board);
 	}
 
 	@Override
@@ -27,8 +27,8 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	@Override
-	public void update(BoardDto dto) throws Exception {
-		session.update(namespace + ".update", dto);
+	public void update(BoardDto board) throws Exception {
+		session.update(namespace + ".update", board);
 	}
 
 	@Override
