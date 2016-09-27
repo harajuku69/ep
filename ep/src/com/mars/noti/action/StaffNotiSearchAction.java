@@ -16,7 +16,8 @@ import com.mars.noti.dto.NotiDto;
 public class StaffNotiSearchAction implements Action {
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void execute(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String url = "noti/staffNotiSchList.jsp";
 		
 		String tit = request.getParameter("tit").trim();

@@ -400,10 +400,10 @@ public class NotiDao {
 		} 
 	}
 
-	public List<NotiDto> selectNotiByStr(String field, String item) {
+	public List<NotiDto> selectNotiByStr(String col, String item) {
 		StringBuilder sql = new StringBuilder();
 		sql.append("select * from noti where ");
-		sql.append(field);
+		sql.append(col);
 		sql.append(" like '%'|| ? ||'%' order by notino desc");
 		
 		Connection conn = null;
@@ -437,7 +437,10 @@ public class NotiDao {
 	}
 
 	public List<NotiDto> selectNotiByDt(String from, String to) {
-		String sql = "select * from noti where regdt between ? and ?";
+		String sql = "select * "
+					 + "from noti "
+					+ "where regdt between ? and ? "
+					+ "order by notino desc ";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

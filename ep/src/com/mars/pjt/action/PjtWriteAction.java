@@ -48,7 +48,7 @@ public class PjtWriteAction implements Action {
 //		PJT member 등록
 		pmDto.setEmpno(plno);
 		pmDto.setRole("00");
-		
+//		System.out.println(skList);
 //		Dao 처리
 		PjtDao pDao = PjtDao.getInstance();
 		pDao.regPjt(pDto);

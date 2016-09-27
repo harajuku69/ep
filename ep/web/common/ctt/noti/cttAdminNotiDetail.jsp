@@ -51,7 +51,7 @@
 							<textarea cols="80" rows="1"  id="ctt" name="ctt" placeholder="댓글을 입력하세요." ></textarea>
 							<input type="hidden" id="notino" name="notino" value="${reqNoti.notino}">
 						</td>
-						<td><input type="password" id="pwd" name="pwd" placeholder="비밀번호(숫자 4자리)"></td>
+						<td><input type="password" id="pwd" name="pwd" maxlength="4" placeholder="비밀번호(숫자 4자리)"></td>
 						<td>
 							<input type="button" value="입 력" onclick="addCmt()">
 						</td>

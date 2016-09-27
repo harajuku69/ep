@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mars.common.db.DBManager;
+import com.mars.noti.dto.NotiDto;
 import com.mars.pjt.dto.PjtDto;
 import com.mars.pjt.dto.PmDto;
 import com.mars.pjt.dto.PskDto;
@@ -530,6 +531,128 @@ public class PjtDao {
 			DBManager.close(conn, pstmt, rs);
 		}
 		return result;
+	}
+
+	public List<PjtDto> selectPjtByDt(String from, String to) {
+		String sql = "select p.pjtno, p.pjtnm, s.empnm, p.startdt, p.enddt, p.regdt, p.plno "
+					 + "from pjt p "
+					 + "join staff s "
+					   + "on p.plno = s.empno "
+					+ "where p.regdt between ? and ? "
+					+ "order by p.pjtno desc ";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<PjtDto> pjtList = new ArrayList<>();
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, from);
+			pstmt.setString(2, to);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				PjtDto pDto = new PjtDto();
+				
+				pDto.setPjtno(rs.getInt("pjtno"));
+				pDto.setPjtnm(rs.getString("pjtnm"));
+				pDto.setPlno(rs.getString("plno"));
+				pDto.setPlnm(rs.getString("empnm"));
+				pDto.setRegdt(rs.getTimestamp("regdt"));
+				pDto.setStartdt(rs.getTimestamp("startdt"));
+				pDto.setEnddt(rs.getTimestamp("enddt"));
+				pDto.setMemcnt(checkMemcnt(pDto.getPjtno()));
+				
+				pjtList.add(pDto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return pjtList;
+	}
+
+	public List<PjtDto> selectPjtByPjtnm(String pjtnm) {
+		String sql = "select p.pjtno, p.pjtnm, s.empnm, p.startdt, p.enddt, p.regdt, p.plno "
+					 + "from pjt p "
+					 + "join staff s "
+					   + "on p.plno = s.empno "
+					+ "where p.pjtnm like '%'|| ? ||'%' "
+					+ "order by p.pjtno desc ";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<PjtDto> pjtList = new ArrayList<>();
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, pjtnm);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				PjtDto pDto = new PjtDto();
+				
+				pDto.setPjtno(rs.getInt("pjtno"));
+				pDto.setPjtnm(rs.getString("pjtnm"));
+				pDto.setPlno(rs.getString("plno"));
+				pDto.setPlnm(rs.getString("empnm"));
+				pDto.setRegdt(rs.getTimestamp("regdt"));
+				pDto.setStartdt(rs.getTimestamp("startdt"));
+				pDto.setEnddt(rs.getTimestamp("enddt"));
+				pDto.setMemcnt(checkMemcnt(pDto.getPjtno()));
+				
+				pjtList.add(pDto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return pjtList;
+	}
+
+	public List<PjtDto> selectPjtByMemnm(String memnm) {
+		String sql = "SELECT r.*, s.empnm "
+					 + "FROM ( "
+							 + "select p.pjtno, p.pjtnm, p.startdt, p.enddt, p.regdt, p.plno "
+							 + "from pjt p "
+							 + "join PM m "
+							   + "on p.pjtno = m.pjtno "
+							 + "join staff s "
+			     			   + "on s.empno = m.empno "
+						    + "where s.empnm like '%'|| ? ||'%' "
+							+ "order by p.pjtno DESC "
+						  + ") r "
+					 + "JOIN STAFF s "
+					   + "ON s.empno = r.plno ";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<PjtDto> pjtList = new ArrayList<>();
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, memnm);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				PjtDto pDto = new PjtDto();
+				
+				pDto.setPjtno(rs.getInt("pjtno"));
+				pDto.setPjtnm(rs.getString("pjtnm"));
+				pDto.setPlno(rs.getString("plno"));
+				pDto.setPlnm(rs.getString("empnm"));
+				pDto.setRegdt(rs.getTimestamp("regdt"));
+				pDto.setStartdt(rs.getTimestamp("startdt"));
+				pDto.setEnddt(rs.getTimestamp("enddt"));
+				pDto.setMemcnt(checkMemcnt(pDto.getPjtno()));
+				
+				pjtList.add(pDto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return pjtList;
 	}
 }
 

@@ -12,10 +12,10 @@
 <body>
 <div class="mini">
 	<p style="display:inline;">Notice</p>
-	<c:if test="${ssAdmchk == 1}">
+	<%-- <c:if test="${ssAdmchk == 1}"> --%>
 		<span>|</span>
-		<p style="display:inline;"><a href="staff.do?cmd=admin_noti_list"> Search</a></p>
-	</c:if>
+		<p style="display:inline;"><a href="staff.do?cmd=staff_noti_list"> Search</a></p>
+	<%-- </c:if> --%>
 	<hr/>
 	<ul>
 		<c:forEach var="item" items="${ssRecentNotiList}">

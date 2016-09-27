@@ -13,8 +13,8 @@
 <body>
 <div class="contents">
 	<h1> 공지사항 검색 결과 </h1>
-	<div id="list-contain" class="ui-widget">
-		<table class="list">
+	<div id="list_contain" class="ui-widget">
+		<table class="list" class="ui-widget ui-widget-content">
 			<thead>
 			<tr>
 				<td class="addbtn" colspan="7" style="text-align:right; border:none;"><a href="noti.do?cmd=noti_write_page"><button id="write">공지사항 등록</button></a></td>
@@ -33,8 +33,8 @@
 			<tbody>
 			<c:forEach var="item" items="${reqNotiList}">
 				<tr class="${item.notino}">
-					<td>${item.notino}</td>
-					<td>
+					<td class="tit">${item.notino}</td>
+					<td class="tit">
 						<c:choose>
 							<c:when test="${item.cmtcnt > 0}">
 								<a href="noti.do?cmd=admin_noti_detail_page&notino=${item.notino}">${item.tit} &nbsp;[${item.cmtcnt}]</a>
@@ -43,19 +43,16 @@
 								<a href="noti.do?cmd=admin_noti_detail_page&notino=${item.notino}">${item.tit}</a>
 							</c:otherwise>
 						</c:choose>
-						<%-- <a href="noti.do?cmd=admin_noti_detail_page&notino=${item.notino}">${item.tit} &nbsp;[${item.cmtcnt}]</a> --%>
-						<%-- <a href="noti.do?cmd=admin_noti_detail_page&notino=${item.notino}&pageNo=${item.pageNo}">${item.tit} &nbsp;[${item.cmtcnt}]</a> --%>
-						<%-- <a href="noti.do?cmd=admin_noti_detail_page&notino=${item.notino}">${item.tit} &nbsp;[${item.cmtcnt}]</a> --%>
 					</td>
-					<td>${item.rdcnt}</td>
+					<td class="tit">${item.rdcnt}</td>
 					<%-- <td>${item.cmtcnt}</td> --%>
-					<td>
+					<td class="tit">
 						<c:set var="regdt" value="${item.regdt}"/>
 						<c:out value="${fn:substring(regdt,0,10)}"/>
 					</td>
-					<td>${item.admnm}</td>
-					<td><a href="noti.do?cmd=noti_update_page&notino=${item.notino}">수 정</a></td>
-					<td><a href="#" onClick="deleteItem('noti','${item.notino}')">삭 제</a></td>
+					<td class="tit">${item.admnm}</td>
+					<td class="tit"><a href="noti.do?cmd=noti_update_page&notino=${item.notino}">수 정</a></td>
+					<td class="tit"><a href="#" onClick="deleteItem('noti','${item.notino}')">삭 제</a></td>
 				</tr>
 			</c:forEach>
 			</tbody>

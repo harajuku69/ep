@@ -13,16 +13,6 @@
 </head>
 <body>
 <div class="contents">
-	<!-- <div id="pwd-dialog" title="비밀번호 확인">
-		<p class="validateTips">본인 확인이 필요합니다.</p>
-		<fieldset>
-			<form id="frm">
-				<label for="pwd">비밀번호를 입력해주세요.</label><br>
-				<input type="password" name="pwd" id="pwd" placeholder="비밀번호" class="text ui-widget-content ui-corner-all"  ><br>
-		</form>
-		</fieldset>
-		<p id="pwdChkRs"></p>
-	</div>  -->
 	<div id="list-contain" class="ui-widget">
 		<div id="noti_dtl_area">
 			<table class="list">
@@ -66,7 +56,7 @@
 							<textarea cols="80" rows="1"  id="ctt" name="ctt" placeholder="댓글을 입력하세요." ></textarea>
 							<input type="hidden" id="notino" name="notino" value="${reqNoti.notino}">
 						</td>
-						<td><input type="password" id="pwd" name="pwd" size="4" placeholder="비밀번호(숫자 4자리)"></td>
+						<td><input type="password" id="pwd" name="pwd" maxlength="4" placeholder="비밀번호(숫자 4자리)"></td>
 						<td>
 							<input type="button" value="입 력" onclick="addCmt()">
 						</td>

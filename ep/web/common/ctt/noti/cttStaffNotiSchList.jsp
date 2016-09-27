@@ -13,7 +13,7 @@
 <body>
 <div class="contents">
 	<h1> 공지사항 검색 결과 </h1>
-	<div id="list-contain" class="ui-widget">
+	<div id="list_contain" class="ui-widget">
 		<table class="list">
 			<thead>
 			<tr>
@@ -33,8 +33,8 @@
 			<tbody>
 			<c:forEach var="item" items="${reqNotiList}">
 				<tr class="${item.notino}">
-					<td>${item.notino}</td>
-					<td>
+					<td class="tit">${item.notino}</td>
+					<td class="tit">
 						<c:choose>
 							<c:when test="${item.cmtcnt > 0}">
 								<a href="noti.do?cmd=staff_noti_detail_page&notino=${item.notino}">${item.tit} &nbsp;[${item.cmtcnt}]</a>
@@ -44,15 +44,12 @@
 							</c:otherwise>
 						</c:choose>
 					</td>
-					<td>${item.rdcnt}</td>
-					<%-- <td>${item.cmtcnt}</td> --%>
-					<td>
+					<td class="tit">${item.rdcnt}</td>
+					<td class="tit">
 						<c:set var="regdt" value="${item.regdt}"/>
 						<c:out value="${fn:substring(regdt,0,10)}"/>
 					</td>
-					<td>${item.admnm}</td>
-					<%-- <td><a href="noti.do?cmd=noti_update_page&notino=${item.notino}">수 정</a></td>
-					<td><a href="#" onClick="deleteItem('noti','${item.notino}')">삭 제</a></td> --%>
+					<td class="tit">${item.admnm}</td>
 				</tr>
 			</c:forEach>
 			</tbody>

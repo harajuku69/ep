@@ -38,7 +38,8 @@
 				<th>번호</th>
 				<th>프로젝트명</th>
 				<th>PL</th>
-				<th>시작일</th>
+				<!-- <th>시작일</th> -->
+				<th>등록일</th>
 				<th>종료일</th>
 				<th>멤버수</th>
 			</tr>
@@ -55,7 +56,8 @@
 					 	<a href="#" class="plnm">${item.plnm}</a>
 						<input type="hidden" class="plno" value="${item.plno}">
 					</td>
-					<td class="tit"><c:out value="${fn:substring(item.startdt,0,10)}"/></td>
+					<%-- <td class="tit"><c:out value="${fn:substring(item.startdt,0,10)}"/></td> --%>
+					<td class="tit"><c:out value="${fn:substring(item.regdt,0,10)}"/></td>
 					<td class="tit"><c:out value="${fn:substring(item.enddt,0,10)}"/></td>
 					<td class="tit">${item.memcnt}명</td>
 				</tr>
