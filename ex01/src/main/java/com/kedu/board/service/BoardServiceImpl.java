@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.kedu.board.dao.BoardDao;
 import com.kedu.board.dto.BoardDto;
+import com.kedu.board.dto.Criteria;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -15,8 +16,8 @@ public class BoardServiceImpl implements BoardService {
 	public BoardDao dao;
 	
 	@Override
-	public void regist(BoardDto dto) throws Exception {
-		dao.create(dto);
+	public void regist(BoardDto board) throws Exception {
+		dao.create(board);
 	}
 
 	@Override
@@ -25,8 +26,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void modify(BoardDto dto) throws Exception {
-		dao.update(dto);
+	public void modify(BoardDto board) throws Exception {
+		dao.update(board);
 	}
 
 	@Override
@@ -39,4 +40,12 @@ public class BoardServiceImpl implements BoardService {
 		return dao.listAll();
 	}
 
+	@Override
+	public List<BoardDto> listCriteria(Criteria cri) throws Exception {
+		return dao.listCriteria(cri);
+	}
+	@Override
+	public int listCountCriteria(Criteria cri) throws Exception {
+		return dao.countPaging(cri);
+	}
 }
