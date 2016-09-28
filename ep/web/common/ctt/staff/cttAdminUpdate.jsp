@@ -13,7 +13,6 @@
 </head>
 <body>
 <div class="contents">
-	<!-- <form name="frm" style="clear:left;"> -->
 	<div id="logleft">
 		<c:choose>
 			<c:when test="${empty reqStaff.pic}">
@@ -27,59 +26,56 @@
 		<input type="button" value="삭제"> -->
 	</div>
 	<div id="logright">
-		<table style="font-size:20px;float:left">
-			<tr><th colspan="2">개인 정보</th></tr>
+		<table id="ind">
+			<tr><th colspan="2" class="infhd">개인 정보</th></tr>
 			<tr>
-				<td>이 름</td>
-				<td>
-					<%-- <input type="text" name="empnm" id="empnm" value="${reqStaff.empnm}" readonly> --%>
-					${reqStaff.empnm}
-				</td>
+				<th>이 름</th>
+				<td>${reqStaff.empnm}</td>
 			</tr>
 			<tr>
-				<td>주민번호</td>
+				<th>주민번호</th>
 				<td>
 					<%-- <input type="text" name="jumin" id="jumin" value="${jmf}-${jmb}" readonly> --%>
 					${jmf}-${jmb}
 				</td>
 			</tr>
 			<tr>
-				<td>생년월일</td>
+				<th>생년월일</th>
 				<td>
 					<%-- <input type="text" name="bdt" id="bdt" value="${yyyy}년 ${MM}월 ${dd}일" readonly> --%>
 					${yyyy}년 ${MM}월 ${dd}일
 				</td>
 			</tr>
 			<tr>
-				<td>성 별</td>
+				<th>성 별</th>
 				<td>
 					<%-- <input type="text" name="gen" id="gen" value="${gen}" readonly> --%>
 					${gen}
 				</td>
 			</tr>
 			<tr>
-				<td>연락처</td>
+				<th>연락처</th>
 				<td>
 					<%-- <input type="text" name="phone" id="phone" value="${reqStaff.phone}" readonly> --%>
 					${fmtphone}
 				</td>
 			</tr>
 			<tr>
-				<td>우편번호</td>
+				<th>우편번호</th>
 				<td>
 					<%-- <input type="text" name="zipcd" id="zipcd" value="${reqStaff.zipcd}" readonly> --%>
 					${reqStaff.zipcd}
 				</td>
 			</tr>
 			<tr>
-				<td>기본주소</td>
+				<th>기본주소</th>
 				<td>
 					<%-- <input type="text" name="addr" id="addr" value="${reqStaff.addr}" readonly> --%>
 					${reqStaff.addr}
 				</td>
 			</tr>
 			<tr>
-				<td>상세주소</td>
+				<th>상세주소</th>
 				<td>
 					<div style="width:200px;">${reqStaff.addrdtl}</div>
 					<%-- ${reqStaff.addrdtl} --%>
@@ -87,21 +83,21 @@
 			</tr>
 		</table>
 		<form action="staff.do?cmd=admin_update&empid=${reqStaff.empid}" method="post" name="frm" >
-		<table style="font-size:20px;">
-			<tr><th colspan="2">사원 정보</th></tr>
+		<table id="emp">
+			<tr><th colspan="2" class="infhd">사원 정보</th></tr>
 			<tr>
-				<td>사 번</td>
+				<th>사 번</th>
 				<td>${reqStaff.empno}</td>
 			</tr>
 			<tr>
-				<td>사 원 아이디</td>
+				<th>아이디</th>
 				<td>
 					<%-- <input type="text" name="empno" id="empno" value="${reqStaff.empid}" readonly> --%>
 					${reqStaff.empid}
 				</td>
 			</tr>
 			<tr>
-				<td>부 서</td>
+				<th>부 서</th>
 				<td>
 					<select name="dptcd" id="dptbx">
 						<c:forEach var="dpt" items="${reqDptList}">
@@ -118,7 +114,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td>직 급</td>
+				<th>직 급</th>
 				<td>
 					<select name="titcd" id="titbx">
 						<c:forEach var="tit" items="${reqTitList}">
@@ -135,29 +131,29 @@
 				</td>
 			</tr>
 			<tr>
-				<td>입사일</td>
+				<th>입사일</th>
 				<td><input type="text" name="startdt" id="startdt" value="${fn:substring(reqStaff.startdt, 0, 10)}"></td>
 			</tr>
 			<tr>
-				<td>퇴사일</td>
+				<th>퇴사일</th>
 				<td><input type="text" name="enddt" id="enddt" value="${fn:substring(reqStaff.enddt, 0, 10)}"></td>
 			</tr>
 			<tr>
-				<td>급 여</td>
+				<th>급 여</th>
 				<td>
 					<%-- <fmt:formatNumber type="currency" value="${reqStaff.sal}"/> --%>
 					<input type="text" name="sal" id="sal" maxlength="9" value="${reqStaff.sal}">
 				</td>
 			</tr>
 			<tr>
-				<td>등록일</td>
+				<th>등록일</th>
 				<td>
 					<%-- <input type="text" name="regdt" value="${reqStaff.regdt}" readonly> --%>
 					${fn:substring(reqStaff.regdt, 0, 10)}
 				</td>
 			</tr>
 			<tr>
-				<td>권 한</td>
+				<th>권 한</th>
 				<td>
 					<!-- <input type="radio" name="admchk" value="0" checked="checked">일반
 					<input type="radio" name="admchk" value="1" >관리자 -->
@@ -174,11 +170,12 @@
 				</td>
 			</tr>
 		</table>
-		<input type="submit" value="수정 완료" onclick="return chkSal()">
-		<input type="reset" value="되돌리기" >
-		<%-- <input type="button" value="돌아가기" onclick="location.href='staff.do?cmd=admin_detail_page&empid=${reqStaff.empid}'"> --%>
-		<input type="button" value="돌아가기" onclick="history.go(-1)">
-		
+		<br>
+		<div style="padding-left:200px">
+			<input type="submit" value="수정 완료" onclick="return chkSal()">
+			<input type="reset" value="되돌리기" >
+			<input type="button" value="돌아가기" onclick="history.go(-1)">
+		</div>
 		</form>
 	</div>
 </div>

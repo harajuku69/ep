@@ -11,6 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="js/dtpicker.js"></script>
 <script src="js/memberEdit.js"></script>
+<script src="js/checkWrite.js"></script>
 </head>
 <body>
 <div class="contents">
@@ -100,7 +101,7 @@
 							<c:choose>
 								<c:when test="${item.sk == sel.sk}">
 									<label for="${item.sk}">${item.sk}</label>
-									<input type="checkbox" name="web" id="${item.sk}" value="${item.skcd}" checked="checked"><br/>
+									<input type="checkbox" name="web" class="webchkbx" id="${item.sk}" value="${item.skcd}" checked="checked"><br/>
 								</c:when>
 								<c:otherwise>
 									<c:set var="cnt" value="${cnt+1}"/>
@@ -109,7 +110,7 @@
 						</c:forEach>
 						<c:if test="${cnt == sizeOfSelWebList}">
 							<label for="${item.sk}">${item.sk}</label>
-							<input type="checkbox" name="web" id="${item.sk}" value="${item.skcd}"><br/>
+							<input type="checkbox" name="web" class="webchkbx" id="${item.sk}" value="${item.skcd}"><br/>
 						</c:if>
 					</c:forEach>
 					</fieldset>
@@ -123,7 +124,7 @@
 							<c:choose>
 								<c:when test="${item.sk == sel.sk}">
 									<label for="${item.sk}">${item.sk}</label>
-									<input type="checkbox" name="server" id="${item.sk}" value="${item.skcd}" checked="checked"><br/>
+									<input type="checkbox" name="server" class="svrchkbx" id="${item.sk}" value="${item.skcd}" checked="checked"><br/>
 								</c:when>
 								<c:otherwise>
 									<c:set var="cnt" value="${cnt+1}"/>
@@ -132,7 +133,7 @@
 						</c:forEach>
 						<c:if test="${cnt == sizeOfSelSvrList}">
 							<label for="${item.sk}">${item.sk}</label>
-							<input type="checkbox" name="server" id="${item.sk}" value="${item.skcd}"><br/>
+							<input type="checkbox" name="server" class="svrchkbx" id="${item.sk}" value="${item.skcd}"><br/>
 						</c:if>
 					</c:forEach>
 					
@@ -177,7 +178,7 @@
 		<input type="button" id="memDelBtn" value="멤버 삭제">
 		<br>
 		<div style="padding-left:250px">
-			<input type ="submit" value="수정 완료" style="float:left;">
+			<input type ="submit" value="수정 완료" onclick="return checkWrite()" style="float:left;">
 			<input type ="reset" value="되돌리기"> 
 			<input type ="button" value="돌아가기"	onclick="location.href='pjt.do?cmd=admin_pjt_detail_page&pjtno=${reqPjt.pjtno}'">
 		</div>

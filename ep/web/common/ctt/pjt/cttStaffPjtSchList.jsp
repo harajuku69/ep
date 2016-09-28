@@ -49,7 +49,7 @@
 			<c:forEach var="item" items="${reqPjtList}">
 				<tr>
 					<td class="tit">${item.pjtno}</td>
-					<td class="tit">
+					<td id="ltit">
 						<a href="pjt.do?cmd=staff_pjt_detail_page&pjtno=${item.pjtno}">${item.pjtnm}</a>
 					</td>
 					<td class="tit">

@@ -24,7 +24,7 @@
 	</div>
 	<div id="logright">
 		<table id="ind">
-			<tr><th colspan="2">개인 정보</th></tr>
+			<tr><th colspan="2" class="infhd">개인 정보</th></tr>
 			<tr>
 				<th>이 름</th>
 				<td>${reqStaff.empnm}</td>
@@ -61,7 +61,7 @@
 			</tr>
 		</table>
 		<table id="emp">
-			<tr><th colspan="2">사원 정보</th></tr>
+			<tr><th colspan="2" class="infhd">사원 정보</th></tr>
 			<tr>
 				<th>사 번</th>
 				<td>${reqStaff.empno}</td>
@@ -111,8 +111,13 @@
 				<td>${adm}</td>
 			</tr>
 		</table>
-		<br/><input type="button" value="수정하기" onclick="location.href='staff.do?cmd=admin_update_page&empid=${reqStaff.empid}'">
-		<br/><input type="button" value="목록으로" onclick="location.href='staff.do?cmd=staff_list'">
+		<%-- <br/><input type="button" value="수정하기" onclick="location.href='staff.do?cmd=admin_update_page&empid=${reqStaff.empid}'">
+		<br/><input type="button" value="목록으로" onclick="location.href='staff.do?cmd=staff_list'"> --%>
+		<br/>
+		<div style="padding-left:200px">
+			<input type="button" value="수정하기" onclick="location.href='staff.do?cmd=admin_update_page&empid=${reqStaff.empid}'">
+			<input type="button" value="목록으로" onclick="location.href='staff.do?cmd=staff_list'">
+		</div>
 	</div>
 </div>
 </body>

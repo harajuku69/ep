@@ -55,44 +55,44 @@
 		<!-- <input type="button" name="delbtn" value="삭제"> -->
 	</div>
 	<div id="logright">
-		<table style="font-size:20px;float:left">
-			<tr><th colspan="2">개인 정보</th></tr>
+		<table id="ind">
+			<tr><th colspan="2" class="infhd">개인 정보</th></tr>
 			<tr>
-				<td>이 름</td>
+				<th>이 름</th>
 				<td>
 					<%-- <input type="text" name="empnm" id="empnm" value="${reqStaff.empnm}" readonly> --%>
 					${reqStaff.empnm}
 				</td>
 			</tr>
 			<tr>
-				<td>주민번호</td>
+				<th>주민번호</th>
 				<td>
 					<%-- <input type="text" name="jumin" id="jumin" value="${jmf}-${jmb}" readonly> --%>
 					${jmf}-${jmb}
 				</td>
 			</tr>
 			<tr>
-				<td>생년월일</td>
+				<th>생년월일</th>
 				<td>
 					<%-- <input type="text" name="bdt" id="bdt" value="${yyyy}년 ${MM}월 ${dd}일" readonly> --%>
 					${yyyy}년 ${MM}월 ${dd}일
 				</td>
 			</tr>
 			<tr>
-				<td>성 별</td>
+				<th>성 별</th>
 				<td>
 					<%-- <input type="text" name="gen" id="gen" value="${gen}" readonly> --%>
 					${gen}
 				</td>
 			</tr>
 			<tr>
-				<td>연락처</td>
+				<th>연락처</th>
 				<td>
 					<input type="text" name="phone" id="phone" maxlength="11" value="${reqStaff.phone}" >
 				</td>
 			</tr>
 			<tr>
-				<td>우편번호</td>
+				<th>우편번호</th>
 				<td>
 					<input type="text" name="zipcd" id="zipcd" value="${reqStaff.zipcd}" readonly>
 					<!-- <input type="button" name="zipcdschbtn" value="검색" onclick="zipcdsch();"> -->
@@ -100,80 +100,80 @@
 				</td>
 			</tr>
 			<tr>
-				<td>기본주소</td>
+				<th>기본주소</th>
 				<td>
 					<input type="text" name="addr" id="addr" value="${reqStaff.addr}" readonly>
 				</td>
 			</tr>
 			<tr>
-				<td>상세주소</td>
+				<th>상세주소</th>
 				<td>
 					<%-- <input type="text" name="addrdtl" id="addrdtl" value="${reqStaff.addrdtl}" > --%>
 					<textarea rows="3" cols="22" name="addrdtl" id="addrdtl" >${reqStaff.addrdtl}</textarea>
 				</td>
 			</tr>
 		</table>
-		<table style="font-size:20px;">
-			<tr><th colspan="2">사원 정보</th></tr>
+		<table id="emp">
+			<tr><th colspan="2" class="infhd">사원 정보</th></tr>
 			<tr>
-				<td>사 번</td>
+				<th>사 번</th>
 				<td>
 					<%-- <input type="text" name="empno" id="empno" value="${reqStaff.empno}" readonly> --%>
 					${reqStaff.empno}
 				</td>
 			</tr>
 			<tr>
-				<td>사 원 아이디</td>
+				<th>아이디</th>
 				<td>${reqStaff.empid}</td>
 			</tr>
 			<tr>
-				<td>부 서</td>
+				<th>부 서</th>
 				<td>
 					<%-- <input type="text" name="dpt" id="dpt" value="${reqStaff.dptcd}" readonly> --%>
 					${reqStaff.dptcd}
 				</td>
 			</tr>
 			<tr>
-				<td>직 급</td>
+				<th>직 급</th>
 				<td>
 					<%-- <input type="text" name="tit" id="tit" value="${reqStaff.titcd}" readonly> --%>
 					${reqStaff.titcd}
 				</td>
 			</tr>
 			<tr>
-				<td>입사일</td>
+				<th>입사일</th>
 				<td>
 					<%-- <input type="text" name="startdt" value="${reqStaff.startdt}" readonly> --%>
 					${reqStaff.startdt}
 				</td>
 			</tr>
 			<tr>
-				<td>퇴사일</td>
+				<th>퇴사일</th>
 				<td>
 					<%-- <input type="text" name="enddt" value="${reqStaff.enddt}" readonly> --%>
 					${reqStaff.enddt}
 				</td>
 			</tr>
 			<tr>
-				<td>급 여</td>
+				<th>급 여</th>
 				<td>
 					<fmt:formatNumber value="${reqStaff.sal}" type="currency"/>
 				</td>
 			</tr>
 			<tr>
-				<td>등록일</td>
+				<th>등록일</th>
 				<td>
 					<%-- <input type="text" name="regdt" value="${reqStaff.regdt}" readonly> --%>
 					${reqStaff.regdt}
 				</td>
 			</tr>
 		</table>
-		<br>
-		<div style="clear:both">
-			<p><input type="submit" value="수정 완료" onclick="return chkPhone()"></p>
-			<p><input type="reset" value="되돌리기" ></p>
-			<p><input type="button" value="돌아가기" onclick="location.href='staff.do?cmd=staff_detail_page&empid=${reqStaff.empid}'"></p>
-		</div>
+		<br/>
+		<!-- <div style="clear:both"> -->
+			<input type="submit" value="수정 완료" onclick="return chkPhone()">
+			<input type="reset" value="되돌리기" >
+			<input type="button" value="돌아가기" onclick="location.href='staff.do?cmd=staff_detail_page&empid=${reqStaff.empid}'">
+		<!-- </div> -->
 	</div>
 	</form>
 </div>

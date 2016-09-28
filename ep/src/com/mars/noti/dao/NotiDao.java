@@ -131,8 +131,6 @@ public class NotiDao {
 	}
 	
 	public CmtDto writeCmt(CmtDto cDto){
-		/*String sql = "insert into cmt(cmtno, notino, regid, ctt, pwd) "
-							+ "values(cmtno_seq.nextval,?,?,?,?)";*/
 		String sql = "INSERT INTO cmt(cmtno, notino, regid, ctt, pwd, regnm) "
 							+ "VALUES(cmtno_seq.nextval,?,?,?,?, "
 															 + "(SELECT "
@@ -147,8 +145,6 @@ public class NotiDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
-//		int notino = cDto.getNotino();
 		
 		try{
 			conn = DBManager.getConnection();

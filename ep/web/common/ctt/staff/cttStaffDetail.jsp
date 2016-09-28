@@ -117,8 +117,11 @@
 				</td>
 			</tr>
 		</table>
-		<br/><input type="button" value="수정하기" id="chk_pwd" >
-		<br/><input type="button" value="돌아가기" onclick="location.href='staff.do?cmd=staff_home_page&empid=${reqStaff.empid}'">
+		<br/>
+		<div style="padding-left:200px">
+			<input type="button" value="수정하기" id="chk_pwd" >
+			<input type="button" value="돌아가기" onclick="location.href='staff.do?cmd=staff_home_page&empid=${reqStaff.empid}'">
+		</div>
 	</div>
 </div>
 </body>

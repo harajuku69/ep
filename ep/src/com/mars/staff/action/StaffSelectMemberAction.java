@@ -23,8 +23,8 @@ public class StaffSelectMemberAction implements Action {
 		String empnm = request.getParameter("empnm");
 		String sql = "select count(*) from staff where empnm like '%' || '" + empnm + "' || '%'";
 		int pageNo = request.getParameter("pageNo") == null ? 1 : Integer.parseInt(request.getParameter("pageNo"));
-		int recPerPage = 3;
-		int pagePerBlock = 3;
+		int recPerPage = 15;
+		int pagePerBlock = 5;
 		
 		HashMap<String, Integer> map = new HashMap<>();
 		map = Paging.getParam(sql, pageNo, recPerPage, pagePerBlock);

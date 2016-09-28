@@ -17,9 +17,9 @@
 		<div id="noti_dtl_area">
 			<table class="list">
 				<tr>
-					<th>글 번호</th>
+					<th class="ntith">글 번호</th>
 						<td>${reqNoti.notino}</td>
-					<th>조회수</th>
+					<th class="ntith">조회수</th>
 						<td>${reqNoti.rdcnt}</td>
 				</tr>
 				<tr>
@@ -37,15 +37,14 @@
 				</tr>
 				<tr>
 					<th>내용</th>
-						<td colspan="3"><pre>${reqNoti.ctt}</pre></td>
+						<td colspan="3" id="cttdtl"><pre>${reqNoti.ctt}</pre></td>
 				</tr>
 			</table>
 		</div>
 		<br>
-		<%-- <input type ="button" value="목록으로" 
-			onclick="location.href='noti.do?cmd=staff_noti_list&pageNo=${pageNo}'"> --%>
-		<input type ="button" value="돌아가기" 
-			onclick="history.go(-1)">
+		<div style="padding-left:400px">
+			<input type ="button" value="돌아가기" onclick="history.go(-1)">
+		</div>
 		<hr>
 		<div id="cmtarea">
 			<div id="cmtinput" class="ui-widget">
@@ -56,7 +55,7 @@
 							<textarea cols="80" rows="1"  id="ctt" name="ctt" placeholder="댓글을 입력하세요." ></textarea>
 							<input type="hidden" id="notino" name="notino" value="${reqNoti.notino}">
 						</td>
-						<td><input type="password" id="pwd" name="pwd" maxlength="4" placeholder="비밀번호(숫자 4자리)"></td>
+						<td class="pwd"><input type="password" id="pwd" name="pwd" maxlength="4" placeholder="비밀번호(숫자 4자리)"></td>
 						<td>
 							<input type="button" value="입 력" onclick="addCmt()">
 						</td>
@@ -71,10 +70,10 @@
 						<tr class="${cmt.cmtno}" class="ui-widget-header">
 							<td>${cmt.rpno}</td>
 							<td>${cmt.regnm}</td>
-							<td>${cmt.ctt}</td>
-							<td>${cmt.regdt}</td>
+							<td class="cmtctt">${cmt.ctt}</td>
+							<td class="cmtrdt">${cmt.regdt}</td>
 							<c:if test="${cmt.regid == ssEmpid}">
-							<td><a href="#" onClick="deleteItem('cmt', '${cmt.cmtno}')">삭 제</a></td>
+							<td class="cmtchk"><a href="#" onClick="deleteItem('cmt', '${cmt.cmtno}')">삭 제</a></td>
 							<!-- <td><input type="button" id="chk_pwd" value="삭제"></td> -->
 							</c:if>
 						</tr>

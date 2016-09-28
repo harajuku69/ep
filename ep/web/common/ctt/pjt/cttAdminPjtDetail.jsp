@@ -15,11 +15,10 @@
 		<table class="list">
 			<tr>
 				<th>등록일</th>
-				<td>
+				<td class="tit">
 					<c:out value="${fn:substring(reqPjt.regdt,0,10)}"/>
 				</td>
-				<th>등록자</th>
-				<td>${ssAdmnm}</td>
+				<th id="ctr">등록자</th><td class="tit">${ssAdmnm}</td>
 			</tr>
 			<tr>
 				<th>기 간</th>
@@ -35,7 +34,7 @@
 			<tr>
 				<th>상세내용</th>
 				<%-- <td colspan="3"><textarea cols="72" rows="10" value="${reqPjt.pjtdtl}" readonly></textarea></td> --%>
-				<td colspan="3"><pre>${reqPjt.pjtdtl}</pre></td>
+				<td colspan="3" id="cttdtl"><pre>${reqPjt.pjtdtl}</pre></td>
 			</tr>
 			<tr>
 				<th>사용스킬</th>
@@ -71,28 +70,26 @@
 					<th colspan="4" class="ui-widget-header">Project Member</th>
 				</tr>
 				<tr>
-					<td>수행 역할</td>
-					<td>이 름</td>
-					<td>부 서</td>
-					<td>직 급</td>
+					<th>수행 역할</th>
+					<th>이 름</th>
+					<th>부 서</th>
+					<th>직 급</th>
 				</tr>
 				<tbody>
 				<c:forEach var="item" items="${reqPjtMemList}">
 					<tr class="${item.empno}">
-						<td>${item.role}</td>
-						<td>${item.memnm}</td>
-						<td>${item.dpt}</td>
-						<td>${item.tit}</td>
+						<td class="tit">${item.role}</td>
+						<td class="tit">${item.memnm}</td>
+						<td class="tit">${item.dpt}</td>
+						<td class="tit">${item.tit}</td>
 					</tr>
 				</c:forEach>
 				</tbody>
 			</table>
 		</div>
-		<br>
-		<div style="padding-left:250px">
-			<input type ="button" value="수정하기" onclick="location.href='pjt.do?cmd=pjt_update_page&pjtno=${reqPjt.pjtno}&pageNo=${pageNo}'" style="float:left;">
-			<input type ="button" value="목록으로" 
-				onclick="location.href='pjt.do?cmd=admin_pjt_list'">
+		<div style="padding-left:400px">
+			<input type ="button" value="수정하기" onclick="location.href='pjt.do?cmd=pjt_update_page&pjtno=${reqPjt.pjtno}&pageNo=${pageNo}'">
+			<input type ="button" value="목록으로" onclick="location.href='pjt.do?cmd=admin_pjt_list'">
 		</div>
 	</div>
 </div>

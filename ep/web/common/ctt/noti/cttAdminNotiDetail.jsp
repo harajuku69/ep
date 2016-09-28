@@ -17,8 +17,8 @@
 		<div id="noti_dtl_area">
 			<table class="list">
 				<tr>
-					<th>글 번호</th><td>${reqNoti.notino}</td>
-					<th>조회수</th><td>${reqNoti.rdcnt}</td>
+					<th class="ntith">글 번호</th><td>${reqNoti.notino}</td>
+					<th class="ntith">조회수</th><td>${reqNoti.rdcnt}</td>
 				</tr>
 				<tr>
 					<th>작성일</th>
@@ -29,18 +29,21 @@
 					<th>작성자</th><td>${reqNoti.admnm}</td>
 				</tr>
 				<tr>
-					<th>제목</th><td colspan="3">${reqNoti.tit}</td>
+					<th>제 목</th><td colspan="3">${reqNoti.tit}</td>
 				</tr>
 				<tr>
-					<th>내용</th><td colspan="3"><pre>${reqNoti.ctt}</pre></td>
+					<th>내 용</th>
+					<td colspan="3" id="cttdtl"><pre>${reqNoti.ctt}</pre></td>
 				</tr>
 			</table>
 		</div>
 		<br>
-		<input type ="button" value="수정하기" 
-			onclick="location.href='noti.do?cmd=noti_update_page&notino=${reqNoti.notino}&pageNo=${pageNo}'">
-		<input type ="button" value="목록으로" 
-			onclick="location.href='noti.do?cmd=admin_noti_list'">
+		<div style="padding-left:400px">
+			<input type ="button" value="수정하기" 
+				onclick="location.href='noti.do?cmd=noti_update_page&notino=${reqNoti.notino}&pageNo=${pageNo}'">
+			<input type ="button" value="목록으로" 
+				onclick="location.href='noti.do?cmd=admin_noti_list'">
+		</div>
 		<hr>
 		<div id="cmtarea">
 			<div id="cmtinput" class="ui-widget">
@@ -51,7 +54,7 @@
 							<textarea cols="80" rows="1"  id="ctt" name="ctt" placeholder="댓글을 입력하세요." ></textarea>
 							<input type="hidden" id="notino" name="notino" value="${reqNoti.notino}">
 						</td>
-						<td><input type="password" id="pwd" name="pwd" maxlength="4" placeholder="비밀번호(숫자 4자리)"></td>
+						<td class="pwd"><input type="password" id="pwd" name="pwd" maxlength="4" placeholder="비밀번호(숫자 4자리)"></td>
 						<td>
 							<input type="button" value="입 력" onclick="addCmt()">
 						</td>
@@ -61,14 +64,15 @@
 			<hr>
 			<div id="cmtlist" class="ui-widget">
 				<table class="list">
+				<!-- <table> -->
 					<tbody>
 					<c:forEach var="cmt" items="${reqCmtList}">
 						<tr class="${cmt.cmtno}" class="ui-widget-header">
 							<td>${cmt.rpno}</td>
 							<td>${cmt.regnm}</td>
-							<td>${cmt.ctt}</td>
-							<td>${cmt.regdt}</td>
-							<td><a href="#" onClick="deleteItem('cmt', '${cmt.cmtno}')">삭 제</a></td>
+							<td class="cmtctt">${cmt.ctt}</td>
+							<td class="cmtrdt">${cmt.regdt}</td>
+							<td class="cmtchk"><a href="#" onClick="deleteItem('cmt', '${cmt.cmtno}')">삭 제</a></td>
 							<!-- <td><input type="button" id="chk_pwd" value="삭제"></td> -->
 						</tr>
 					</c:forEach>

@@ -34,7 +34,7 @@
 			<c:forEach var="item" items="${reqNotiList}">
 				<tr class="${item.notino}">
 					<td class="tit">${item.notino}</td>
-					<td class="tit">
+					<td id="ltit">
 						<c:choose>
 							<c:when test="${item.cmtcnt > 0}">
 								<a href="noti.do?cmd=staff_noti_detail_page&notino=${item.notino}">${item.tit} &nbsp;[${item.cmtcnt}]</a>
