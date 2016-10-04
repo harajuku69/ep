@@ -6,15 +6,8 @@ PUBLIC "-//mybatis.org//DTD Maper 3.0//EN"
 <mapper namespace="com.kedu.board.mapper.BoardMapper">
 	
 	<insert id="create">
-	insert into tbl_board(
-						  title
-						, content
-						, writer)
-					values(
-						  #{title}
-						, #{content}
-						, #{writer}
-						)
+	insert into tbl_board(title, content, writer)
+					values(#{title}, #{content}, #{writer})
 	</insert>
 	
 	<!-- <select id="read" resultType="com.kedu.board.dto.BoardDto"> -->

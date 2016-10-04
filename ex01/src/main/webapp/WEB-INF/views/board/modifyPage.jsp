@@ -17,7 +17,7 @@ $(function() {
 		<div class="col-md-12">
 			<div class="box box-primary">
 				<div class="box-header">
-					<h3 class="box-title">MODIFY BOARD</h3>
+					<h3 class="box-title">글 수정</h3>
 				</div>
 				<form role="form" action="modifyPage" method="post">
 				<input type='hidden' name='page' value="${cri.page}"> 
