@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,20 +46,22 @@ public class BoardController {
 //		model.addAttribute("list",service.listAll());
 //	}
 	@RequestMapping(value="/detail", method = RequestMethod.GET)
-	public void detail(@RequestParam("bno") int bno, Model model) throws Exception{
+	public void detail(@RequestParam("bno") int bno, @ModelAttribute("cri") Criteria cri, Model model) throws Exception{
 		logger.info("show one article................");
 		model.addAttribute(service.detail(bno));
 	}
 	@RequestMapping(value="/delete", method = RequestMethod.POST)
-	public String delete(@RequestParam("bno") int bno, RedirectAttributes rttr) throws Exception{
+	public String delete(@RequestParam("bno") int bno, Criteria cri, RedirectAttributes rttr) throws Exception{
 		logger.info("delete an article................");
 		service.delete(bno);
+		rttr.addAttribute("page",cri.getPage());
+		rttr.addAttribute("recPerPage", cri.getRecPerPage());
 		rttr.addFlashAttribute("msg","SUCCESS");
 		return "redirect:/board/listPage";
 	}
 	
 	@RequestMapping(value="/update", method = RequestMethod.GET)
-	public void update(@RequestParam("bno") int bno, Model model) throws Exception{
+	public void update(@RequestParam("bno") int bno, @ModelAttribute("cri") Criteria cri, Model model) throws Exception{
 		logger.info("going to update page................");
 		model.addAttribute(service.detail(bno));
 	}
